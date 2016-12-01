@@ -22,8 +22,11 @@ $txt['inv_equipment'] = "Accessories";
 $txt['inv_body_type'] = "Body Type";
 $txt['fish_avatar_img_alt'] = "%s's Avatar";
 $txt['fish_try_me'] = "Customize this abomination";
-$txt['fish_register_now'] = "Register now to unlock more accessories!";
+$txt['fish_register_now_button'] = "<b>Register now</b>";
+$txt['fish_register_now_text'] = " to unlock more accessories!";
 
+
+// misc
 $txt['website_title'] = "Fantasy Fish Club";
 $txt['website_description'] = "A pointless forum where you can dress up a shitty fish avatar and ban anybody from topics that you create.";
 ?>

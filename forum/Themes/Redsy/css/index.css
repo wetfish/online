@@ -4133,3 +4133,9 @@ ul.social li .fa-rss:hover
    	border-color: #e25d5d;
    	cursor: pointer;
 }
+.register-cta, .register-cta a {
+	text-align:center; 
+	color:white; 
+	background-color:red;
+	font-size:larger;
+}

@@ -425,7 +425,15 @@ function display_guest_fish_equipper()
 	}
 							
 
-	echo '</dd></dl></div></div></div><br>';
+	echo	'</dd></dl><p class="register-cta">';
+
+	// register call to action
+	echo 
+		'<a href=', $boardurl, '/index.php?action=register>',
+		 $txt['fish_register_now_button'], '</a>', $txt['fish_register_now_text'];
+
+	echo '</p></div></div></div><br>';
+
 }
 
 function display_guest_fish_equipper_icon_button($item)
