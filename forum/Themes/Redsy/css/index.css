@@ -4099,6 +4099,19 @@ ul.social li .fa-rss:hover
     margin: 2px;
 }
 
+.item-icon-button-locked
+{
+	width: 38px;
+    height: 38px;
+    border-radius: 6px 6px 6px 6px;
+    border-color: lightgrey;
+    background-color:  lightgrey;
+    border-width: 2px;
+    border-style: solid;
+    margin: 2px;
+}
+
+
 .item-icon-button:hover { 
     background-color:  #cde7ff;
     border-color: #5198da;

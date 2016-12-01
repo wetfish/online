@@ -129,12 +129,14 @@ function generateStarterInventory()
 	// choose some item ids
 	$ids = array(
 		2,	// Gold Body
-		3, 	// Pink Body
 		4, 	// Blue Body
-		6, 	// Bikini Top
+		3, 	// Pink Body
 		7, 	// Red Jersey
 		8,	// Green Jersey
-		9	// Kawaii Hairdo
+		10,	// Dirty Socks
+		12,	// Sweatshorts
+		9,	// Kawaii Hairdo
+		6, 	// Bikini Top
 	);
 
 	$whereClause = '';
@@ -183,6 +185,10 @@ function generateStarterInventory()
 
 	// equip a body
 	$result[2]['is_equipped'] = true;
+
+	// "lock" some items
+	$result[9]['is_locked'] = true;
+	$result[6]['is_locked'] = true;
 
 	return $result;
 }

@@ -24,7 +24,7 @@ $txt['fish_avatar_img_alt'] = "%s's Avatar";
 $txt['fish_try_me'] = "Customize this abomination";
 $txt['fish_register_now_button'] = "<b>Register now</b>";
 $txt['fish_register_now_text'] = " to unlock more accessories!";
-
+$txt['fish_avatar_item_locked'] = " (LOCKED)";
 
 // misc
 $txt['website_title'] = "Fantasy Fish Club";

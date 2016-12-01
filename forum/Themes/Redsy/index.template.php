@@ -440,8 +440,16 @@ function display_guest_fish_equipper_icon_button($item)
 {
 	global $txt, $context, $boardurl;
 
-	echo '<input type="hidden" id="item_',$item['id'],'" name="item_',$item['id'],'" value="',$item['is_equipped'],'"/>';
-	echo 	'<img src="', $boardurl, $item['icon_url'], '" class="', $item['is_equipped'] ? 'item-icon-button-equipped' : 'item-icon-button', '" title="',$item['name_eng'],'"  onclick="setItemEquipped(',$item['id'],');" id="item_',$item['id'],'_img"/>';
+	if($item['is_locked'] == false)
+	{
+		echo '<input type="hidden" id="item_',$item['id'],'" name="item_',$item['id'],'" value="',$item['is_equipped'],'"/>';
+		echo 	'<img src="', $boardurl, $item['icon_url'], '" class="', $item['is_equipped'] ? 'item-icon-button-equipped' : 'item-icon-button', '" title="',$item['name_eng'],'"  onclick="setItemEquipped(',$item['id'],');" id="item_',$item['id'],'_img"/>';
+	}
+	else
+	{
+		echo 	'<img src="', $boardurl, $item['icon_url'], '" class="item-icon-button-locked" title="',$item['name_eng'],$txt['fish_avatar_item_locked'],'"/>';
+	}
+	
 }
 
 function template_body_below()
