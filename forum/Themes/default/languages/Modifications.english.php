@@ -33,4 +33,5 @@ $txt['manage_items_add_new'] = "New Item";
 // misc
 $txt['website_title'] = "Wetfish Online";
 $txt['website_description'] = "A pointless forum where you can dress up a shitty fish avatar and ban anybody from topics that you create.";
+$txt['chat'] = "Chat";
 ?>

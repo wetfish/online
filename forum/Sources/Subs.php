@@ -4104,6 +4104,14 @@ function setupMenuContext()
 				),
 				'is_last' => !$context['right_to_left'],
 			),
+			'chat' => array(
+				'title' => $txt['chat'],
+				'href' => 'https://chat.wetfish.net',
+				'show' => true,
+				'sub_buttons' => array(
+				),
+				'is_last' => !$context['right_to_left'],
+			),
 		);
 
 		// Allow editing menu buttons easily.
