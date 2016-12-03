@@ -25,6 +25,10 @@ $txt['fish_try_me'] = "Customize this abomination";
 $txt['fish_register_now_button'] = "<b>Register now</b>";
 $txt['fish_register_now_text'] = " to unlock more accessories!";
 $txt['fish_avatar_item_locked'] = " (LOCKED)";
+$txt['permissionname_manage_items'] = "Manage items";
+$txt['manage_items'] = "Items";
+$txt['manage_items_browse'] = "Browse items";
+$txt['manage_items_add_new'] = "New Item";
 
 // misc
 $txt['website_title'] = "Fantasy Fish Club";

@@ -3913,7 +3913,7 @@ function setupMenuContext()
 
 	// Set up the menu privileges.
 	$context['allow_search'] = allowedTo('search_posts');
-	$context['allow_admin'] = allowedTo(array('admin_forum', 'manage_boards', 'manage_permissions', 'moderate_forum', 'manage_membergroups', 'manage_bans', 'send_mail', 'edit_news', 'manage_attachments', 'manage_smileys'));
+	$context['allow_admin'] = allowedTo(array('admin_forum', 'manage_boards', 'manage_permissions', 'moderate_forum', 'manage_membergroups', 'manage_bans', 'send_mail', 'edit_news', 'manage_attachments', 'manage_smileys', 'manage_items'));
 	$context['allow_edit_profile'] = !$user_info['is_guest'] && allowedTo(array('profile_view_own', 'profile_view_any', 'profile_identity_own', 'profile_identity_any', 'profile_extra_own', 'profile_extra_any', 'profile_remove_own', 'profile_remove_any', 'moderate_forum', 'manage_membergroups', 'profile_title_own', 'profile_title_any'));
 	$context['allow_memberlist'] = allowedTo('view_mlist');
 	$context['allow_calendar'] = allowedTo('calendar_view') && !empty($modSettings['cal_enabled']);

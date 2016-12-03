@@ -887,6 +887,7 @@ function isAllowedTo($permission, $boards = null)
 		'manage_bans',
 		'manage_membergroups',
 		'manage_permissions',
+		'manage_items',
 	);
 
 	// Make it an array, even if a string was passed.

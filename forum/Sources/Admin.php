@@ -447,6 +447,22 @@ function AdminMain()
 				),
 			),
 		),
+		'items' => array(
+			'title' => $txt['manage_items'],
+			'permission' => array('manage_items'),
+			'areas' => array(
+				'browse' => array(
+					'label' => $txt['manage_items_browse'],
+					'file' => 'ManageItems.php',
+					'function' => 'BrowseItems',
+				),
+				'add_new' => array(
+					'label' => $txt['manage_items_add_new'],
+					'file' => 'ManageItems.php',
+					'function' => 'AddNewItem',
+				),
+			),
+		),
 	);
 
 	// Any files to include for administration?
