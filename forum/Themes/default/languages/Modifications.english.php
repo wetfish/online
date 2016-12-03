@@ -3,7 +3,7 @@
 global $context;
 
 // Justin nov 25 2016 - topic ban strings
-$txt['ban_from_topic'] = "Ban";
+$txt['ban_from_topic'] = "Ban From Topic";
 $txt['ban_from_topic_form_body'] = "Ban <b>%s</b> from your topic for the following post:";
 $txt['ban_from_topic_reason'] = "Reason";
 $txt['ban_from_topic_submit'] = "Submit";

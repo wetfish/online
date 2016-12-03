@@ -15,6 +15,16 @@ function template_main()
 {
 	global $context, $txt, $scripturl;
 
+	// header
+	echo '<div class="cat_bar">
+			<h3 class="catbg">',$txt['ban_from_topic'],'</h3>
+		</div>';
+
+	// begin content
+		echo '<div class="windowbg2">
+			<span class="topslice"><span></span></span>
+			<div class="content">';
+
 	if($context['banconfirmed'])
 	{
 		// form submitted. show result message
@@ -25,6 +35,13 @@ function template_main()
 		// prompt for reason
 		template_form();
 	}
+
+
+	// end content
+	echo'
+		</div>
+		<span class="botslice"><span></span></span>
+	</div>';
 
 }
 
@@ -57,6 +74,7 @@ function template_form()
 		<input type="submit" value="',$txt['ban_from_topic_submit'], '" onclick="return submitThisOnce(this);" accesskey="s" class="button_submit" />';
 
 		echo '</dd></form>';
+
 	}
 }
 
