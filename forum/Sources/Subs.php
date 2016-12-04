@@ -4106,6 +4106,7 @@ function setupMenuContext()
 			),
 			'chat' => array(
 				'title' => $txt['chat'],
+				'target' => '_blank',
 				'href' => 'https://chat.wetfish.net',
 				'show' => true,
 				'sub_buttons' => array(
