@@ -67,6 +67,9 @@ function BanFromTopicConfirm()
 
 	$context['banconfirmed'] = true;
 
+	$_POST = htmltrim__recursive($_POST);
+	$_POST = htmlspecialchars__recursive($_POST);
+
 	$context['topic'] = $_POST['topic'];
 	$context['msg'] = $_POST['msg'];
 	$context['reason'] = $_POST['reason'];

@@ -2459,6 +2459,9 @@ function profileSaveEquippedItems(&$value)
 {
 	global $context;
 
+	$_POST = htmltrim__recursive($_POST);
+	$_POST = htmlspecialchars__recursive($_POST);
+
 	if ($context['user']['id'] != $context['member']['id'] && !allowedTo('admin_forum'))
 	{
 		// we are not the owner and we are not an admin. so who are we?
