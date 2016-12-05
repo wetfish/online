@@ -3,16 +3,68 @@
 if (!defined('SMF'))
 	die('Hacking attempt...');
 
-abstract class ItemType
-{
-    const Equipment = 0;
+abstract class BasicEnum {
+    private static $constCacheArray = NULL;
+
+    public static function getConstants() {
+        if (self::$constCacheArray == NULL) {
+            self::$constCacheArray = [];
+        }
+        $calledClass = get_called_class();
+        if (!array_key_exists($calledClass, self::$constCacheArray)) {
+            $reflect = new ReflectionClass($calledClass);
+            self::$constCacheArray[$calledClass] = $reflect->getConstants();
+        }
+        return self::$constCacheArray[$calledClass];
+    }
+
+    public static function isValidName($name, $strict = false) {
+        $constants = self::getConstants();
+
+        if ($strict) {
+            return array_key_exists($name, $constants);
+        }
+
+        $keys = array_map('strtolower', array_keys($constants));
+        return in_array(strtolower($name), $keys);
+    }
+
+    public static function isValidValue($value, $strict = true) {
+        $values = array_values(self::getConstants());
+        return in_array($value, $values, $strict);
+    }
 }
 
-abstract class EquipSlot
+abstract class ItemType extends BasicEnum
 {
-    const BodyBase = 0;
-    const Chest = 1;
-    const Hair = 2;
+    const Equipment = 0;		// pairs with equip_slot
+}
+
+abstract class EquipSlot extends BasicEnum
+{
+	const None = -1;
+    const BodyBase = 0;			// cannot be unequiped
+    const Chest1 = 1;
+    const Chest2 = 2;
+    const Hair = 3;
+    const Feet = 4;
+    const Mouth = 5;
+    const Legs1 = 6;
+    const Legs2 = 7;
+    const Hat = 8;
+    const LeftHand = 9;
+    const RightHand = 10;
+    const Neck = 11;
+    const Eyes = 12;
+}
+
+abstract class ItemAvailability extends BasicEnum
+{
+	const Unlisted = 0;				// this item is not available for purchase, but can still be used/equipped
+	const StartingItem = 1;			// available in the guest demo and given to new members
+	const StartingItemLocked = 2;	// visible but locked in the guest demo, given to new members
+	const DailyFeature = 3;			// this item may randomly appear as the daily feature item
+	const NPCShop = 4;				// available in an npc shop. pairs with npcShopId
 }
 
 function loadInventory($userid, $equipped_only = false)
@@ -90,6 +142,8 @@ function loadInventory($userid, $equipped_only = false)
 			$item['icon_url'] = $row['icon_url'];
 			$item['equip_slot'] = $row['equip_slot'];
 			$item['can_delete'] = $row['can_delete'];
+			$item['cost'] = $row['cost'];
+			$item['availability'] = $row['availability'];
 
 	  		$result[$row['id_item']] = $item;
 		}

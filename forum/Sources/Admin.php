@@ -451,12 +451,17 @@ function AdminMain()
 			'title' => $txt['manage_items'],
 			'permission' => array('manage_items'),
 			'areas' => array(
-				'browse' => array(
-					'label' => $txt['manage_items_browse'],
+				'viewitems' => array(
+					'label' => $txt['manage_items_view_all'],
 					'file' => 'ManageItems.php',
-					'function' => 'BrowseItems',
+					'function' => 'ViewItems',
 				),
-				'add_new' => array(
+				'searchitems' => array(
+					'label' => $txt['manage_items_search'],
+					'file' => 'ManageItems.php',
+					'function' => 'SearchItems',
+				),
+				'addnewitem' => array(
 					'label' => $txt['manage_items_add_new'],
 					'file' => 'ManageItems.php',
 					'function' => 'AddNewItem',
