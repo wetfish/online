@@ -21,6 +21,7 @@ $txt['inv_items'] = "Items";
 $txt['inv_equipment'] = "Accessories";
 $txt['inv_body_type'] = "Body Type";
 $txt['fish_avatar_img_alt'] = "%s's Avatar";
+$txt['fish_demo_title'] = "Demo";
 $txt['fish_try_me'] = "Customize this abomination";
 $txt['fish_register_now_button'] = "<b>Register now</b>";
 $txt['fish_register_now_text'] = " to unlock more accessories!";
@@ -30,6 +31,9 @@ $txt['manage_items'] = "Items";
 $txt['manage_items_search'] = "Search Items";
 $txt['manage_items_add_new'] = "New Item";
 $txt['manage_items_view_all'] = "View All Items";
+$txt['featured_item_title'] = "Featured Item";
+$txt['featured_item_cost'] = "Cost: ";
+$txt['featured_item_buy'] = "Buy";
 
 // ItemTypes
 $txt['item_type_' . ItemType::Equipment] = "Equipment";
@@ -49,6 +53,7 @@ $txt['item_equip_slot_' . EquipSlot::LeftHand] = "Left Hand";
 $txt['item_equip_slot_' . EquipSlot::RightHand] = "Right Hand";
 $txt['item_equip_slot_' . EquipSlot::Neck] = "Neck";
 $txt['item_equip_slot_' . EquipSlot::Eyes] = "Eyes";
+$txt['item_equip_slot_' . EquipSlot::Face] = "Face";
 
 // ItemAvailabilitys
 $txt['item_availability_' . ItemAvailability::Unlisted] = "Unlisted";

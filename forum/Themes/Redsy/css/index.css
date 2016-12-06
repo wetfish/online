@@ -4088,7 +4088,8 @@ ul.social li .fa-rss:hover
 	margin-right: 10px !important;
 }
 
-.item-icon-button
+
+.item-icon, .item-icon-button
 {
 	width: 38px;
     height: 38px;

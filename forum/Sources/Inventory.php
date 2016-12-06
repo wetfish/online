@@ -56,6 +56,7 @@ abstract class EquipSlot extends BasicEnum
     const RightHand = 10;
     const Neck = 11;
     const Eyes = 12;
+    const Face = 13;
 }
 
 abstract class ItemAvailability extends BasicEnum
@@ -247,6 +248,26 @@ function dbInsertNewInventoryItems($inventory, $userid)
 	}
 }
 
+// get a random item from the DB using today's date as the seed. 
+// this isn't the best method as it could return different results throughout the day if the items table changes
+function dbGetDailyFeatureItem()
+{
+	global $smcFunc;
 
+	$seed = date('Ymd');
+	$availability = ItemAvailability::DailyFeature;
+
+	// TODO optimize this, i hear it crashes the server if the table is very large!!
+	$itemRequest = $smcFunc['db_query']('', "
+                SELECT *
+				FROM {db_prefix}items
+				WHERE availability = {$availability}
+                ORDER BY RAND({$seed})
+                LIMIT 1"
+            ); 
+
+	// TODO cache the result
+	return $smcFunc['db_fetch_assoc']($itemRequest);
+}
 
 ?>

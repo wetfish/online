@@ -2039,7 +2039,7 @@ fieldset[disabled] .btn-warning.active {
   background-color: #ffffff;
 }
 .btn-danger {
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: #337ab6;
   border-color: #337ab6;
 }

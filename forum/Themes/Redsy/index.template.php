@@ -370,8 +370,40 @@ function template_body_above()
 		{
 			display_guest_fish_equipper();
 		}
+		else
+		{
+			display_daily_featured_item();
+		}
  	}
 
+}
+
+function display_daily_featured_item()
+{
+	global $txt, $context, $boardurl;
+
+	$item = dbGetDailyFeatureItem();
+
+	// header
+	echo '<div class="cat_bar">
+				<h3 class="catbg">',$txt['featured_item_title'],'</h3>
+		</div>';
+
+	echo '<div id="creator"><div class="windowbg2"><div class="content" style="padding:20px;"><dl><dt>';
+
+	echo '<strong><p>', $item['name_eng'] ,'</strong></p>';
+	echo 	'<img src="', $boardurl, $item['icon_url'], '" class="item-icon" title="',$item['name_eng'], 'id="item_',$item['id'],'_img"/>';
+
+	// temporary coming soon bs
+	echo '</dt><dd><p>Coming soon</p>';
+
+	// TODO color the cost red if user can't afford it and grey out button
+	// echo '</dt><dd><p>',$txt['featured_item_cost'],$item['cost'], '</p>';
+
+	// echo '
+	//  	<a href="', $scripturl, '?action=buydailyitem', '" class="btn btn-danger btn-sm">',$txt['featured_item_buy'],'</a>';
+
+	echo '</dd></dl></div></div></div><br>';
 }
 
 function display_guest_fish_equipper()
@@ -382,6 +414,11 @@ function display_guest_fish_equipper()
 	{
 		$_SESSION['guest_inventory'] = generateStarterInventory();
 	}
+
+	// header
+	echo '<div class="cat_bar">
+				<h3 class="catbg">',$txt['fish_demo_title'],'</h3>
+		</div>';
 
 	echo '<div id="creator"><div class="windowbg2"><div class="content"><dl>';
 
