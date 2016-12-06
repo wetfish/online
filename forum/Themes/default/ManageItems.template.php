@@ -1,9 +1,5 @@
 <?php
 
-function template_main()
-{
-
-}
 
 function template_view_items()
 {
@@ -38,6 +34,35 @@ function template_view_items()
 function template_add_new_item()
 {
 	global $context, $settings, $options, $scripturl, $txt, $modSettings;
+
+
+		// If an error occurred while trying to save previously, give the user a clue!
+	if (!empty($context['post_errors']))
+	{
+		echo '
+					<div class="windowbg" id="profile_error">
+						<ul class="reset">';
+
+					// Cycle through each error and display an error message.
+					foreach ($context['post_errors'] as $error)
+						echo '
+							<li>', $error, '</li>';
+
+					echo '
+						</ul>
+					</div>';
+	}
+
+
+	// If the profile was update successfully, let the user know this.
+	if (!empty($context['item_updated']))
+	{
+		echo '
+					<div class="windowbg" id="profile_success">
+						', $context['item_updated'], '
+					</div>';
+	}
+
 
 // header
 echo '
@@ -235,7 +260,6 @@ echo '
 				</dl>
 				<div class="righttext">
 					<input type="submit" name="itemSubmit" value="',$txt['admin_new_item_submit'],'" tabindex="7" class="btn btn-danger btn-sm">
-					<input type="hidden" name="sa" value="addnewitem">
 				</div>
 			</div>
 			<span class="botslice"><span></span></span>

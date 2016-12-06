@@ -80,6 +80,13 @@ $txt['admin_new_item_cost_desc'] = "The price for this item in Sand Dollars";
 $txt['admin_new_item_availability'] = "Availability";
 $txt['admin_new_item_availability_desc'] = "How users obtain this item";
 $txt['admin_new_item_submit'] = "Submit";
+$txt['admin_new_item_success'] = "Successfully added new item!";
+$txt['admin_new_item_fail'] = "Failed to add new item.";
+$txt['admin_new_item_fail_upload_error'] = "Upload failed";
+$txt['admin_new_item_fail_unknown_type'] = "Unknown file type";
+$txt['admin_new_item_fail_invalid_type'] = "Invalid file type";
+$txt['admin_new_item_fail_name_empty'] = "Item name required";
+
 
 // misc
 $txt['website_title'] = "Wetfish Online";
