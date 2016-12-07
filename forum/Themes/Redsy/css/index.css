@@ -4035,16 +4035,12 @@ ul.social li .fa-rss:hover
 		display: none;
 	}
 } 
-@media (max-width:991px) {
-	ol.breadcrumb li
-	{
-		display: none;
-	}
-	ol.breadcrumb li:first-child, .breadcrumb li:last-child
-	{
-		display: inline-block;
-	}
+
+ol.breadcrumb li:first-child, .breadcrumb li:last-child
+{
+	display: inline-block;
 }
+
 .dropdown-submenu {
     position: relative;
 }
@@ -4152,4 +4148,11 @@ ul.social li .fa-rss:hover
 	color:white; 
 	background-color:red;
 	font-size:larger;
+}
+
+.coins-header {
+	float:right;;
+	margin-top: 8px;
+	margin-right: 24px;
+	font-size: 1.4em;
 }

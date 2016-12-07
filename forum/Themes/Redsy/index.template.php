@@ -354,7 +354,13 @@ function template_body_above()
 		 	{
 		 		theme_linktree();
 		 	}
-		echo'
+
+		 	if($context['user']['is_guest'] == false)
+			{
+		 		echo'<span class="coins-header"><img src="',$boardurl,'/fish/img/coins/coral.png"> ',$context['user']['coins'],'</span>';
+			}
+		
+echo '
 		</div>
 	</header>';
 
@@ -559,7 +565,7 @@ function theme_linktree($force_show = false)
 		return;
 
 	echo '
-		<ol class="breadcrumb">';
+		<ol class="breadcrumb" style="display:inline-block;">';
 
 	// Each tree item has a URL and name. Some may have extra_before and extra_after.
 	foreach ($context['linktree'] as $link_num => $tree)
@@ -686,9 +692,10 @@ function pages_titlesdesc()
 {
 	global  $context, $txt;
 
-		echo '
-		<h2>',$txt['website_title'],'</h2>
-		<p>',$txt['website_description'],'</p>';
+		echo '<div style="display:inline-block;">
+					<h2>',$txt['website_title'],'</h2>
+					<p>',$txt['website_description'],'</p>
+			</div>';
 
 		
 }

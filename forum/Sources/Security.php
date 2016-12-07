@@ -411,6 +411,7 @@ function is_not_banned($forceCheck = false)
 			'is_mod' => false,
 			'can_mod' => false,
 			'language' => $user_info['language'],
+			'coins' => 0,
 		);
 
 		// A goodbye present.
@@ -460,6 +461,7 @@ function is_not_banned($forceCheck = false)
 			'is_mod' => false,
 			'can_mod' => false,
 			'language' => $user_info['language'],
+			'coins' => 0,
 		);
 
 		// SMF's Wipe 'n Clean(r) erases all traces.

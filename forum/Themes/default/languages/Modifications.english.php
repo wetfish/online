@@ -35,6 +35,9 @@ $txt['featured_item_title'] = "Featured Item";
 $txt['featured_item_cost'] = "Cost: ";
 $txt['featured_item_buy'] = "Buy";
 
+// currency stuff
+$txt['coins'] = "Coral";
+
 // ItemTypes
 $txt['item_type_' . ItemType::Equipment] = "Equipment";
 

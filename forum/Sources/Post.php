@@ -1927,6 +1927,22 @@ function Post2()
 	{
 		createPost($msgOptions, $topicOptions, $posterOptions);
 
+		// get the reward for posting here
+		$boardCoinsReq = $smcFunc['db_query']('', '
+				SELECT coins_per_post
+				FROM {db_prefix}boards
+				WHERE id_board = {int:id_board}
+				LIMIT 1',
+				array(
+					'id_board' => $board,
+				)
+			);
+			$coinsResult = $smcFunc['db_fetch_assoc']($boardCoinsReq);
+
+		// pay them
+		addCoins($user_info['id'], $coinsResult['coins_per_post']);
+
+
 		if (isset($topicOptions['id']))
 			$topic = $topicOptions['id'];
 	}

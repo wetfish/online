@@ -270,4 +270,21 @@ function dbGetDailyFeatureItem()
 	return $smcFunc['db_fetch_assoc']($itemRequest);
 }
 
+function addCoins($userid, $amount)
+{
+	global $smcFunc;
+
+	$smcFunc['db_query']('', '
+	        UPDATE {db_prefix}members
+			SET coins = coins + {int:amount}
+	        WHERE id_member = {int:id_member}',
+                array(
+                	'amount' => $amount,
+                    'id_member' => $userid,
+                )
+    	); 
+
+}
+
+
 ?>
