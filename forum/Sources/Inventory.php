@@ -68,6 +68,13 @@ abstract class ItemAvailability extends BasicEnum
 	const NPCShop = 4;				// available in an npc shop. pairs with npcShopId
 }
 
+abstract class CoinEarnReason extends BasicEnum
+{
+	const None = 0;
+	const Hidden = 1;
+	const Posting = 2;
+}
+
 function loadInventory($userid, $equipped_only = false)
 {
 	global $smcFunc;
@@ -268,11 +275,12 @@ function dbGetDailyFeatureItem()
 
 	// TODO cache the result
 	return $smcFunc['db_fetch_assoc']($itemRequest);
+
 }
 
-function addCoins($userid, $amount)
+function addCoins($userid, $amount, $earnReason = 0)
 {
-	global $smcFunc;
+	global $smcFunc, $txt;
 
 	$smcFunc['db_query']('', '
 	        UPDATE {db_prefix}members
@@ -284,6 +292,29 @@ function addCoins($userid, $amount)
                 )
     	); 
 
+	if($earnReason === CoinEarnReason::Hidden)
+	{
+		$_SESSION['coinsEarned'] = 0;
+		$_SESSION['coinsEarnedMsg'] = '';
+	}
+	else
+	{
+		$_SESSION['coinsEarned'] = $amount;
+		$_SESSION['coinsEarnedMsg'] = sprintf($txt['coins_earn_' . $earnReason], number_format($amount));
+	}
+}
+
+function getLastCoinsEarned()
+{
+	$result = array();
+
+	$result['amount'] = $_SESSION['coinsEarned'];
+	$result['msg'] = $_SESSION['coinsEarnedMsg']; 
+
+	$_SESSION['coinsEarned'] = 0;
+	$_SESSION['coinsEarnedMsg'] = '';
+
+	return $result;
 }
 
 

@@ -1940,7 +1940,7 @@ function Post2()
 			$coinsResult = $smcFunc['db_fetch_assoc']($boardCoinsReq);
 
 		// pay them
-		addCoins($user_info['id'], $coinsResult['coins_per_post']);
+		addCoins($user_info['id'], $coinsResult['coins_per_post'], CoinEarnReason::Posting);
 
 
 		if (isset($topicOptions['id']))

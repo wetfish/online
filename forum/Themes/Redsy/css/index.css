@@ -4156,3 +4156,7 @@ ol.breadcrumb li:first-child, .breadcrumb li:last-child
 	margin-right: 24px;
 	font-size: 1.4em;
 }
+
+.coins-header-earned {
+	color: green;
+}

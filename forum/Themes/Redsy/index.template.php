@@ -357,7 +357,18 @@ function template_body_above()
 
 		 	if($context['user']['is_guest'] == false)
 			{
-		 		echo'<span class="coins-header"><img src="',$boardurl,'/fish/img/coins/coral.png"> ',$context['user']['coins'],'</span>';
+				$earned = getLastCoinsEarned();
+
+				if ($earned['amount'] > 0)
+				{
+					echo'<span class="coins-header"><img src="',$boardurl,'/fish/img/coins/coral.png"> ', number_format($context['user']['coins'] - $earned['amount']),'
+					<span class="coins-header-earned"> ', $earned['msg'],'</span></span>';
+				}
+				else
+				{
+					echo'<span class="coins-header"><img src="',$boardurl,'/fish/img/coins/coral.png"> ',number_format($context['user']['coins']),'</span>';
+				}
+		 		
 			}
 		
 echo '
@@ -398,7 +409,7 @@ function display_daily_featured_item()
 	echo '<div id="creator"><div class="windowbg2"><div class="content" style="padding:20px;"><dl><dt>';
 
 	echo '<strong><p>', $item['name_eng'] ,'</strong></p>';
-	echo 	'<img src="', $boardurl, $item['icon_url'], '" class="item-icon" title="',$item['name_eng'], 'id="item_',$item['id'],'_img"/>';
+	echo 	'<img src="', $boardurl, $item['icon_url'], '" class="item-icon" title="',$item['name_eng'], '" id="item_',$item['id'],'_img"/>';
 
 	// temporary coming soon bs
 	echo '</dt><dd><p>Coming soon</p>';
