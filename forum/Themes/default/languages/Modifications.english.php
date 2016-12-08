@@ -62,11 +62,12 @@ $txt['item_equip_slot_' . EquipSlot::Mouth] = "Mouth";
 $txt['item_equip_slot_' . EquipSlot::Legs1] = "Legs 1";
 $txt['item_equip_slot_' . EquipSlot::Legs2] = "Legs 2";
 $txt['item_equip_slot_' . EquipSlot::Hat] = "Hat";
-$txt['item_equip_slot_' . EquipSlot::LeftHand] = "Left Hand";
-$txt['item_equip_slot_' . EquipSlot::RightHand] = "Right Hand";
+$txt['item_equip_slot_' . EquipSlot::LeftHandHeld] = "Left Hand (Held)";
+$txt['item_equip_slot_' . EquipSlot::RightHandHeld] = "Right Hand (Held)";
 $txt['item_equip_slot_' . EquipSlot::Neck] = "Neck";
 $txt['item_equip_slot_' . EquipSlot::Eyes] = "Eyes";
 $txt['item_equip_slot_' . EquipSlot::Face] = "Face";
+$txt['item_equip_slot_' . EquipSlot::Hands] = "Hands";
 
 // ItemAvailabilitys
 $txt['item_availability_' . ItemAvailability::Unlisted] = "Unlisted";

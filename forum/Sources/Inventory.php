@@ -55,11 +55,12 @@ abstract class EquipSlot extends BasicEnum
     const Legs1 = 6;
     const Legs2 = 7;
     const Hat = 8;
-    const LeftHand = 9;
-    const RightHand = 10;
+    const LeftHandHeld = 9;
+    const RightHandHeld = 10;
     const Neck = 11;
     const Eyes = 12;
     const Face = 13;
+    const Hands = 14;
 }
 
 abstract class ItemAvailability extends BasicEnum
