@@ -33,7 +33,15 @@ $txt['manage_items_add_new'] = "New Item";
 $txt['manage_items_view_all'] = "View All Items";
 $txt['featured_item_title'] = "Featured Item";
 $txt['featured_item_cost'] = "Cost: ";
-$txt['featured_item_buy'] = "Buy";
+$txt['featured_item_buy'] = "Buy now";
+$txt['featured_item_preview'] = "Preview";
+$txt['featured_item_already_purchased'] = "You already purchased this item.";
+$txt['featured_item_not_for_sale'] = "Item is no longer on sale.";
+$txt['featured_item_cant_afford'] = "Not enough Coral";
+$txt['featured_item_fail'] = "Error purchasing item.";
+$txt['featured_item_success'] = "You got <b>%s</b>.";
+$txt['featured_item_edit_avatar'] = "Edit your avatar";
+$txt['featured_item_purchased'] = "Purchased!";
 
 // currency stuff
 $txt['coins'] = "Coral";

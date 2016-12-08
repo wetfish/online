@@ -543,6 +543,7 @@ function loadUserSettings()
 		'warning' => isset($user_settings['warning']) ? $user_settings['warning'] : 0,
 		'permissions' => array(),
 		'coins' => $user_settings['coins'],
+		'last_feature_purchase' => $user_settings['last_feature_purchase'],
 
 	);
 	$user_info['groups'] = array_unique($user_info['groups']);
@@ -987,7 +988,7 @@ function loadMemberData($users, $is_name = false, $set = 'normal')
 			mem.real_name, mem.email_address, mem.hide_email, mem.date_registered, mem.website_title, mem.website_url,
 			mem.birthdate, mem.member_ip, mem.member_ip2, mem.icq, mem.aim, mem.yim, mem.msn, mem.posts, mem.last_login,
 			mem.karma_good, mem.id_post_group, mem.karma_bad, mem.lngfile, mem.id_group, mem.time_offset, mem.show_online,
-			mem.buddy_list, mem.coins, mg.online_color AS member_group_color, IFNULL(mg.group_name, {string:blank_string}) AS member_group,
+			mem.buddy_list, mem.coins, mem.last_feature_purchase, mg.online_color AS member_group_color, IFNULL(mg.group_name, {string:blank_string}) AS member_group,
 			pg.online_color AS post_group_color, IFNULL(pg.group_name, {string:blank_string}) AS post_group, mem.is_activated, mem.warning,
 			CASE WHEN mem.id_group = 0 OR mg.stars = {string:blank_string} THEN pg.stars ELSE mg.stars END AS stars' . (!empty($modSettings['titlesEnable']) ? ',
 			mem.usertitle' : '');
@@ -1253,6 +1254,7 @@ function loadMemberContext($user, $display_custom_fields = false)
 		'warning_status' => !empty($modSettings['warning_mute']) && $modSettings['warning_mute'] <= $profile['warning'] ? 'mute' : (!empty($modSettings['warning_moderate']) && $modSettings['warning_moderate'] <= $profile['warning'] ? 'moderate' : (!empty($modSettings['warning_watch']) && $modSettings['warning_watch'] <= $profile['warning'] ? 'watch' : (''))),
 		'local_time' => timeformat(time() + ($profile['time_offset'] - $user_info['time_offset']) * 3600, false),
 		'coins' => $profile['coins'],
+		'last_feature_purchase' => $profile['last_feature_purchase'],
 	);
 
 	// First do a quick run through to make sure there is something to be shown.
@@ -1578,6 +1580,8 @@ function loadTheme($id_theme = 0, $initialize = true)
 		'email' => $user_info['email'],
 		'ignoreusers' => $user_info['ignoreusers'],
 		'coins' => $user_info['coins'],
+		'equipped_items' => loadInventory($user_info['id'], true),
+		'last_feature_purchase' => $user_info['last_feature_purchase'],
 	);
 	if (!$context['user']['is_guest'])
 		$context['user']['name'] = $user_info['name'];

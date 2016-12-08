@@ -248,13 +248,46 @@ function dbInsertNewInventoryItems($inventory, $userid)
 	global $smcFunc;	
 
 	// TODO optimize this
-	foreach ($inventory as $id => $item) {
-		$smcFunc['db_insert']('',
-			'{db_prefix}inventory',
-			array('id_member' => 'int', 'id_item' => 'int', 'count' => 'int', 'is_equipped' => 'int'),
-			array($userid,				 $id, 		 		 $item['count'],	$item['is_equipped'] ? 1 : 0),
-			array('id_member', 			'id_item',			'count', 			'is_equipped')
-		);
+	foreach ($inventory as $id => $item) 
+	{
+		// check if user has this item already
+		$itemRequest = $smcFunc['db_query']('', '
+			                SELECT count
+							FROM {db_prefix}inventory
+			                WHERE id_item = {int:id_item}
+			                AND id_member = {int:id_member}
+			                LIMIT 1',
+			                array(
+			                	'id_item' => $id,
+			                	'id_member' => $userid,
+			                )
+			            ); 
+		if($result = $smcFunc['db_fetch_assoc']($itemRequest))
+		{
+			// update table to increase count
+			$smcFunc['db_query']('', '
+                UPDATE {db_prefix}inventory
+                SET count = {int:count}
+                WHERE id_item = {int:id_item}
+                AND id_member = {int:id_member}',
+                array(
+                	'count' => $result['count'] + $item['count'],
+                    'id_item' => $id,
+                    'id_member' => $userid,
+                )
+            ); 
+		}
+		else
+		{
+			// insert new entry
+			$smcFunc['db_insert']('',
+				'{db_prefix}inventory',
+				array('id_member' => 'int', 'id_item' => 'int', 'count' => 'int', 'is_equipped' => 'int'),
+				array($userid,				 $id, 		 		 $item['count'],	$item['is_equipped'] ? 1 : 0),
+				array('id_member', 			'id_item',			'count', 			'is_equipped')
+			);
+		}
+	
 	}
 }
 
@@ -277,8 +310,15 @@ function dbGetDailyFeatureItem()
             ); 
 
 	// TODO cache the result
-	return $smcFunc['db_fetch_assoc']($itemRequest);
+	$item = $smcFunc['db_fetch_assoc']($itemRequest);
 
+	// TODO only pull the columns we care about. for now just copy the id to where we'd expect it to be
+	$item['id'] = $item['id_item'];
+
+	// featured items can't be sold in batches. for now, at least.
+	$item['count'] = 1;
+
+	return $item;
 }
 
 function addCoins($userid, $amount, $earnReason = 0)
@@ -320,5 +360,19 @@ function getLastCoinsEarned()
 	return $result;
 }
 
+function spendCoins($userid, $amount)
+{
+	global $smcFunc, $txt;
+
+	$smcFunc['db_query']('', '
+	        UPDATE {db_prefix}members
+			SET coins = coins - {int:amount}
+	        WHERE id_member = {int:id_member}',
+                array(
+                	'amount' => $amount,
+                    'id_member' => $userid,
+                )
+    	); 
+}
 
 ?>

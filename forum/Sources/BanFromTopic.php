@@ -7,6 +7,8 @@ function BanFromTopic()
 {
 	global $context, $smcFunc, $user_info;
 
+	$context['page_title'] = $txt['ban_from_topic'];
+
 	$context['banconfirmed'] = false;
 
 	$context['topic'] = $_GET['topic'];

@@ -400,25 +400,62 @@ function display_daily_featured_item()
 	global $txt, $context, $boardurl;
 
 	$item = dbGetDailyFeatureItem();
+	$fakeInventory = array($item['id'] => $item);
+
+	// get equipped body for fake inventory preview thing, but only if we're not previewing a body already
+	if($item['equip_slot'] != EquipSlot::BodyBase)
+	{
+		foreach ($context['user']['equipped_items'] as $equippedItemId => $equippedItem) {
+			if($equippedItem['equip_slot'] == EquipSlot::BodyBase)
+			{
+				$fakeInventory[$equippedItemId] = $equippedItem;
+				break;
+			}
+		}
+	}
+
+	$canAfford = $context['user']['coins'] >= $item['cost'];
+	
+	echo'<script type="text/javascript">$displayedInventory = \'', json_encode($fakeInventory) ,'\';</script>';
 
 	// header
 	echo '<div class="cat_bar">
 				<h3 class="catbg">',$txt['featured_item_title'],'</h3>
 		</div>';
 
-	echo '<div id="creator"><div class="windowbg2"><div class="content" style="padding:20px;"><dl><dt>';
+	echo '<div id="creator" style="text-align:center;"><div class="windowbg2"><div class="content" style="padding:20px;"><dl><dt>';
 
-	echo '<strong><p>', $item['name_eng'] ,'</strong></p>';
-	echo 	'<img src="', $boardurl, $item['icon_url'], '" class="item-icon" title="',$item['name_eng'], '" id="item_',$item['id'],'_img"/>';
+	echo '<strong style="font-size:1.3em;"><p>', $item['name_eng'] ,'</strong></p>';
+	echo 	'<img src="', $boardurl, $item['icon_url'], '" class="item-icon" title="',$item['name_eng'], '" id="item_',$item['id'],'_img"/>
+			<p style="', $canAfford ? '' : 'color:red;','">',$txt['featured_item_cost'],'<img src="',$boardurl,'/fish/img/coins/coral.png">', ' <b>', number_format($item['cost']), '</b></p>';
 
-	// temporary coming soon bs
-	echo '</dt><dd><p>Coming soon</p>';
+	if($context['user']['last_feature_purchase'] == date('Ymd'))
+	{
+		echo '<p>',$txt['featured_item_purchased'],'</p>';
+	}
+	else if($canAfford)
+	{
+		echo  '<a href="', $scripturl, '?action=buydailyitem;id=',$item['id'], '" class="btn btn-danger btn-sm">', $txt['featured_item_buy'],'</a>';
+	}
+	else
+	{
+		echo  '<a class="btn btn-danger btn-sm" style="background-color: grey; border:none;">', $txt['featured_item_cant_afford'],'</a>';
+	}
+			
 
 	// TODO color the cost red if user can't afford it and grey out button
-	// echo '</dt><dd><p>',$txt['featured_item_cost'],$item['cost'], '</p>';
+	echo '</dt><dd>';
+	echo '<strong><p>', $txt['featured_item_preview'] ,'</strong></p>';
 
-	// echo '
-	//  	<a href="', $scripturl, '?action=buydailyitem', '" class="btn btn-danger btn-sm">',$txt['featured_item_buy'],'</a>';
+	// create the fish canvas
+	echo '
+			<canvas id="fishcanvas" width="',FISH_WIDTH / 2,'" height="',FISH_HEIGHT / 2,'" style="display:none"></canvas>
+			<img id="fish_avatar_img" alt="', $txt['featured_item_preview'],'">'; 
+
+	// load the avatar
+	echo 	'<script type="text/javascript">
+			$(document).ready(function() { refreshAvatar(); });
+		     </script>';
 
 	echo '</dd></dl></div></div></div><br>';
 }
@@ -437,7 +474,7 @@ function display_guest_fish_equipper()
 				<h3 class="catbg">',$txt['fish_demo_title'],'</h3>
 		</div>';
 
-	echo '<div id="creator"><div class="windowbg2"><div class="content"><dl>';
+	echo '<div id="creator" style="text-align:center;"><div class="windowbg2"><div class="content"><dl>';
 
 	// include a hidden field to trigger the validate function?
 	echo'<input type="hidden" name="fish_equipper">';
@@ -449,7 +486,7 @@ function display_guest_fish_equipper()
 							<dt>
 								<strong>', $txt['fish_try_me'], '</strong><br />
 								<canvas id="fishcanvas" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'" style="display:none"></canvas>
-								<img id="fish_avatar_img" alt="', sprintf($txt['fish_avatar_img_alt'], $context['member']['name']),'">
+								<img id="fish_avatar_img" alt="', $txt['fish_demo_title'],'">
 							</dt>';
 
 	// load the avatar
