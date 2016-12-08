@@ -274,7 +274,7 @@ function template_main()
 
 				// show fish avatar
 		echo '
-							<canvas id="fishcanvas_',$message['id'],'" width="120" height="150" style="display:none"></canvas>
+							<canvas id="fishcanvas_',$message['id'],'" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'" style="display:none"></canvas>
 							<img id="fish_avatar_img_',$message['id'],'" alt="', sprintf($txt['fish_avatar_img_alt'], $message['member']['name']),'">
 				';
 				

@@ -69,7 +69,7 @@ function template_summary()
 		<div class="windowbg">
 			<span class="topslice"><span></span></span>
 			<div class="content flow_auto">
-				<canvas id="fishcanvas" width="120" height="150" style="display:none"></canvas>
+				<canvas id="fishcanvas" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'" style="display:none"></canvas>
 				<img id="fish_avatar_img" alt="', sprintf($txt['fish_avatar_img_alt'], $context['member']['name']),'">
 				<div class="username"><h4>', $context['member']['name'], ' <span class="position">', (!empty($context['member']['group']) ? $context['member']['group'] : $context['member']['post_group']), '</span></h4></div>
 				', $context['member']['avatar']['image'], '
@@ -2512,7 +2512,7 @@ function template_profile_fish_equipper()
 	echo '
 							<dt>
 								<strong>', $txt['inv_fish_avatar'], '</strong><br />
-								<canvas id="fishcanvas" width="120" height="150" style="display:none"></canvas>
+								<canvas id="fishcanvas" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'" style="display:none"></canvas>
 								<img id="fish_avatar_img" alt="', sprintf($txt['fish_avatar_img_alt'], $context['member']['name']),'">
 							</dt>';
 

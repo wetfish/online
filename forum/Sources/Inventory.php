@@ -3,6 +3,9 @@
 if (!defined('SMF'))
 	die('Hacking attempt...');
 
+define('FISH_WIDTH', '120');
+define('FISH_HEIGHT', '150');
+
 abstract class BasicEnum {
     private static $constCacheArray = NULL;
 

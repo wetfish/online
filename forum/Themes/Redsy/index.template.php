@@ -448,7 +448,7 @@ function display_guest_fish_equipper()
 	echo '
 							<dt>
 								<strong>', $txt['fish_try_me'], '</strong><br />
-								<canvas id="fishcanvas" width="120" height="150" style="display:none"></canvas>
+								<canvas id="fishcanvas" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'" style="display:none"></canvas>
 								<img id="fish_avatar_img" alt="', sprintf($txt['fish_avatar_img_alt'], $context['member']['name']),'">
 							</dt>';
 

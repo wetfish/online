@@ -231,7 +231,7 @@ echo '
 					<dt>
 						<strong><label for="itemimg_input">',$txt['admin_new_item_img'],'</label></strong>
 						<span class="smalltext" id="itemimg_desc">',$txt['admin_new_item_img_desc'],'</span>
-						<img id="imagepreview" width=120 height=150>
+						<img id="imagepreview" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'">
 					</dt>
 					<dd>
 						<input type="file" name="itemimg" id="itemimg_input" >
