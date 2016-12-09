@@ -66,6 +66,7 @@ abstract class EquipSlot extends BasicEnum
     const Face2 = 112;
     const Hands = 113;
     const Feet = 114;
+    const Back = 115;
 }
 
 abstract class ItemAvailability extends BasicEnum
@@ -262,7 +263,6 @@ function generateStarterInventory()
 	{
 		if (!in_array($item['equip_slot'], $usedSlots))
 		{
-			echo 'thing';
 			$usedSlots[] = $item['equip_slot'];
 			$result[$item['id']]['is_equipped'] = true;
 		}

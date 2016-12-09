@@ -70,6 +70,7 @@ $txt['item_equip_slot_' . EquipSlot::Face2] = "Face (Eyes)";
 $txt['item_equip_slot_' . EquipSlot::Face3] = "Face (Mouth)";
 $txt['item_equip_slot_' . EquipSlot::Hands] = "Hands";
 $txt['item_equip_slot_' . EquipSlot::Feet] = "Feet";
+$txt['item_equip_slot_' . EquipSlot::Back] = "Back";
 
 // ItemAvailabilitys
 $txt['item_availability_' . ItemAvailability::Unlisted] = "Unlisted";
