@@ -2531,10 +2531,20 @@ function template_profile_fish_equipper()
 		displayEquipmentIconButton($value);
 	}
 
+	// and then faces
+	echo '<dd><strong>', $txt['inv_face_type'], '</strong><br />';
+	foreach ($context['member']['inventory'] as $key => $value) {
+		if($value['equip_slot'] != EquipSlot::FaceBase)
+		{
+			continue;
+		}
+		displayEquipmentIconButton($value);
+	}
+
 	// display the rest of the equipment
 	echo '</dd><dd><strong>', $txt['inv_equipment'], '</strong><br />';
 	foreach ($context['member']['inventory'] as $key => $value) {
-		if($value['equip_slot'] == EquipSlot::BodyBase)
+		if(isSlotRequired($value['equip_slot']))
 		{
 			continue;
 		}

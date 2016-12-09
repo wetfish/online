@@ -402,15 +402,18 @@ function display_daily_featured_item()
 	$item = dbGetDailyFeatureItem();
 	$fakeInventory = array($item['id'] => $item);
 
-	// get equipped body for fake inventory preview thing, but only if we're not previewing a body already
-	if($item['equip_slot'] != EquipSlot::BodyBase)
+	// add everything currently equipped to the required slots (ie. body and face)
+	foreach ($context['user']['equipped_items'] as $equippedItemId => $equippedItem) 
 	{
-		foreach ($context['user']['equipped_items'] as $equippedItemId => $equippedItem) {
-			if($equippedItem['equip_slot'] == EquipSlot::BodyBase)
-			{
-				$fakeInventory[$equippedItemId] = $equippedItem;
-				break;
-			}
+		if($item['equip_slot'] == $equippedItem['equip_slot'])
+		{
+			// skip items that have the same slot as the featured item - we want to preview it
+			continue;
+		}
+
+		if(isSlotRequired($equippedItem['equip_slot']))
+		{
+			$fakeInventory[$equippedItemId] = $equippedItem;
 		}
 	}
 
@@ -504,10 +507,21 @@ function display_guest_fish_equipper()
 		display_guest_fish_equipper_icon_button($value);
 	}
 
+	// and then faces
+	echo '<dd><strong>', $txt['inv_face_type'], '</strong><br />';
+	foreach ($_SESSION['guest_inventory'] as $key => $value) {
+		if($value['equip_slot'] != EquipSlot::FaceBase)
+		{
+			continue;
+		}
+		display_guest_fish_equipper_icon_button($value);
+	}
+
+
 	// display the rest of the equipment
 	echo '</dd><dd><strong>', $txt['inv_equipment'], '</strong><br />';
 	foreach ($_SESSION['guest_inventory'] as $key => $value) {
-		if($value['equip_slot'] == EquipSlot::BodyBase)
+		if(isSlotRequired($value['equip_slot']))
 		{
 			continue;
 		}

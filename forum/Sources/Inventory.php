@@ -46,21 +46,26 @@ abstract class ItemType extends BasicEnum
 abstract class EquipSlot extends BasicEnum
 {
 	const None = -1;
-    const BodyBase = 0;			// cannot be unequiped
-    const Chest1 = 1;
-    const Chest2 = 2;
-    const Hair = 3;
-    const Feet = 4;
-    const Mouth = 5;
-    const Legs1 = 6;
-    const Legs2 = 7;
-    const Hat = 8;
-    const LeftHandHeld = 9;
-    const RightHandHeld = 10;
-    const Neck = 11;
-    const Eyes = 12;
-    const Face = 13;
-    const Hands = 14;
+
+	// unequippable base slots
+    const BodyBase = 0;
+    const FaceBase = 1;
+
+    // accessory slots
+    const Chest1 = 101;
+    const Chest2 = 102;
+    const Head1 = 103;
+    const Head2 = 104;
+    const Neck = 105;
+    const Legs1 = 106;
+    const Legs2 = 107;
+    const LeftHandHeld = 108;
+    const RightHandHeld = 109;
+    const Face1 = 110;
+    const Face3 = 111;
+    const Face2 = 112;
+    const Hands = 113;
+    const Feet = 114;
 }
 
 abstract class ItemAvailability extends BasicEnum
@@ -77,6 +82,25 @@ abstract class CoinEarnReason extends BasicEnum
 	const None = 0;
 	const Hidden = 1;
 	const Posting = 2;
+}
+
+function slotToLayer($slot)
+{
+	switch($slot)
+	{
+		case EquipSlot::BodyBase:
+			return 10;
+		case EquipSlot::FaceBase:
+			return 11;
+	}
+
+	// return a high layer by default so it overlaps everything 
+	return 100;
+}
+
+function isSlotRequired($slot)
+{
+	return $slot == EquipSlot::BodyBase || $slot == EquipSlot::FaceBase;
 }
 
 function loadInventory($userid, $equipped_only = false)
@@ -153,7 +177,6 @@ function loadInventory($userid, $equipped_only = false)
 			$item['img_url'] = $row['img_url'];
 			$item['icon_url'] = $row['icon_url'];
 			$item['equip_slot'] = $row['equip_slot'];
-			$item['can_delete'] = $row['can_delete'];
 			$item['cost'] = $row['cost'];
 			$item['availability'] = $row['availability'];
 
@@ -192,6 +215,9 @@ function generateStarterInventory()
 
 	$result = array();
 
+	// list of base items that must be equipped, e.g. body types and face types
+	$baseItems = array();
+
 	// get all item data for the items 
 	$itemRequest = $smcFunc['db_query']('', '
 	                SELECT *
@@ -218,26 +244,28 @@ function generateStarterInventory()
 		$item['img_url'] = $row['img_url'];
 		$item['icon_url'] = $row['icon_url'];
 		$item['equip_slot'] = $row['equip_slot'];
-		$item['can_delete'] = $row['can_delete'];
 		$item['is_locked'] = $row['availability'] == ItemAvailability::StartingItemLocked;
+
+		if(isSlotRequired($item['equip_slot']) && !$item['is_locked'])
+		{
+			$baseItems[] = $item;
+		}
 
 		$result[$row['id_item']] = $item;
 	}
 
-	// equip a random body
-	$bodyTypes = array();
-	foreach ($result as $id => $item) 
+	// randomly equip items in the required slots
+	// shuffle the array and choose the first one we find of each type
+	shuffle($baseItems);
+	$usedSlots = array();
+	foreach ($baseItems as $item) 
 	{
-		if($item['equip_slot'] === (string) EquipSlot::BodyBase)
+		if (!in_array($item['equip_slot'], $usedSlots))
 		{
-			$bodyTypes[] = $id;
+			echo 'thing';
+			$usedSlots[] = $item['equip_slot'];
+			$result[$item['id']]['is_equipped'] = true;
 		}
-	}
-
-	if (!empty($bodyTypes))
-	{
-		$bodyId = $bodyTypes[array_rand($bodyTypes)];
-		$result[$bodyId]['is_equipped'] = true;
 	}
 
 	return $result;

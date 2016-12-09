@@ -87,7 +87,6 @@ function AddNewItem()
 							'img_url' => 'string', 
 							'icon_url' => 'string', 
 							'equip_slot' => 'int', 
-							'can_delete' => 'int', 
 							'cost' => 'int',
 							'availability' => 'int'
 						),
@@ -98,7 +97,6 @@ function AddNewItem()
 							$imgRelPath,
 							$iconRelPath,
 							$_POST['equipslot'],
-							$_POST['candeleteitem'] ? 1 : 0,
 							$_POST['itemcost'],
 							$_POST['itemavailability'],
 						),
@@ -109,7 +107,6 @@ function AddNewItem()
 							'img_url',
 							'icon_url',
 							'equip_slot',
-							'can_delete',
 							'cost',
 							'availability',
 

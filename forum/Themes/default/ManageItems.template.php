@@ -183,18 +183,6 @@ echo '
 					</dd>';
 
 
-
-// can users delete this item from their inventory?
-echo '
-					<dt>
-						<strong><label for="candeleteitem_input">',$txt['admin_new_item_can_delete'],'</label></strong>
-						<span class="smalltext">',$txt['admin_new_item_can_delete_desc'],'</span>
-					</dt>
-					<dd>
-						<input type="checkbox" name="candeleteitem" id="candeleteitem_input" checked>
-					</dd>';
-
-
 // item icon
 echo '
 

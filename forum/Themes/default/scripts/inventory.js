@@ -66,6 +66,11 @@ function refreshAvatar()
 }
 
 
+function isSlotRequired($slot)
+{
+	return $slot == 0 || $slot == 1;	// body or face
+}
+
 function setItemEquipped(clickedItemId)
 {
 	var inv = JSON.parse($displayedInventory);
@@ -96,7 +101,7 @@ function setItemEquipped(clickedItemId)
 	}
 
 	// equip/unequip the selected thing
-	if(wasEquipped == false || item['equip_slot'] == 0)	//  if this is in slot 0, it is the body base and cannot be unequipped 
+	if(wasEquipped == false || isSlotRequired(item['equip_slot']))	//  if this is in slot 0, it is the body base and cannot be unequipped 
 	{
 		item['is_equipped'] = true;
 
