@@ -87,16 +87,47 @@ abstract class CoinEarnReason extends BasicEnum
 
 function slotToLayer($slot)
 {
+	// there's probably a better way to do this but i don't care!
 	switch($slot)
 	{
 		case EquipSlot::BodyBase:
-			return 10;
+			return 50;
 		case EquipSlot::FaceBase:
-			return 11;
+			return 60;
+		case EquipSlot::Chest1:
+			return 54;
+		case EquipSlot::Chest2:
+			return 80;
+		case EquipSlot::Head1:
+			return 55;
+		case EquipSlot::Head2:
+			return 75;
+		case EquipSlot::Neck:
+			return 70;
+		case EquipSlot::Legs1:
+			return 53;
+		case EquipSlot::Legs2:
+			return 69;
+		case EquipSlot::LeftHandHeld:
+			return 35;
+		case EquipSlot::RightHandHeld:
+			return 100;
+		case EquipSlot::Face1:
+			return 54;
+		case EquipSlot::Face2:
+			return 61;
+		case EquipSlot::Face3:
+			return 85;
+		case EquipSlot::Hands:
+			return 90;
+		case EquipSlot::Feet:
+			return 60;
+		case EquipSlot::Back:
+			return 40;
 	}
 
 	// return a high layer by default so it overlaps everything 
-	return 100;
+	return 1000;
 }
 
 function isSlotRequired($slot)
@@ -181,6 +212,9 @@ function loadInventory($userid, $equipped_only = false)
 			$item['cost'] = $row['cost'];
 			$item['availability'] = $row['availability'];
 
+			// TODO retrieve override layer from DB?
+			$item['layer'] = slotToLayer($item['equip_slot']);
+
 	  		$result[$row['id_item']] = $item;
 		}
 	}
@@ -246,6 +280,9 @@ function generateStarterInventory()
 		$item['icon_url'] = $row['icon_url'];
 		$item['equip_slot'] = $row['equip_slot'];
 		$item['is_locked'] = $row['availability'] == ItemAvailability::StartingItemLocked;
+
+		// TODO retrieve override layer from DB?
+		$item['layer'] = slotToLayer($item['equip_slot']);
 
 		if(isSlotRequired($item['equip_slot']) && !$item['is_locked'])
 		{
@@ -346,6 +383,9 @@ function dbGetDailyFeatureItem()
 
 	// featured items can't be sold in batches. for now, at least.
 	$item['count'] = 1;
+
+	// TODO retrieve override layer from DB?
+	$item['layer'] = slotToLayer($item['equip_slot']);
 
 	return $item;
 }

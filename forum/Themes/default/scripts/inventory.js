@@ -1,44 +1,47 @@
-
+// TODO this whole function needs to be optimized and moved to the server.
+// Why is the inventory an assoc array? would a numeric array improve performance in general?
 function loadAvatar($inventory, $canvasId, $imgId)
 {
 	var inv = JSON.parse($inventory);
+	var equipped = new Array();
 
 	var canvas =document.getElementById($canvasId);
 	var context =canvas.getContext("2d");
-	
-	// first count the equipped items so we can encode them image when the last one finishes loading
-	var numEquipped = 0;
-	for (var key in inv) {
-		var item = inv[key];
 
+
+	// convert the assoc array into a numeric array and sort it
+	for (var id in inv)
+	{
+		var item = inv[id];
 		if(item['is_equipped'] == false)
 		{
 			continue;
 		}
 
-		numEquipped += 1;
+	    equipped.push( item );
 	}
+
+	// sort the inventory by layer
+	equipped.sort(
+          function(x, y)
+          {
+             return x['layer'] - y['layer'];
+          }
+        );
 
 	var numLoaded = 0;
 	var allImages = new Array();
 
-	for (var key in inv) {
-		var item = inv[key];
-
-		if(item['is_equipped'] == false)
-		{
-			continue;
-		}
-
+	for (var i = 0; i < equipped.length; i++) {
+		var item = equipped[i];
 	    var image = new Image();
 
-	    // put this image in the appropriate layer so we can draw it later
-	    allImages[item['equip_slot']] = image;
+	    allImages.push( image );
 
 	    image.onload = function() {
 	        	numLoaded++;
 
-	            if(numLoaded === numEquipped)
+	            if(numLoaded === equipped.length)
 	            {
 					// all of the images are finished loading. merge them
 					context.clearRect(0, 0, canvas.width, canvas.height);
