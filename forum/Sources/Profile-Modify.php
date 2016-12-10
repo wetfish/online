@@ -2470,15 +2470,22 @@ function profileSaveEquippedItems(&$value)
 
 	// I can't figure out how this $cur_profile shit works so let's just load the inventory again
 	$inventory = loadInventory($context['id_member']);
+	$newEquipment = array();
 
 	// unequip everything
 	foreach ($inventory as $key => $value)
 	{
 		$inventory[$key]['is_equipped'] = false;
+
+		// fill in required slots with something from the user's inventory
+		// so that they can't have a blank body, for example
+		if(isSlotRequired($inventory[$key]['equip_slot']))
+		{
+			$newEquipment[$inventory[$key]['equip_slot']] = $key;
+		}
 	}
 
 	// get all of the equipped items from the post request, limit one for each slot
-	$newEquipment = array();
 	foreach ($_POST as $key => $value)
 	{
 		if(startsWith($key, 'item_'))
@@ -2506,7 +2513,8 @@ function profileSaveEquippedItems(&$value)
 	{
 		$inventory[$value]['is_equipped'] = true;
 	}
-	
+
+
 	dbUpdateEquippedInventoryItems($context['member']['id'], $inventory);
 
 	return true;
