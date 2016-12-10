@@ -62,8 +62,8 @@ abstract class EquipSlot extends BasicEnum
     const LeftHandHeld = 108;
     const RightHandHeld = 109;
     const Face1 = 110;
-    const Face3 = 111;
-    const Face2 = 112;
+    const Face2 = 111;
+    const Face3 = 112;
     const Hands = 113;
     const Feet = 114;
     const Back = 115;
