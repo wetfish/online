@@ -1230,7 +1230,7 @@ function prepareDisplayContext($reset = false)
 		'can_modify' => !isBannedFromTopic($topic) && ((!$context['is_locked'] || allowedTo('moderate_board')) && (allowedTo('modify_any') || (allowedTo('modify_replies') && $context['user']['started']) || (allowedTo('modify_own') && $message['id_member'] == $user_info['id'] && (empty($modSettings['edit_disable_time']) || !$message['approved'] || $message['poster_time'] + $modSettings['edit_disable_time'] * 60 > time())))),
 		'can_remove' => allowedTo('delete_any') || (allowedTo('delete_replies') && $context['user']['started']) || (allowedTo('delete_own') && $message['id_member'] == $user_info['id'] && (empty($modSettings['edit_disable_time']) || $message['poster_time'] + $modSettings['edit_disable_time'] * 60 > time())),
 		'can_see_ip' => allowedTo('moderate_forum') || ($message['id_member'] == $user_info['id'] && !empty($user_info['id'])),
-		'can_ban_from_topic' => !isset($message['topic_ban_reason']) && $context['user']['started'] && $message['id_member'] != $user_info['id'],
+		'can_ban_from_topic' => $user_info['is_admin'] || ( !isset($message['topic_ban_reason']) && $context['user']['started'] && $message['id_member'] != $user_info['id'] ),
 		'topic_ban_reason' => $message['topic_ban_reason'],
 		'inventory' => loadInventory($message['id_member'], true),
 	);

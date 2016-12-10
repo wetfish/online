@@ -58,9 +58,12 @@ function updateContext()
 	
 
 	// check if the current user can ban ppl from this topic
-	$context['canBanFromTopic'] = $context['ban_from_topic_target_userid'] &&
-								  $context['ban_from_topic_target_userid'] != $user_info['id'] &&
-								  $topicresults['id_member_started'] == $user_info['id'];
+	$context['canBanFromTopic'] = $user_info['is_admin'] ||
+								(
+									$context['ban_from_topic_target_userid'] &&
+									$context['ban_from_topic_target_userid'] != $user_info['id'] &&
+									$topicresults['id_member_started'] == $user_info['id']
+								);
 }
 
 function BanFromTopicConfirm()
