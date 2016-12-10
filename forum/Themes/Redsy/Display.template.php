@@ -12,10 +12,29 @@
 
 function template_main()
 {
-	global $context, $settings, $options, $txt, $scripturl, $modSettings;
+	global $context, $settings, $options, $txt, $scripturl, $modSettings, $boardurl;
 
 	// include inventory helpers
 	echo '<script type="text/javascript" src="', $settings['default_theme_url'], '/scripts/inventory.js"></script>';
+
+
+	// This is a major hack to display a background image on a particular board
+	// ideally boards would have a background image property or css style overrides in the database
+	if($context['current_board'] == 1)
+	{
+		echo '
+			<style>
+				#wrapper {
+					 background-image: url(',$boardurl, '/board1bg.gif);
+					 background-attachment: fixed;
+				}
+				.pagelinks, .pagelinks a {
+					color: white;
+					text-shadow: 1px 1px black;
+				}
+			</style>
+		';
+	}
 
 	// Let them know, if their report was a success!
 	if ($context['report_sent'])
