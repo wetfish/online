@@ -27,7 +27,7 @@ function SearchItems()
 
 function AddNewItem()
 {
-	global $context, $txt, $smcFunc, $boarddir;
+	global $context, $txt, $smcFunc, $boarddir, $user_info;
 
 	$context['page_title'] = $txt['manage_items'];
 	$context['sub_template'] = 'add_new_item';
@@ -88,7 +88,10 @@ function AddNewItem()
 							'icon_url' => 'string', 
 							'equip_slot' => 'int', 
 							'cost' => 'int',
-							'availability' => 'int'
+							'availability' => 'int',
+							'date_added' => 'int',
+							'last_modified' => 'int',
+							'created_by_userid' => 'int',
 						),
 
 						array(
@@ -99,6 +102,10 @@ function AddNewItem()
 							$_POST['equipslot'],
 							$_POST['itemcost'],
 							$_POST['itemavailability'],
+							time(),
+							time(),
+							$user_info['id'],
+
 						),
 
 						array(
@@ -109,6 +116,9 @@ function AddNewItem()
 							'equip_slot',
 							'cost',
 							'availability',
+							'date_added',
+							'last_modified',
+							'created_by_userid',
 
 						)
 					);

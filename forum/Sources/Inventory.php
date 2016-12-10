@@ -194,7 +194,8 @@ function loadInventory($userid, $equipped_only = false)
 	{
 		// get all item data for the items owned by the member
 		$itemRequest = $smcFunc['db_query']('', '
-		                SELECT *
+		                SELECT id_item, item_type, name_eng, img_url,
+		                		icon_url, equip_slot, cost, availability
 						FROM {db_prefix}items ' .
 		                $whereClause
 		            ); 
@@ -255,7 +256,8 @@ function generateStarterInventory()
 
 	// get all item data for the items 
 	$itemRequest = $smcFunc['db_query']('', '
-	                SELECT *
+	                SELECT id_item, item_type, name_eng, img_url,
+		                	icon_url, equip_slot, cost, availability
 					FROM {db_prefix}items
 	                WHERE availability = {int:startingItem}
 	                OR availability = {int:startingItemLocked}',
@@ -368,7 +370,8 @@ function dbGetDailyFeatureItem()
 
 	// TODO optimize this, i hear it crashes the server if the table is very large!!
 	$itemRequest = $smcFunc['db_query']('', "
-                SELECT *
+                SELECT id_item, item_type, name_eng, img_url,
+		                icon_url, equip_slot, cost, availability
 				FROM {db_prefix}items
 				WHERE availability = {$availability}
                 ORDER BY RAND({$seed})
