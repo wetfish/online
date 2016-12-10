@@ -18,7 +18,15 @@ function loadAvatar($inventory, $canvasId, $imgId)
 			continue;
 		}
 
-	    equipped.push( item );
+		for (var imgIndex in item['imgs'])
+		{
+			if(item['imgs'][imgIndex]['url'] !== '')
+			{
+				 equipped.push( item['imgs'][imgIndex] );
+			}
+			
+		}
+	   
 	}
 
 	// sort the inventory by layer
@@ -59,7 +67,7 @@ function loadAvatar($inventory, $canvasId, $imgId)
 	           }
 	    };
 
-	    image.src = '/forum/' + item['img_url'];
+	    image.src = '/forum/' + item['url'];
 	}
 }
 

@@ -92,43 +92,60 @@ function slotToLayer($slot)
 	switch($slot)
 	{
 		case EquipSlot::BodyBase:
-			return 50;
+			return 20;
 		case EquipSlot::FaceBase:
-			return 60;
-		case EquipSlot::Chest1:
-			return 54;
-		case EquipSlot::Chest2:
-			return 80;
-		case EquipSlot::Head1:
 			return 55;
-		case EquipSlot::Head2:
-			return 75;
-		case EquipSlot::Neck:
-			return 70;
-		case EquipSlot::Legs1:
-			return 53;
-		case EquipSlot::Legs2:
-			return 69;
-		case EquipSlot::LeftHandHeld:
-			return 35;
-		case EquipSlot::RightHandHeld:
-			return 100;
-		case EquipSlot::Face1:
-			return 54;
-		case EquipSlot::Face2:
-			return 61;
-		case EquipSlot::Face3:
-			return 85;
-		case EquipSlot::Hands:
-			return 90;
-		case EquipSlot::Feet:
-			return 60;
-		case EquipSlot::Back:
+		case EquipSlot::Chest1:
 			return 40;
+		case EquipSlot::Chest2:
+			return 75;
+		case EquipSlot::Head1:
+			return 50;
+		case EquipSlot::Head2:
+			return 70;
+		case EquipSlot::Neck:
+			return 65;
+		case EquipSlot::Legs1:
+			return 25;
+		case EquipSlot::Legs2:
+			return 35;
+		case EquipSlot::LeftHandHeld:
+			return 15;
+		case EquipSlot::RightHandHeld:
+			return 90;
+		case EquipSlot::Face1:
+			return 45;
+		case EquipSlot::Face2:
+			return 60;
+		case EquipSlot::Face3:
+			return 80;
+		case EquipSlot::Hands:
+			return 85;
+		case EquipSlot::Feet:
+			return 30;
+		case EquipSlot::Back:
+			return 10;
 	}
 
 	// return a high layer by default so it overlaps everything 
 	return 1000;
+}
+
+function getSlotsUsingLayer($layer)
+{
+	$slots = EquipSlot::getConstants();
+
+	$result = array();
+
+	foreach ($slots as $name => $value) {
+
+		if($layer == slotToLayer($value))
+		{
+			$result[] = $value;
+		}
+	}
+
+	return $result;
 }
 
 function isSlotRequired($slot)
@@ -195,8 +212,10 @@ function loadInventory($userid, $equipped_only = false)
 	{
 		// get all item data for the items owned by the member
 		$itemRequest = $smcFunc['db_query']('', '
-		                SELECT id_item, item_type, name_eng, img_url,
-		                		icon_url, equip_slot, cost, availability
+		                SELECT id_item, item_type, name_eng, icon_url,
+		                	equip_slot, cost, availability,
+		                	img_url, img_0_layer, img_sec_1_url, img_1_layer,
+		                	img_sec_2_url, img_2_layer
 						FROM {db_prefix}items ' .
 		                $whereClause
 		            ); 
@@ -208,11 +227,24 @@ function loadInventory($userid, $equipped_only = false)
 	  		// load all the attributes for this item and store them back in the result array
 	  		$item['item_type'] = $row['item_type'];
 	  		$item['name_eng'] = $row['name_eng'];
-			$item['img_url'] = $row['img_url'];
 			$item['icon_url'] = $row['icon_url'];
 			$item['equip_slot'] = $row['equip_slot'];
 			$item['cost'] = $row['cost'];
 			$item['availability'] = $row['availability'];
+
+			$item['imgs'] = array();
+			$item['imgs'][] = array (
+								'url' => $row['img_url'],
+								'layer' => $row['img_0_layer'] == -1 ? slotToLayer($item['equip_slot']) : $row['img_0_layer'],
+							);
+			$item['imgs'][] = array (
+								'url' => $row['img_sec_1_url'],
+								'layer' => $row['img_1_layer'] == -1 ? slotToLayer($item['equip_slot']) : $row['img_1_layer'],
+							);
+			$item['imgs'][] = array (
+								'url' => $row['img_sec_2_url'],
+							'layer' => $row['img_2_layer'] == -1 ? slotToLayer($item['equip_slot']) : $row['img_2_layer'],
+							);
 
 			// TODO retrieve override layer from DB?
 			$item['layer'] = slotToLayer($item['equip_slot']);
@@ -257,8 +289,11 @@ function generateStarterInventory()
 
 	// get all item data for the items 
 	$itemRequest = $smcFunc['db_query']('', '
-	                SELECT id_item, item_type, name_eng, img_url,
-		                	icon_url, equip_slot, cost, availability
+	                SELECT id_item, item_type, name_eng, icon_url,
+		                	equip_slot, cost, availability,
+		                	img_url, img_0_layer, img_sec_1_url, img_1_layer,
+		                	img_sec_2_url, img_2_layer
+
 					FROM {db_prefix}items
 	                WHERE availability = {int:startingItem}
 	                OR availability = {int:startingItemLocked}',
@@ -279,10 +314,23 @@ function generateStarterInventory()
 
 		$item['item_type'] = $row['item_type'];
 		$item['name_eng'] = $row['name_eng'];
-		$item['img_url'] = $row['img_url'];
 		$item['icon_url'] = $row['icon_url'];
 		$item['equip_slot'] = $row['equip_slot'];
 		$item['is_locked'] = $row['availability'] == ItemAvailability::StartingItemLocked;
+
+		$item['imgs'] = array();
+		$item['imgs'][] = array (
+							'url' => $row['img_url'],
+							'layer' => $row['img_0_layer'] == -1 ? slotToLayer($item['equip_slot']) : $row['img_0_layer'],
+						);
+		$item['imgs'][] = array (
+							'url' => $row['img_sec_1_url'],
+							'layer' => $row['img_1_layer'] == -1 ? slotToLayer($item['equip_slot']) : $row['img_1_layer'],
+						);
+		$item['imgs'][] = array (
+							'url' => $row['img_sec_2_url'],
+							'layer' => $row['img_2_layer'] == -1 ? slotToLayer($item['equip_slot']) : $row['img_2_layer'],
+						);
 
 		// TODO retrieve override layer from DB?
 		$item['layer'] = slotToLayer($item['equip_slot']);
@@ -371,8 +419,10 @@ function dbGetDailyFeatureItem()
 
 	// TODO optimize this, i hear it crashes the server if the table is very large!!
 	$itemRequest = $smcFunc['db_query']('', "
-                SELECT id_item, item_type, name_eng, img_url,
-		                icon_url, equip_slot, cost, availability
+                SELECT id_item, item_type, name_eng, icon_url,
+		                	equip_slot, cost, availability,
+		                	img_url, img_0_layer, img_sec_1_url, img_1_layer,
+		                	img_sec_2_url, img_2_layer
 				FROM {db_prefix}items
 				WHERE availability = {$availability}
                 ORDER BY RAND({$seed})
@@ -390,6 +440,21 @@ function dbGetDailyFeatureItem()
 
 	// TODO retrieve override layer from DB?
 	$item['layer'] = slotToLayer($item['equip_slot']);
+
+
+	$item['imgs'] = array();
+	$item['imgs'][] = array (
+						'url' => $item['img_url'],
+						'layer' => $item['img_0_layer'] == -1 ? slotToLayer($item['equip_slot']) : $item['img_0_layer'],
+					);
+	$item['imgs'][] = array (
+						'url' => $item['img_sec_1_url'],
+						'layer' => $item['img_1_layer'] == -1 ? slotToLayer($item['equip_slot']) : $item['img_1_layer'],
+					);
+	$item['imgs'][] = array (
+						'url' => $item['img_sec_2_url'],
+						'layer' => $item['img_2_layer'] == -1 ? slotToLayer($item['equip_slot']) : $item['img_2_layer'],
+					);
 
 	return $item;
 }

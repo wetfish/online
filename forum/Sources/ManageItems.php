@@ -41,20 +41,40 @@ function AddNewItem()
 		$_POST = htmltrim__recursive($_POST);
 		$_POST = htmlspecialchars__recursive($_POST);
 
-		// validate files
-		$img = validateFile($_FILES['itemimg']);
+		// validate icon
 		$icon = validateFile($_FILES['itemicon']);
-
-		if($img !== true)
-		{
-			$context['post_errors'][] = $txt['admin_new_item_img'] . ': ' . $img;
-		}
-		
 		if($icon !== true)
 		{
 			$context['post_errors'][] =  $txt['admin_new_item_icon'] . ': ' . $icon;
 		}
 
+		// validate primary image
+		$img = validateFile($_FILES['itemimg_0']);
+		if($img !== true)
+		{
+			$context['post_errors'][] = $txt['admin_new_item_img'] . ': ' . $img;
+		}
+
+		// validate optional secondary images
+		if (!empty($_FILES['itemimg_1']['tmp_name']))
+		{
+			$img1 = validateFile($_FILES['itemimg_1']);
+			if($img1 !== true)
+			{
+				$context['post_errors'][] = sprintf($txt['admin_new_item_img_sec'] , 1) . ': ' . $img1;
+			}
+		}
+		
+		if (!empty($_FILES['itemimg_2']['tmp_name']))
+		{
+			$img2 = validateFile($_FILES['itemimg_2']);
+			if($img2 !== true)
+			{
+				$context['post_errors'][] = sprintf($txt['admin_new_item_img_sec'] , 2) . ': ' . $img2;
+			}
+		}
+		
+		// validate name
 		if(empty($_POST['itemname']))
 		{
 			$context['post_errors'][] =  $txt['admin_new_item_fail_name_empty'];
@@ -64,18 +84,53 @@ function AddNewItem()
 		{
 			// generate file names
 			$imgFileName = preg_replace('/\PL/u', '',  $_POST['itemname']) . '_' . uniqid();
-			$iconFileName = 'icon_' . $imgFileName . '.' . end((explode(".", $_FILES['itemicon']['name'])));
-			$imgFileName = $imgFileName . '.' .  end((explode(".", $_FILES['itemimg']['name'])));	// add file extension
+			$iconFileName = $imgFileName . '_icon.' . end((explode(".", $_FILES['itemicon']['name'])));
+			$imgFileName0 = $imgFileName . '_0.' .  end((explode(".", $_FILES['itemimg_0']['name'])));	
+			$imgFileName1 = $imgFileName . '_1.' .  end((explode(".", $_FILES['itemimg_1']['name'])));
+			$imgFileName2 = $imgFileName . '_2.' .  end((explode(".", $_FILES['itemimg_2']['name'])));
 
 			// prepend directories
 			$iconRelPath = '/fish/img/items/' . $iconFileName;
-			$imgRelPath =  '/fish/img/items/' . $imgFileName;
+			$imgRelPath0 =  '/fish/img/items/' . $imgFileName0;
+			$imgRelPath1 =  '/fish/img/items/' . $imgFileName1;
+			$imgRelPath2 =  '/fish/img/items/' . $imgFileName2;
 
 			$iconFullPath = $boarddir . $iconRelPath;
-			$imgFullPath =  $boarddir . $imgRelPath;
+			$imgFullPath0 =  $boarddir . $imgRelPath0;
+			$imgFullPath1 =  $boarddir . $imgRelPath1;
+			$imgFullPath2 =  $boarddir . $imgRelPath2;
 
+
+			
 			// move the files
-			if(move_uploaded_file($_FILES["itemicon"]["tmp_name"], $iconFullPath) && move_uploaded_file($_FILES["itemimg"]["tmp_name"], $imgFullPath) )
+			$uploadFailed = false;
+			if (!move_uploaded_file($_FILES["itemicon"]["tmp_name"], $iconFullPath))
+			{
+				$uploadFailed = true;
+			}
+
+			if (!move_uploaded_file($_FILES["itemimg_0"]["tmp_name"], $imgFullPath0))
+			{
+				$uploadFailed = true;
+			}
+
+			if (!empty($_FILES['itemimg_1']['tmp_name']))
+			{
+				if (!move_uploaded_file($_FILES["itemimg_1"]["tmp_name"], $imgFullPath1))
+				{
+					$uploadFailed = true;
+				}
+			}
+
+			if (!empty($_FILES['itemimg_2']['tmp_name']))
+			{
+				if (!move_uploaded_file($_FILES["itemimg_2"]["tmp_name"], $imgFullPath2))
+				{
+					$uploadFailed = true;
+				}
+			}
+
+			if(!$uploadFailed)
 			{
 				//insert all the things into the db
 
@@ -84,41 +139,55 @@ function AddNewItem()
 						array(
 							'item_type' => 'int',
 							'name_eng' => 'string', 
-							'img_url' => 'string', 
 							'icon_url' => 'string', 
+							'img_url' => 'string', 
+							'img_sec_1_url' => 'string', 
+							'img_sec_2_url' => 'string', 
 							'equip_slot' => 'int', 
 							'cost' => 'int',
 							'availability' => 'int',
 							'date_added' => 'int',
 							'last_modified' => 'int',
 							'created_by_userid' => 'int',
+							'img_0_layer' => 'int',
+							'img_1_layer' => 'int',
+							'img_2_layer' => 'int',
 						),
 
 						array(
 							$_POST['itemtype'], 
 							$_POST['itemname'],
-							$imgRelPath,
 							$iconRelPath,
+							$imgRelPath0,
+							!empty($_FILES['itemimg_1']['tmp_name']) ? $imgRelPath1 : '',
+							!empty($_FILES['itemimg_2']['tmp_name']) ? $imgRelPath2 : '',
 							$_POST['equipslot'],
 							$_POST['itemcost'],
 							$_POST['itemavailability'],
 							time(),
 							time(),
 							$user_info['id'],
-
+							$_POST['img_layer_input_0'],
+							$_POST['img_layer_input_1'],
+							$_POST['img_layer_input_2'],
 						),
 
 						array(
 							'item_type',
 							'name_eng', 
-							'img_url',
 							'icon_url',
+							'img_url',
+							'img_sec_1_url',
+							'img_sec_2_url',
 							'equip_slot',
 							'cost',
 							'availability',
 							'date_added',
 							'last_modified',
 							'created_by_userid',
+							'img_0_layer',
+							'img_1_layer',
+							'img_2_layer',
 
 						)
 					);

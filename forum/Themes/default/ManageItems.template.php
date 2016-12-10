@@ -140,6 +140,7 @@ echo '
 					<dt>
 						<strong><label for="itemavailability_input">',$txt['admin_new_item_availability'],'</label></strong>
 						<span class="smalltext">',$txt['admin_new_item_availability_desc'],'</span>
+						<hr>
 					</dt>
 					<dd>
 						<select name="itemavailability" id="itemavailability_input">';
@@ -190,6 +191,7 @@ echo '
 						<strong><label for="itemicon_input">',$txt['admin_new_item_icon'],'</label></strong>
 						<span class="smalltext" id="itemicon_desc">',$txt['admin_new_item_icon_desc'],'</span>
 						<img id="iconpreview" class="item-icon-button">
+						<hr>
 					</dt>
 					<dd>
 						<input type="file" name="itemicon" id="itemicon_input">
@@ -214,33 +216,11 @@ echo '
 
 
 // item image
-echo '
+displayImageAndLayerFields(0);
 
-					<dt>
-						<strong><label for="itemimg_input">',$txt['admin_new_item_img'],'</label></strong>
-						<span class="smalltext" id="itemimg_desc">',$txt['admin_new_item_img_desc'],'</span>
-						<img id="imagepreview" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'">
-					</dt>
-					<dd>
-						<input type="file" name="itemimg" id="itemimg_input" >
-						<script type="text/javascript">
-						    $(document).ready(function() {
-						    $("#itemimg_input").change(function(e) {
+displayImageAndLayerFields(1);
 
-						    for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
-						        var file = e.originalEvent.srcElement.files[i];
-
-						        var img = document.getElementById("imagepreview");
-						        var reader = new FileReader();
-						        reader.onloadend = function() {
-						            img.src = reader.result;
-						        }
-						        reader.readAsDataURL(file);
-						    }
-						});
-						    });
-						</script>
-					</dd>';
+displayImageAndLayerFields(2);
 
 
 // submit button and end form
@@ -285,6 +265,97 @@ function template_search_items()
 		</div>';
 
 	echo '</div>';
+}
+
+
+function displayImageAndLayerFields($index)
+{
+	global $txt;
+
+	$secondary = false;
+	if ($index != 0)
+	{
+		$secondary = true;
+	}
+
+	// file
+	echo '
+
+						<dt>
+						
+							<strong><label for="itemimg_input_',$index,'">',$secondary ? sprintf($txt['admin_new_item_img_sec'], $index) : $txt['admin_new_item_img'], '</label></strong>
+							<span class="smalltext" id="itemimg_desc_', $index,'">', $secondary ? sprintf($txt['admin_new_item_img_desc_sec'], $index) : $txt['admin_new_item_img_desc'],  '</span>
+							<img id="imagepreview_', $index ,'" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'">
+						</dt>
+						<dd>
+							<input type="file" name="itemimg_',$index,'" id="itemimg_input_',$index ,'" >
+							<script type="text/javascript">
+							    $(document).ready(function() {
+							    $("#itemimg_input_', $index, '" ).change(function(e) {
+
+							    for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+							        var file = e.originalEvent.srcElement.files[i];
+
+							        var img = document.getElementById("imagepreview_', $index,'");
+							        var reader = new FileReader();
+							        reader.onloadend = function() {
+							            img.src = reader.result;
+							        }
+							        reader.readAsDataURL(file);
+							    }
+							});
+							    });
+							</script>
+						</dd>';
+
+
+	// layer
+	echo '
+						<dt>
+							<strong><label for="img_layer_input_',$index,'">', $secondary ? sprintf($txt['admin_new_item_layer_sec'], $index) : $txt['admin_new_item_layer'],'</label></strong>
+							<span class="smalltext">', $secondary ? sprintf($txt['admin_new_item_layer_desc_sec'], $index) : $txt['admin_new_item_layer_desc'],'</span>
+						<hr>
+						</dt>
+						<dd>
+							<select name="img_layer_input_',$index,'" id="img_layer_input_',$index,'">';
+
+
+	// default
+	echo						'<option value="-1">', $txt['admin_new_item_layer_default'], '</option>';
+
+	// i love magical numbers
+	$maxLayer = 100;
+
+	// add option for every layer
+	for($i = 0; $i < $maxLayer; $i++)
+	{
+		$occupiedSlots = getSlotsUsingLayer($i);
+		$occupiedSlotsStr = '';
+
+		foreach ($occupiedSlots as $name => $value) {
+			if(empty($occupiedSlotsStr))
+			{
+				$occupiedSlotsStr = $txt['item_equip_slot_' . $value];
+			}
+			else
+			{
+				$occupiedSlotsStr = $occupiedSlotsStr . ', ' . $txt['item_equip_slot_' . $value];
+			}
+		}
+
+		if(!empty($occupiedSlotsStr))
+		{
+			$occupiedSlotsStr = ' - ' . $occupiedSlotsStr;
+		}
+
+		echo  					'<option value="', $i, '">', $i, $occupiedSlotsStr, '</option>';
+	}
+		 
+
+	echo '
+							</select>
+						</dd>';
+
 }
 
 ?>
