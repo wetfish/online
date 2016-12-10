@@ -132,7 +132,7 @@ echo '
 						<span class="smalltext">',$txt['admin_new_item_cost_desc'],'</span>
 					</dt>
 					<dd>
-						<input type="number" name="itemcost" id="itemcost_input" checked>
+						<input type="number" value="0" name="itemcost" id="itemcost_input" checked>
 					</dd>';
 
 // availability
