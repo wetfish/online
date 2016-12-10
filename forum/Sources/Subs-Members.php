@@ -775,6 +775,10 @@ function registerMember(&$regOptions, $return_errors = false)
 	// give them some fish items to start
 	dbInsertNewInventoryItems(generateStarterInventory(), $memberID);
 
+	// and some cash money
+	// TODO this shouldn't be a magic number, also users should have to spend at least this much in order to start trading and giving away items/currency
+	addCoins($memberID, 1000, CoinEarnReason::Registration);
+
 	// Update the number of members and latest member's info - and pass the name, but remove the 's.
 	if ($regOptions['register_vars']['is_activated'] == 1)
 		updateStats('member', $memberID, $regOptions['register_vars']['real_name']);

@@ -83,6 +83,7 @@ abstract class CoinEarnReason extends BasicEnum
 	const None = 0;
 	const Hidden = 1;
 	const Posting = 2;
+	const Registration = 3;
 }
 
 function slotToLayer($slot)
@@ -414,6 +415,7 @@ function addCoins($userid, $amount, $earnReason = 0)
 	}
 	else
 	{
+
 		$_SESSION['coinsEarned'] = $amount;
 		$_SESSION['coinsEarnedMsg'] = sprintf($txt['coins_earn_' . $earnReason], number_format($amount));
 	}

@@ -46,8 +46,9 @@ $txt['featured_item_purchased'] = "Purchased!";
 
 // currency stuff
 $txt['coins'] = "Coral";
-$txt['coins_earn_' . CoinEarnReason::None] = "(+%d)";
-$txt['coins_earn_' . CoinEarnReason::Posting] = "(+%d for posting)";
+$txt['coins_earn_' . CoinEarnReason::None] = "(+%s)";
+$txt['coins_earn_' . CoinEarnReason::Posting] = "(+%s for posting)";
+$txt['coins_earn_' . CoinEarnReason::Registration] = "(+%s for registering)";
 
 // ItemTypes
 $txt['item_type_' . ItemType::Equipment] = "Equipment";
