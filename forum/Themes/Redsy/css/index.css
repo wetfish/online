@@ -1807,6 +1807,8 @@ div#pollmoderation
 #forumposts
 {
 	clear: both;
+	background-color: #EEE;
+	padding: 1em;
 }
 #forumposts .cat_bar
 {
