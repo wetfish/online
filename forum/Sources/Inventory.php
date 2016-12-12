@@ -67,6 +67,7 @@ abstract class EquipSlot extends BasicEnum
     const Hands = 113;
     const Feet = 114;
     const Back = 115;
+    const Face4 = 116;
 }
 
 abstract class ItemAvailability extends BasicEnum
@@ -112,15 +113,17 @@ function slotToLayer($slot)
 		case EquipSlot::LeftHandHeld:
 			return 15;
 		case EquipSlot::RightHandHeld:
-			return 90;
+			return 95;
 		case EquipSlot::Face1:
-			return 45;
-		case EquipSlot::Face2:
 			return 60;
-		case EquipSlot::Face3:
+		case EquipSlot::Face2:
 			return 80;
-		case EquipSlot::Hands:
+		case EquipSlot::Face3:
+			return 45;
+		case EquipSlot::Face4:
 			return 85;
+		case EquipSlot::Hands:
+			return 90;
 		case EquipSlot::Feet:
 			return 30;
 		case EquipSlot::Back:
