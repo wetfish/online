@@ -443,6 +443,36 @@ function template_main()
 					</dl>';
 	}
 
+
+	if($context['can_create_npc_shop'])
+	{
+		echo '
+			<div id="post_npc_shop">';
+
+			// TODO allow the poster to select number of items instead of hard coding it like this
+			echo '<input type="hidden" name="num_shop_items" value="10">';
+			for($i = 0; $i < 10; $i++)
+			{
+				// TODO search for item by name instead of using item id field
+				// TODO date picker for expire time
+				echo '
+					<strong><label for="', 'shop_item_id_', $i, '">',$txt['npc_shop_item_id'],'</label></strong>
+					<br>
+					<input name="', 'shop_item_id_', $i, '" type="number">
+					<br>
+
+					<strong><label for="', 'shop_item_expire_time_', $i, '">',$txt['npc_shop_expire_time'],'</label></strong>
+					<br>
+					<input name="', 'shop_item_expire_time_', $i, '" type="number" value="-1" > ',$txt['npc_shop_expire_time_desc'],
+					'<br>
+					<br>
+					<br>
+				';
+			}
+
+			echo '</div>';
+	}
+
 	// Is the user allowed to post any additional ones? If so give them the boxes to do it!
 	if ($context['can_post_attachment'])
 	{

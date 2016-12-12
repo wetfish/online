@@ -1994,6 +1994,21 @@ function createPost(&$msgOptions, &$topicOptions, &$posterOptions)
 		}
 	}
 
+	// add the items if this is an npc shop
+	if(!empty($msgOptions['npc_shop_items']))
+	{
+		for($i = 0; $i < count($msgOptions['npc_shop_items']); $i++)
+		{
+			$smcFunc['db_insert']('ignore',
+						'{db_prefix}npc_post_shop_items',
+						array('id_msg' => 'int', 'id_item' => 'int', 'expire_time' => 'int'),
+						array($msgOptions['id'], $msgOptions['npc_shop_items'][$i]['id_item'], $msgOptions['npc_shop_items'][$i]['expire_time']),
+						array('id_msg', 'id_item', 'expire_time')
+					);
+		}
+		
+	}
+
 	// If there's a custom search index, it needs updating...
 	if (!empty($modSettings['search_custom_index_config']))
 	{
@@ -2574,6 +2589,8 @@ function modifyPost(&$msgOptions, &$topicOptions, &$posterOptions)
 			updateStats('subject', $topicOptions['id'], $msgOptions['subject']);
 		$smcFunc['db_free_result']($request);
 	}
+
+	// TODO: Adding, updating, deleting items in NPC shops
 
 	// Finally, if we are setting the approved state we need to do much more work :(
 	if ($modSettings['postmod_active'] && isset($msgOptions['approved']))

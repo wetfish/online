@@ -1233,6 +1233,7 @@ function prepareDisplayContext($reset = false)
 		'can_ban_from_topic' => $user_info['is_admin'] || ( !isset($message['topic_ban_reason']) && $context['user']['started'] && $message['id_member'] != $user_info['id'] ),
 		'topic_ban_reason' => $message['topic_ban_reason'],
 		'inventory' => loadInventory($message['id_member'], true),
+		'npc_shop_items' => dbGetNpcTopicShopItems($message['id_msg']),
 	);
 
 	// Is this user the message author?

@@ -1580,7 +1580,7 @@ function loadTheme($id_theme = 0, $initialize = true)
 		'email' => $user_info['email'],
 		'ignoreusers' => $user_info['ignoreusers'],
 		'coins' => $user_info['coins'],
-		'equipped_items' => loadInventory($user_info['id'], true),
+		'inventory' => loadInventory($user_info['id']),
 		'last_feature_purchase' => $user_info['last_feature_purchase'],
 	);
 	if (!$context['user']['is_guest'])

@@ -403,8 +403,13 @@ function display_daily_featured_item()
 	$fakeInventory = array($item['id'] => $item);
 
 	// add everything currently equipped to the required slots (ie. body and face)
-	foreach ($context['user']['equipped_items'] as $equippedItemId => $equippedItem) 
+	foreach ($context['user']['inventory'] as $equippedItemId => $equippedItem) 
 	{
+		if($equippedItem['is_equipped'] == false)
+		{
+			continue;
+		}
+
 		if($item['equip_slot'] == $equippedItem['equip_slot'])
 		{
 			// skip items that have the same slot as the featured item - we want to preview it

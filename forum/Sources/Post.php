@@ -215,6 +215,9 @@ function Post()
 	$context['locked'] = !empty($locked) || !empty($_REQUEST['lock']);
 	$context['can_quote'] = empty($modSettings['disabledBBC']) || !in_array('quote', explode(',', $modSettings['disabledBBC']));
 
+	// NPC shop permissions
+	$context['can_create_npc_shop'] = allowedTo('create_npc_shop');
+
 	// Generally don't show the approval box... (Assume we want things approved)
 	$context['show_approval'] = false;
 
@@ -1880,6 +1883,23 @@ function Post2()
 	// Justin nov 24 2016 - here's a hack to force the default icon
 	$_POST['icon'] = 'xx';
 
+	$npcShopItems = array();
+	if (allowedTo('create_npc_shop'))
+	{
+		$numItems = $_POST['num_shop_items'];
+		for($i = 0; $i < $numItems; $i++)
+		{
+			if(!empty($_POST['shop_item_id_' . $i]))
+			{
+				$npcShopItems[] = array(
+									 'id_item' => $_POST['shop_item_id_' . $i],
+									 'expire_time' => $_POST['shop_item_expire_time_' . $i],
+								);
+			}
+
+		}
+	}
+
 	// Collect all parameters for the creation or modification of a post.
 	$msgOptions = array(
 		'id' => empty($_REQUEST['msg']) ? 0 : (int) $_REQUEST['msg'],
@@ -1889,6 +1909,7 @@ function Post2()
 		'smileys_enabled' => !isset($_POST['ns']),
 		'attachments' => empty($attachIDs) ? array() : $attachIDs,
 		'approved' => $becomesApproved,
+		'npc_shop_items' =>$npcShopItems,
 	);
 	$topicOptions = array(
 		'id' => empty($topic) ? 0 : $topic,

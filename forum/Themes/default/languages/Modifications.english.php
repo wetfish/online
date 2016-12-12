@@ -28,6 +28,7 @@ $txt['fish_register_now_button'] = "<b>Register now</b>";
 $txt['fish_register_now_text'] = " to unlock more accessories!";
 $txt['fish_avatar_item_locked'] = " (LOCKED)";
 $txt['permissionname_manage_items'] = "Manage items";
+$txt['permissionname_create_npc_shop'] = "Create NPC Shop Topics";
 $txt['manage_items'] = "Items";
 $txt['manage_items_search'] = "Search Items";
 $txt['manage_items_add_new'] = "New Item";
@@ -37,7 +38,7 @@ $txt['featured_item_cost'] = "Cost: ";
 $txt['featured_item_buy'] = "Buy now";
 $txt['featured_item_preview'] = "Preview";
 $txt['featured_item_already_purchased'] = "You already purchased this item.";
-$txt['featured_item_not_for_sale'] = "Item is no longer on sale.";
+$txt['featured_item_not_for_sale'] = "Item is not for sale.";
 $txt['featured_item_cant_afford'] = "Not enough Coral";
 $txt['featured_item_fail'] = "Error purchasing item.";
 $txt['featured_item_success'] = "You got <b>%s</b>.";
@@ -75,17 +76,15 @@ $txt['item_equip_slot_' . EquipSlot::Feet] = "Feet";
 $txt['item_equip_slot_' . EquipSlot::Back] = "Back";
 
 // ItemAvailabilitys
-$txt['item_availability_' . ItemAvailability::Unlisted] = "Unlisted";
+$txt['item_availability_' . ItemAvailability::Normal] = "Default";
 $txt['item_availability_' . ItemAvailability::StartingItem] = "Starting Item";
 $txt['item_availability_' . ItemAvailability::StartingItemLocked] = "Starting Item (Locked)";
 $txt['item_availability_' . ItemAvailability::DailyFeature] = "Daily Feature";
-$txt['item_availability_' . ItemAvailability::NPCShop] = "NPC Shop";
 
-$txt['item_availability_desc_' . ItemAvailability::Unlisted] = "Users will not be able to find this item anywhere, but it can still be used if they happen to have it.";
+$txt['item_availability_desc_' . ItemAvailability::Normal] = "This item is only available through trading, npc shops, etc.";
 $txt['item_availability_desc_' . ItemAvailability::StartingItem] = "All users start with this item and it is equippable on the demo avatar for guests.";
 $txt['item_availability_desc_' . ItemAvailability::StartingItemLocked] = "All users start with this item and it is visible but locked for guests.";
 $txt['item_availability_desc_' . ItemAvailability::DailyFeature] = "This item may randomly appear in the daily item sale.";
-$txt['item_availability_desc_' . ItemAvailability::NPCShop] = "This item appears in an NPC shop. (Not implemented yet)";
 
 
 // admin panel for items
@@ -118,6 +117,17 @@ $txt['admin_new_item_fail_unknown_type'] = "Unknown file type";
 $txt['admin_new_item_fail_invalid_type'] = "Invalid file type";
 $txt['admin_new_item_fail_name_empty'] = "Item name required";
 
+// npc shops
+$txt['npc_shop_item_id'] = "Item ID";
+$txt['npc_shop_expire_time'] = "Expire Time";
+$txt['npc_shop_expire_time_desc'] = "(-1 = No expiry)";
+$txt['npc_shop_free'] = "Free!";
+$txt['npc_shop_already_own_free_item'] = "Got it";
+$txt['npc_shop_get_free_item'] = "Get it";
+$txt['npc_shop_expires_on'] = "Offer expires on %s";
+$txt['npc_shop_expired_on'] = "Offer expired on %s";
+$txt['buy_item_title'] = "Buy Item";
+$txt['npc_shop_already_own_free_item_fail'] = "You already own this item";
 
 // misc
 $txt['website_title'] = "Wetfish Online";

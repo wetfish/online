@@ -548,6 +548,72 @@ function template_main()
 				echo '
 										<div class="inner" id="msg_', $message['id'], '"', '>', $message['body'];
 
+
+				// display shop items!
+				if(!empty($message['npc_shop_items']))
+				{
+					echo '<br>';
+
+					foreach ($message['npc_shop_items'] as $index => $item) 
+					{
+						$expired = $item['expire_time'] != -1 && time() > $item['expire_time'];
+
+						$canAfford = $item['cost'] == 0 || $context['user']['coins'] >= $item['cost'] || $context['user']['is_guest'];
+
+						echo '<div name="npc_shop_item" class="npc_shop_item" style="display:inline-block; text-align:center;margin:40px;max-width:180px;">';
+						echo '<strong><p>', $item['name_eng'] ,'</strong></p>';
+						echo 	'<img src="', $boardurl, $item['icon_url'], '" class="item-icon" title="',$item['name_eng'], '" id="item_',$item['id'],'_img"/>
+								<p style="', $canAfford ? '' : 'color:red;','">', $txt['featured_item_cost'];
+
+						 if($item['cost'] == 0)
+						 {
+						 	echo '<b>', $txt['npc_shop_free'], '</b>';
+						 }
+						 else
+						 {
+						 	echo '<img src="',$boardurl,'/fish/img/coins/coral.png">', ' <b>', number_format($item['cost']), '</b>';
+						 }
+						echo '</p>';
+
+						if($item['expire_time'] != -1)
+						{
+							if($expired == false)
+							{
+								echo '<p class="smalltext">', sprintf($txt['npc_shop_expires_on'], timeformat($item['expire_time'])), '</p>';
+							}
+							else
+							{
+								echo '<p class="smalltext" style="color:red;">', sprintf($txt['npc_shop_expired_on'], timeformat($item['expire_time'])), '</p>';
+							}
+
+						}
+						
+						if ($expired)
+						{
+							// no button
+						}
+						else if($item['cost'] == 0 && !empty($context['user']['inventory'][$item['id']]))
+						{
+							// item is free, only allow 1 per user
+							echo '<p>',$txt['npc_shop_already_own_free_item'],'</p>';
+						}
+						else if($item['cost'] == 0)
+						{
+							echo  '<a href="', $scripturl, '?action=buynpcposteditem;id=',$item['id'],';msg=',$message['id'], '" class="btn btn-danger btn-sm">', $txt['npc_shop_get_free_item'],'</a>';
+						}
+						else if($canAfford)
+						{
+							echo  '<a href="', $scripturl, '?action=buynpcposteditem;id=',$item['id'],';msg=',$message['id'], '" class="btn btn-danger btn-sm">', $txt['featured_item_buy'],'</a>';
+						}
+						else
+						{
+							echo  '<a class="btn btn-danger btn-sm" style="background-color: grey; border:none;">', $txt['featured_item_cant_afford'],'</a>';
+						}
+						echo '</div>';
+					}
+						
+				}							
+
 				if(isset($message['topic_ban_reason']))
 				{
 						echo '<p class="post-ban-reason">', 

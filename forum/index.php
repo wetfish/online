@@ -338,7 +338,8 @@ function smf_main()
 		'xmlhttp' => array('Xml.php', 'XMLhttpMain'),
 		'banfromtopic' => array('BanFromTopic.php', 'BanFromTopic'),
 		'banfromtopicconfirm' => array('BanFromTopic.php', 'BanFromTopicConfirm'),
-		'buydailyitem' => array('DailyItem.php', 'BuyDailyItem'),
+		'buydailyitem' => array('GetItem.php', 'BuyDailyItem'),
+		'buynpcposteditem' => array('GetItem.php', 'BuyNpcPostShopItem'),
 	);
 
 	// Allow modifying $actionArray easily.

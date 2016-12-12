@@ -7,6 +7,8 @@ function BanFromTopic()
 {
 	global $context, $smcFunc, $user_info;
 
+	is_not_guest();
+
 	$context['page_title'] = $txt['ban_from_topic'];
 
 	$context['banconfirmed'] = false;
@@ -69,6 +71,8 @@ function updateContext()
 function BanFromTopicConfirm()
 {
 	global $context, $smcFunc, $user_info;
+
+	is_not_guest();
 
 	$context['banconfirmed'] = true;
 

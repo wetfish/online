@@ -72,11 +72,10 @@ abstract class EquipSlot extends BasicEnum
 
 abstract class ItemAvailability extends BasicEnum
 {
-	const Unlisted = 0;				// this item is not available for purchase, but can still be used/equipped
+	const Normal = 0;				
 	const StartingItem = 1;			// available in the guest demo and given to new members
 	const StartingItemLocked = 2;	// visible but locked in the guest demo, given to new members
 	const DailyFeature = 3;			// this item may randomly appear as the daily feature item
-	const NPCShop = 4;				// available in an npc shop. pairs with npcShopId
 }
 
 abstract class CoinEarnReason extends BasicEnum
@@ -460,6 +459,50 @@ function dbGetDailyFeatureItem()
 					);
 
 	return $item;
+}
+
+function dbGetNpcTopicShopItems($msgId)
+{
+	global $smcFunc;
+
+	$results = array();
+
+	$itemIdRequest = $smcFunc['db_query']('', "
+            SELECT id_item, expire_time
+			FROM {db_prefix}npc_post_shop_items
+			WHERE id_msg = {$msgId}
+			"
+        ); 
+
+	while($row = $smcFunc['db_fetch_assoc']($itemIdRequest))
+	{
+		$item = array(
+			'id' => $row['id_item'],
+			'expire_time' => $row['expire_time'],
+		);
+
+		$itemDataRequest = $smcFunc['db_query']('', "
+            SELECT name_eng, icon_url, equip_slot, cost
+			FROM {db_prefix}items
+			WHERE id_item = {$row['id_item']}
+			"
+        ); 
+
+        if ($itemData = $smcFunc['db_fetch_assoc']($itemDataRequest))
+        {
+			$item['name_eng'] = $itemData['name_eng'];
+			$item['icon_url'] = $itemData['icon_url'];
+			$item['equip_slot'] = $itemData['equip_slot'];
+			$item['cost'] = $itemData['cost'];
+			$item['count'] = 1;
+
+			$results[] = $item;
+        }
+
+  		
+	}
+
+	return $results;
 }
 
 function addCoins($userid, $amount, $earnReason = 0)
