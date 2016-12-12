@@ -17,7 +17,7 @@ function template_main()
 
 	// header
 	echo '<div class="cat_bar">
-			<h3 class="catbg">',$txt['featured_item_title'],'</h3>
+			<h3 class="catbg">',$txt['buy_item_title'],'</h3>
 		</div>';
 
 	// begin content
