@@ -297,6 +297,12 @@ blockquote.bbc_standard_quote, blockquote.bbc_alternate_quote
 	overflow: auto;
 }
 
+/* Images in quotes */
+blockquote img {
+	max-height: 100px;
+	max-width: 200px;
+}
+
 /* Alterate blockquote stylings */
 blockquote.bbc_standard_quote
 {
