@@ -595,7 +595,7 @@ function template_main()
 						else if($item['cost'] == 0 && !empty($context['user']['inventory'][$item['id']]))
 						{
 							// item is free, only allow 1 per user
-							echo '<p>',$txt['npc_shop_already_own_free_item'],'</p>';
+							echo  '<a class="btn btn-danger btn-sm" style="background-color: grey; border:none;">', $txt['npc_shop_already_own_free_item'],'</a>';
 						}
 						else if($item['cost'] == 0)
 						{
