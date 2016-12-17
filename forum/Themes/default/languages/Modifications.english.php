@@ -74,6 +74,9 @@ $txt['item_equip_slot_' . EquipSlot::Face4] = "Mouth (Accessory)";
 $txt['item_equip_slot_' . EquipSlot::Hands] = "Hands";
 $txt['item_equip_slot_' . EquipSlot::Feet] = "Feet";
 $txt['item_equip_slot_' . EquipSlot::Back] = "Back";
+$txt['item_equip_slot_' . EquipSlot::Background1] = "Background1";
+$txt['item_equip_slot_' . EquipSlot::Background2] = "Background2";
+$txt['item_equip_slot_' . EquipSlot::Background3] = "Background3";
 
 // ItemAvailabilitys
 $txt['item_availability_' . ItemAvailability::Normal] = "Default";

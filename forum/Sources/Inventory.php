@@ -68,6 +68,9 @@ abstract class EquipSlot extends BasicEnum
     const Feet = 114;
     const Back = 115;
     const Face4 = 116;
+    const Background1 = 117;
+    const Background2 = 118;
+    const Background3 = 119;
 }
 
 abstract class ItemAvailability extends BasicEnum
@@ -127,6 +130,12 @@ function slotToLayer($slot)
 			return 30;
 		case EquipSlot::Back:
 			return 10;
+		case EquipSlot::Background1:
+			return 0;
+		case EquipSlot::Background2:
+			return 2;
+		case EquipSlot::Background3:
+			return 4;
 	}
 
 	// return a high layer by default so it overlaps everything 
