@@ -106,18 +106,7 @@ function BuyNpcPostShopItem()
 		dbInsertNewInventoryItems(array($item['id'] => $item), $context['user']['id']);
 
 		// spend the dollars
-		 spendCoins($context['user']['id'], $item['cost']);
-
-		// update last purchase date for member
-		$smcFunc['db_query']('', '
-	        UPDATE {db_prefix}members
-			SET last_feature_purchase = {string:purchase_date}
-	        WHERE id_member = {int:id_member}',
-                array(
-                	'purchase_date' => date('Ymd'),
-                    'id_member' => $context['user']['id'],
-                )
-    	); 
+		spendCoins($context['user']['id'], $item['cost']);
 
 		// set flag
 		$context['daily_item_purchased'] = $item;
