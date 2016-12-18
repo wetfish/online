@@ -101,11 +101,11 @@ function slotToLayer($slot)
 		case EquipSlot::Chest1:
 			return 40;
 		case EquipSlot::Chest2:
-			return 75;
+			return 80;
 		case EquipSlot::Head1:
 			return 50;
 		case EquipSlot::Head2:
-			return 70;
+			return 75;
 		case EquipSlot::Neck:
 			return 65;
 		case EquipSlot::Legs1:
@@ -119,7 +119,7 @@ function slotToLayer($slot)
 		case EquipSlot::Face1:
 			return 60;
 		case EquipSlot::Face2:
-			return 80;
+			return 70;
 		case EquipSlot::Face3:
 			return 45;
 		case EquipSlot::Face4:
