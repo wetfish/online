@@ -15,6 +15,19 @@ $txt['ban_from_topic_fail_reason_empty'] = "You must enter a reason.";
 $txt['banned_from_topic_post_footer'] = "USER WAS BANNED FROM THIS TOPIC";
 $txt['banned_from_topic_post_failed'] = "You are banned from this topic.";
 
+// nicefish jan 27 2016 - fishpay
+$txt['tip_for_message'] = "Tip";
+$txt['tip_for_message_form_body'] = "Tip <b>%s</b> for the following post:";
+$txt['tip_for_message_amount'] = "Coral";
+$txt['tip_for_message_submit'] = "Submit";
+$txt['tip_for_message_return'] = "Return";
+$txt['tip_for_message_back'] = "Back";
+$txt['tip_for_message_success'] = "Your transaction has been processed.";
+$txt['tip_for_message_fail'] = "Unable to tip <b>%s</b>.";
+$txt['tip_for_message_fail_invalidamount'] = "Invalid amount.";
+$txt['tip_for_message_fail_cantafford'] = "Insufficient funds.";
+$txt['tip_for_message_post_footer'] = "%s TIPPED %d CORAL FOR THIS POST";
+
 // inventory / fish equipper stuff
 $txt['inv_fish_avatar'] = "Avatar";
 $txt['inv_items'] = "Items";

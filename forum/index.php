@@ -338,6 +338,8 @@ function smf_main()
 		'xmlhttp' => array('Xml.php', 'XMLhttpMain'),
 		'banfromtopic' => array('BanFromTopic.php', 'BanFromTopic'),
 		'banfromtopicconfirm' => array('BanFromTopic.php', 'BanFromTopicConfirm'),
+		'tipformessage' => array('TipForMessage.php', 'TipForMessage'),
+		'tipformessageconfirm' => array('TipForMessage.php', 'TipForMessageConfirm'),
 		'buydailyitem' => array('GetItem.php', 'BuyDailyItem'),
 		'buynpcposteditem' => array('GetItem.php', 'BuyNpcPostShopItem'),
 	);

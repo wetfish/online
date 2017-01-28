@@ -1148,6 +1148,26 @@ function prepareDisplayContext($reset = false)
 		$message['topic_ban_reason'] = $banCheckResult['reason'];
 	}
 
+	// Tips
+	{
+		$message['tips'] = array();
+		$tipsRequest = $smcFunc['db_query']('', '
+				SELECT member_name, a.coins
+				FROM {db_prefix}message_tips AS a
+				INNER JOIN {db_prefix}members AS b
+				ON b.id_member = a.id_member
+				WHERE id_message = {int:id_message}
+				ORDER BY id_message_tip',
+				  array(
+					  'id_message' => $message['id_msg']
+				  )
+		); 
+
+		while ($row = $smcFunc['db_fetch_assoc']($tipsRequest)) {
+			array_push($message['tips'], $row);
+		}
+	}
+
 	// $context['icon_sources'] says where each icon should come from - here we set up the ones which will always exist!
 	if (empty($context['icon_sources']))
 	{
@@ -1231,7 +1251,9 @@ function prepareDisplayContext($reset = false)
 		'can_remove' => allowedTo('delete_any') || (allowedTo('delete_replies') && $context['user']['started']) || (allowedTo('delete_own') && $message['id_member'] == $user_info['id'] && (empty($modSettings['edit_disable_time']) || $message['poster_time'] + $modSettings['edit_disable_time'] * 60 > time())),
 		'can_see_ip' => allowedTo('moderate_forum') || ($message['id_member'] == $user_info['id'] && !empty($user_info['id'])),
 		'can_ban_from_topic' => $user_info['is_admin'] || ( !isset($message['topic_ban_reason']) && $context['user']['started'] && $message['id_member'] != $user_info['id'] ),
+		'can_tip_for_message' => ( $message['id_member'] != $user_info['id'] ),
 		'topic_ban_reason' => $message['topic_ban_reason'],
+		'tips' => $message['tips'],
 		'inventory' => loadInventory($message['id_member'], true),
 		'npc_shop_items' => dbGetNpcTopicShopItems($message['id_msg']),
 	);
