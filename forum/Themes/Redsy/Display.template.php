@@ -629,7 +629,7 @@ function template_main()
                 foreach ($message['tips'] as $x)
                 {
 						echo '<p class="post-tip-notice">', 
-								sprintf($txt['tip_for_message_post_footer'], strtoupper($x['member_name']), $x['coins']), 
+								sprintf($txt['tip_for_message_post_footer'], strtoupper($x['real_name']), $x['coins']), 
 							'</p>';
                 }
 

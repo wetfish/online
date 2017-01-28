@@ -1152,7 +1152,7 @@ function prepareDisplayContext($reset = false)
 	{
 		$message['tips'] = array();
 		$tipsRequest = $smcFunc['db_query']('', '
-				SELECT member_name, a.coins
+				SELECT real_name, a.coins
 				FROM {db_prefix}message_tips AS a
 				INNER JOIN {db_prefix}members AS b
 				ON b.id_member = a.id_member
