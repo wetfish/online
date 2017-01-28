@@ -2090,6 +2090,10 @@ ul.quickbuttons li.ban_from_thread_button
 {
 	background: url(../images/theme/quickbuttons.png) no-repeat 0 -240px;
 }
+ul.quickbuttons li.tip_for_message_button
+{
+	background: url(../images/theme/quickbuttons.png) no-repeat 0 -240px;
+}
 ul.quickbuttons li.inline_mod_check
 {
 	margin: 0 0 0 5px;
@@ -2109,6 +2113,11 @@ ul.quickbuttons li.inline_mod_check
 .post-ban-reason
 {
 	color: red;
+	font-weight: bold;
+}
+.post-tip-notice
+{
+	color: green;
 	font-weight: bold;
 }
 img.smiley

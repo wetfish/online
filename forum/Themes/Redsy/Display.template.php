@@ -501,6 +501,10 @@ function template_main()
 						echo '
 												<li class="ban_from_thread_button"><a href="', $scripturl, '?action=banfromtopic;msg=', $message['id'], ';topic=', $context['current_topic'], '">',  $txt['ban_from_topic'], '</a></li>';
 
+					if ($message['can_tip_for_message'])
+						echo '
+												<li class="tip_for_message_button"><a href="', $scripturl, '?action=tipformessage;msg=', $message['id'], ';topic=', $context['current_topic'], '">',  $txt['tip_for_message'], '</a></li>';
+
 
 					if ($message['can_approve'] || $context['can_reply'] || $message['can_modify'] || $message['can_remove'] || $context['can_split'] || $context['can_restore_msg'])
 						echo '
@@ -622,6 +626,12 @@ function template_main()
 							'</p>';
 					
 				}
+                foreach ($message['tips'] as $x)
+                {
+						echo '<p class="post-tip-notice">', 
+								sprintf($txt['tip_for_message_post_footer'], strtoupper($x['member_name']), $x['coins']), 
+							'</p>';
+                }
 
 				echo '
 								
