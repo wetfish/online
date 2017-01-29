@@ -1251,7 +1251,7 @@ function prepareDisplayContext($reset = false)
 		'can_remove' => allowedTo('delete_any') || (allowedTo('delete_replies') && $context['user']['started']) || (allowedTo('delete_own') && $message['id_member'] == $user_info['id'] && (empty($modSettings['edit_disable_time']) || $message['poster_time'] + $modSettings['edit_disable_time'] * 60 > time())),
 		'can_see_ip' => allowedTo('moderate_forum') || ($message['id_member'] == $user_info['id'] && !empty($user_info['id'])),
 		'can_ban_from_topic' => $user_info['is_admin'] || ( !isset($message['topic_ban_reason']) && $context['user']['started'] && $message['id_member'] != $user_info['id'] ),
-		'can_tip_for_message' => ( $message['id_member'] != $user_info['id'] ),
+		'can_tip_for_message' => ( !empty($user_info['id']) && $message['id_member'] != $user_info['id'] ),
 		'topic_ban_reason' => $message['topic_ban_reason'],
 		'tips' => $message['tips'],
 		'inventory' => loadInventory($message['id_member'], true),
