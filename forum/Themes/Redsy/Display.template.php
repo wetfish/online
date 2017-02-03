@@ -455,7 +455,8 @@ function template_main()
 								<div class="postarea">';
 								
 				// If this is the first post, (#0) just say when it was posted - otherwise give the reply #.
-				if ($message['can_approve'] || $context['can_reply'] || $message['can_modify'] || $message['can_remove'] || $context['can_split'] || $context['can_restore_msg'])
+				if ($message['can_approve'] || $context['can_reply'] || $message['can_modify'] || $message['can_remove'] || $context['can_split'] || $context['can_restore_msg'] ||
+					$message['can_tip_for_message'])
 					echo '				
 										<div class="btn-group navbar-right">
 											<button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">Actions <span class="caret"></span></button>
@@ -506,7 +507,8 @@ function template_main()
 												<li class="tip_for_message_button"><a href="', $scripturl, '?action=tipformessage;msg=', $message['id'], ';topic=', $context['current_topic'], '">',  $txt['tip_for_message'], '</a></li>';
 
 
-					if ($message['can_approve'] || $context['can_reply'] || $message['can_modify'] || $message['can_remove'] || $context['can_split'] || $context['can_restore_msg'])
+					if ($message['can_approve'] || $context['can_reply'] || $message['can_modify'] || $message['can_remove'] || $context['can_split'] || $context['can_restore_msg'] ||
+						$message['can_tip_for_message'])
 						echo '
 											</ul>
 										</div>';
