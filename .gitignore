@@ -1,5 +1,6 @@
 !.gitignore
 forum/Settings.php
+forum/Settings_bak.php
 
 forum/fish/img/items/*
 forum/fish/bodies/*
