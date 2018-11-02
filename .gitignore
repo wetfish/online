@@ -1,0 +1,12 @@
+!.gitignore
+forum/Settings.php
+
+forum/fish/img/items/*
+forum/fish/bodies/*
+forum/fish/equipment/*
+
+forum/cache/*
+
+!*index.html
+!*index.php
+!*.htaccess
