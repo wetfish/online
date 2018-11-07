@@ -1599,6 +1599,39 @@ function parse_bbc($message, $smileys = true, $cache_id = '', $parse_tags = arra
 				'before' => '<span style="color: white;" class="bbc_color">',
 				'after' => '</span>',
 			),
+			array(
+				'tag' => 'video',
+				'type' => 'unparsed_content',
+				'content' => '<iframe width="768" height="432" style="max-width: 100%" src="https://www.youtube.com/embed/$1" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+				'validate' => function(&$tag, &$data, $disabled)
+				{
+					// Is data a URL?
+					if (filter_var($data, FILTER_VALIDATE_URL) == false)
+					{
+						$tag['content'] = $data;
+						return;
+					}
+
+					$parse = parse_url($data);
+					$url = preg_replace('/^www\./i', '', $parse['host']);
+
+					$query = Array();
+					if ($url == "youtu.be")
+					{
+						$query['v'] = trim($parse['path'], '/');
+					}
+					elseif ($url == 'youtube.com')
+					{
+						parse_str($parse['query'], $query);
+					}
+					else
+					{
+						$tag['content'] = "<a href='{$data}'>{$data}</a>";
+					}
+
+					$data = $query['v'];
+				},
+			),
 		);
 
 		// Let mods add new BBC without hassle.
