@@ -1570,6 +1570,13 @@ function create_control_richedit($editorOptions)
 				'description' => $txt['image']
 			),
 			array(
+				'image' => 'video',
+				'code' => 'video',
+				'before' => '[video]',
+				'after' => '[/video]',
+				'description' => 'Insert Video'
+			),
+			array(
 				'image' => 'url',
 				'code' => 'url',
 				'before' => '[url]',
