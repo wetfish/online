@@ -1605,8 +1605,14 @@ function parse_bbc($message, $smileys = true, $cache_id = '', $parse_tags = arra
 				'content' => '<iframe width="768" height="432" style="max-width: 100%" src="https://www.youtube.com/embed/$1" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 				'validate' => function(&$tag, &$data, $disabled)
 				{
+					// Is data a URL?
+					if (filter_var($data, FILTER_VALIDATE_URL) == false)
+					{
+						$tag['content'] = $data;
+						return;
+					}
+
 					$parse = parse_url($data);
-					// Remove 'www.'
 					$url = preg_replace('/^www\./i', '', $parse['host']);
 
 					$query = Array();
@@ -1620,9 +1626,9 @@ function parse_bbc($message, $smileys = true, $cache_id = '', $parse_tags = arra
 					}
 					else
 					{
-						//Unsupported video, just post URL.
 						$tag['content'] = "<a href='{$data}'>{$data}</a>";
 					}
+
 					$data = $query['v'];
 				},
 			),
