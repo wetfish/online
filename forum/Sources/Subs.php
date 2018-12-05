@@ -1639,9 +1639,15 @@ function parse_bbc($message, $smileys = true, $cache_id = '', $parse_tags = arra
 				'validate' => function (&$tag, &$data, $disabled)
 				{
 					$url = 'https://soundcloud.com/oembed?url=' . $data . '&format=json&auto_play=false&maxheight=300&buying=false';
-
 					$json = file_get_contents($url);
 					$json = json_decode($json);
+
+					// Invalid response, just post data inside the tags.
+					if ($json == null)
+					{
+						$tag['content'] = $data;
+						return;
+					}
 
 					// For some reason the oembed api won't let us change this to what we want.
 					// So let's replace it.
