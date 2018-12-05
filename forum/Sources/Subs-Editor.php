@@ -1577,6 +1577,13 @@ function create_control_richedit($editorOptions)
 				'description' => 'Insert Video'
 			),
 			array(
+				'image' => 'soundcloud',
+				'code' => 'soundcloud',
+				'before' => '[soundcloud]',
+				'after' => '[/soundcloud]',
+				'description' => 'Insert Soundcloud embed'
+			),
+			array(
 				'image' => 'url',
 				'code' => 'url',
 				'before' => '[url]',
