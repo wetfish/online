@@ -1638,7 +1638,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '', $parse_tags = arra
 				'content' => '$1',
 				'validate' => function (&$tag, &$data, $disabled)
 				{
-					$url = 'https://soundcloud.com/oembed?url=' . $data . '&format=json&auto_play=false&maxheight=300&buying=false';
+					$url = 'https://soundcloud.com/oembed?url=' . $data . '&format=json&auto_play=false&maxheight=400&buying=false';
 					$json = file_get_contents($url);
 					$json = json_decode($json);
 
@@ -1656,8 +1656,9 @@ function parse_bbc($message, $smileys = true, $cache_id = '', $parse_tags = arra
 					// Change height depending on playlists or single track.
 					if (!strpos($data, '/sets') && !strpos($data, '/tracks'))
 					{
-						$json->html = str_replace('height="300"', 'height="auto"', $json->html);
+						$json->html = str_replace('height="400"', 'height="auto"', $json->html);
 					}
+
 
 					$data = $json->html;
 				},
