@@ -1632,6 +1632,37 @@ function parse_bbc($message, $smileys = true, $cache_id = '', $parse_tags = arra
 					$data = $query['v'];
 				},
 			),
+			array(
+				'tag' => 'soundcloud',
+				'type' => 'unparsed_content',
+				'content' => '$1',
+				'validate' => function (&$tag, &$data, $disabled)
+				{
+					$url = 'https://soundcloud.com/oembed?url=' . $data . '&format=json&auto_play=false&maxheight=400&buying=false';
+					$json = file_get_contents($url);
+					$json = json_decode($json);
+
+					// Invalid response, just post data inside the tags.
+					if ($json == null)
+					{
+						$tag['content'] = $data;
+						return;
+					}
+
+					// For some reason the oembed api won't let us change this to what we want.
+					// So let's replace it.
+					$json->html = str_replace('visual=true', 'visual=false', $json->html);
+
+					// Change height depending on playlists or single track.
+					if (!strpos($data, '/sets') && !strpos($data, '/tracks'))
+					{
+						$json->html = str_replace('height="400"', 'height="auto"', $json->html);
+					}
+
+
+					$data = $json->html;
+				},
+			),
 		);
 
 		// Let mods add new BBC without hassle.
