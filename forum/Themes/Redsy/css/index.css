@@ -464,7 +464,6 @@ tr.catbg th a:link, tr.catbg th a:visited, tr.catbg2 td a:link, tr.catbg2 td a:v
 /* the page navigation area */
 .pagesection
 {
-	font-size: 0.9em;
 	padding: 0.2em;
 	overflow: hidden;
 	margin-top: 0.3em;
@@ -472,11 +471,6 @@ tr.catbg th a:link, tr.catbg th a:visited, tr.catbg2 td a:link, tr.catbg2 td a:v
 }
 
 /* Main pagination links */
-.pagesection .pagelinks
-{
-	font-size: 1.1em;
-}
-
 .pagesection .pagelinks > *
 {
 	background-color: #ffffff;
