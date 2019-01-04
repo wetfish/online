@@ -701,7 +701,7 @@ function constructPageIndex($base_url, &$start, $max_value, $num_per_page, $flex
 
 		// Show the current page. (1 ... 6 7 >[8]< 9 10 ... 15)
 		if (!$start_invalid)
-			$pageindex .= '[<strong>' . ($start / $num_per_page + 1) . '</strong>] ';
+			$pageindex .= '<strong>' . ($start / $num_per_page + 1) . '</strong>';
 		else
 			$pageindex .= sprintf($base_link, $start, $start / $num_per_page + 1);
 
