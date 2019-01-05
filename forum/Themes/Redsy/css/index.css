@@ -471,7 +471,7 @@ tr.catbg th a:link, tr.catbg th a:visited, tr.catbg2 td a:link, tr.catbg2 td a:v
 }
 
 /* Main pagination links */
-.pagesection .pagelinks > *
+.pagesection .pagelinks > a.navPages, .pagesection .pagelinks > span > a, .pagesection .pagelinks > strong
 {
 	background-color: #ffffff;
 	position: relative;
@@ -497,24 +497,17 @@ tr.catbg th a:link, tr.catbg th a:visited, tr.catbg2 td a:link, tr.catbg2 td a:v
 }
 
 /* ... Pagination expander */
-.pagesection .pagelinks > span
+.pagesection .pagelinks > span > a
 {
 	background-color: #ffffff;
 	border-color: #dddddd;
-	cursor: none;
-	color: #337ab6;
 }
 
-.pagesection .pagelinks > span:hover
+.pagesection .pagelinks > span > a:hover
 {
 	background-color: #eeeeee;
-}
-
-.pagesection .pagelinks > span > a.navPages
-{
-	background-color: inherit;
-	padding: 0;
-	border-style:none;
+	border-color: #dddddd;
+	text-decoration: none;
 }
 
 /* Current page */
@@ -527,13 +520,13 @@ tr.catbg th a:link, tr.catbg th a:visited, tr.catbg2 td a:link, tr.catbg2 td a:v
 	text-shadow: 1px 1px black;
 }
 
-.pagesection .pagelinks a.navPages:last-child, .pagesection .pagelinks strong:last-child
+.pagesection .pagelinks > a.navPages:last-child, .pagesection .pagelinks strong:last-child
 {
 	border-bottom-right-radius: 4px;
 	border-top-right-radius: 4px;
 }
 
-.pagesection .pagelinks a.navPages:first-child, .pagesection .pagelinks strong:first-child
+.pagesection .pagelinks > a.navPages:first-child, .pagesection .pagelinks strong:first-child
 {
 	border-bottom-left-radius: 4px;
 	border-top-left-radius: 4px;
