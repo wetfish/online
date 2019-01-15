@@ -460,22 +460,80 @@ tr.catbg th a:link, tr.catbg th a:visited, tr.catbg2 td a:link, tr.catbg2 td a:v
 	color: #000;
 	background-color: #fff;
 }
+
 /* the page navigation area */
 .pagesection
 {
-	font-size: 0.9em;
-	padding: 0.2em;
+	margin-bottom: 0.3em;
+	margin-top: 0.3em;
 	overflow: hidden;
-	margin-bottom: 1px;
-}
-div.pagesection div.floatright input
-{
-	margin-top: 3px;
+	padding: 0.2em;
 }
 
-.pagelinks
+/* Main pagination links */
+.pagesection .pagelinks > a.navPages,
+.pagesection .pagelinks > span > a,
+.pagesection .pagelinks > strong
 {
-	padding: 0.6em 0 0.4em 0;
+	background-color: #ffffff;
+	border-style: solid;
+	border-width: 1px;
+	float: left;
+	margin-left: -1px;
+	padding: 0.6em 0.8em;
+	position: relative;
+}
+
+.pagesection .pagelinks a.navPages
+{
+	background-color: #ffffff;
+	border-color: #dddddd;
+	color: #337ab6;
+	cursor: pointer;
+}
+
+.pagesection .pagelinks a.navPages:hover
+{
+	background-color: #eeeeee;
+	text-decoration: none;
+}
+
+/* ... Pagination expander */
+.pagesection .pagelinks > span > a
+{
+	background-color: #ffffff;
+	border-color: #dddddd;
+}
+
+.pagesection .pagelinks > span > a:hover
+{
+	background-color: #eeeeee;
+	border-color: #dddddd;
+	text-decoration: none;
+}
+
+/* Current page */
+.pagesection .pagelinks > strong
+{
+	background-color: #337ab6;
+	border-color: #337ab6;
+	color: white;
+	cursor: default;
+	text-shadow: 1px 1px black;
+}
+
+.pagesection .pagelinks > a.navPages:last-child,
+.pagesection .pagelinks strong:last-child
+{
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.pagesection .pagelinks > a.navPages:first-child,
+.pagesection .pagelinks strong:first-child
+{
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
 }
 
 /* Colors for background of posts requiring approval */
@@ -1324,6 +1382,18 @@ ul#navigation li
 {
 	width: 100%;
 	min-height: 200px;
+}
+/* Individual thread index */
+@media (max-width: 768px) {
+	#main_content_section small
+	{
+		font-size: 100%;
+	}
+	
+	#main_content_section small > a.navPages
+	{
+		padding: 0.3em;
+	}
 }
 
 /* the main title, always stay at 45 pixels in height! */
@@ -2741,6 +2811,7 @@ tr.windowbg td, tr.windowbg2 td, tr.approvebg td, tr.highlight2 td
 .topic_table table
 {
 	width: 100%;
+	margin-bottom: 0px;
 }
 .topic_table .icon1, .topic_table .icon2, .topic_table .stats
 {
