@@ -102,7 +102,7 @@ $txt['awaiting_approval'] = 'Awaiting approval';
 $txt['attachment_requires_approval'] = 'Note that any files attached will not be displayed until approved by a moderator.';
 $txt['error_temp_attachments'] = 'There are attachments found, which you have attached before but not posted. These attachments are now attached to this post. If you do not want to include them in this post, you can remove them <a href="#postAttachment">here</a>.';
 // Use numeric entities in the below string.
-$txt['js_post_will_require_approval'] = 'Reminder: This post will not appear until approved by a moderator.';
+$txt['js_post_will_require_approval'] = 'We need to approve the first post for all new members. You will be able to post freely after it has been approved.';
 
 $txt['enter_comment'] = 'Enter comment';
 // Use numeric entities in the below two strings.

@@ -147,6 +147,6 @@ $txt['npc_shop_already_own_free_item_fail'] = "You already own this item";
 
 // misc
 $txt['website_title'] = "Wetfish Online";
-$txt['website_description'] = "A pointless forum where you can dress up a shitty fish avatar and ban anybody from topics that you create.";
+$txt['website_description'] = "A little forum where you earn coral, dress up a cute fish avatar, and can ban anybody from topics that you create.";
 $txt['chat'] = "Chat";
 ?>

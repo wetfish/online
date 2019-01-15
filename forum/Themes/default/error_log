@@ -1,0 +1,3 @@
+[27-Nov-2016 15:35:28 America/New_York] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /home/shitelpc/public_html/forum/Themes/default/Profile.template.php on line 2585
+[27-Nov-2016 21:01:03 America/New_York] PHP Parse error:  syntax error, unexpected '',$item['' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/shitelpc/public_html/forum/Themes/default/Profile.template.php on line 2532
+[27-Nov-2016 21:20:09 America/New_York] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/shitelpc/public_html/forum/Themes/default/Profile.template.php on line 2532

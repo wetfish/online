@@ -22,7 +22,7 @@ function template_main()
 		echo '
 			<style>
 				#wrapper {
-					 background-image: url(',$boardurl, '/board1bg.gif);
+					 background-image: url(',$boardurl, '/shitpost-central.gif);
 					 background-attachment: fixed;
 				}
 			</style>
