@@ -5,11 +5,11 @@ if (!defined('SMF'))
 
 function Tips()
 {
-	global $context, $smcFunc, $user_info;
+	global $context, $smcFunc, $user_info, $txt;
 
 	is_not_guest();
 
-	$context['page_title'] = $txt['tip_list'];
+	$context['page_title'] = $txt['tip_list_title'];
 	
 	loadPosts();
 

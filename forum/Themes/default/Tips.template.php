@@ -10,7 +10,6 @@
  * @version 2.0.10
  */
 
-// The main template for the post page.
 function template_main()
 {
 	global $context, $txt, $scripturl;
