@@ -342,6 +342,7 @@ function smf_main()
 		'tipformessageconfirm' => array('TipForMessage.php', 'TipForMessageConfirm'),
 		'buydailyitem' => array('GetItem.php', 'BuyDailyItem'),
 		'buynpcposteditem' => array('GetItem.php', 'BuyNpcPostShopItem'),
+		'tips' => array('Tips.php', 'Tips'),
 	);
 
 	// Allow modifying $actionArray easily.
