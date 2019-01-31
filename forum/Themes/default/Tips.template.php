@@ -26,13 +26,6 @@ function template_main()
 
 	foreach ($context['recent_tipped_posts'] as $tippedPost)
 	{
-		// Sum tips
-		$sum = 0;
-		foreach($tippedPost['tips'] as $tip)
-		{
-			$sum += $tip['coins'];
-		}
-		
 		echo '
 			<div class="body_message">
 				<div class="row">
@@ -48,6 +41,9 @@ function template_main()
 					echo '
 							<canvas id="fishcanvas_',$tippedPost['post']['id_msg'],'" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'" style="display:none"></canvas>
 							<img id="fish_avatar_img_',$tippedPost['post']['id_msg'],'" alt="', sprintf($txt['fish_avatar_img_alt'], $tippedPost['poster']['name']),'">
+							<h4>
+								<a href="', $tippedPost['poster']['href'], '">', $tippedPost['poster']['name'], '</a>
+							</h4>
 					</div>';
 		
 					echo '
@@ -73,16 +69,12 @@ function template_main()
 								echo '
 									</div>
 								</div>';
-							
-								echo sprintf('<br />
-								<p class="post-tip-notice">Post #<a href=index.php?topic=%d#msg%d>%d</a> by %s tipped %d times. total: %d </p><br />', 
-								$tippedPost['post']['id_topic'],
-								$tippedPost['post']['id_msg'],
-								$tippedPost['post']['id_msg'],
-								$tippedPost['post']['poster_name'],
-								count($tippedPost['tips']),
-								$sum);
-				
+
+								foreach ($tippedPost['tips'] as $tip)
+								{
+									echo sprintf('<br /><p class="post-tip-notice">%s TIPPED %d CORAL FOR THIS POST', $tip['tipper'], $tip['coins']);
+								}
+
 							echo '
 							</div>
 						</div>
