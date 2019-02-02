@@ -26,7 +26,7 @@ function loadPosts()
 	$query = 'SELECT id_message_tip, id_message, id_member, coins FROM {db_prefix}message_tips';
 
 	// Searching for posts tipped by a specific user?
-	if (isset($_GET['tipper']))
+	if (!empty($_GET['tipper']) && !$context['user']['is_guest'])
 	{
 		// Find user id for searched user
 		$userSearch = $smcFunc['db_query']('', 'SELECT id_member from smf_members where real_name = \'' . mysql_escape_string(urldecode($_GET['tipper'])) . '\'');
@@ -46,7 +46,7 @@ function loadPosts()
 				FROM {db_prefix}messages
 				WHERE id_msg = {int:id_msg}';
 
-		if (isset($_GET['poster']))
+		if (!empty($_GET['poster']) && !$context['user']['is_guest'])
 		{
 			$query .= ' AND poster_name = \'' . mysql_escape_string(urldecode($_GET['poster'])) . '\'';
 		}

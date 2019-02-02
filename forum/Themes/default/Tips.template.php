@@ -19,10 +19,31 @@ function template_main()
 			<h3 class="catbg">Recent Tips</h3>
 		</div>';
 
+	if (!$context['user']['is_guest'])
+	{
+	// Search form
+	echo '<div class="windowbg2">
+			<div class="content" style="text-align: center">
+			<form action="", method="get" name="tip_search" id="tip_search" class="flow_hidden" enctype="multipart/form-data">',
+					'<input type="hidden" name="action" value="tips" />',
+					'<div class="col-md-6">
+						Posts made by:<br />
+						<input type="text" name="poster" value="',$_GET['poster'],'" autocomplete="off" />
+					</div>',
+					'<div class="col-md-6">
+						Posts tipped by:<br />
+						<input type="text" name="tipper" value="',$_GET['tipper'],'" autocomplete="off"/>
+					</div>',
+					'<div class="col-md-12">
+						<input type="submit" value="Search" onclick="return submitThisOnce(this);" accesskey="s" class="button_submit" />
+					</div>
+				</form>
+			</div>
+		</div>';
+	}
+
 	// begin content
-	echo '<div class="forumposts">
-		<span class="topslice"><span></span></span>
-		<div class="body_message">';
+	echo '<div class="forumposts">';
 
 	foreach ($context['recent_tipped_posts'] as $tippedPost)
 	{
@@ -83,8 +104,5 @@ function template_main()
 			</div>';
 	}
 	// end content
-	echo'
-		</div>
-		<span class="botslice"><span></span></span>
-	</div>';
+	echo '</div>';
 }
