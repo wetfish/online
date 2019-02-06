@@ -44,6 +44,11 @@ function template_main()
 
 	// begin content
 	echo '<div class="forumposts">';
+	
+	if (empty($context['recent_tipped_posts']))
+	{
+		echo 'No results!';
+	}
 
 	foreach ($context['recent_tipped_posts'] as $tippedPost)
 	{
@@ -77,7 +82,7 @@ function template_main()
 										<img src="' . $settings['images_url'] . '/post/' . $tippedPost['post']['icon'] . '.gif"/>
 									</div>
 									<h5 id="subject_', $tippedPost['post']['id'], '">
-										<a href="', $tippedPost['post']['href'], '" rel="nofollow">', $tippedPost['post']['subject'], '</a>
+										<a href="index.php?topic=', $tippedPost['post']['id_topic'], '.msg', $tippedPost['post']['id_msg'], '#msg', $tippedPost['post']['id_msg'], '">', $tippedPost['post']['subject'], '</a>
 									</h5>
 									<div class="smalltext">&#171; <strong>', $txt['on'], ':</strong> ', timeformat($tippedPost['post']['poster_time']), ' &#187;</div>
 									<div id="msg_', $message['id'], '_quick_mod"></div>
