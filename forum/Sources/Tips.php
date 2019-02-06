@@ -37,7 +37,7 @@ function loadPosts()
 	while($tip = $smcFunc['db_fetch_assoc']($tipsQuery))
 	{
 		$query = "
-				SELECT id_msg, id_member, body, id_topic, poster_name, poster_time, icon, subject
+				SELECT id_msg, id_member, body, id_topic, poster_name, poster_time, icon, subject, smileys_enabled
 				FROM {db_prefix}messages
 				WHERE id_msg = {int:id_msg}";
 

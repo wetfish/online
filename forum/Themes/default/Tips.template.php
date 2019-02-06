@@ -91,7 +91,7 @@ function template_main()
 								echo '
 								<div class="post">
 									<div class="inner" id="msg_' . $tippedPost['post']['id_msg'] . '">';
-									echo $tippedPost['post']['body'];
+									echo parse_bbc($tippedPost['post']['body'], $tippedPost['post']['smileys_enabled'], $tippedPost['post']['id_msg']);
 								echo '
 									</div>
 								</div>';
