@@ -4168,6 +4168,14 @@ function setupMenuContext()
 				),
 				'is_last' => !$context['right_to_left'],
 			),
+			'Recent Tips' => array(
+				'title' => $txt['tip_list_title'],
+				'href' => $scripturl . '?action=tips',
+				'show' => !$user_info['is_guest'],
+				'sub_buttons' => array(
+				),
+				'is_last' => !$context['right_to_left'],
+			),
 			'chat' => array(
 				'title' => $txt['chat'],
 				'target' => '_blank',
