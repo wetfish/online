@@ -1,32 +1,28 @@
--- phpMyAdmin SQL Dump
--- version 4.0.10.14
--- http://www.phpmyadmin.net
+-- MySQL dump 10.16  Distrib 10.1.41-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: localhost:3306
--- Generation Time: Dec 25, 2016 at 12:05 PM
--- Server version: 10.1.18-MariaDB-cll-lve
--- PHP Version: 5.6.20
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: wfotest
+-- ------------------------------------------------------
+-- Server version	10.1.41-MariaDB-0+deb9u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `wfo_forum`
---
-
--- --------------------------------------------------------
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `smf_admin_info_files`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_admin_info_files` (
+DROP TABLE IF EXISTS `smf_admin_info_files`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_admin_info_files` (
   `id_file` tinyint(4) unsigned NOT NULL AUTO_INCREMENT,
   `filename` varchar(255) NOT NULL DEFAULT '',
   `path` varchar(255) NOT NULL DEFAULT '',
@@ -35,27 +31,50 @@ CREATE TABLE IF NOT EXISTS `smf_admin_info_files` (
   `filetype` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_file`),
   KEY `filename` (`filename`(30))
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_admin_info_files`
+--
+
+LOCK TABLES `smf_admin_info_files` WRITE;
+/*!40000 ALTER TABLE `smf_admin_info_files` DISABLE KEYS */;
+INSERT INTO `smf_admin_info_files` VALUES (1,'current-version.js','/smf/','version=%3$s','window.smfVersion = \"SMF 2.0.17\";','text/javascript'),(2,'detailed-version.js','/smf/','language=%1$s&version=%3$s','window.smfVersions = {\n	\'SMF\': \'SMF 2.0.17\',\n	\'SourcesAdmin.php\': \'2.0.16\',\n	\'SourcesAgreement.php\': \'2.0.16\',\n	\'SourcesBoardIndex.php\': \'2.0\',\n	\'SourcesCalendar.php\': \'2.0.12\',\n	\'SourcesClass-CurlFetchWeb.php\': \'2.0.16\',\n	\'SourcesClass-Graphics.php\': \'2.0\',\n	\'SourcesClass-Package.php\': \'2.0.8\',\n	\'SourcesDbExtra-mysql.php\': \'2.0.15\',\n	\'SourcesDbExtra-postgresql.php\': \'2.0.15\',\n	\'SourcesDbExtra-sqlite.php\': \'2.0.15\',\n	\'SourcesDbPackages-mysql.php\': \'2.0.15\',\n	\'SourcesDbPackages-postgresql.php\': \'2.0.10\',\n	\'SourcesDbPackages-sqlite.php\': \'2.0\',\n	\'SourcesDbSearch-mysql.php\': \'2.0\',\n	\'SourcesDbSearch-postgresql.php\': \'2.0.7\',\n	\'SourcesDbSearch-sqlite.php\': \'2.0.7\',\n	\'SourcesDisplay.php\': \'2.0.12\',\n	\'SourcesDumpDatabase.php\': \'2.0\',\n	\'SourcesErrors.php\': \'2.0.16\',\n	\'SourcesGroups.php\': \'2.0.16\',\n	\'SourcesHelp.php\': \'2.0.16\',\n	\'SourcesKarma.php\': \'2.0\',\n	\'SourcesLoad.php\': \'2.0.17\',\n	\'SourcesLockTopic.php\': \'2.0\',\n	\'SourcesLogInOut.php\': \'2.0.14\',\n	\'SourcesManageAttachments.php\': \'2.0.12\',\n	\'SourcesManageBans.php\': \'2.0\',\n	\'SourcesManageBoards.php\': \'2.0\',\n	\'SourcesManageCalendar.php\': \'2.0\',\n	\'SourcesManageErrors.php\': \'2.0.4\',\n	\'SourcesManageMail.php\': \'2.0\',\n	\'SourcesManageMaintenance.php\': \'2.0.16\',\n	\'SourcesManageMembergroups.php\': \'2.0.7\',\n	\'SourcesManageMembers.php\': \'2.0.15\',\n	\'SourcesManageNews.php\': \'2.0.16\',\n	\'SourcesManagePaid.php\': \'2.0.12\',\n	\'SourcesManagePermissions.php\': \'2.0\',\n	\'SourcesManagePosts.php\': \'2.0.12\',\n	\'SourcesManageRegistration.php\': \'2.0.16\',\n	\'SourcesManageScheduledTasks.php\': \'2.0\',\n	\'SourcesManageSearch.php\': \'2.0.16\',\n	\'SourcesManageSearchEngines.php\': \'2.0\',\n	\'SourcesManageServer.php\': \'2.0.16\',\n	\'SourcesManageSettings.php\': \'2.0.16\',\n	\'SourcesManageSmileys.php\': \'2.0\',\n	\'SourcesMemberlist.php\': \'2.0.12\',\n	\'SourcesMessageIndex.php\': \'2.0.2\',\n	\'SourcesModerationCenter.php\': \'2.0.12\',\n	\'SourcesModlog.php\': \'2.0.16\',\n	\'SourcesMoveTopic.php\': \'2.0\',\n	\'SourcesNews.php\': \'2.0.17\',\n	\'SourcesNotify.php\': \'2.0.16\',\n	\'SourcesPackageGet.php\': \'2.0.13\',\n	\'SourcesPackages.php\': \'2.0.12\',\n	\'SourcesPersonalMessage.php\': \'2.0.16\',\n	\'SourcesPoll.php\': \'2.0.16\',\n	\'SourcesPost.php\': \'2.0.16\',\n	\'SourcesPostModeration.php\': \'2.0\',\n	\'SourcesPrintpage.php\': \'2.0\',\n	\'SourcesProfile-Actions.php\': \'2.0.14\',\n	\'SourcesProfile-Modify.php\': \'2.0.16\',\n	\'SourcesProfile-View.php\': \'2.0.14\',\n	\'SourcesProfile.php\': \'2.0.16\',\n	\'SourcesQueryString.php\': \'2.0.16\',\n	\'SourcesRecent.php\': \'2.0.16\',\n	\'SourcesRegister.php\': \'2.0.16\',\n	\'SourcesReminder.php\': \'2.0.14\',\n	\'SourcesRemoveTopic.php\': \'2.0.12\',\n	\'SourcesRepairBoards.php\': \'2.0\',\n	\'SourcesReports.php\': \'2.0\',\n	\'SourcesSSI.php\': \'2.0.17\',\n	\'SourcesScheduledTasks.php\': \'2.0.16\',\n	\'SourcesSearch.php\': \'2.0.9\',\n	\'SourcesSearchAPI-Custom.php\': \'2.0.15\',\n	\'SourcesSearchAPI-Fulltext.php\': \'2.0.16\',\n	\'SourcesSearchAPI-Standard.php\': \'2.0\',\n	\'SourcesSecurity.php\': \'2.0.16\',\n	\'SourcesSendTopic.php\': \'2.0.15\',\n	\'SourcesSplitTopics.php\': \'2.0.14\',\n	\'SourcesStats.php\': \'2.0.15\',\n	\'SourcesSubs-Admin.php\': \'2.0.16\',\n	\'SourcesSubs-Auth.php\': \'2.0.16\',\n	\'SourcesSubs-BoardIndex.php\': \'2.0.16\',\n	\'SourcesSubs-Boards.php\': \'2.0.15\',\n	\'SourcesSubs-Calendar.php\': \'2.0\',\n	\'SourcesSubs-Categories.php\': \'2.0\',\n	\'SourcesSubs-Charset.php\': \'2.0.12\',\n	\'SourcesSubs-Compat.php\': \'2.0\',\n	\'SourcesSubs-Db-mysql.php\': \'2.0.16\',\n	\'SourcesSubs-Db-postgresql.php\': \'2.0.4\',\n	\'SourcesSubs-Db-sqlite.php\': \'2.0.16\',\n	\'SourcesSubs-Editor.php\': \'2.0.11\',\n	\'SourcesSubs-Graphics.php\': \'2.0.16\',\n	\'SourcesSubs-List.php\': \'2.0\',\n	\'SourcesSubs-Membergroups.php\': \'2.0\',\n	\'SourcesSubs-Members.php\': \'2.0.16\',\n	\'SourcesSubs-MembersOnline.php\': \'2.0.12\',\n	\'SourcesSubs-Menu.php\': \'2.0.12\',\n	\'SourcesSubs-MessageIndex.php\': \'2.0\',\n	\'SourcesSubs-OpenID.php\': \'2.0.11\',\n	\'SourcesSubs-Package.php\': \'2.0.17\',\n	\'SourcesSubs-Post.php\': \'2.0.16\',\n	\'SourcesSubs-Recent.php\': \'2.0\',\n	\'SourcesSubs-Sound.php\': \'2.0.16\',\n	\'SourcesSubs.php\': \'2.0.16\',\n	\'SourcesSubscriptions-PayPal.php\': \'2.0.12\',\n	\'SourcesThemes.php\': \'2.0.16\',\n	\'SourcesViewQuery.php\': \'2.0\',\n	\'SourcesWho.php\': \'2.0.16\',\n	\'SourcesXml.php\': \'2.0\',\n	\'Sourcessubscriptions.php\': \'2.0.12\',\n	\'DefaultAdmin.template.php\': \'2.0.16\',\n	\'DefaultAgreement.template.php\': \'2.0.16\',\n	\'DefaultBoardIndex.template.php\': \'2.0\',\n	\'DefaultCalendar.template.php\': \'2.0\',\n	\'DefaultCompat.template.php\': \'2.0\',\n	\'DefaultDisplay.template.php\': \'2.0.16\',\n	\'DefaultErrors.template.php\': \'2.0\',\n	\'DefaultGenericControls.template.php\': \'2.0\',\n	\'DefaultGenericList.template.php\': \'2.0\',\n	\'DefaultGenericMenu.template.php\': \'2.0\',\n	\'DefaultHelp.template.php\': \'2.0.6\',\n	\'DefaultLogin.template.php\': \'2.0.16\',\n	\'DefaultManageAttachments.template.php\': \'2.0\',\n	\'DefaultManageBans.template.php\': \'2.0\',\n	\'DefaultManageBoards.template.php\': \'2.0\',\n	\'DefaultManageCalendar.template.php\': \'2.0\',\n	\'DefaultManageMail.template.php\': \'2.0\',\n	\'DefaultManageMaintenance.template.php\': \'2.0\',\n	\'DefaultManageMembergroups.template.php\': \'2.0\',\n	\'DefaultManageMembers.template.php\': \'2.0\',\n	\'DefaultManageNews.template.php\': \'2.0.16\',\n	\'DefaultManagePaid.template.php\': \'2.0\',\n	\'DefaultManagePermissions.template.php\': \'2.0.9\',\n	\'DefaultManageScheduledTasks.template.php\': \'2.0\',\n	\'DefaultManageSearch.template.php\': \'2.0\',\n	\'DefaultManageSmileys.template.php\': \'2.0\',\n	\'DefaultMemberlist.template.php\': \'2.0.16\',\n	\'DefaultMessageIndex.template.php\': \'2.0\',\n	\'DefaultModerationCenter.template.php\': \'2.0\',\n	\'DefaultMoveTopic.template.php\': \'2.0\',\n	\'DefaultNotify.template.php\': \'2.0.16\',\n	\'DefaultPackages.template.php\': \'2.0\',\n	\'DefaultPersonalMessage.template.php\': \'2.0.16\',\n	\'DefaultPoll.template.php\': \'2.0\',\n	\'DefaultPost.template.php\': \'2.0.10\',\n	\'DefaultPrintpage.template.php\': \'2.0\',\n	\'DefaultProfile.template.php\': \'2.0.16\',\n	\'DefaultRecent.template.php\': \'2.0\',\n	\'DefaultRegister.template.php\': \'2.0.16\',\n	\'DefaultReminder.template.php\': \'2.0\',\n	\'DefaultReports.template.php\': \'2.0\',\n	\'DefaultSearch.template.php\': \'2.0.10\',\n	\'DefaultSendTopic.template.php\': \'2.0\',\n	\'DefaultSettings.template.php\': \'2.0\',\n	\'DefaultSplitTopics.template.php\': \'2.0\',\n	\'DefaultStats.template.php\': \'2.0\',\n	\'DefaultThemes.template.php\': \'2.0.12\',\n	\'DefaultWho.template.php\': \'2.0\',\n	\'DefaultWireless.template.php\': \'2.0.16\',\n	\'DefaultXml.template.php\': \'2.0.16\',\n	\'Defaultindex.template.php\': \'2.0.14\',\n	\'TemplateAdmin.template.php\': \'2.0.16\',\n	\'TemplateAgreement.template.php\': \'2.0.16\',\n	\'TemplateBoardIndex.template.php\': \'2.0\',\n	\'TemplateCalendar.template.php\': \'2.0\',\n	\'TemplateCompat.template.php\': \'2.0\',\n	\'TemplateDisplay.template.php\': \'2.0.16\',\n	\'TemplateErrors.template.php\': \'2.0\',\n	\'TemplateGenericControls.template.php\': \'2.0\',\n	\'TemplateGenericList.template.php\': \'2.0\',\n	\'TemplateGenericMenu.template.php\': \'2.0\',\n	\'TemplateHelp.template.php\': \'2.0.6\',\n	\'TemplateLogin.template.php\': \'2.0.16\',\n	\'TemplateManageAttachments.template.php\': \'2.0\',\n	\'TemplateManageBans.template.php\': \'2.0\',\n	\'TemplateManageBoards.template.php\': \'2.0\',\n	\'TemplateManageCalendar.template.php\': \'2.0\',\n	\'TemplateManageMail.template.php\': \'2.0\',\n	\'TemplateManageMaintenance.template.php\': \'2.0\',\n	\'TemplateManageMembergroups.template.php\': \'2.0\',\n	\'TemplateManageMembers.template.php\': \'2.0\',\n	\'TemplateManageNews.template.php\': \'2.0.16\',\n	\'TemplateManagePaid.template.php\': \'2.0\',\n	\'TemplateManagePermissions.template.php\': \'2.0.9\',\n	\'TemplateManageScheduledTasks.template.php\': \'2.0\',\n	\'TemplateManageSearch.template.php\': \'2.0\',\n	\'TemplateManageSmileys.template.php\': \'2.0\',\n	\'TemplateMemberlist.template.php\': \'2.0.16\',\n	\'TemplateMessageIndex.template.php\': \'2.0\',\n	\'TemplateModerationCenter.template.php\': \'2.0\',\n	\'TemplateMoveTopic.template.php\': \'2.0\',\n	\'TemplateNotify.template.php\': \'2.0.16\',\n	\'TemplatePackages.template.php\': \'2.0\',\n	\'TemplatePersonalMessage.template.php\': \'2.0.16\',\n	\'TemplatePoll.template.php\': \'2.0\',\n	\'TemplatePost.template.php\': \'2.0.10\',\n	\'TemplatePrintpage.template.php\': \'2.0\',\n	\'TemplateProfile.template.php\': \'2.0.16\',\n	\'TemplateRecent.template.php\': \'2.0\',\n	\'TemplateRegister.template.php\': \'2.0.16\',\n	\'TemplateReminder.template.php\': \'2.0\',\n	\'TemplateReports.template.php\': \'2.0\',\n	\'TemplateSearch.template.php\': \'2.0.10\',\n	\'TemplateSendTopic.template.php\': \'2.0\',\n	\'TemplateSettings.template.php\': \'2.0\',\n	\'TemplateSplitTopics.template.php\': \'2.0\',\n	\'TemplateStats.template.php\': \'2.0\',\n	\'TemplateThemes.template.php\': \'2.0.12\',\n	\'TemplateWho.template.php\': \'2.0\',\n	\'TemplateWireless.template.php\': \'2.0.16\',\n	\'TemplateXml.template.php\': \'2.0.16\',\n	\'Templateindex.template.php\': \'2.0.14\',\n};\n\nwindow.smfLanguageVersions = {\n	\'Admin\': \'2.0.16\',\n	\'Agreement\': \'2.0.16\',\n	\'EmailTemplates\': \'2.0.16\',\n	\'Errors\': \'2.0.16\',\n	\'Help\': \'2.0.16\',\n	\'index\': \'2.0.16\',\n	\'Install\': \'2.0.16\',\n	\'Login\': \'2.0.16\',\n	\'ManageBoards\': \'2.0\',\n	\'ManageCalendar\': \'2.0\',\n	\'ManageMail\': \'2.0\',\n	\'ManageMaintenance\': \'2.0\',\n	\'ManageMembers\': \'2.0\',\n	\'ManagePaid\': \'2.0.10\',\n	\'ManagePermissions\': \'2.0\',\n	\'ManageScheduledTasks\': \'2.0\',\n	\'ManageSettings\': \'2.0.16\',\n	\'ManageSmileys\': \'2.0\',\n	\'Manual\': \'2.0\',\n	\'ModerationCenter\': \'2.0\',\n	\'Modifications\': \'2.0\',\n	\'Modlog\': \'2.0.16\',\n	\'Packages\': \'2.0\',\n	\'PersonalMessage\': \'2.0\',\n	\'Post\': \'2.0\',\n	\'Profile\': \'2.0.16\',\n	\'Reports\': \'2.0\',\n	\'Search\': \'2.0\',\n	\'Settings\': \'2.0\',\n	\'Stats\': \'2.0\',\n	\'Themes\': \'2.0\',\n	\'Who\': \'2.0.16\',\n	\'Wireless\': \'2.0\'\n};\n','text/javascript'),(3,'latest-news.js','/smf/','language=%1$s&format=%2$s','\nwindow.smfAnnouncements = [\n	{\n		subject: \'SMF 2.0.17 has been released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=571067.0\',\n		time: \'December 30, 2019, 07:43:24 PM\',\n		author: \'Sesquipedalian\',\n		message: \'SMF 2.0.17 fixes a bug in 2.0.16 that could cause significant performance issues when retrieving RSS feeds, and fixes some warning messages that could appear when using SSI.php. We recommend updating as soon as possible.\'\n	},\n	{\n		subject: \'SMF 2.0.16 has been released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=570986.0\',\n		time: \'December 27, 2019, 07:44:07 PM\',\n		author: \'Sesquipedalian\',\n		message: \'SMF 2.0.16 fixes some important security issues and adds support for the EU\\\'s General Data Protection Regulation (GDPR) requirements.\'\n	},\n	{\n		subject: \'SMF 2.1 RC2 has been released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=566669.0\',\n		time: \'March 30, 2019, 12:27:45 PM\',\n		author: \'Sesquipedalian\',\n		message: \'Simple Machines is pleased to announce SMF 2.1 RC2. This second release candidate brings a number of bugfixes and improvements over SMF 2.1 RC1.\'\n	},\n	{\n		subject: \'SMF 2.1 RC1 has been released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=564881.0\',\n		time: \'February 04, 2019, 08:02:47 PM\',\n		author: \'Sesquipedalian\',\n		message: \'Simple Machines is proud to announce the first release candidate of the next version of SMF, which contains many bugfixes and a number of new features since 2.1 Beta 3.\'\n	},\n	{\n		subject: \'SMF 2.0.15 has been released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=557176.0\',\n		time: \'November 19, 2017, 09:03:58 PM\',\n		author: \'Colin\',\n		message: \'A patch has been released, addressing a few vulnerabilities in SMF 2.0.14 and fixing several bugs as well. We urge all forum administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.1 Beta 3 released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=554301.0\',\n		time: \'May 31, 2017, 09:21:59 PM\',\n		author: \'Colin\',\n		message: \'Simple Machines is proud to announce the third beta of the next version of SMF, which contains many bugfixes and a few new features since 2.1 Beta 2.\'\n	},\n	{\n		subject: \'SMF 2.0.14 has been released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=553855.0\',\n		time: \'May 14, 2017, 05:23:46 PM\',\n		author: \'Colin\',\n		message: \'A patch has been released, addressing a few vulnerabilities in SMF 2.0.13 and fixing several bugs as well. We urge all forum administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.13 has been released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=551061.0\',\n		time: \'January 04, 2017, 07:00:00 PM\',\n		author: \'Oldiesmann\',\n		message: \'A patch has been released, addressing a few vulnerabilities in SMF 2.0.12 and fixing several bugs as well. We urge all forum administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.12 has been released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=548871.0\',\n		time: \'September 27, 2016, 07:00:00 AM\',\n		author: \'CoreISP\',\n		message: \'A patch has been released, addressing a vulnerability in SMF 2.0.11 and fixing several bugs as well. We urge all forum administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.11 has been released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=539888.0\',\n		time: \'September 18, 2015, 10:56:19 PM\',\n		author: \'Oldiesmann\',\n		message: \'A patch has been released, addressing a vulnerability in SMF 2.0.10. We urge all forum administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.1 Beta 2 released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=538198.0\',\n		time: \'July 16, 2015, 05:45:30 PM\',\n		author: \'Oldiesmann\',\n		message: \'Simple Machines is proud to announce the second beta of the next version of SMF, which contains many bugfixes and a few new features since 2.1 Beta 1!\'\n	},\n	{\n		subject: \'SMF 2.0.10 and 1.1.21 have been released.\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=535828.0\',\n		time: \'April 24, 2015, 10:09:00 AM\',\n		author: \'Oldiesmann\',\n		message: \'A patch has been released, addressing a few bugs in SMF 2.0.x and SMF 1.1.x. We urge all forum administrators to upgrade to SMF 2.0.10 or 1.1.21&mdash;simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.1 Beta 1 released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=530233.0\',\n		time: \'November 20, 2014, 07:40:06 PM\',\n		author: \'Oldiesmann\',\n		message: \'Simple Machines is proud to announce the first beta of the next version of SMF, with many improvements and new features!\'\n	},\n	{\n		subject: \'SMF 2.0.9 and 1.1.20 security patches have been released.\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=528448.0\',\n		time: \'October 02, 2014, 07:13:50 PM\',\n		author: \'Oldiesmann\',\n		message: \'Critical security patches have been released, addressing a few vulnerabilities in SMF 2.0.x and SMF 1.1.x. We urge all administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.8 released.\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=524016.0\',\n		time: \'June 18, 2014, 10:11:32 AM\',\n		author: \'Oldiesmann\',\n		message: \'A patch has been released, addressing memory issues with 2.0.7, MySQL 5.6 compatibility issues and a rare memberlist search bug. We urge all forum administrators to upgrade to SMF 2.0.8&mdash;simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.7 released.\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=517205.0\',\n		time: \'January 20, 2014, 09:48:07 PM\',\n		author: \'Oldiesmann\',\n		message: \'A patch has been released, addressing several bugs, including PHP 5.5 compatibility.  We urge all forum administrators to upgrade to SMF 2.0.7&mdash;simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.6 and 1.1.19 security patches have been released.\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=512964.0\',\n		time: \'October 22, 2013, 09:00:00 AM\',\n		author: \'Illori\',\n		message: \'Critical security patches have been released, addressing few vulnerabilities in SMF 2.0.x and SMF 1.1.x. We urge all administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.5 security patches has been released.\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=509417.0\',\n		time: \'August 12, 2013, 08:34:06 PM\',\n		author: \'Oldiesmann\',\n		message: \'A critical security patch has been released, addressing a few vulnerabilities in SMF 2.0.x. We urge all administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.4 and 1.1.18 security patches have been released.\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=496403.0\',\n		time: \'February 01, 2013, 05:27:00 PM\',\n		author: \'emanuele\',\n		message: \'Critical security patches have been released, addressing few vulnerabilities in SMF 2.0.x and SMF 1.1.x. We urge all administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.3, 1.1.17 and 1.0.23 security patches have been released.\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=492786.0\',\n		time: \'December 16, 2012, 11:41:05 PM\',\n		author: \'emanuele\',\n		message: \'Security patches have been released, addressing a vulnerability in SMF 2.0.x, SMF 1.1.x and SMF 1.0.x. We urge all administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.2 and 1.1.16 security patches have been released.\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=463103.0\',\n		time: \'December 23, 2011, 12:41:31 AM\',\n		author: \'Norv\',\n		message: \'Critical security patches have been released, addressing vulnerabilities in SMF 2.0.x and SMF 1.1.x. We urge all administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0.1 and 1.1.15 security patches have been released.\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=452888.0\',\n		time: \'September 18, 2011, 04:48:18 PM\',\n		author: \'Norv\',\n		message: \'Critical security patches have been released, addressing vulnerabilities in SMF 2.0 and SMF 1.1.x. We urge all administrators to upgrade as soon as possible. Just visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0 Gold\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=421547.0\',\n		time: \'June 04, 2011, 05:00:00 PM\',\n		author: \'Norv\',\n		message: \'SMF 2.0 has gone Gold! Please upgrade your forum from older versions, as 2.0 is now the stable version, and mods and themes will be built on it.\'\n	},\n	{\n		subject: \'SMF 1.1.13, 2.0 RC4 security patch and SMF 2.0 RC5 released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=421547.0\',\n		time: \'February 11, 2011, 03:16:35 PM\',\n		author: \'Norv\',\n		message: \'Simple Machines announces the release of important security patches for SMF 1.1.x and SMF 2.0 RC4, along with the fifth Release Candidate of SMF 2.0. Please visit the Simple Machines site for more information on how you can help test this new release.\'\n	},\n	{\n		subject: \'SMF 2.0 RC4 and SMF 1.1.12 released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=407256.0\',\n		time: \'November 01, 2010, 12:14:21 PM\',\n		author: \'Norv\',\n		message: \'Simple Machines is pleased to announce the release of the fourth Release Candidate of SMF 2.0, along with an important security patch for SMF 1.1.x. Please visit the Simple Machines site for more information on how you can help test this new release.\'\n	},\n	{\n		subject: \'SMF 2.0 RC3 Public released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=369616.0\',\n		time: \'March 08, 2010, 06:03:11 PM\',\n		author: \'Aaron\',\n		message: \'Simple Machines is pleased to announce the release of the third Release Candidate of SMF 2.0. Please visit the Simple Machines site for more information on how you can help test this new release.\'\n	},\n	{\n		subject: \'SMF 1.1.11 released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=351341.0\',\n		time: \'December 01, 2009, 05:59:19 PM\',\n		author: \'SleePy\',\n		message: \'A patch has been released, addressing multiple vulnerabilites.  We urge all forum administrators to upgrade to 1.1.11. Simply visit the package manager to install the patch. Also for those still using the 1.0 branch, version 1.0.19 has been released.\'\n	},\n	{\n		subject: \'SMF 2.0 RC2 Public released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=346813.0\',\n		time: \'November 08, 2009, 07:10:03 PM\',\n		author: \'Aaron\',\n		message: \'Simple Machines is very pleased to announce the release of the second Release Candidate of SMF 2.0. Please visit the Simple Machines site for more information on how you can help test this new release.\'\n	},\n	{\n		subject: \'SMF 1.1.10 and 2.0 RC1.2 released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=324169.0\',\n		time: \'July 14, 2009, 07:05:19 PM\',\n		author: \'Compuart\',\n		message: \'A patch has been released, addressing a few security vulnerabilites.  We urge all forum administrators to upgrade to either 1.1.10 or 2.0 RC1.2, depending on the current version. Simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 1.1.9 and 2.0 RC1-1 released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=311899.0\',\n		time: \'May 20, 2009, 08:40:41 PM\',\n		author: \'Compuart\',\n		message: \'A patch has been released, addressing multiple security vulnerabilites.  We urge all forum administrators to upgrade to either 1.1.9 or 2.0 RC1-1, depending on the current version. Simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0 RC1 Public Released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=290609.0\',\n		time: \'February 04, 2009, 11:10:01 PM\',\n		author: \'Compuart\',\n		message: \'Simple Machines are very pleased to announce the release of the first Release Candidate of SMF 2.0. Please visit the Simple Machines site for more information on how you can help test this new release.\'\n	},\n	{\n		subject: \'SMF 1.1.8\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=290608.0\',\n		time: \'February 04, 2009, 11:08:44 PM\',\n		author: \'Compuart\',\n		message: \'A patch has been released, addressing multiple security vulnerabilites.  We urge all forum administrators to upgrade to SMF 1.1.8&mdash;simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 1.1.7\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=272861.0\',\n		time: \'November 07, 2008, 02:15:36 PM\',\n		author: \'Compuart\',\n		message: \'A patch has been released, addressing multiple security vulnerabilites.  We urge all forum administrators to upgrade to SMF 1.1.7&mdash;simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 1.1.6\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=260145.0\',\n		time: \'September 07, 2008, 04:38:05 AM\',\n		author: \'Compuart\',\n		message: \'A patch has been released fixing a few bugs and addressing a security vulnerability.  We urge all forum administrators to upgrade to SMF 1.1.6&mdash;simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 1.1.5\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=236816.0\',\n		time: \'April 20, 2008, 09:56:14 PM\',\n		author: \'Compuart\',\n		message: \'A patch has been released fixing a few bugs and addressing some security vulnerabilities.  We urge all forum administrators to upgrade to SMF 1.1.5&mdash;simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0 Beta 3 Public Released\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=228921.0\',\n		time: \'March 17, 2008, 03:20:21 PM\',\n		author: \'Grudge\',\n		message: \'Simple Machines are very pleased to announce the release of the first public beta of SMF 2.0. Please visit the Simple Machines site for more information on how you can help test this new release.\'\n	},\n	{\n		subject: \'SMF 1.1.4\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=196380.0\',\n		time: \'September 24, 2007, 09:07:36 PM\',\n		author: \'Compuart\',\n		message: \'A patch has been released to address some security vulnerabilities discovered in SMF 1.1.3.  We urge all forum administrators to upgrade to SMF 1.1.4&mdash;simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 2.0 Beta 1 Released to Charter Members\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=190812.0\',\n		time: \'August 25, 2007, 07:29:25 AM\',\n		author: \'Grudge\',\n		message: \'Simple Machines are pleased to announce the first beta of SMF 2.0 has been released to our Charter Members. Visit the Simple Machines site for information on what\\\'s new\'\n	},\n	{\n		subject: \'SMF 1.1.3\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=178757.0\',\n		time: \'June 24, 2007, 09:52:40 PM\',\n		author: \'Thantos\',\n		message: \'A number of small bugs and a potential security issue have been discovered in SMF 1.1.2.  We urge all forum administrators to upgrade to SMF 1.1.3&mdash;simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 1.1.2\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=149553.0\',\n		time: \'February 11, 2007, 08:35:45 AM\',\n		author: \'Grudge\',\n		message: \'A patch has been released to address a number of outstanding bugs in SMF 1.1.1, including several around UTF-8 language support. In addition this patch offers improved image verification support and fixes a couple of low risk security related bugs. If you need any help upgrading please visit our forum.\'\n	},\n	{\n		subject: \'SMF 1.1.1\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=134971.0\',\n		time: \'December 17, 2006, 09:33:41 AM\',\n		author: \'Grudge\',\n		message: \'A number of small bugs and a potential security issue have been discovered in SMF 1.1. We urge all forum administrators to upgrade to SMF 1.1.1 - simply visit the package manager to install the patch.\'\n	},\n	{\n		subject: \'SMF 1.1\',\n		href: \'https://www.simplemachines.org/community/index.php?topic=131008.0\',\n		time: \'December 02, 2006, 02:53:16 PM\',\n		author: \'Grudge\',\n		message: \'SMF 1.1 has gone gold!  If you are using an older version, please upgrade as soon as possible - many things have been changed and fixed, and mods and packages will expect you to be using 1.1.  If you need any help upgrading custom modifications to the new version, please feel free to ask us at our forum.\'\n	}\n];\nif (window.smfVersion < \"SMF 2.0\")\n{\n	window.smfUpdateNotice = \'SMF 2.0 Final has now been released. To take advantage of the improvements available in SMF 2.0 we recommend upgrading as soon as is practical.\';\n	window.smfUpdateCritical = false;\n}\n\nif (document.getElementById(\"yourVersion\"))\n{\n	var yourVersion = getInnerHTML(document.getElementById(\"yourVersion\"));\n	if (yourVersion == \"SMF 1.0.4\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_1-0-5_package.tar.gz\";\n	else if (yourVersion == \"SMF 1.0.5\" || yourVersion == \"SMF 1.0.6\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.7_1.1-RC2-1.tar.gz\";\n		window.smfUpdateCritical = false;\n	}\n	else if (yourVersion == \"SMF 1.0.7\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_1-0-8_package.tar.gz\";\n	else if (yourVersion == \"SMF 1.0.8\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1-0-9_1-1-rc3-1.tar.gz\";\n	else if (yourVersion == \"SMF 1.0.9\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_1-0-10_patch.tar.gz\";\n	else if (yourVersion == \"SMF 1.0.10\" || yourVersion == \"SMF 1.1.2\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.1.3_1.0.11.tar.gz\";\n	else if (yourVersion == \"SMF 1.0.11\" || yourVersion == \"SMF 1.1.3\" || yourVersion == \"SMF 2.0 beta 1\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.12_1.1.4_2.0.b1.1.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.0.12\" || yourVersion == \"SMF 1.1.4\" || yourVersion == \"SMF 2.0 beta 3 Public\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.13_1.1.5_2.0-b3.1.zip\";\n	else if (yourVersion == \"SMF 1.0.13\" || yourVersion == \"SMF 1.1.5\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.14_1.1.6.zip\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.0.14\" || yourVersion == \"SMF 1.1.6\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.15_1.1.7.zip\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.0.15\" || yourVersion == \"SMF 1.1.7\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.16_1.1.8.zip\";\n		window.smfUpdateCritical = false;\n	}\n	else if (yourVersion == \"SMF 1.0.16\" || yourVersion == \"SMF 1.1.8\" || yourVersion == \"SMF 2.0 RC1\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.17_1.1.9_2.0-RC1-1.zip\";\n	else if (yourVersion == \"SMF 1.0.17\" || yourVersion == \"SMF 1.1.9\" || yourVersion == \"SMF 2.0 RC1-1\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.18_1.1.10-2.0-RC1.2.zip\";\n	else if (yourVersion == \"SMF 1.0.18\" || yourVersion == \"SMF 1.1.10\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.19_1.1.11.zip\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.0.19\" || yourVersion == \"SMF 1.1.11\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.20_1.1.12.tar.gz\";\n	}\n	else if (yourVersion == \"SMF 1.0.20\" || yourVersion == \"SMF 1.1.12\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.21_1.1.13.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.1.14\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.1.15.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 2.0\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.1.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.1.15\" || yourVersion == \"SMF 1.0.21\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.22_1.1.16.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 2.0.1\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.2.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.1.16\" || yourVersion == \"SMF 1.0.22\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.23_1.1.17.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.1.17\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.1.18.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 2.0.2\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.3.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 2.0.3\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.4.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 2.0.4\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.5.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.1.18\" || yourVersion == \"SMF 2.0.5\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.1.19_2.0.6.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.1.19\" || yourVersion == \"SMF 2.0.8\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.1.20_2.0.9.zip\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.1.20\" || yourVersion == \"SMF 2.0.9\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_1.1.21_2.0.10.zip\";\n	else if (yourVersion == \"SMF 2.0.10\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.11.zip\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 1.1\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_1-1-1_patch.tar.gz\";\n	else if (yourVersion == \"SMF 1.1.1\")\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_1-1-2_patch.tar.gz\";\n	else if (yourVersion == \"SMF 2.0.11\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.12.zip\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 2.0.12\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.13.zip\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 2.0.13\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.14.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 2.0.14\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.15.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 2.0.15\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.16.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n	else if (yourVersion == \"SMF 2.0.16\")\n	{\n		window.smfUpdatePackage = \"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.17.tar.gz\";\n		window.smfUpdateCritical = true;\n	}\n}\n\nif (document.getElementById(\'credits\'))\n	setInnerHTML(document.getElementById(\'credits\'), getInnerHTML(document.getElementById(\'credits\')).replace(/anyone we may have missed/, \'<span title=\"And you thought you had escaped the credits, hadn\\\'t you, Zef Hemel?\">anyone we may have missed</span>\'));\n','text/javascript'),(4,'latest-packages.js','/smf/','language=%1$s&version=%3$s','var actionurl = \'?action=admin;area=packages;sa=download;get;package=\';if (typeof(window.smfForum_sessionvar) == \"undefined\")\n	window.smfForum_sessionvar = \'sesc\';\n\nif (typeof(window.smfVersion) != \"undefined\")\n{\n	var version = window.smfVersion;\n\n	// We might need this...\n	var smf_modificationInfo = {};\n	\n	switch (version)\n	{\n		case \"SMF 2.0 Beta 1\":\n			window.smfLatestPackages = \'A few security vulnerabilities have been identified in SMF 2.0 beta 1 as well as a few small bugs. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.12_1.1.4_2.0.b1.1.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to update your version of SMF to 2.0 beta 1.1.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0 Beta 3 Public\":\n			window.smfLatestPackages = \'A few security vulnerabilities have been identified in SMF 2.0 beta 3 as well as a few small bugs. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.13_1.1.5_2.0-b3.1.zip;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to update your version of SMF to 2.0 beta 3.1.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0 RC1\":\n			window.smfLatestPackages = \'A few security vulnerabilities have been identified in SMF 2.0 RC1. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.17_1.1.9_2.0-RC1-1.zip;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to update your version of SMF to 2.0-RC1-1.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0 RC1-1\":\n			window.smfLatestPackages = \'A few security vulnerabilities have been identified in SMF 2.0 RC1-1. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_1.0.18_1.1.10-2.0-RC1.2.zip;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to update your version of SMF to 2.0-RC1.2 .<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0 RC4\":\n			if (typeof(window.smfRC4patch) == \"undefined\")\n				window.smfLatestPackages = \'A few security vulnerabilities have been identified in SMF 2.0 RC4. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0-RC4_security.zip;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to install the security patch for SMF 2.0 RC4.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			else\n				showLatestPackages();\n			break;\n		case \"SMF 2.0\":\n			window.smfLatestPackages = \'A few security vulnerabilities have been identified in SMF 2.0. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.1.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to update your forum.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.1\":\n			window.smfLatestPackages = \'A few security vulnerabilities and bugs in SMF 2.0.1 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.2.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.2\":\n			window.smfLatestPackages = \'A security vulnerability and few bugs in SMF 2.0.2 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.3.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.3\":\n			window.smfLatestPackages = \'A few security vulnerabilities in SMF 2.0.3 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.4.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.4\":\n			window.smfLatestPackages = \'A few security vulnerabilities in SMF 2.0.4 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.5.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.5\":\n			window.smfLatestPackages = \'A few security vulnerabilities and bugs in SMF 2.0.5 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_1.1.19_2.0.6.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.6\":\n			window.smfLatestPackages = \'PHP 5.5 compatibility issues and several other bugs have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.7.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.7.<br /><br />If you have any problems applying it, you can try to use the upgrade file posted on the downloads page - although, any modifications you have installed will need to be uninstalled when you use that method.<br />Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.7\":\n			window.smfLatestPackages = \'Memory issues encountered with SMF 2.0.7, some MySQL 5.6 compatibility issues and a rare bug with the memberlist search feature have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.8.zip;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.8.<br /><br />If you have any problems applying it, you can try to use the upgrade file posted on the downloads page - although, any modifications you have installed will need to be uninstalled when you use that method.<br />Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.8\":\n			window.smfLatestPackages = \'A few security vulnerabilities and bugs in SMF 2.0.8 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_1.1.20_2.0.9.zip;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.9.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.9\":\n			window.smfLatestPackages = \'A few bugs in SMF 2.0.9 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_1.1.21_2.0.10.zip;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.10.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled.  Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.10\":\n			window.smfLatestPackages = \'A security vulnerability has been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.11.zip;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.11.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled. Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.11\":\n			window.smfLatestPackages = \'A few security vulnerabilities and bugs in SMF 2.0.11 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.12.zip;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.12.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled. Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.12\":\n			window.smfLatestPackages = \'A few security vulnerabilities and bugs in SMF 2.0.12 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.13.zip;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.13.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled. Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.13\":\n			window.smfLatestPackages = \'A few security vulnerabilities and bugs in SMF 2.0.13 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.14.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.14.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled. Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.14\":\n			window.smfLatestPackages = \'A few security vulnerabilities and bugs in SMF 2.0.14 have been fixed. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.15.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.15.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled. Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.15\":\n			window.smfLatestPackages = \'SMF 2.0.16 fixes some important security issues and adds support for the EU\\\'s General Data Protection Regulation (GDPR) requirements. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.16.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.16.<br /><br />If you have any problems applying it, you can use the version posted on the downloads page - although, any modifications you have installed will need to be uninstalled. Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n		case \"SMF 2.0.16\":\n			window.smfLatestPackages = \'SMF 2.0.17 fixes a bug introduced in 2.0.16 that could cause significant performance issues when retrieving RSS feeds, and fixes some annoying warning messages that could appear when using SSI.php. You can install <a href=\"\' + window.smfForum_scripturl + actionurl + \'http://custom.simplemachines.org/mods/downloads/smf_patch_2.0.17.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">this patch (click here to install)</a> to fix your forum and update it to 2.0.17.<br /><br />If you have any problems applying it, you can use the \"Large upgrade\" posted on the <a href=\"https://download.simplemachines.org/\">Download</a> page - although, any modifications you have installed will need to be reinstalled. Please post on the <a href=\"https://www.simplemachines.org/community/index.php\">forum</a> if you need more help.\';\n			break;\n        default:\n			showLatestPackages();\n			break;\n	}\n}\nelse\n{\n	window.smfLatestPackages = \'For the package manager to function properly, please upgrade to the latest version of SMF.\';\n}\n\n// This function shows latest mods when there isn\'t anything else to display\nfunction showLatestPackages()\n{\n	smf_modificationInfo = {\n	\n		4251: {\n			name: \'Invitation System 1.3\',\n			versions: [\'95\'],\n			desc: \'<div align=\"center\"><span style=\"color: brown;\" class=\"bbc_color\"><span style=\"font-size: 20pt;\" class=\"bbc_size\"><strong>Invitation System</strong></span></span><br /><span style=\"color: brown;\" class=\"bbc_color\">Invitation system to your forum | Version 1.3</span><br />Original Author: <a href=\"https://www.simplemachines.org/community/index.php?topic=391962.0\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">hadesflames</a> | <a href=\"https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">License</a></div><br /><span style=\"color: teal;\" class=\"bbc_color\"><span style=\"font-size: 14pt;\" class=\"bbc_size\"><strong>Introduction</strong></span></span><br /><hr />The referral part adds a field to a user&#039;s profile that shows who invited that user. For other members to see this field, they need to have permission to do so, which can be granted to different member groups in the permissions section of the admin panel. Regardless of that permission, users will be able to see who invited them.<br /><br />The gift is a unique feature that allows members to send their own gifts to other members of the forum. In order for a member to be able to gift their invites to other members, they need to have the appropriate permission, same as the referral permission. If you don&#039;t want to use this feature, simply don&#039;t give anyone the permission.<br /><br /><span style=\"color: teal;\" class=\"bbc_color\"><span style=\"font-size: 14pt;\" class=\"bbc_size\"><strong>Language</strong></span></span><br /><hr />Is available in:<br /><ul class=\"bbc_list\"><li>English</li><li>Spanish Latin</li><li>Spanish Es</li><li>Turkish</li></ul><br /><span style=\"color: teal;\" class=\"bbc_color\"><span style=\"font-size: 14pt;\" class=\"bbc_size\"><strong>Compatibility</strong></span></span><br /><hr />Prepared to work with the branch 2.0.x of SMF, it is tested only with the default theme. Also you do not have to worry about damaging the source code of your installation because this modification uses hooks.<br /><br /><span style=\"color: teal;\" class=\"bbc_color\"><span style=\"font-size: 14pt;\" class=\"bbc_size\"><strong>License</strong></span></span><br /><hr />This mod is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported license. If you plan on distributing this mod in any way, there must be a link back to this page unless otherwise stated by a written agreement with the author. For full license details, visit this page: <br /><br /><a href=\"https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode</a> <br /><br />or for a summary, visit this page, but take note of the disclaimer: <br /><br /><a href=\"https://creativecommons.org/licenses/by-nc-sa/3.0/\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">https://creativecommons.org/licenses/by-nc-sa/3.0/</a>\',\n			file: \'Invitation System v1.3.zip\'\n		},\n		4250: {\n			name: \'Track IP on ip-adress.com 1.2\',\n			versions: [\'95\', \'93\'],\n			desc: \'<hr /><div align=\"center\"><span style=\"color: red;\" class=\"bbc_color\"><span style=\"font-size: 16pt;\" class=\"bbc_size\"><strong>Track_IP_on_ip-adress.com</strong></span></span><br /><strong>By Lesmond</strong><br /></div><hr /><br /><span style=\"color: blue;\" class=\"bbc_color\"><strong><span style=\"font-size: 12pt;\" class=\"bbc_size\"><span class=\"bbc_u\">Install Requirements</span></span></strong></span><br />This mod was tested on SMF 2.0.17, as well as SMF 2.1 RC* and up. SMF 1.x is not and will not be supported.<br /><br /><span style=\"color: blue;\" class=\"bbc_color\"><strong><span style=\"font-size: 12pt;\" class=\"bbc_size\"><span class=\"bbc_u\">Introduction</span></span></strong></span><br />This mod adds a new IP lookup to your forum, to the &quot;Look up IP on a regional whois-server&quot; page.\',\n			file: \'ip-adress.com-Tracker.zip\'\n		},\n		4249: {\n			name: \'Stack Trace 1.0\',\n			versions: [\'95\'],\n			desc: \'<span style=\"font-family: Times New Roman;\" class=\"bbc_font\"><span style=\"color: #cc6633;\" class=\"bbc_color\"><span style=\"font-size: 1.45em;\" class=\"bbc_size\"><strong>Stack Trace</strong> 1.0</span></span></span><br /><hr /><a href=\"http://opensource.org/licenses/MIT\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://camo.githubusercontent.com/d7b0ca6383644d5ac81e234f8d2249b731a1407b/687474703a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d3030393939392e737667\" alt=\"\" class=\"bbc_img\" /></a> <a href=\"https://www.paypal.me/JohnRayes\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://camo.githubusercontent.com/e03e24ac37094afa6d1d089fc32de8027e9b4988/687474703a2f2f696d672e736869656c64732e696f2f62616467652f50617950616c2d242d3030393936362e737667\" alt=\"\" class=\"bbc_img\" /></a><br /><hr />Show the backtrace in the error log<br /><br /><span style=\"font-family: Times New Roman;\" class=\"bbc_font\"><span style=\"color: #cc6633;\" class=\"bbc_color\"><span style=\"font-size: 1.35em;\" class=\"bbc_size\"><strong>Introduction:</strong></span></span></span><br /><hr />In simple terms, a stack trace is a list of the method calls that the application was in the middle of when an error was encountered.<br /><br />Tracing the call stack is important for complex codebases such as SMF because doing so helps software engineers and other developers find bugs in the program. Because of the nature of modern code syntax, and the complexity of the average project, looking for bugs can be very difficult. A stack trace is just one of many tools that can be useful in finding bugs or glitches.<br /><br />This mod works by calling <tt class=\"bbc_tt\">debug_backtrace()</tt> from <tt class=\"bbc_tt\">log_error</tt> to ask PHP to trace the call stack. The results are then serialized into a database field for viewing by the admin when the error log is opened.\',\n			file: \'stack_trace.zip\'\n		},\n		3952: {\n			name: \'Styled Maintenance Mode Message 1.4\',\n			versions: [\'80\', \'82\', \'91\', \'90\', \'93\'],\n			desc: \'<hr /><div align=\"center\"><span style=\"color: red;\" class=\"bbc_color\"><span style=\"font-size: 16pt;\" class=\"bbc_size\"><strong>STYLED MAINTENANCE MODE MESSAGE v1.4</strong></span></span><br /><a href=\"http://www.simplemachines.org/community/index.php?action=profile;u=253913\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>By Dougiefresh</strong></a> -&gt; <a href=\"http://custom.simplemachines.org/mods/index.php?mod=3952\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Link to Mod</a><br /></div><hr /><br /><span style=\"color: blue;\" class=\"bbc_color\"><strong><span style=\"font-size: 12pt;\" class=\"bbc_size\"><span class=\"bbc_u\">Introduction</span></span></strong></span><br />SMF has <strong>TWO</strong> maintenance modes, as defined in <strong>Settings.php</strong> by the variable <strong>$maintenance</strong> in your forum folder.&nbsp; Setting this variable to <strong>1</strong> allows the adminstrators access to perform any necessary actions that don&#039;t require taking the database offline.&nbsp; Setting this variable to <strong>2</strong> (hardcore maintenance mode) makes the forum itself unaccessable for <strong>EVERYBODY</strong>.&nbsp; Not even adminstrators can log into the forum.<br /><br /><span style=\"color: blue;\" class=\"bbc_color\"><strong><span style=\"font-size: 12pt;\" class=\"bbc_size\"><span class=\"bbc_u\">What This Mod Changes</span></span></strong></span><br />When any Simple Machines forum is in maintenance mode (where <em>$maintenance</em> in <strong>Settings.php</strong> is set to 2), there is absolutely no CSS style to make the maintenance message look consistent with the rest of the site.&nbsp; This mod attempts to resolves this issue, using the default theme CSS, to style the maintenance mode message shown to the user.&nbsp; <br /><br /><a href=\"https://www.simplemachines.org/community/index.php?action=profile;u=318771\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Arantor</a> stated in <a href=\"https://www.simplemachines.org/community/index.php?topic=528839.msg3755027#msg3755027\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">this post</a>:<br /><div class=\"quoteheader\"><div class=\"topslice_quote\">Quote</div></div><blockquote class=\"bbc_standard_quote\">There are two levels of maintenance mode. General maintenance mode - which shows the theme like it should, and hardcore maintenance mode, which shows a basic page.<br /><br />Considering that the ONLY time the white screen should be applicable is during upgrades - in which state even the default theme is by definition in flux and not necessarily reliable to be used<br /></blockquote><div class=\"quotefooter\"><div class=\"botslice_quote\"></div></div>(Yes, there are several more lines in the post which are omitted!)<br /><br /><span style=\"color: blue;\" class=\"bbc_color\"><strong><span style=\"font-size: 12pt;\" class=\"bbc_size\"><span class=\"bbc_u\">Restrictions</span></span></strong></span><br />Since theme support has not been loaded as of this point, other themes cannot be selected within the UI at this point.&nbsp; This may change in future versions, but I doubt it.<br /><br /><span style=\"color: blue;\" class=\"bbc_color\"><strong><span style=\"font-size: 12pt;\" class=\"bbc_size\"><span class=\"bbc_u\">Admin Settings</span></span></strong></span><br />There are none.&nbsp; You must uninstall this mod to remove it.<br /><br /><span style=\"color: blue;\" class=\"bbc_color\"><strong><span style=\"font-size: 12pt;\" class=\"bbc_size\"><span class=\"bbc_u\">Compatibility Notes</span></span></strong></span><br />This mod was tested on SMF 2.0.9, but should work on SMF 2.1 Beta 1, as well as SMF 2.0 and up.&nbsp; SMF 1.x is not and will not be supported.<br /><br /><span style=\"color: blue;\" class=\"bbc_color\"><strong><span style=\"font-size: 12pt;\" class=\"bbc_size\"><span class=\"bbc_u\">Changelog</span></span></strong></span><br />The changelog can be viewed at <a href=\"http://www.xptsp.com/board/free-modifications/styled-maintenance-mode-message/?tab=1\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">XPtsp.com</a>.<br /><br /><span style=\"color: blue;\" class=\"bbc_color\"><strong><span style=\"font-size: 12pt;\" class=\"bbc_size\"><span class=\"bbc_u\">License</span></span></strong></span><br />Copyright (c) 2015 - 2018, Douglas Orend<br />All rights reserved.<br /><br />Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:<br /><br />1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.<br /><br />2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.<br /><br />THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\',\n			file: \'Styled_Maintenance_Mode_Message_v1.4.zip\'\n		}	};\n	var smf_latestModifications = [4251, 4250, 4249];\n	\n	window.smfLatestPackages = \'\\\n		<div id=\"smfLatestPackagesWindow\"style=\"overflow: auto;\">\\\n			<h3 style=\"margin: 0; padding: 4px;\">New Packages:</h3>\\\n			<img src=\"https://www.simplemachines.org/smf/images/package.png\" width=\"102\" height=\"98\" style=\"float: right; margin: 4px;\" alt=\"(package)\" />\\\n			<ul style=\"list-style: none; margin-top: 3px; padding: 0 4px;\">\';\n	\n	for (var i = 0; i < smf_latestModifications.length; i++)\n	{\n		var id_mod = smf_latestModifications[i];\n	\n		window.smfLatestPackages += \'<li><a href=\"javascript:smf_packagesMoreInfo(\' + id_mod + \');void(0);\">\' + smf_modificationInfo[id_mod].name + \'</a></li>\';\n	}\n	\n	window.smfLatestPackages += \'\\\n			</ul>\';\n	\n	if (typeof(window.smfVersion) != \"undefined\" && (window.smfVersion < \"SMF 1.0.6\" || (window.smfVersion == \"SMF 1.1 RC2\" && !in_array(\'smf:smf-1.0.7\', window.smfInstalledPackages))))\n		window.smfLatestPackages += \'\\\n			<h3 class=\"error\" style=\"margin: 0; padding: 4px;\">Updates for SMF:</h3>\\\n			<div style=\"padding: 0 4px;\">\\\n				<a href=\"\' + window.smfForum_scripturl + actionurl + \'https://custom.simplemachines.org/mods/downloads/smf_patch_1.0.7_1.1-RC2-1.tar.gz;\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">Security update (X-Forwarded-For header vulnerability)</a>\\\n			</div>\';\n	else\n		window.smfLatestPackages += \'\\\n			<h3 style=\"margin: 0; padding: 4px;\">Package of the Moment:</h3>\\\n			<div style=\"padding: 0 4px;\">\\\n				<a href=\"javascript:smf_packagesMoreInfo(3952);void(0);\">Styled Maintenance Mode Message 1.4</a>\\\n			</div>\';\n	\n	window.smfLatestPackages += \'\\\n		</div>\';\n}\n\nfunction findTop(el)\n{\n	if (typeof(el.tagName) == \"undefined\")\n		return 0;\n\n	var skipMe = in_array(el.tagName.toLowerCase(), el.parentNode ? [\"tr\", \"tbody\", \"form\"] : []);\n	var coordsParent = el.parentNode ? \"parentNode\" : \"offsetParent\";\n\n	if (el[coordsParent] == null || typeof(el[coordsParent].offsetTop) == \"undefined\")\n		return skipMe ? 0 : el.offsetTop;\n	else\n		return (skipMe ? 0 : el.offsetTop) + findTop(el[coordsParent]);\n}\n\nfunction in_array(item, array)\n{\n	for (var i in array)\n	{\n		if (array[i] == item)\n			return true;\n	}\n\n	return false;\n}\n\nfunction smf_packagesMoreInfo(id)\n{\n	window.smfLatestPackages_temp = document.getElementById(\"smfLatestPackagesWindow\").innerHTML;\n\n	setInnerHTML(document.getElementById(\"smfLatestPackagesWindow\"),\n	\'\\\n		<h3 style=\"margin: 0; padding: 4px;\">\' + smf_modificationInfo[id].name + \'</h3>\\\n		<h4 style=\"padding: 4px; margin: 0;\"><a href=\"\' + window.smfForum_scripturl + actionurl + \'https://custom.simplemachines.org/mods/downloads/\' + id + \'/\' + smf_modificationInfo[id].file + \';\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">Install Now!</a></h4>\\\n		<div style=\"margin: 4px;\">\' + smf_modificationInfo[id].desc.replace(/<a href/g, \'<a href\') + \'</div>\\\n		<div class=\"titlebg\" style=\"padding: 4px; margin: 0;\"><a href=\"javascript:smf_packagesBack();void(0);\">(go back)</a></div>\');\n}\n\nfunction smf_packagesBack()\n{\n	setInnerHTML(document.getElementById(\"smfLatestPackagesWindow\"), window.smfLatestPackages_temp);\n	window.scrollTo(0, findTop(document.getElementById(\"smfLatestPackagesWindow\")) - 10);\n}\n','text/javascript'),(5,'latest-smileys.js','/smf/','language=%1$s&version=%3$s','var actionurl = \'?action=admin;area=smileys;sa=install;set_gz=\';\nif (typeof(window.smfForum_sessionvar) == \"undefined\")\n	window.smfForum_sessionvar = \'sesc\';\n\nvar smf_smileysInfo = {\n\n	4233: {\n		name: \'unicode emoji for smf 1.1\',\n		versions: [\'91\', \'93\'],\n		desc: \'unicode emoji Smilies by ~ibtisam midlet<br /><br />how to install:<br />firstly to active the Smilies after instalation go to [your forum name]/admin/?area=smileys;sa=modifyset<br /><br /><img src=\"https://github.com/ibtisammidlet/unicode-emoji-for-smf/raw/master/1.PNG\" alt=\"\" width=\"600\" height=\"92\" class=\"bbc_img resized\" /><br />save then that go to [your forum name]/admin/?area=smileys;sa=settings;<br /><img src=\"https://github.com/ibtisammidlet/unicode-emoji-for-smf/raw/master/2.PNG\" alt=\"\" width=\"600\" height=\"195\" class=\"bbc_img resized\" /><br />save then then it will works <img src=\"https://static.simplemachinesweb.com/smf/smileys/default/smiley.gif\" alt=\"&#58;&#41;\" title=\"Smiley\" class=\"smiley\" /><br /><img src=\"https://github.com/ibtisammidlet/unicode-emoji-for-smf/raw/master/3.PNG\" alt=\"\" width=\"600\" height=\"301\" class=\"bbc_img resized\" /><br /><br /><a href=\"https://justinmidlet.blogspot.com/2019/05/unicode-emoji-smilies-for-simple.html\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">unicode emoji v1.0 mod for SMF</a> is licensed under MIT and CC-BY 4.0<br /><br />emoji icons are licensed to:<br />Copyright 2019 Twitter, Inc and other contributors<br />Code licensed under the MIT License: <a href=\"http://opensource.org/licenses/MIT\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">http://opensource.org/licenses/MIT</a><br />Graphics licensed under CC-BY 4.0: <a href=\"https://creativecommons.org/licenses/by/4.0/\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">https://creativecommons.org/licenses/by/4.0/</a><br />&gt;&gt;<a href=\"https://twemoji.twitter.com/\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">https://twemoji.twitter.com/</a><br /><br /><br />Enjoy the Smilies :&quot;)<br /><br />change log:<br />1.1 - fixed the big size of the icon compared to the text<br />&nbsp; &nbsp; - fixed bug the previous version not working like it should do<br />&nbsp;&nbsp;&nbsp;<br />1.0 - first version\',\n		file: \'unicode emoji v1.1.zip\'\n	},\n	4099: {\n		name: \'EmojiOne 0.3.2\',\n		versions: [\'84\'],\n		desc: \'EmojiOne is not BBC but functions in the same space as BBC.<br /><br />This mod add some support for converting emoji decimal input into their hexadecimal counterpart. With the hexadecimal data this mod replaces the decimal data with the appropriate emoji from the EmojiOne CDN server.<br /><br /><strong>License</strong><br />Copyright (c) 2016, Russell Najar<br />All rights reserved.<br /><br />Redistribution and use in source and binary forms, with or without<br />modification, are permitted provided that the following conditions are met:<br /><br />* Redistributions of source code must retain the above copyright notice, this<br />&nbsp; list of conditions and the following disclaimer.<br /><br />* Redistributions in binary form must reproduce the above copyright notice,<br />&nbsp; this list of conditions and the following disclaimer in the documentation<br />&nbsp; and/or other materials provided with the distribution.<br /><br />THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;<br />AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE<br />IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE<br />DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE<br />FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL<br />DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR<br />SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER<br />CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,<br />OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE<br />OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\',\n		file: \'SMF-EmojiOne.tar.gz\'\n	},\n	4049: {\n		name: \'Flat emoji (Twitter Emoji) 1.0.1\',\n		versions: [\'81\', \'82\'],\n		desc: \'<div align=\"center\"><strong>Flat Emoji</strong><br /><hr /><img src=\"http://img.iammichael.nl/d26d3.png\" alt=\"\" class=\"bbc_img\" /><br /><hr /><br />These flat twitter emoji will make your forum look much better, especially when you like flat design!<br />Originally made for NMOT (<a href=\"http://nmot.nl\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">http://nmot.nl</a>).</div>\',\n		file: \'FlatEmoji.zip\'\n	},\n	1072: {\n		name: \'AC in Black Smilies (OVERSIZED) 1.0\',\n		versions: [\'31\', \'81\', \'82\'],\n		desc: \'Some oversized black/silver smilies for your forum <img src=\"https://static.simplemachinesweb.com/smf/smileys/default/smiley.gif\" alt=\"&#58;&#41;\" title=\"Smiley\" class=\"smiley\" /><br /><br />THE EXTRAS PACK BY ITSELF IS MANUAL INSTALL<br /><br />With extras:<br />58 total smilies<br />23 animated smilies<br />35 static smilies<br /><br />Without Extras:<br />43 Total smilies<br />12 animated smilies<br />31 static smilies.<br /><br />The default pack is designed to work with the original AC in Black smilies set (though this is not required or needed for these to work) <img src=\"https://static.simplemachinesweb.com/smf/smileys/default/smiley.gif\" alt=\"&#58;&#41;\" title=\"Smiley\" class=\"smiley\" /><br /><br />See them all here: <a href=\"http://www.jades-world.com/personal/oversized-ac-in-black-smilies\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">http://www.jades-world.com/personal/oversized-ac-in-black-smilies</a> (animated!)<br /><br /><br />TOO BIG? TRY THE <a href=\"http://custom.simplemachines.org/mods/index.php?mod=1043\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">NORMAL SIZED</a> set!\',\n		file: \'OversizedACinBlack_WITH_EXTRAS_PACKS.zip\'\n	},};\nvar smf_latestSmileys = [4233, 4099, 4049];\n\nfunction smf_packagesMoreInfo(id)\n{\n	window.smfLatestSmileys_temp = document.getElementById(\"smfLatestSmileysWindow\").innerHTML;\n\n	setInnerHTML(document.getElementById(\"smfLatestSmileysWindow\"),\n	\'\\\n		<h3 style=\"margin: 0; padding: 4px;\">\' + smf_smileysInfo[id].name + \'</h3>\\\n		<h4 style=\"padding: 4px; margin: 0;\"><a href=\"\' + window.smfForum_scripturl + actionurl + \'https://custom.simplemachines.org/mods/downloads/\' + id + \'/\' + smf_smileysInfo[id].file + \';\' + window.smfForum_sessionvar + \'=\' + window.smfForum_sessionid + \'\">Install Now!</a></h4>\\\n		<div style=\"margin: 4px;\">\' + smf_smileysInfo[id].desc.replace(/<a href/g, \'<a href\') + \'</div>\\\n		<div class=\"titlebg\" style=\"padding: 4px; margin: 0;\"><a href=\"javascript:smf_packagesBack();void(0);\">(go back)</a></div>\');\n}\n\nfunction smf_packagesBack()\n{\n	setInnerHTML(document.getElementById(\"smfLatestSmileysWindow\"), window.smfLatestSmileys_temp);\n	window.scrollTo(0, findTop(document.getElementById(\"smfLatestSmileysWindow\")) - 10);\n}\n\nwindow.smfLatestSmileys = \'\\\n	<div id=\"smfLatestSmileysWindow\" style=\"overflow: auto;\">\\\n		<img src=\"https://www.simplemachines.org/smf/images/smileys.png\" width=\"102\" height=\"98\" style=\"float: right; margin: 4px;\" alt=\"(package)\" />\\\n		<h3 style=\"margin: 0; padding: 4px;\">Smiley of the Moment:</h3>\\\n		<div style=\"padding: 0 4px;\">\\\n			<a href=\"javascript:smf_packagesMoreInfo(1072);void(0);\">AC in Black Smilies (OVERSIZED) 1.0</a>\\\n		</div>\';\n\nwindow.smfLatestSmileys += \'\\\n		<h3 style=\"margin: 0; padding: 4px;\">New Smileys:</h3>\\\n		<ul style=\"list-style: none; margin-top: 3px; padding: 0 4px;\">\';\n\nfor (var i = 0; i < smf_latestSmileys.length; i++)\n{\n	var id_mod = smf_latestSmileys[i];\n\n	window.smfLatestSmileys += \'<li><a href=\"javascript:smf_packagesMoreInfo(\' + id_mod + \');void(0);\">\' + smf_smileysInfo[id_mod].name + \'</a></li>\';\n}\n\nwindow.smfLatestSmileys += \'\\\n		</ul>\';\n\nwindow.smfLatestSmileys += \'\\\n	</div>\';\n\nfunction findTop(el)\n{\n	if (typeof(el.tagName) == \"undefined\")\n		return 0;\n\n	var skipMe = in_array(el.tagName.toLowerCase(), el.parentNode ? [\"tr\", \"tbody\", \"form\"] : []);\n	var coordsParent = el.parentNode ? \"parentNode\" : \"offsetParent\";\n\n	if (el[coordsParent] == null || typeof(el[coordsParent].offsetTop) == \"undefined\")\n		return skipMe ? 0 : el.offsetTop;\n	else\n		return (skipMe ? 0 : el.offsetTop) + findTop(el[coordsParent]);\n}\n\nfunction in_array(item, array)\n{\n	for (var i in array)\n	{\n		if (array[i] == item)\n			return true;\n	}\n\n	return false;\n}','text/javascript'),(6,'latest-support.js','/smf/','language=%1$s&version=%3$s','window.smfLatestSupport = \'<div style=\"font-size: 0.85em;\"><div style=\"font-weight: bold;\">SMF 2.0.17</div>This version fixes a bug in 2.0.16 that could cause significant performance issues when retrieving RSS feeds and fixes some warning messages that could appear when using SSI.php. Please <a href=\"https://download.simplemachines.org/\">try it</a> before requesting support.</div>\';\n\nif (document.getElementById(\'credits\'))\n	setInnerHTML(document.getElementById(\'credits\'), getInnerHTML(document.getElementById(\'credits\')).replace(/thank you!/, \'<span onclick=\"alert(\\\'Kupo!\\\');\">thank you!</span>\'));\n','text/javascript'),(7,'latest-themes.js','/smf/','language=%1$s&version=%3$s','\r\nvar smf_themeInfo = {\r\n	2806: {\r\n		name: \'Reseller\',\r\n		desc: \'<div align=\"center\"><a href=\"https://smftricks.com\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://smftricks.com/logos/logo.png\" alt=\"\" class=\"bbc_img\" /></a><br /><span style=\"font-size: 10pt;\" class=\"bbc_size\">Free &amp; Premium Responsive Themes for SMF</span><br /><br /><div align=\"center\"><img src=\"https://i.imgur.com/9nONUnH.png\" alt=\"\" width=\"600\" height=\"306\" class=\"bbc_img resized\" /><br /><br /><strong>Theme by <a href=\"https://smftricks.com/index.php?action=profile;u=2\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Daniiel</a>. Designed by <a href=\"https://smftricks.com/index.php?action=profile;u=1342\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Brian Casillas</a></strong><br /><br /><span style=\"font-size: 18pt;\" class=\"bbc_size\"><strong><a href=\"http://demo.smftricks.com/index.php\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Demo online</a> </strong></span></div></div>\',\r\n		file: \'Reseller.zip\',\r\n		author: \'Daniiel\'\r\n	},\r\n	2943: {\r\n		name: \'Wgame Smf 2.0 Themes\',\r\n		desc: \'<a href=\"https://ibb.co/NyY2wNL\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://i.ibb.co/6Ws06t4/wegame.jpg\" alt=\"\" width=\"600\" height=\"337\" class=\"bbc_img resized\" /></a><br /><br />Terms of use :<br />This theme is free for personal and commercial use. You are allowed to use it in your projects, change it and adapt for your purposes. You are not allowed to remove the authors copyright.<br /><br />&gt;&gt;<a href=\"http://smftheme.byethost18.com/index.php?theme=6\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Live demo</a>&lt;&lt;\',\r\n		file: \'Wgame.zip\',\r\n		author: \'gecitli\'\r\n	},\r\n	2941: {\r\n		name: \'Ant&#039;s Mutant Curve\',\r\n		desc: \'This is the monster that evolved from an apparently simple question:<br />&nbsp;&nbsp;&nbsp;<br /><a href=\"https://www.simplemachines.org/community/index.php?topic=569433.0\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Has anyone improved /main_block.png to have transparent rounded edges?</a><br /><br />The short version is that it&#039;s Curve, but substantially revamped to be responsive everywhere, without relying on any frameworks or libraries that SMF 2.0.x does not call by default.<br /><br />Like the original Curve it comes with full support for RTL languages. It also has some custom functionality, and minimal use of images.<br /><br />Do note that the reworking required for this result may mean that not all mods will install without manual editing.<br /><br /><hr /><br /><strong>Note: The following information is provided for anyone who is already using 1.0.4.</strong><br /><br />The only difference between 1.0.4 and 1.0.5 is that the latter hides the registration button and greeting if registration is disabled.<br />This fixes a minor bug with the default code in 2.0.x (default code will show register button and register link even if registration is disabled).<br /><br />If your forum does not have registration disabled, 1.0.4 will be just as good as 1.0.5.<br />If your forum does have registration disabled, 1.0.5 will prevent some error messages being shown to guests, and in the error log.<br /><br />If anyone needs a 1.0.4 to 1.0.5 patch, that can be arranged. <br /><br /><hr /><br />01/03/2020 - New 1.0.5 zip uploaded. Fix for minor 2.0.x bug (only relevant if registration is disabled).<br />27/02/2020 - New 1.0.4 zip uploaded. Gremlins critically endangered. WWF Concerned.<br />26/02/2020 - New 1.0.3 zip uploaded, now with hardly any gremlins!<br />24/02/2020 - New 1.0.2 zip uploaded, now with fewer gremlins!<br />23/02/2020 - New 1.0.1 zip uploaded, hopefully sans gremlins.\',\r\n		file: \'Ant\\\'s_Mutant_Curve_1.0.5.zip\',\r\n		author: \'Antechinus\'\r\n	},\r\n	2940: {\r\n		name: \'Averus\',\r\n		desc: \'Averus is a dark, flat and modern theme.&nbsp; Perfect for gaming forums or those that just want a dark theme.&nbsp; Using Font Awesome for the display icons on the front it is a nice simple lightweight theme.<br /><br />Terms of use :<br />This theme is free for personal and commercial use. You are allowed to use it in your projects, change it and adapt for your purposes. You are not allowed to remove the authors copyright.<br /><br /><a href=\"https://forum.bryandeakin.com/index.php?theme=04\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">&gt;&gt;Live demo&lt;&lt;</a>\',\r\n		file: \'averus.zip\',\r\n		author: \'Deaks\'\r\n	},\r\n	2308: {\r\n		name: \'Curve Minimal Multicolor\',\r\n		desc: \'<img src=\"http://themes.e-debatten.dk/index.php?action=dlattach;topic=6.0;attach=24;image\" alt=\"\" width=\"600\" height=\"486\" class=\"bbc_img resized\" /><br /><br /><a href=\"http://themes.e-debatten.dk/index.php?topic=7.0\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\"><strong><span style=\"font-size: 12pt;\" class=\"bbc_size\"><span style=\"color: #c27e00;\" class=\"bbc_color\">Support &amp; Comments</span></span></strong></a><br /><br />Did you like this theme?<br /><a href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=9993480\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif\" alt=\"\" class=\"bbc_img\" /></a><br /><br /><strong>7 very different themes in 1</strong><br /><br />This theme is a multicolor theme, but with 7 themes that are a lot different from each other. The theme is based on my theme <a href=\"http://custom.simplemachines.org/themes/index.php?lemma=2270\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Curve Minimal</a>.<br /><br />This theme contains these variations: Curve Minimal Curve , Curve Minimal Inverted, Curve Minimal Ferrari, Curve Minimal Bad Company, Curve Minimal Stone, Curve Minimal Christmas and Curve Minimal Stone.<br /><br />The theme takes advantage of SMF&#039;s ability to create color variations of themes, but takes this a step further, but making the themes very different. Bacially these 7 variations are a 7 themes in one package.<br /><br />An admin can select a variation from the theme as default theme.<br /><br />If you don&#039;t want your users to be able to select some of the variations, you can just edit the index.template.php file.<br />Browse to<br /><div class=\"quoteheader\"><div class=\"topslice_quote\">Quote</div></div><blockquote class=\"bbc_standard_quote\">&nbsp;&nbsp;&nbsp;/* Theme variants */<br />&nbsp;&nbsp;&nbsp;$settings&#91;&#039;theme_variants&#039;] = array(&#039;Default&#039;, &#039;Inverted&#039;, &#039;Ferrari&#039;, &#039;Bad-Company&#039;, &#039;Stone&#039;, &#039;Christmas&#039;, &#039;Stroke&#039;);</blockquote><div class=\"quotefooter\"><div class=\"botslice_quote\"></div></div>There, you can just remove the line for those themes you don&#039;t want your users to use.<br /><br />December 2011:<br />+ Added SMF 2.1 style drop down menu<br /><br />Demos:<br /><a href=\"http://themes.e-debatten.dk/index.php?action=forum;theme=9;variant=Inverted\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Inverted</a><br /><a href=\"http://themes.e-debatten.dk/index.php?action=forum;theme=9;variant=Ferrari\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Ferrari</a><br /><a href=\"http://themes.e-debatten.dk/index.php?action=forum;theme=9;variant=Bad-Company\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Bad-Company</a><br /><a href=\"http://themes.e-debatten.dk/index.php?action=forum;theme=9;variant=Stone\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Stone</a><br /><a href=\"http://themes.e-debatten.dk/index.php?action=forum;theme=9;variant=Christmas\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Christmas</a><br /><a href=\"http://themes.e-debatten.dk/index.php?action=forum;theme=9;variant=Stroke\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">Stroke</a><br /><br />Download: <a href=\"http://themes.e-debatten.dk/index.php?action=tpmod;dl=item10\" class=\"bbc_link\" target=\"_blank\" rel=\"noopener noreferrer\">http://themes.e-debatten.dk/index.php?action=tpmod;dl=item10</a><br /><br />Additional images:<br /><img src=\"http://themes.e-debatten.dk/index.php?action=dlattach;topic=7.0;attach=26;image\" alt=\"\" width=\"300\" class=\"bbc_img resized\" /><br /><br /><img src=\"http://themes.e-debatten.dk/index.php?action=dlattach;topic=7.0;attach=28;image\" alt=\"\" width=\"300\" class=\"bbc_img resized\" /><br /><br /><img src=\"http://themes.e-debatten.dk/index.php?action=dlattach;topic=7.0;attach=30;image\" alt=\"\" width=\"300\" class=\"bbc_img resized\" /><br /><br /><img src=\"http://themes.e-debatten.dk/index.php?action=dlattach;topic=7.0;attach=32;image\" alt=\"\" width=\"300\" class=\"bbc_img resized\" /><br /><br /><img src=\"http://themes.e-debatten.dk/index.php?action=dlattach;topic=7.0;attach=34;image\" alt=\"\" width=\"300\" class=\"bbc_img resized\" /><br /><br /><img src=\"http://themes.e-debatten.dk/index.php?action=dlattach;topic=7.0;attach=36;image\" alt=\"\" width=\"300\" class=\"bbc_img resized\" />\',\r\n		file: \'Curve_Minimal_Multicolor_2.0.zip\',\r\n		author: \'Akyhne\'\r\n	}\r\n};\r\nvar smf_featured = 2806;\r\nvar smf_random = 2308;\r\nvar smf_latestThemes = [2943, 2941, 2940];\r\nfunction smf_themesMoreInfo(id)\r\n{\r\n	window.smfLatestThemes_temp = document.getElementById(\"smfLatestThemesWindow\").innerHTML;\r\n\r\n	// !!! Why not just always auto?\r\n	document.getElementById(\"smfLatestThemesWindow\").style.overflow = \"auto\";\r\n	setInnerHTML(document.getElementById(\"smfLatestThemesWindow\"),\r\n	\'\\\r\n		<h3 style=\"margin: 0; padding: 4px;\">\' + smf_themeInfo[id].name + \'</h3>\\\r\n		<h4 style=\"margin: 0;padding: 4px;\"><a href=\"https://custom.simplemachines.org/themes/index.php?lemma=\' + id + \'\">View Theme Now!</a></h4>\\\r\n		<div style=\"overflow: auto;\">\\\r\n			<img src=\"https://custom.simplemachines.org/themes/index.php?action=download;lemma=\'+id+\';image=thumb\" alt=\"\" style=\"float: right; margin: 10px;\" />\\\r\n			<div style=\"padding:8px;\">\' + smf_themeInfo[id].desc.replace(/<a href/g, \'<a href\') + \'</div>\\\r\n		</div>\\\r\n		<div style=\"padding: 4px;\" class=\"smalltext\"><a href=\"javascript:smf_themesBack();void(0);\">(go back)</a></div>\');\r\n}\r\n\r\nfunction smf_themesBack()\r\n{\r\n	document.getElementById(\"smfLatestThemesWindow\").style.overflow = \"\";\r\n	setInnerHTML(document.getElementById(\"smfLatestThemesWindow\"), window.smfLatestThemes_temp);\r\n	window.scrollTo(0, findTop(document.getElementById(\"smfLatestThemesWindow\")) - 10);\r\n}\r\n\r\nwindow.smfLatestThemes = \'\\\r\n	<div id=\"smfLatestThemesWindow\">\\\r\n		<div>\\\r\n			<img src=\"https://www.simplemachines.org/smf/images/themes.png\" width=\"102\" height=\"98\" style=\"float: right; margin: 0 0 10px 10px;\" alt=\"(package)\" />\\\r\n			<ul style=\"list-style: none; padding: 0; margin: 0 0 0 5px;\">\';\r\nfor(var i=0; i < smf_latestThemes.length; i++)\r\n{\r\n	var id_theme = smf_latestThemes[i];\r\n	window.smfLatestThemes += \'\\\r\n				<li style=\"list-style: none;\"><a href=\"javascript:smf_themesMoreInfo(\' + id_theme + \');void(0);\">\' + smf_themeInfo[id_theme].name + \' by \' + smf_themeInfo[id_theme].author + \'</a></li>\';\r\n}\r\n\r\nwindow.smfLatestThemes += \'\\\r\n			</ul>\';\r\nif ( smf_featured !=0 || smf_random != 0 )\r\n{\r\n\r\n	if ( smf_featured != 0 )\r\n		window.smfLatestThemes += \'\\\r\n				<h4 style=\"padding: 4px 4px 0 4px; margin: 0;\">Featured Theme</h4>\\\r\n				<p style=\"padding: 0 4px; margin: 0;\">\\\r\n					<a href=\"javascript:smf_themesMoreInfo(\'+smf_featured+\');void(0);\">\'+smf_themeInfo[smf_featured].name + \' by \' + smf_themeInfo[smf_featured].author+\'</a>\\\r\n				</p>\';\r\n	if ( smf_random != 0 )\r\n		window.smfLatestThemes += \'\\\r\n				<h4 style=\"padding: 4px 4px 0 4px;margin: 0;\">Theme of the Moment</h4>\\\r\n				<p style=\"padding: 0 4px; margin: 0;\">\\\r\n					<a href=\"javascript:smf_themesMoreInfo(\'+smf_random+\');void(0);\">\'+smf_themeInfo[smf_random].name + \' by \' + smf_themeInfo[smf_random].author+\'</a>\\\r\n				</p>\';\r\n}\r\nwindow.smfLatestThemes += \'\\\r\n		</div>\\\r\n	</div>\';\r\n\r\nfunction findTop(el)\r\n{\r\n	if (typeof(el.tagName) == \"undefined\")\r\n		return 0;\r\n\r\n	var skipMe = in_array(el.tagName.toLowerCase(), el.parentNode ? [\"tr\", \"tbody\", \"form\"] : []);\r\n	var coordsParent = el.parentNode ? \"parentNode\" : \"offsetParent\";\r\n\r\n	if (el[coordsParent] == null || typeof(el[coordsParent].offsetTop) == \"undefined\")\r\n		return skipMe ? 0 : el.offsetTop;\r\n	else\r\n		return (skipMe ? 0 : el.offsetTop) + findTop(el[coordsParent]);\r\n}\r\n\r\nfunction in_array(item, array)\r\n{\r\n	for (var i in array)\r\n	{\r\n		if (array[i] == item)\r\n			return true;\r\n	}\r\n\r\n	return false;\r\n}','text/javascript');
+/*!40000 ALTER TABLE `smf_admin_info_files` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_approval_queue`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_approval_queue` (
+DROP TABLE IF EXISTS `smf_approval_queue`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_approval_queue` (
   `id_msg` int(10) unsigned NOT NULL DEFAULT '0',
   `id_attach` int(10) unsigned NOT NULL DEFAULT '0',
   `id_event` smallint(5) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_approval_queue`
+--
+
+LOCK TABLES `smf_approval_queue` WRITE;
+/*!40000 ALTER TABLE `smf_approval_queue` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_approval_queue` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_attachments`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_attachments` (
+DROP TABLE IF EXISTS `smf_attachments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_attachments` (
   `id_attach` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_thumb` int(10) unsigned NOT NULL DEFAULT '0',
   `id_msg` int(10) unsigned NOT NULL DEFAULT '0',
@@ -75,15 +94,26 @@ CREATE TABLE IF NOT EXISTS `smf_attachments` (
   UNIQUE KEY `id_member` (`id_member`,`id_attach`),
   KEY `id_msg` (`id_msg`),
   KEY `attachment_type` (`attachment_type`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_attachments`
+--
+
+LOCK TABLES `smf_attachments` WRITE;
+/*!40000 ALTER TABLE `smf_attachments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_attachments` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_ban_groups`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_ban_groups` (
+DROP TABLE IF EXISTS `smf_ban_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_ban_groups` (
   `id_ban_group` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL DEFAULT '',
   `ban_time` int(10) unsigned NOT NULL DEFAULT '0',
@@ -95,15 +125,26 @@ CREATE TABLE IF NOT EXISTS `smf_ban_groups` (
   `reason` varchar(255) NOT NULL DEFAULT '',
   `notes` text NOT NULL,
   PRIMARY KEY (`id_ban_group`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_ban_groups`
+--
+
+LOCK TABLES `smf_ban_groups` WRITE;
+/*!40000 ALTER TABLE `smf_ban_groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_ban_groups` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_ban_items`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_ban_items` (
+DROP TABLE IF EXISTS `smf_ban_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_ban_items` (
   `id_ban` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `id_ban_group` smallint(5) unsigned NOT NULL DEFAULT '0',
   `ip_low1` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -120,15 +161,52 @@ CREATE TABLE IF NOT EXISTS `smf_ban_items` (
   `hits` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_ban`),
   KEY `id_ban_group` (`id_ban_group`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_ban_items`
+--
+
+LOCK TABLES `smf_ban_items` WRITE;
+/*!40000 ALTER TABLE `smf_ban_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_ban_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `smf_board_permissions`
+--
+
+DROP TABLE IF EXISTS `smf_board_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_board_permissions` (
+  `id_group` smallint(5) NOT NULL DEFAULT '0',
+  `id_profile` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `permission` varchar(30) NOT NULL DEFAULT '',
+  `add_deny` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_group`,`id_profile`,`permission`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `smf_board_permissions`
+--
+
+LOCK TABLES `smf_board_permissions` WRITE;
+/*!40000 ALTER TABLE `smf_board_permissions` DISABLE KEYS */;
+INSERT INTO `smf_board_permissions` VALUES (-1,1,'poll_view',1),(0,1,'remove_own',1),(0,1,'lock_own',1),(0,1,'mark_any_notify',1),(0,1,'mark_notify',1),(0,1,'modify_own',1),(0,1,'poll_add_own',1),(0,1,'poll_edit_own',1),(0,1,'poll_lock_own',1),(0,1,'poll_post',1),(0,1,'poll_view',1),(0,1,'poll_vote',1),(0,1,'post_attachment',1),(0,1,'post_new',1),(0,1,'post_reply_any',1),(0,1,'post_reply_own',1),(0,1,'post_unapproved_topics',1),(0,1,'post_unapproved_replies_any',1),(0,1,'post_unapproved_replies_own',1),(0,1,'post_unapproved_attachments',1),(0,1,'delete_own',1),(0,1,'report_any',1),(0,1,'send_topic',1),(0,1,'view_attachments',1),(2,1,'moderate_board',1),(2,1,'post_new',1),(2,1,'post_reply_own',1),(2,1,'post_reply_any',1),(2,1,'post_unapproved_topics',1),(2,1,'post_unapproved_replies_any',1),(2,1,'post_unapproved_replies_own',1),(2,1,'post_unapproved_attachments',1),(2,1,'poll_post',1),(2,1,'poll_add_any',1),(2,1,'poll_remove_any',1),(2,1,'poll_view',1),(2,1,'poll_vote',1),(2,1,'poll_lock_any',1),(2,1,'poll_edit_any',1),(2,1,'report_any',1),(2,1,'lock_own',1),(2,1,'send_topic',1),(2,1,'mark_any_notify',1),(2,1,'mark_notify',1),(2,1,'delete_own',1),(2,1,'modify_own',1),(2,1,'make_sticky',1),(2,1,'lock_any',1),(2,1,'remove_any',1),(2,1,'move_any',1),(2,1,'merge_any',1),(2,1,'split_any',1),(2,1,'delete_any',1),(2,1,'modify_any',1),(2,1,'approve_posts',1),(2,1,'post_attachment',1),(2,1,'view_attachments',1),(3,1,'moderate_board',1),(3,1,'post_new',1),(3,1,'post_reply_own',1),(3,1,'post_reply_any',1),(3,1,'post_unapproved_topics',1),(3,1,'post_unapproved_replies_any',1),(3,1,'post_unapproved_replies_own',1),(3,1,'post_unapproved_attachments',1),(3,1,'poll_post',1),(3,1,'poll_add_any',1),(3,1,'poll_remove_any',1),(3,1,'poll_view',1),(3,1,'poll_vote',1),(3,1,'poll_lock_any',1),(3,1,'poll_edit_any',1),(3,1,'report_any',1),(3,1,'lock_own',1),(3,1,'send_topic',1),(3,1,'mark_any_notify',1),(3,1,'mark_notify',1),(3,1,'delete_own',1),(3,1,'modify_own',1),(3,1,'make_sticky',1),(3,1,'lock_any',1),(3,1,'remove_any',1),(3,1,'move_any',1),(3,1,'merge_any',1),(3,1,'split_any',1),(3,1,'delete_any',1),(3,1,'modify_any',1),(3,1,'approve_posts',1),(3,1,'post_attachment',1),(3,1,'view_attachments',1),(-1,2,'poll_view',1),(0,2,'remove_own',1),(0,2,'lock_own',1),(0,2,'mark_any_notify',1),(0,2,'mark_notify',1),(0,2,'modify_own',1),(0,2,'poll_view',1),(0,2,'poll_vote',1),(0,2,'post_attachment',1),(0,2,'post_new',1),(0,2,'post_reply_any',1),(0,2,'post_reply_own',1),(0,2,'post_unapproved_topics',1),(0,2,'post_unapproved_replies_any',1),(0,2,'post_unapproved_replies_own',1),(0,2,'post_unapproved_attachments',1),(0,2,'delete_own',1),(0,2,'report_any',1),(0,2,'send_topic',1),(0,2,'view_attachments',1),(2,2,'moderate_board',1),(2,2,'post_new',1),(2,2,'post_reply_own',1),(2,2,'post_reply_any',1),(2,2,'post_unapproved_topics',1),(2,2,'post_unapproved_replies_any',1),(2,2,'post_unapproved_replies_own',1),(2,2,'post_unapproved_attachments',1),(2,2,'poll_post',1),(2,2,'poll_add_any',1),(2,2,'poll_remove_any',1),(2,2,'poll_view',1),(2,2,'poll_vote',1),(2,2,'poll_lock_any',1),(2,2,'poll_edit_any',1),(2,2,'report_any',1),(2,2,'lock_own',1),(2,2,'send_topic',1),(2,2,'mark_any_notify',1),(2,2,'mark_notify',1),(2,2,'delete_own',1),(2,2,'modify_own',1),(2,2,'make_sticky',1),(2,2,'lock_any',1),(2,2,'remove_any',1),(2,2,'move_any',1),(2,2,'merge_any',1),(2,2,'split_any',1),(2,2,'delete_any',1),(2,2,'modify_any',1),(2,2,'approve_posts',1),(2,2,'post_attachment',1),(2,2,'view_attachments',1),(3,2,'moderate_board',1),(3,2,'post_new',1),(3,2,'post_reply_own',1),(3,2,'post_reply_any',1),(3,2,'post_unapproved_topics',1),(3,2,'post_unapproved_replies_any',1),(3,2,'post_unapproved_replies_own',1),(3,2,'post_unapproved_attachments',1),(3,2,'poll_post',1),(3,2,'poll_add_any',1),(3,2,'poll_remove_any',1),(3,2,'poll_view',1),(3,2,'poll_vote',1),(3,2,'poll_lock_any',1),(3,2,'poll_edit_any',1),(3,2,'report_any',1),(3,2,'lock_own',1),(3,2,'send_topic',1),(3,2,'mark_any_notify',1),(3,2,'mark_notify',1),(3,2,'delete_own',1),(3,2,'modify_own',1),(3,2,'make_sticky',1),(3,2,'lock_any',1),(3,2,'remove_any',1),(3,2,'move_any',1),(3,2,'merge_any',1),(3,2,'split_any',1),(3,2,'delete_any',1),(3,2,'modify_any',1),(3,2,'approve_posts',1),(3,2,'post_attachment',1),(3,2,'view_attachments',1),(-1,3,'poll_view',1),(0,3,'remove_own',1),(0,3,'lock_own',1),(0,3,'mark_any_notify',1),(0,3,'mark_notify',1),(0,3,'modify_own',1),(0,3,'poll_view',1),(0,3,'poll_vote',1),(0,3,'post_attachment',1),(0,3,'post_reply_any',1),(0,3,'post_reply_own',1),(0,3,'post_unapproved_replies_any',1),(0,3,'post_unapproved_replies_own',1),(0,3,'post_unapproved_attachments',1),(0,3,'delete_own',1),(0,3,'report_any',1),(0,3,'send_topic',1),(0,3,'view_attachments',1),(2,3,'moderate_board',1),(2,3,'post_new',1),(2,3,'post_reply_own',1),(2,3,'post_reply_any',1),(2,3,'post_unapproved_topics',1),(2,3,'post_unapproved_replies_any',1),(2,3,'post_unapproved_replies_own',1),(2,3,'post_unapproved_attachments',1),(2,3,'poll_post',1),(2,3,'poll_add_any',1),(2,3,'poll_remove_any',1),(2,3,'poll_view',1),(2,3,'poll_vote',1),(2,3,'poll_lock_any',1),(2,3,'poll_edit_any',1),(2,3,'report_any',1),(2,3,'lock_own',1),(2,3,'send_topic',1),(2,3,'mark_any_notify',1),(2,3,'mark_notify',1),(2,3,'delete_own',1),(2,3,'modify_own',1),(2,3,'make_sticky',1),(2,3,'lock_any',1),(2,3,'remove_any',1),(2,3,'move_any',1),(2,3,'merge_any',1),(2,3,'split_any',1),(2,3,'delete_any',1),(2,3,'modify_any',1),(2,3,'approve_posts',1),(2,3,'post_attachment',1),(2,3,'view_attachments',1),(3,3,'moderate_board',1),(3,3,'post_new',1),(3,3,'post_reply_own',1),(3,3,'post_reply_any',1),(3,3,'post_unapproved_topics',1),(3,3,'post_unapproved_replies_any',1),(3,3,'post_unapproved_replies_own',1),(3,3,'post_unapproved_attachments',1),(3,3,'poll_post',1),(3,3,'poll_add_any',1),(3,3,'poll_remove_any',1),(3,3,'poll_view',1),(3,3,'poll_vote',1),(3,3,'poll_lock_any',1),(3,3,'poll_edit_any',1),(3,3,'report_any',1),(3,3,'lock_own',1),(3,3,'send_topic',1),(3,3,'mark_any_notify',1),(3,3,'mark_notify',1),(3,3,'delete_own',1),(3,3,'modify_own',1),(3,3,'make_sticky',1),(3,3,'lock_any',1),(3,3,'remove_any',1),(3,3,'move_any',1),(3,3,'merge_any',1),(3,3,'split_any',1),(3,3,'delete_any',1),(3,3,'modify_any',1),(3,3,'approve_posts',1),(3,3,'post_attachment',1),(3,3,'view_attachments',1),(-1,4,'poll_view',1),(0,4,'mark_any_notify',1),(0,4,'mark_notify',1),(0,4,'poll_view',1),(0,4,'poll_vote',1),(0,4,'report_any',1),(0,4,'send_topic',1),(0,4,'view_attachments',1),(2,4,'moderate_board',1),(2,4,'post_new',1),(2,4,'post_reply_own',1),(2,4,'post_reply_any',1),(2,4,'post_unapproved_topics',1),(2,4,'post_unapproved_replies_any',1),(2,4,'post_unapproved_replies_own',1),(2,4,'post_unapproved_attachments',1),(2,4,'poll_post',1),(2,4,'poll_add_any',1),(2,4,'poll_remove_any',1),(2,4,'poll_view',1),(2,4,'poll_vote',1),(2,4,'poll_lock_any',1),(2,4,'poll_edit_any',1),(2,4,'report_any',1),(2,4,'lock_own',1),(2,4,'send_topic',1),(2,4,'mark_any_notify',1),(2,4,'mark_notify',1),(2,4,'delete_own',1),(2,4,'modify_own',1),(2,4,'make_sticky',1),(2,4,'lock_any',1),(2,4,'remove_any',1),(2,4,'move_any',1),(2,4,'merge_any',1),(2,4,'split_any',1),(2,4,'delete_any',1),(2,4,'modify_any',1),(2,4,'approve_posts',1),(2,4,'post_attachment',1),(2,4,'view_attachments',1),(3,4,'moderate_board',1),(3,4,'post_new',1),(3,4,'post_reply_own',1),(3,4,'post_reply_any',1),(3,4,'post_unapproved_topics',1),(3,4,'post_unapproved_replies_any',1),(3,4,'post_unapproved_replies_own',1),(3,4,'post_unapproved_attachments',1),(3,4,'poll_post',1),(3,4,'poll_add_any',1),(3,4,'poll_remove_any',1),(3,4,'poll_view',1),(3,4,'poll_vote',1),(3,4,'poll_lock_any',1),(3,4,'poll_edit_any',1),(3,4,'report_any',1),(3,4,'lock_own',1),(3,4,'send_topic',1),(3,4,'mark_any_notify',1),(3,4,'mark_notify',1),(3,4,'delete_own',1),(3,4,'modify_own',1),(3,4,'make_sticky',1),(3,4,'lock_any',1),(3,4,'remove_any',1),(3,4,'move_any',1),(3,4,'merge_any',1),(3,4,'split_any',1),(3,4,'delete_any',1),(3,4,'modify_any',1),(3,4,'approve_posts',1),(3,4,'post_attachment',1),(3,4,'view_attachments',1);
+/*!40000 ALTER TABLE `smf_board_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_boards`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_boards` (
+DROP TABLE IF EXISTS `smf_boards`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_boards` (
   `id_board` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `id_cat` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `child_level` tinyint(4) unsigned NOT NULL DEFAULT '0',
@@ -154,29 +232,27 @@ CREATE TABLE IF NOT EXISTS `smf_boards` (
   KEY `id_parent` (`id_parent`),
   KEY `id_msg_updated` (`id_msg_updated`),
   KEY `member_groups` (`member_groups`(48))
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
--- --------------------------------------------------------
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `smf_board_permissions`
+-- Dumping data for table `smf_boards`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_board_permissions` (
-  `id_group` smallint(5) NOT NULL DEFAULT '0',
-  `id_profile` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `permission` varchar(30) NOT NULL DEFAULT '',
-  `add_deny` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id_group`,`id_profile`,`permission`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+LOCK TABLES `smf_boards` WRITE;
+/*!40000 ALTER TABLE `smf_boards` DISABLE KEYS */;
+INSERT INTO `smf_boards` VALUES (1,1,0,0,1,0,0,'-1,0,2',1,'General Discussion','Feel free to talk about anything and everything in this board.',0,0,0,0,0,0,0,'',0);
+/*!40000 ALTER TABLE `smf_boards` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_calendar`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_calendar` (
+DROP TABLE IF EXISTS `smf_calendar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_calendar` (
   `id_event` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `start_date` date NOT NULL DEFAULT '0001-01-01',
   `end_date` date NOT NULL DEFAULT '0001-01-01',
@@ -188,55 +264,101 @@ CREATE TABLE IF NOT EXISTS `smf_calendar` (
   KEY `start_date` (`start_date`),
   KEY `end_date` (`end_date`),
   KEY `topic` (`id_topic`,`id_member`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_calendar`
+--
+
+LOCK TABLES `smf_calendar` WRITE;
+/*!40000 ALTER TABLE `smf_calendar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_calendar` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_calendar_holidays`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_calendar_holidays` (
+DROP TABLE IF EXISTS `smf_calendar_holidays`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_calendar_holidays` (
   `id_holiday` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `event_date` date NOT NULL DEFAULT '0001-01-01',
   `title` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_holiday`),
   KEY `event_date` (`event_date`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=116 ;
+) ENGINE=MyISAM AUTO_INCREMENT=116 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_calendar_holidays`
+--
+
+LOCK TABLES `smf_calendar_holidays` WRITE;
+/*!40000 ALTER TABLE `smf_calendar_holidays` DISABLE KEYS */;
+INSERT INTO `smf_calendar_holidays` VALUES (1,'0004-01-01','New Year\'s'),(2,'0004-12-25','Christmas'),(3,'0004-02-14','Valentine\'s Day'),(4,'0004-03-17','St. Patrick\'s Day'),(5,'0004-04-01','April Fools'),(6,'0004-04-22','Earth Day'),(7,'0004-10-24','United Nations Day'),(8,'0004-10-31','Halloween'),(9,'2010-05-09','Mother\'s Day'),(10,'2011-05-08','Mother\'s Day'),(11,'2012-05-13','Mother\'s Day'),(12,'2013-05-12','Mother\'s Day'),(13,'2014-05-11','Mother\'s Day'),(14,'2015-05-10','Mother\'s Day'),(15,'2016-05-08','Mother\'s Day'),(16,'2017-05-14','Mother\'s Day'),(17,'2018-05-13','Mother\'s Day'),(18,'2019-05-12','Mother\'s Day'),(19,'2020-05-10','Mother\'s Day'),(20,'2008-06-15','Father\'s Day'),(21,'2009-06-21','Father\'s Day'),(22,'2010-06-20','Father\'s Day'),(23,'2011-06-19','Father\'s Day'),(24,'2012-06-17','Father\'s Day'),(25,'2013-06-16','Father\'s Day'),(26,'2014-06-15','Father\'s Day'),(27,'2015-06-21','Father\'s Day'),(28,'2016-06-19','Father\'s Day'),(29,'2017-06-18','Father\'s Day'),(30,'2018-06-17','Father\'s Day'),(31,'2019-06-16','Father\'s Day'),(32,'2020-06-21','Father\'s Day'),(33,'2010-06-21','Summer Solstice'),(34,'2011-06-21','Summer Solstice'),(35,'2012-06-20','Summer Solstice'),(36,'2013-06-21','Summer Solstice'),(37,'2014-06-21','Summer Solstice'),(38,'2015-06-21','Summer Solstice'),(39,'2016-06-20','Summer Solstice'),(40,'2017-06-20','Summer Solstice'),(41,'2018-06-21','Summer Solstice'),(42,'2019-06-21','Summer Solstice'),(43,'2020-06-20','Summer Solstice'),(44,'2010-03-20','Vernal Equinox'),(45,'2011-03-20','Vernal Equinox'),(46,'2012-03-20','Vernal Equinox'),(47,'2013-03-20','Vernal Equinox'),(48,'2014-03-20','Vernal Equinox'),(49,'2015-03-20','Vernal Equinox'),(50,'2016-03-19','Vernal Equinox'),(51,'2017-03-20','Vernal Equinox'),(52,'2018-03-20','Vernal Equinox'),(53,'2019-03-20','Vernal Equinox'),(54,'2020-03-19','Vernal Equinox'),(55,'2010-12-21','Winter Solstice'),(56,'2011-12-22','Winter Solstice'),(57,'2012-12-21','Winter Solstice'),(58,'2013-12-21','Winter Solstice'),(59,'2014-12-21','Winter Solstice'),(60,'2015-12-21','Winter Solstice'),(61,'2016-12-21','Winter Solstice'),(62,'2017-12-21','Winter Solstice'),(63,'2018-12-21','Winter Solstice'),(64,'2019-12-21','Winter Solstice'),(65,'2020-12-21','Winter Solstice'),(66,'2010-09-22','Autumnal Equinox'),(67,'2011-09-23','Autumnal Equinox'),(68,'2012-09-22','Autumnal Equinox'),(69,'2013-09-22','Autumnal Equinox'),(70,'2014-09-22','Autumnal Equinox'),(71,'2015-09-23','Autumnal Equinox'),(72,'2016-09-22','Autumnal Equinox'),(73,'2017-09-22','Autumnal Equinox'),(74,'2018-09-22','Autumnal Equinox'),(75,'2019-09-23','Autumnal Equinox'),(76,'2020-09-22','Autumnal Equinox'),(77,'0004-07-04','Independence Day'),(78,'0004-05-05','Cinco de Mayo'),(79,'0004-06-14','Flag Day'),(80,'0004-11-11','Veterans Day'),(81,'0004-02-02','Groundhog Day'),(82,'2010-11-25','Thanksgiving'),(83,'2011-11-24','Thanksgiving'),(84,'2012-11-22','Thanksgiving'),(85,'2013-11-28','Thanksgiving'),(86,'2014-11-27','Thanksgiving'),(87,'2015-11-26','Thanksgiving'),(88,'2016-11-24','Thanksgiving'),(89,'2017-11-23','Thanksgiving'),(90,'2018-11-22','Thanksgiving'),(91,'2019-11-28','Thanksgiving'),(92,'2020-11-26','Thanksgiving'),(93,'2010-05-31','Memorial Day'),(94,'2011-05-30','Memorial Day'),(95,'2012-05-28','Memorial Day'),(96,'2013-05-27','Memorial Day'),(97,'2014-05-26','Memorial Day'),(98,'2015-05-25','Memorial Day'),(99,'2016-05-30','Memorial Day'),(100,'2017-05-29','Memorial Day'),(101,'2018-05-28','Memorial Day'),(102,'2019-05-27','Memorial Day'),(103,'2020-05-25','Memorial Day'),(104,'2010-09-06','Labor Day'),(105,'2011-09-05','Labor Day'),(106,'2012-09-03','Labor Day'),(107,'2013-09-02','Labor Day'),(108,'2014-09-01','Labor Day'),(109,'2015-09-07','Labor Day'),(110,'2016-09-05','Labor Day'),(111,'2017-09-04','Labor Day'),(112,'2018-09-03','Labor Day'),(113,'2019-09-02','Labor Day'),(114,'2020-09-07','Labor Day'),(115,'0004-06-06','D-Day');
+/*!40000 ALTER TABLE `smf_calendar_holidays` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_categories` (
+DROP TABLE IF EXISTS `smf_categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_categories` (
   `id_cat` tinyint(4) unsigned NOT NULL AUTO_INCREMENT,
   `cat_order` tinyint(4) NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
   `can_collapse` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_cat`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_categories`
+--
+
+LOCK TABLES `smf_categories` WRITE;
+/*!40000 ALTER TABLE `smf_categories` DISABLE KEYS */;
+INSERT INTO `smf_categories` VALUES (1,0,'General Category',1);
+/*!40000 ALTER TABLE `smf_categories` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_collapsed_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_collapsed_categories` (
+DROP TABLE IF EXISTS `smf_collapsed_categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_collapsed_categories` (
   `id_cat` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_cat`,`id_member`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_collapsed_categories`
+--
+
+LOCK TABLES `smf_collapsed_categories` WRITE;
+/*!40000 ALTER TABLE `smf_collapsed_categories` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_collapsed_categories` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_custom_fields`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_custom_fields` (
+DROP TABLE IF EXISTS `smf_custom_fields`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_custom_fields` (
   `id_field` smallint(5) NOT NULL AUTO_INCREMENT,
   `col_name` varchar(12) NOT NULL DEFAULT '',
   `field_name` varchar(40) NOT NULL DEFAULT '',
@@ -257,41 +379,74 @@ CREATE TABLE IF NOT EXISTS `smf_custom_fields` (
   `placement` tinyint(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_field`),
   UNIQUE KEY `col_name` (`col_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_custom_fields`
+--
+
+LOCK TABLES `smf_custom_fields` WRITE;
+/*!40000 ALTER TABLE `smf_custom_fields` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_custom_fields` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_group_moderators`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_group_moderators` (
+DROP TABLE IF EXISTS `smf_group_moderators`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_group_moderators` (
   `id_group` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_group`,`id_member`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_group_moderators`
+--
+
+LOCK TABLES `smf_group_moderators` WRITE;
+/*!40000 ALTER TABLE `smf_group_moderators` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_group_moderators` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_inventory`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_inventory` (
+DROP TABLE IF EXISTS `smf_inventory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_inventory` (
   `id_member` int(11) NOT NULL,
   `id_item` int(11) NOT NULL,
   `count` int(11) NOT NULL,
   `is_equipped` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`,`id_item`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_inventory`
+--
+
+LOCK TABLES `smf_inventory` WRITE;
+/*!40000 ALTER TABLE `smf_inventory` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_inventory` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_items`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_items` (
+DROP TABLE IF EXISTS `smf_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_items` (
   `id_item` int(11) NOT NULL AUTO_INCREMENT,
   `item_type` int(11) NOT NULL,
   `name_eng` varchar(80) NOT NULL,
@@ -309,15 +464,26 @@ CREATE TABLE IF NOT EXISTS `smf_items` (
   `last_modified` int(11) NOT NULL,
   `created_by_userid` int(11) NOT NULL,
   PRIMARY KEY (`id_item`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
+) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_items`
+--
+
+LOCK TABLES `smf_items` WRITE;
+/*!40000 ALTER TABLE `smf_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_items` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_actions`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_actions` (
+DROP TABLE IF EXISTS `smf_log_actions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_actions` (
   `id_action` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_log` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `log_time` int(10) unsigned NOT NULL DEFAULT '0',
@@ -334,15 +500,26 @@ CREATE TABLE IF NOT EXISTS `smf_log_actions` (
   KEY `id_member` (`id_member`),
   KEY `id_board` (`id_board`),
   KEY `id_msg` (`id_msg`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_actions`
+--
+
+LOCK TABLES `smf_log_actions` WRITE;
+/*!40000 ALTER TABLE `smf_log_actions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_actions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_activity`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_activity` (
+DROP TABLE IF EXISTS `smf_log_activity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_activity` (
   `date` date NOT NULL DEFAULT '0001-01-01',
   `hits` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `topics` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -351,15 +528,27 @@ CREATE TABLE IF NOT EXISTS `smf_log_activity` (
   `most_on` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`date`),
   KEY `most_on` (`most_on`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_activity`
+--
+
+LOCK TABLES `smf_log_activity` WRITE;
+/*!40000 ALTER TABLE `smf_log_activity` DISABLE KEYS */;
+INSERT INTO `smf_log_activity` VALUES ('2020-04-01',0,1,1,1,2);
+/*!40000 ALTER TABLE `smf_log_activity` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_banned`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_banned` (
+DROP TABLE IF EXISTS `smf_log_banned`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_banned` (
   `id_ban_log` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `ip` char(16) NOT NULL DEFAULT '',
@@ -367,28 +556,51 @@ CREATE TABLE IF NOT EXISTS `smf_log_banned` (
   `log_time` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_ban_log`),
   KEY `log_time` (`log_time`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_banned`
+--
+
+LOCK TABLES `smf_log_banned` WRITE;
+/*!40000 ALTER TABLE `smf_log_banned` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_banned` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_boards`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_boards` (
+DROP TABLE IF EXISTS `smf_log_boards`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_boards` (
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_board` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id_msg` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`,`id_board`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_boards`
+--
+
+LOCK TABLES `smf_log_boards` WRITE;
+/*!40000 ALTER TABLE `smf_log_boards` DISABLE KEYS */;
+INSERT INTO `smf_log_boards` VALUES (1,1,1);
+/*!40000 ALTER TABLE `smf_log_boards` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_comments`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_comments` (
+DROP TABLE IF EXISTS `smf_log_comments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_comments` (
   `id_comment` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `member_name` varchar(80) NOT NULL DEFAULT '',
@@ -403,29 +615,51 @@ CREATE TABLE IF NOT EXISTS `smf_log_comments` (
   KEY `id_recipient` (`id_recipient`),
   KEY `log_time` (`log_time`),
   KEY `comment_type` (`comment_type`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_comments`
+--
+
+LOCK TABLES `smf_log_comments` WRITE;
+/*!40000 ALTER TABLE `smf_log_comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_comments` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_digest`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_digest` (
+DROP TABLE IF EXISTS `smf_log_digest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_digest` (
   `id_topic` mediumint(8) unsigned NOT NULL,
   `id_msg` int(10) unsigned NOT NULL,
   `note_type` varchar(10) NOT NULL DEFAULT 'post',
   `daily` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `exclude` mediumint(8) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_digest`
+--
+
+LOCK TABLES `smf_log_digest` WRITE;
+/*!40000 ALTER TABLE `smf_log_digest` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_digest` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_errors`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_errors` (
+DROP TABLE IF EXISTS `smf_log_errors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_errors` (
   `id_error` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `log_time` int(10) unsigned NOT NULL DEFAULT '0',
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
@@ -440,28 +674,52 @@ CREATE TABLE IF NOT EXISTS `smf_log_errors` (
   KEY `log_time` (`log_time`),
   KEY `id_member` (`id_member`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=232136 ;
+) ENGINE=MyISAM AUTO_INCREMENT=413 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_errors`
+--
+
+LOCK TABLES `smf_log_errors` WRITE;
+/*!40000 ALTER TABLE `smf_log_errors` DISABLE KEYS */;
+INSERT INTO `smf_log_errors` VALUES (1,1585725646,0,'','?','8: Undefined index: coins','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',545),(2,1585725646,0,'','?','8: Undefined index: last_feature_purchase','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',546),(3,1585725647,0,'','?','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(4,1585725647,0,'','?','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(5,1585725654,0,'','?action=login2','8: Undefined index: coins','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',545),(6,1585725654,0,'','?action=login2','8: Undefined index: last_feature_purchase','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',546),(7,1585725654,1,'127.0.0.1','?','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(8,1585725654,1,'127.0.0.1','?','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(9,1585725655,1,'127.0.0.1','?action=admin','8: Undefined index: manage_items','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',451),(10,1585725655,1,'127.0.0.1','?action=admin','8: Undefined index: manage_items_view_all','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',455),(11,1585725655,1,'127.0.0.1','?action=admin','8: Undefined index: manage_items_search','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',460),(12,1585725655,1,'127.0.0.1','?action=admin','8: Undefined index: manage_items_add_new','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',465),(13,1585725655,1,'127.0.0.1','?action=admin','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(14,1585725655,1,'127.0.0.1','?action=admin','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(15,1585725663,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',451),(16,1585725663,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items_view_all','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',455),(17,1585725663,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items_search','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',460),(18,1585725663,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items_add_new','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',465),(19,1585725663,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(20,1585725663,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(21,1585725667,1,'127.0.0.1','?action=theme;sa=pick;u=-1;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(22,1585725667,1,'127.0.0.1','?action=theme;sa=pick;u=-1;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(23,1585725702,1,'127.0.0.1','?action=admin;area=theme;sa=install','8: Undefined index: manage_items','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',451),(24,1585725702,1,'127.0.0.1','?action=admin;area=theme;sa=install','8: Undefined index: manage_items_view_all','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',455),(25,1585725702,1,'127.0.0.1','?action=admin;area=theme;sa=install','8: Undefined index: manage_items_search','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',460),(26,1585725702,1,'127.0.0.1','?action=admin;area=theme;sa=install','8: Undefined index: manage_items_add_new','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',465),(27,1585725702,1,'127.0.0.1','?action=admin;area=theme;sa=install;theme_id=3;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',451),(28,1585725702,1,'127.0.0.1','?action=admin;area=theme;sa=install;theme_id=3;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items_view_all','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',455),(29,1585725702,1,'127.0.0.1','?action=admin;area=theme;sa=install;theme_id=3;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items_search','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',460),(30,1585725702,1,'127.0.0.1','?action=admin;area=theme;sa=install;theme_id=3;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items_add_new','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',465),(31,1585725702,1,'127.0.0.1','?action=admin;area=theme;sa=install;theme_id=3;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(32,1585725702,1,'127.0.0.1','?action=admin;area=theme;sa=install;theme_id=3;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(33,1585725705,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',451),(34,1585725705,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items_view_all','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',455),(35,1585725705,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items_search','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',460),(36,1585725705,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: manage_items_add_new','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',465),(37,1585725705,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(38,1585725705,1,'127.0.0.1','?action=admin;area=theme;sa=admin;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(39,1585725710,1,'127.0.0.1','?action=admin;area=theme;sa=admin','8: Undefined index: manage_items','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',451),(40,1585725710,1,'127.0.0.1','?action=admin;area=theme;sa=admin','8: Undefined index: manage_items_view_all','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',455),(41,1585725710,1,'127.0.0.1','?action=admin;area=theme;sa=admin','8: Undefined index: manage_items_search','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',460),(42,1585725710,1,'127.0.0.1','?action=admin;area=theme;sa=admin','8: Undefined index: manage_items_add_new','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',465),(43,1585725710,1,'127.0.0.1','?action=admin;area=theme;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0;sa=admin','8: Undefined index: manage_items','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',451),(44,1585725710,1,'127.0.0.1','?action=admin;area=theme;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0;sa=admin','8: Undefined index: manage_items_view_all','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',455),(45,1585725710,1,'127.0.0.1','?action=admin;area=theme;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0;sa=admin','8: Undefined index: manage_items_search','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',460),(46,1585725710,1,'127.0.0.1','?action=admin;area=theme;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0;sa=admin','8: Undefined index: manage_items_add_new','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Admin.php',465),(47,1585725710,1,'127.0.0.1','?action=admin;area=theme;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0;sa=admin','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(48,1585725710,1,'127.0.0.1','?action=admin;area=theme;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0;sa=admin','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(49,1585725710,1,'127.0.0.1','?action=admin;area=theme;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0;sa=admin','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/test/Themes/default/Themes.template.php (body_above sub template - eval?)',349),(50,1585725710,1,'127.0.0.1','?action=admin;area=theme;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0;sa=admin','8: Undefined index: coinsEarned','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',548),(51,1585725710,1,'127.0.0.1','?action=admin;area=theme;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0;sa=admin','8: Undefined index: coinsEarnedMsg','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',549),(52,1585725710,1,'127.0.0.1','?action=admin;area=theme;f5153bb3f0b=b8ca0ca83df7e5f86606597ee11a84a0;sa=admin','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/test/Themes/default/Themes.template.php (body_above sub template - eval?)',384),(53,1585725712,1,'127.0.0.1','?','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(54,1585725712,1,'127.0.0.1','?','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(55,1585725712,1,'127.0.0.1','?','8: Undefined index: website_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',763),(56,1585725712,1,'127.0.0.1','?','8: Undefined index: website_description','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',764),(57,1585725712,1,'127.0.0.1','?','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(58,1585725712,1,'127.0.0.1','?','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(59,1585725712,1,'127.0.0.1','?','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(60,1585725712,1,'127.0.0.1','?','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(61,1585725712,1,'127.0.0.1','?','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(62,1585725712,1,'127.0.0.1','?','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(63,1585725712,1,'127.0.0.1','?','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(64,1585725712,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(65,1585725712,1,'127.0.0.1','?','8: Undefined index: featured_item_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',431),(66,1585725712,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(67,1585725712,1,'127.0.0.1','?','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(68,1585725712,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(69,1585725712,1,'127.0.0.1','?','8: Undefined index: featured_item_cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(70,1585725712,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(71,1585725712,1,'127.0.0.1','?','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(72,1585725712,1,'127.0.0.1','?','8: Undefined index: featured_item_buy','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(73,1585725712,1,'127.0.0.1','?','8: Undefined index: featured_item_preview','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',456),(74,1585725712,1,'127.0.0.1','?','8: Undefined index: featured_item_preview','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',461),(75,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(76,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(77,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: website_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',763),(78,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: website_description','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',764),(79,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(80,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(81,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(82,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(83,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(84,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(85,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(86,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(87,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',431),(88,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(89,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(90,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(91,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(92,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(93,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(94,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_buy','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(95,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_preview','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',456),(96,1585725712,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_preview','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',461),(97,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(98,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(99,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: website_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',763),(100,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: website_description','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',764),(101,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(102,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(103,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(104,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(105,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(106,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(107,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(108,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(109,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',431),(110,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(111,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(112,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(113,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(114,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(115,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(116,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_buy','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(117,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_preview','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',456),(118,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_preview','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',461),(119,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(120,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(121,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: website_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',763),(122,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: website_description','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',764),(123,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(124,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(125,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(126,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(127,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(128,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(129,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(130,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(131,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',431),(132,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(133,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(134,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(135,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(136,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(137,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(138,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_buy','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(139,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_preview','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',456),(140,1585725769,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: featured_item_preview','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',461),(141,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(142,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(143,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(144,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(145,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(146,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(147,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(148,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: featured_item_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/GetItem.php',17),(149,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: featured_item_not_for_sale','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/GetItem.php',27),(150,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','Unable to load the \'GetItem\' template.','b8ca0ca83df7e5f86606597ee11a84a0','template','',0),(151,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: tip_list_title','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4172),(152,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: chat','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Subs.php',4180),(153,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/test/Themes/default/Errors.template.php (body_above sub template - eval?)',349),(154,1585725797,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/test/Themes/default/Errors.template.php (body_above sub template - eval?)',384),(155,1585725812,1,'127.0.0.1','?action=post;board=1.0','4096: Argument 1 passed to isBannedFromTopic() must be an instance of int, integer given, called in /var/www/html/wfotest/forum/Sources/Post.php on line 1071 and defined','b8ca0ca83df7e5f86606597ee11a84a0','general','/var/www/html/wfotest/forum/Sources/Security.php',929),(156,1585725812,1,'127.0.0.1','?action=post;board=1.0','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/default/Post.template.php (body_above sub template - eval?)',349),(157,1585725812,1,'127.0.0.1','?action=post;board=1.0','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/default/Post.template.php (body_above sub template - eval?)',384),(158,1585725829,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: coins','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',1256),(159,1585725829,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: last_feature_purchase','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',1257),(160,1585725829,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/GenericMenu.template.php (body_above sub template - eval?)',349),(161,1585725829,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/GenericMenu.template.php (body_above sub template - eval?)',384),(162,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(163,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(164,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(165,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(166,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(167,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(168,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(169,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(170,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(171,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(172,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(173,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(174,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(175,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(176,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(177,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(178,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(179,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(180,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(181,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(182,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(183,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(184,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(185,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(186,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(187,1585725907,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(188,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(189,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(190,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(191,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(192,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(193,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(194,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(195,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(196,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(197,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(198,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(199,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(200,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(201,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(202,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(203,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(204,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(205,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(206,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(207,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(208,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(209,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(210,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(211,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(212,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(213,1585725936,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(214,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(215,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(216,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(217,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(218,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(219,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(220,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(221,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(222,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(223,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(224,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(225,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(226,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(227,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(228,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(229,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(230,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(231,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(232,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(233,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(234,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(235,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(236,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(237,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(238,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(239,1585725940,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(240,1585725945,1,'127.0.0.1','?action=tips','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/default/Tips.template.php (body_above sub template - eval?)',349),(241,1585725945,1,'127.0.0.1','?action=tips','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/default/Tips.template.php (body_above sub template - eval?)',384),(242,1585725945,1,'127.0.0.1','?action=tips','8: Undefined index: poster','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/default/Tips.template.php (main sub template - eval?)',31),(243,1585725945,1,'127.0.0.1','?action=tips','8: Undefined index: tipper','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/default/Tips.template.php (main sub template - eval?)',35),(244,1585725949,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: coins','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',1256),(245,1585725949,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: last_feature_purchase','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',1257),(246,1585725949,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/GenericMenu.template.php (body_above sub template - eval?)',349),(247,1585725949,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/GenericMenu.template.php (body_above sub template - eval?)',384),(248,1585725959,1,'127.0.0.1','?','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(249,1585725959,1,'127.0.0.1','?','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(250,1585725959,1,'127.0.0.1','?','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(251,1585725959,1,'127.0.0.1','?','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(252,1585725959,1,'127.0.0.1','?','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(253,1585725959,1,'127.0.0.1','?','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(254,1585725959,1,'127.0.0.1','?','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(255,1585725959,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(256,1585725959,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(257,1585725959,1,'127.0.0.1','?','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(258,1585725959,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(259,1585725959,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(260,1585725959,1,'127.0.0.1','?','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(261,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(262,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(263,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(264,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(265,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(266,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(267,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(268,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(269,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(270,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(271,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(272,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(273,1585725959,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(274,1585725962,1,'127.0.0.1','?','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(275,1585725962,1,'127.0.0.1','?','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(276,1585725962,1,'127.0.0.1','?','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(277,1585725962,1,'127.0.0.1','?','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(278,1585725962,1,'127.0.0.1','?','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(279,1585725962,1,'127.0.0.1','?','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(280,1585725962,1,'127.0.0.1','?','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(281,1585725962,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(282,1585725962,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(283,1585725962,1,'127.0.0.1','?','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(284,1585725962,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(285,1585725962,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(286,1585725962,1,'127.0.0.1','?','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(287,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(288,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(289,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(290,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(291,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(292,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(293,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(294,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(295,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(296,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(297,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(298,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(299,1585725962,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(300,1585725986,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: coins','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',1256),(301,1585725986,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: last_feature_purchase','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',1257),(302,1585725986,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/GenericMenu.template.php (body_above sub template - eval?)',349),(303,1585725986,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/GenericMenu.template.php (body_above sub template - eval?)',384),(304,1585725991,1,'127.0.0.1','?','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(305,1585725991,1,'127.0.0.1','?','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(306,1585725991,1,'127.0.0.1','?','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(307,1585725991,1,'127.0.0.1','?','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(308,1585725991,1,'127.0.0.1','?','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(309,1585725991,1,'127.0.0.1','?','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(310,1585725991,1,'127.0.0.1','?','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(311,1585725991,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(312,1585725991,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(313,1585725991,1,'127.0.0.1','?','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(314,1585725991,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(315,1585725991,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(316,1585725991,1,'127.0.0.1','?','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(317,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(318,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(319,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(320,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(321,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(322,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(323,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(324,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(325,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(326,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(327,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(328,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(329,1585725991,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(330,1585726032,1,'127.0.0.1','?','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(331,1585726032,1,'127.0.0.1','?','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(332,1585726032,1,'127.0.0.1','?','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(333,1585726032,1,'127.0.0.1','?','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(334,1585726032,1,'127.0.0.1','?','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(335,1585726032,1,'127.0.0.1','?','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(336,1585726032,1,'127.0.0.1','?','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(337,1585726032,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(338,1585726032,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(339,1585726032,1,'127.0.0.1','?','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(340,1585726032,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(341,1585726032,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(342,1585726032,1,'127.0.0.1','?','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(343,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(344,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(345,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(346,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(347,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(348,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(349,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(350,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(351,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(352,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(353,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(354,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(355,1585726032,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(356,1585726034,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(357,1585726034,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(358,1585726034,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(359,1585726034,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(360,1585726034,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(361,1585726034,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(362,1585726034,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(363,1585726034,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/default/GetItem.template.php (body_above sub template - eval?)',349),(364,1585726034,1,'127.0.0.1','?action=buydailyitem;id=','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/default/GetItem.template.php (body_above sub template - eval?)',384),(365,1585726096,0,'','?','8: Undefined index: coins','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',545),(366,1585726096,0,'','?','8: Undefined index: last_feature_purchase','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',546),(367,1585726099,0,'','?action=register','8: Undefined index: coins','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',545),(368,1585726099,0,'','?action=register','8: Undefined index: last_feature_purchase','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',546),(369,1585726099,0,'','?action=register','8: Undefined index: canonical_url','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Themes/default/GenericControls.template.php (body_above sub template - eval?)',349),(370,1585726099,0,'','?action=register','8: Undefined index: canonical_url','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Themes/default/GenericControls.template.php (body_above sub template - eval?)',384),(371,1585726100,0,'','?action=register','8: Undefined index: coins','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',545),(372,1585726100,0,'','?action=register','8: Undefined index: last_feature_purchase','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',546),(373,1585726100,0,'','?action=register','8: Undefined index: canonical_url','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Themes/default/GenericControls.template.php (body_above sub template - eval?)',349),(374,1585726100,0,'','?action=register','8: Undefined index: canonical_url','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Themes/default/GenericControls.template.php (body_above sub template - eval?)',384),(375,1585726100,0,'','?action=verificationcode;vid=register;rand=f8537e9597e0950f88399e04af9c107c','8: Undefined index: coins','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',545),(376,1585726100,0,'','?action=verificationcode;vid=register;rand=f8537e9597e0950f88399e04af9c107c','8: Undefined index: last_feature_purchase','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',546),(377,1585726101,0,'','?action=register','8: Undefined index: coins','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',545),(378,1585726101,0,'','?action=register','8: Undefined index: last_feature_purchase','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',546),(379,1585726101,0,'','?action=register','8: Undefined index: canonical_url','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Themes/default/GenericControls.template.php (body_above sub template - eval?)',349),(380,1585726101,0,'','?action=register','8: Undefined index: canonical_url','736ee1d7298fa17f7f7d47ad68aaa373','undefined_vars','/var/www/html/wfotest/forum/Themes/default/GenericControls.template.php (body_above sub template - eval?)',384),(381,1585726143,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: coins','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',1256),(382,1585726143,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: last_feature_purchase','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',1257),(383,1585726143,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/GenericMenu.template.php (body_above sub template - eval?)',349),(384,1585726143,1,'127.0.0.1','?action=profile;area=forumprofile;','8: Undefined index: canonical_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/GenericMenu.template.php (body_above sub template - eval?)',384),(385,1585726287,1,'127.0.0.1','?','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(386,1585726287,1,'127.0.0.1','?','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(387,1585726287,1,'127.0.0.1','?','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(388,1585726287,1,'127.0.0.1','?','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(389,1585726287,1,'127.0.0.1','?','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(390,1585726287,1,'127.0.0.1','?','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(391,1585726287,1,'127.0.0.1','?','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(392,1585726287,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(393,1585726287,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(394,1585726287,1,'127.0.0.1','?','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(395,1585726287,1,'127.0.0.1','?','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(396,1585726287,1,'127.0.0.1','?','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(397,1585726287,1,'127.0.0.1','?','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(398,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: equip_slot','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',453),(399,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',458),(400,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_0_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',459),(401,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_1_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',462),(402,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_1_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',463),(403,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_sec_2_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',466),(404,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: img_2_layer','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Sources/Inventory.php',467),(405,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',425),(406,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',436),(407,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: icon_url','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(408,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: name_eng','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',437),(409,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined index: cost','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',438),(410,1585726287,1,'127.0.0.1','?http://127.0.0.1/wfotest/forum/','8: Undefined variable: scripturl','b8ca0ca83df7e5f86606597ee11a84a0','undefined_vars','/var/www/html/wfotest/forum/Themes/Redsy/BoardIndex.template.php (body_above sub template - eval?)',446),(411,1585726289,0,'','?','8: Undefined index: coins','63b9dd77d3efe0da87ae480b3d3603f0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',545),(412,1585726289,0,'','?','8: Undefined index: last_feature_purchase','63b9dd77d3efe0da87ae480b3d3603f0','undefined_vars','/var/www/html/wfotest/forum/Sources/Load.php',546);
+/*!40000 ALTER TABLE `smf_log_errors` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_floodcontrol`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_floodcontrol` (
+DROP TABLE IF EXISTS `smf_log_floodcontrol`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_floodcontrol` (
   `ip` char(16) NOT NULL DEFAULT '',
   `log_time` int(10) unsigned NOT NULL DEFAULT '0',
   `log_type` varchar(8) NOT NULL DEFAULT 'post',
   PRIMARY KEY (`ip`,`log_type`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_floodcontrol`
+--
+
+LOCK TABLES `smf_log_floodcontrol` WRITE;
+/*!40000 ALTER TABLE `smf_log_floodcontrol` DISABLE KEYS */;
+INSERT INTO `smf_log_floodcontrol` VALUES ('',1585725654,'login');
+/*!40000 ALTER TABLE `smf_log_floodcontrol` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_group_requests`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_group_requests` (
+DROP TABLE IF EXISTS `smf_log_group_requests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_group_requests` (
   `id_request` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_group` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -469,71 +727,126 @@ CREATE TABLE IF NOT EXISTS `smf_log_group_requests` (
   `reason` text NOT NULL,
   PRIMARY KEY (`id_request`),
   UNIQUE KEY `id_member` (`id_member`,`id_group`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_group_requests`
+--
+
+LOCK TABLES `smf_log_group_requests` WRITE;
+/*!40000 ALTER TABLE `smf_log_group_requests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_group_requests` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_karma`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_karma` (
+DROP TABLE IF EXISTS `smf_log_karma`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_karma` (
   `id_target` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_executor` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `log_time` int(10) unsigned NOT NULL DEFAULT '0',
   `action` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_target`,`id_executor`),
   KEY `log_time` (`log_time`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_karma`
+--
+
+LOCK TABLES `smf_log_karma` WRITE;
+/*!40000 ALTER TABLE `smf_log_karma` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_karma` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_mark_read`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_mark_read` (
+DROP TABLE IF EXISTS `smf_log_mark_read`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_mark_read` (
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_board` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id_msg` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`,`id_board`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_mark_read`
+--
+
+LOCK TABLES `smf_log_mark_read` WRITE;
+/*!40000 ALTER TABLE `smf_log_mark_read` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_mark_read` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_member_notices`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_member_notices` (
+DROP TABLE IF EXISTS `smf_log_member_notices`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_member_notices` (
   `id_notice` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `subject` varchar(255) NOT NULL DEFAULT '',
   `body` text NOT NULL,
   PRIMARY KEY (`id_notice`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_member_notices`
+--
+
+LOCK TABLES `smf_log_member_notices` WRITE;
+/*!40000 ALTER TABLE `smf_log_member_notices` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_member_notices` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_notify`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_notify` (
+DROP TABLE IF EXISTS `smf_log_notify`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_notify` (
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_topic` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_board` smallint(5) unsigned NOT NULL DEFAULT '0',
   `sent` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`,`id_topic`,`id_board`),
   KEY `id_topic` (`id_topic`,`id_member`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_notify`
+--
+
+LOCK TABLES `smf_log_notify` WRITE;
+/*!40000 ALTER TABLE `smf_log_notify` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_notify` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_online`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_online` (
+DROP TABLE IF EXISTS `smf_log_online`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_online` (
   `session` varchar(32) NOT NULL DEFAULT '',
   `log_time` int(10) NOT NULL DEFAULT '0',
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
@@ -543,15 +856,27 @@ CREATE TABLE IF NOT EXISTS `smf_log_online` (
   PRIMARY KEY (`session`),
   KEY `log_time` (`log_time`),
   KEY `id_member` (`id_member`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_online`
+--
+
+LOCK TABLES `smf_log_online` WRITE;
+/*!40000 ALTER TABLE `smf_log_online` DISABLE KEYS */;
+INSERT INTO `smf_log_online` VALUES ('p71nugknseojl9pl8k6tmh9394',1585726287,1,0,2130706433,'a:1:{s:10:\"USER_AGENT\";s:115:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36\";}'),('ip',1585726289,0,0,0,'a:1:{s:10:\"USER_AGENT\";s:115:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36\";}');
+/*!40000 ALTER TABLE `smf_log_online` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_packages`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_packages` (
+DROP TABLE IF EXISTS `smf_log_packages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_packages` (
   `id_install` int(10) NOT NULL AUTO_INCREMENT,
   `filename` varchar(255) NOT NULL DEFAULT '',
   `package_id` varchar(255) NOT NULL DEFAULT '',
@@ -569,28 +894,50 @@ CREATE TABLE IF NOT EXISTS `smf_log_packages` (
   `db_changes` text NOT NULL,
   PRIMARY KEY (`id_install`),
   KEY `filename` (`filename`(15))
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_packages`
+--
+
+LOCK TABLES `smf_log_packages` WRITE;
+/*!40000 ALTER TABLE `smf_log_packages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_packages` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_polls`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_polls` (
+DROP TABLE IF EXISTS `smf_log_polls`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_polls` (
   `id_poll` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_choice` tinyint(3) unsigned NOT NULL DEFAULT '0',
   KEY `id_poll` (`id_poll`,`id_member`,`id_choice`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_polls`
+--
+
+LOCK TABLES `smf_log_polls` WRITE;
+/*!40000 ALTER TABLE `smf_log_polls` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_polls` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_reported`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_reported` (
+DROP TABLE IF EXISTS `smf_log_reported`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_reported` (
   `id_report` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `id_msg` int(10) unsigned NOT NULL DEFAULT '0',
   `id_topic` mediumint(8) unsigned NOT NULL DEFAULT '0',
@@ -610,15 +957,26 @@ CREATE TABLE IF NOT EXISTS `smf_log_reported` (
   KEY `closed` (`closed`),
   KEY `time_started` (`time_started`),
   KEY `id_msg` (`id_msg`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_reported`
+--
+
+LOCK TABLES `smf_log_reported` WRITE;
+/*!40000 ALTER TABLE `smf_log_reported` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_reported` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_reported_comments`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_reported_comments` (
+DROP TABLE IF EXISTS `smf_log_reported_comments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_reported_comments` (
   `id_comment` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `id_report` mediumint(8) NOT NULL DEFAULT '0',
   `id_member` mediumint(8) NOT NULL,
@@ -631,81 +989,148 @@ CREATE TABLE IF NOT EXISTS `smf_log_reported_comments` (
   KEY `id_report` (`id_report`),
   KEY `id_member` (`id_member`),
   KEY `time_sent` (`time_sent`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_reported_comments`
+--
+
+LOCK TABLES `smf_log_reported_comments` WRITE;
+/*!40000 ALTER TABLE `smf_log_reported_comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_reported_comments` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_scheduled_tasks`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_scheduled_tasks` (
+DROP TABLE IF EXISTS `smf_log_scheduled_tasks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_scheduled_tasks` (
   `id_log` mediumint(8) NOT NULL AUTO_INCREMENT,
   `id_task` smallint(5) NOT NULL DEFAULT '0',
   `time_run` int(10) NOT NULL DEFAULT '0',
   `time_taken` float NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_log`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=436 ;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_scheduled_tasks`
+--
+
+LOCK TABLES `smf_log_scheduled_tasks` WRITE;
+/*!40000 ALTER TABLE `smf_log_scheduled_tasks` DISABLE KEYS */;
+INSERT INTO `smf_log_scheduled_tasks` VALUES (1,2,1585725402,0),(2,3,1585725403,0),(3,5,1585725409,0),(4,6,1585725410,0),(5,9,1585725416,0),(6,7,1585725420,5);
+/*!40000 ALTER TABLE `smf_log_scheduled_tasks` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_search_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_search_messages` (
+DROP TABLE IF EXISTS `smf_log_search_messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_search_messages` (
   `id_search` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `id_msg` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_search`,`id_msg`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_search_messages`
+--
+
+LOCK TABLES `smf_log_search_messages` WRITE;
+/*!40000 ALTER TABLE `smf_log_search_messages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_search_messages` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_search_results`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_search_results` (
+DROP TABLE IF EXISTS `smf_log_search_results`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_search_results` (
   `id_search` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `id_topic` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_msg` int(10) unsigned NOT NULL DEFAULT '0',
   `relevance` smallint(5) unsigned NOT NULL DEFAULT '0',
   `num_matches` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_search`,`id_topic`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_search_results`
+--
+
+LOCK TABLES `smf_log_search_results` WRITE;
+/*!40000 ALTER TABLE `smf_log_search_results` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_search_results` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_search_subjects`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_search_subjects` (
+DROP TABLE IF EXISTS `smf_log_search_subjects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_search_subjects` (
   `word` varchar(20) NOT NULL DEFAULT '',
   `id_topic` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`word`,`id_topic`),
   KEY `id_topic` (`id_topic`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_search_subjects`
+--
+
+LOCK TABLES `smf_log_search_subjects` WRITE;
+/*!40000 ALTER TABLE `smf_log_search_subjects` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_search_subjects` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_search_topics`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_search_topics` (
+DROP TABLE IF EXISTS `smf_log_search_topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_search_topics` (
   `id_search` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `id_topic` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_search`,`id_topic`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_search_topics`
+--
+
+LOCK TABLES `smf_log_search_topics` WRITE;
+/*!40000 ALTER TABLE `smf_log_search_topics` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_search_topics` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_spider_hits`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_spider_hits` (
+DROP TABLE IF EXISTS `smf_log_spider_hits`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_spider_hits` (
   `id_hit` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_spider` smallint(5) unsigned NOT NULL DEFAULT '0',
   `log_time` int(10) unsigned NOT NULL DEFAULT '0',
@@ -715,29 +1140,51 @@ CREATE TABLE IF NOT EXISTS `smf_log_spider_hits` (
   KEY `id_spider` (`id_spider`),
   KEY `log_time` (`log_time`),
   KEY `processed` (`processed`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_spider_hits`
+--
+
+LOCK TABLES `smf_log_spider_hits` WRITE;
+/*!40000 ALTER TABLE `smf_log_spider_hits` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_spider_hits` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_spider_stats`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_spider_stats` (
+DROP TABLE IF EXISTS `smf_log_spider_stats`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_spider_stats` (
   `id_spider` smallint(5) unsigned NOT NULL DEFAULT '0',
   `page_hits` smallint(5) unsigned NOT NULL DEFAULT '0',
   `last_seen` int(10) unsigned NOT NULL DEFAULT '0',
   `stat_date` date NOT NULL DEFAULT '0001-01-01',
   PRIMARY KEY (`stat_date`,`id_spider`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_spider_stats`
+--
+
+LOCK TABLES `smf_log_spider_stats` WRITE;
+/*!40000 ALTER TABLE `smf_log_spider_stats` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_spider_stats` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_subscribed`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_subscribed` (
+DROP TABLE IF EXISTS `smf_log_subscribed`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_subscribed` (
   `id_sublog` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_subscribe` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_member` int(10) NOT NULL DEFAULT '0',
@@ -756,29 +1203,51 @@ CREATE TABLE IF NOT EXISTS `smf_log_subscribed` (
   KEY `payments_pending` (`payments_pending`),
   KEY `status` (`status`),
   KEY `id_member` (`id_member`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_subscribed`
+--
+
+LOCK TABLES `smf_log_subscribed` WRITE;
+/*!40000 ALTER TABLE `smf_log_subscribed` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_subscribed` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_log_topics`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_log_topics` (
+DROP TABLE IF EXISTS `smf_log_topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_log_topics` (
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_topic` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_msg` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`,`id_topic`),
   KEY `id_topic` (`id_topic`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_log_topics`
+--
+
+LOCK TABLES `smf_log_topics` WRITE;
+/*!40000 ALTER TABLE `smf_log_topics` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_log_topics` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_mail_queue`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_mail_queue` (
+DROP TABLE IF EXISTS `smf_mail_queue`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_mail_queue` (
   `id_mail` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `time_sent` int(10) NOT NULL DEFAULT '0',
   `recipient` varchar(255) NOT NULL DEFAULT '',
@@ -791,15 +1260,26 @@ CREATE TABLE IF NOT EXISTS `smf_mail_queue` (
   PRIMARY KEY (`id_mail`),
   KEY `time_sent` (`time_sent`),
   KEY `mail_priority` (`priority`,`id_mail`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_mail_queue`
+--
+
+LOCK TABLES `smf_mail_queue` WRITE;
+/*!40000 ALTER TABLE `smf_mail_queue` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_mail_queue` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_membergroups`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_membergroups` (
+DROP TABLE IF EXISTS `smf_membergroups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_membergroups` (
   `id_group` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `group_name` varchar(80) NOT NULL DEFAULT '',
   `description` text NOT NULL,
@@ -812,15 +1292,27 @@ CREATE TABLE IF NOT EXISTS `smf_membergroups` (
   `id_parent` smallint(5) NOT NULL DEFAULT '-2',
   PRIMARY KEY (`id_group`),
   KEY `min_posts` (`min_posts`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_membergroups`
+--
+
+LOCK TABLES `smf_membergroups` WRITE;
+/*!40000 ALTER TABLE `smf_membergroups` DISABLE KEYS */;
+INSERT INTO `smf_membergroups` VALUES (1,'Administrator','','#FF0000',-1,0,'5#staradmin.gif',1,0,-2),(2,'Global Moderator','','#0000FF',-1,0,'5#stargmod.gif',0,0,-2),(3,'Moderator','','',-1,0,'5#starmod.gif',0,0,-2),(4,'Newbie','','',0,0,'1#star.gif',0,0,-2),(5,'Jr. Member','','',50,0,'2#star.gif',0,0,-2),(6,'Full Member','','',100,0,'3#star.gif',0,0,-2),(7,'Sr. Member','','',250,0,'4#star.gif',0,0,-2),(8,'Hero Member','','',500,0,'5#star.gif',0,0,-2);
+/*!40000 ALTER TABLE `smf_membergroups` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_members`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_members` (
+DROP TABLE IF EXISTS `smf_members`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_members` (
   `id_member` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `member_name` varchar(80) NOT NULL DEFAULT '',
   `date_registered` int(10) unsigned NOT NULL DEFAULT '0',
@@ -882,7 +1374,7 @@ CREATE TABLE IF NOT EXISTS `smf_members` (
   `passwd_flood` varchar(12) NOT NULL DEFAULT '',
   `pm_receive_from` tinyint(4) unsigned NOT NULL DEFAULT '1',
   `coins` int(11) NOT NULL,
-  `last_feature_purchase` varchar(10) NOT NULL,
+  `last_feature_purchase` int(10) NOT NULL,
   PRIMARY KEY (`id_member`),
   KEY `member_name` (`member_name`),
   KEY `real_name` (`real_name`),
@@ -896,15 +1388,81 @@ CREATE TABLE IF NOT EXISTS `smf_members` (
   KEY `warning` (`warning`),
   KEY `total_time_logged_in` (`total_time_logged_in`),
   KEY `id_theme` (`id_theme`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=72 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_members`
+--
+
+LOCK TABLES `smf_members` WRITE;
+/*!40000 ALTER TABLE `smf_members` DISABLE KEYS */;
+INSERT INTO `smf_members` VALUES (1,'Wetfish Online',1585725371,0,1,'',1585726287,'Wetfish Online',0,0,0,'','',0,'','','45eb27c093a3819f36471d81620aa0fe7aed08d9','','admin@wetfish.net','',0,'0001-01-01','','','','','','','',0,1,'','',0,'',0,0,0,'',1,1,0,2,'127.0.0.1','127.0.0.1','','',3,1,'',1,'','',0,894,'fa68','',0,'',1,0,0);
+/*!40000 ALTER TABLE `smf_members` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `smf_message_icons`
+--
+
+DROP TABLE IF EXISTS `smf_message_icons`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_message_icons` (
+  `id_icon` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(80) NOT NULL DEFAULT '',
+  `filename` varchar(80) NOT NULL DEFAULT '',
+  `id_board` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `icon_order` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_icon`),
+  KEY `id_board` (`id_board`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `smf_message_icons`
+--
+
+LOCK TABLES `smf_message_icons` WRITE;
+/*!40000 ALTER TABLE `smf_message_icons` DISABLE KEYS */;
+INSERT INTO `smf_message_icons` VALUES (1,'Standard','xx',0,0),(2,'Thumb Up','thumbup',0,1),(3,'Thumb Down','thumbdown',0,2),(4,'Exclamation point','exclamation',0,3),(5,'Question mark','question',0,4),(6,'Lamp','lamp',0,5),(7,'Smiley','smiley',0,6),(8,'Angry','angry',0,7),(9,'Cheesy','cheesy',0,8),(10,'Grin','grin',0,9),(11,'Sad','sad',0,10),(12,'Wink','wink',0,11);
+/*!40000 ALTER TABLE `smf_message_icons` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `smf_message_tips`
+--
+
+DROP TABLE IF EXISTS `smf_message_tips`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_message_tips` (
+  `id_message_tip` int(11) NOT NULL AUTO_INCREMENT,
+  `id_message` int(11) NOT NULL,
+  `id_member` int(11) NOT NULL,
+  `coins` int(11) NOT NULL,
+  PRIMARY KEY (`id_message_tip`),
+  KEY `id_message` (`id_message`) COMMENT 'Frequent lookup of tips for each message'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `smf_message_tips`
+--
+
+LOCK TABLES `smf_message_tips` WRITE;
+/*!40000 ALTER TABLE `smf_message_tips` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_message_tips` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_messages` (
+DROP TABLE IF EXISTS `smf_messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_messages` (
   `id_msg` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_topic` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `id_board` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -933,56 +1491,73 @@ CREATE TABLE IF NOT EXISTS `smf_messages` (
   KEY `id_member_msg` (`id_member`,`approved`,`id_msg`),
   KEY `current_topic` (`id_topic`,`id_msg`,`id_member`,`approved`),
   KEY `related_ip` (`id_member`,`poster_ip`,`id_msg`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2234 ;
-
--- --------------------------------------------------------
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `smf_message_icons`
+-- Dumping data for table `smf_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_message_icons` (
-  `id_icon` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(80) NOT NULL DEFAULT '',
-  `filename` varchar(80) NOT NULL DEFAULT '',
-  `id_board` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `icon_order` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_icon`),
-  KEY `id_board` (`id_board`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
-
--- --------------------------------------------------------
+LOCK TABLES `smf_messages` WRITE;
+/*!40000 ALTER TABLE `smf_messages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_messages` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_moderators`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_moderators` (
+DROP TABLE IF EXISTS `smf_moderators`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_moderators` (
   `id_board` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_board`,`id_member`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_moderators`
+--
+
+LOCK TABLES `smf_moderators` WRITE;
+/*!40000 ALTER TABLE `smf_moderators` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_moderators` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_npc_post_shop_items`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_npc_post_shop_items` (
+DROP TABLE IF EXISTS `smf_npc_post_shop_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_npc_post_shop_items` (
   `id_msg` int(11) NOT NULL,
   `id_item` int(11) NOT NULL,
   `expire_time` int(11) NOT NULL,
   PRIMARY KEY (`id_msg`,`id_item`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_npc_post_shop_items`
+--
+
+LOCK TABLES `smf_npc_post_shop_items` WRITE;
+/*!40000 ALTER TABLE `smf_npc_post_shop_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_npc_post_shop_items` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_openid_assoc`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_openid_assoc` (
+DROP TABLE IF EXISTS `smf_openid_assoc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_openid_assoc` (
   `server_url` text NOT NULL,
   `handle` varchar(255) NOT NULL DEFAULT '',
   `secret` text NOT NULL,
@@ -991,53 +1566,100 @@ CREATE TABLE IF NOT EXISTS `smf_openid_assoc` (
   `assoc_type` varchar(64) NOT NULL,
   PRIMARY KEY (`server_url`(125),`handle`(125)),
   KEY `expires` (`expires`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_openid_assoc`
+--
+
+LOCK TABLES `smf_openid_assoc` WRITE;
+/*!40000 ALTER TABLE `smf_openid_assoc` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_openid_assoc` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_package_servers`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_package_servers` (
+DROP TABLE IF EXISTS `smf_package_servers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_package_servers` (
   `id_server` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `url` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_server`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
--- --------------------------------------------------------
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `smf_permissions`
+-- Dumping data for table `smf_package_servers`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_permissions` (
-  `id_group` smallint(5) NOT NULL DEFAULT '0',
-  `permission` varchar(30) NOT NULL DEFAULT '',
-  `add_deny` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id_group`,`permission`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+LOCK TABLES `smf_package_servers` WRITE;
+/*!40000 ALTER TABLE `smf_package_servers` DISABLE KEYS */;
+INSERT INTO `smf_package_servers` VALUES (1,'Simple Machines Third-party Mod Site','http://custom.simplemachines.org/packages/mods');
+/*!40000 ALTER TABLE `smf_package_servers` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_permission_profiles`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_permission_profiles` (
+DROP TABLE IF EXISTS `smf_permission_profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_permission_profiles` (
   `id_profile` smallint(5) NOT NULL AUTO_INCREMENT,
   `profile_name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_profile`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_permission_profiles`
+--
+
+LOCK TABLES `smf_permission_profiles` WRITE;
+/*!40000 ALTER TABLE `smf_permission_profiles` DISABLE KEYS */;
+INSERT INTO `smf_permission_profiles` VALUES (1,'default'),(2,'no_polls'),(3,'reply_only'),(4,'read_only');
+/*!40000 ALTER TABLE `smf_permission_profiles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `smf_permissions`
+--
+
+DROP TABLE IF EXISTS `smf_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_permissions` (
+  `id_group` smallint(5) NOT NULL DEFAULT '0',
+  `permission` varchar(30) NOT NULL DEFAULT '',
+  `add_deny` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_group`,`permission`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `smf_permissions`
+--
+
+LOCK TABLES `smf_permissions` WRITE;
+/*!40000 ALTER TABLE `smf_permissions` DISABLE KEYS */;
+INSERT INTO `smf_permissions` VALUES (-1,'search_posts',1),(-1,'calendar_view',1),(-1,'view_stats',1),(-1,'profile_view_any',1),(0,'view_mlist',1),(0,'search_posts',1),(0,'profile_view_own',1),(0,'profile_view_any',1),(0,'pm_read',1),(0,'pm_send',1),(0,'calendar_view',1),(0,'view_stats',1),(0,'who_view',1),(0,'profile_identity_own',1),(0,'profile_extra_own',1),(0,'profile_remove_own',1),(0,'profile_server_avatar',1),(0,'profile_upload_avatar',1),(0,'profile_remote_avatar',1),(0,'karma_edit',1),(2,'view_mlist',1),(2,'search_posts',1),(2,'profile_view_own',1),(2,'profile_view_any',1),(2,'pm_read',1),(2,'pm_send',1),(2,'calendar_view',1),(2,'view_stats',1),(2,'who_view',1),(2,'profile_identity_own',1),(2,'profile_extra_own',1),(2,'profile_remove_own',1),(2,'profile_server_avatar',1),(2,'profile_upload_avatar',1),(2,'profile_remote_avatar',1),(2,'profile_title_own',1),(2,'calendar_post',1),(2,'calendar_edit_any',1),(2,'karma_edit',1),(2,'access_mod_center',1);
+/*!40000 ALTER TABLE `smf_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_personal_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_personal_messages` (
+DROP TABLE IF EXISTS `smf_personal_messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_personal_messages` (
   `id_pm` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_pm_head` int(10) unsigned NOT NULL DEFAULT '0',
   `id_member_from` mediumint(8) unsigned NOT NULL DEFAULT '0',
@@ -1050,15 +1672,26 @@ CREATE TABLE IF NOT EXISTS `smf_personal_messages` (
   KEY `id_member` (`id_member_from`,`deleted_by_sender`),
   KEY `msgtime` (`msgtime`),
   KEY `id_pm_head` (`id_pm_head`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_personal_messages`
+--
+
+LOCK TABLES `smf_personal_messages` WRITE;
+/*!40000 ALTER TABLE `smf_personal_messages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_personal_messages` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_pm_recipients`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_pm_recipients` (
+DROP TABLE IF EXISTS `smf_pm_recipients`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_pm_recipients` (
   `id_pm` int(10) unsigned NOT NULL DEFAULT '0',
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `labels` varchar(60) NOT NULL DEFAULT '-1',
@@ -1068,15 +1701,26 @@ CREATE TABLE IF NOT EXISTS `smf_pm_recipients` (
   `deleted` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pm`,`id_member`),
   UNIQUE KEY `id_member` (`id_member`,`deleted`,`id_pm`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_pm_recipients`
+--
+
+LOCK TABLES `smf_pm_recipients` WRITE;
+/*!40000 ALTER TABLE `smf_pm_recipients` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_pm_recipients` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_pm_rules`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_pm_rules` (
+DROP TABLE IF EXISTS `smf_pm_rules`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_pm_rules` (
   `id_rule` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_member` int(10) unsigned NOT NULL DEFAULT '0',
   `rule_name` varchar(60) NOT NULL,
@@ -1087,15 +1731,51 @@ CREATE TABLE IF NOT EXISTS `smf_pm_rules` (
   PRIMARY KEY (`id_rule`),
   KEY `id_member` (`id_member`),
   KEY `delete_pm` (`delete_pm`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_pm_rules`
+--
+
+LOCK TABLES `smf_pm_rules` WRITE;
+/*!40000 ALTER TABLE `smf_pm_rules` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_pm_rules` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `smf_poll_choices`
+--
+
+DROP TABLE IF EXISTS `smf_poll_choices`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_poll_choices` (
+  `id_poll` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `id_choice` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `label` varchar(255) NOT NULL DEFAULT '',
+  `votes` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_poll`,`id_choice`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `smf_poll_choices`
+--
+
+LOCK TABLES `smf_poll_choices` WRITE;
+/*!40000 ALTER TABLE `smf_poll_choices` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_poll_choices` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_polls`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_polls` (
+DROP TABLE IF EXISTS `smf_polls`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_polls` (
   `id_poll` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `question` varchar(255) NOT NULL DEFAULT '',
   `voting_locked` tinyint(1) NOT NULL DEFAULT '0',
@@ -1109,29 +1789,26 @@ CREATE TABLE IF NOT EXISTS `smf_polls` (
   `id_member` mediumint(8) NOT NULL DEFAULT '0',
   `poster_name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_poll`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `smf_poll_choices`
+-- Dumping data for table `smf_polls`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_poll_choices` (
-  `id_poll` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `id_choice` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `label` varchar(255) NOT NULL DEFAULT '',
-  `votes` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_poll`,`id_choice`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+LOCK TABLES `smf_polls` WRITE;
+/*!40000 ALTER TABLE `smf_polls` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_polls` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_scheduled_tasks`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_scheduled_tasks` (
+DROP TABLE IF EXISTS `smf_scheduled_tasks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_scheduled_tasks` (
   `id_task` smallint(5) NOT NULL AUTO_INCREMENT,
   `next_time` int(10) NOT NULL DEFAULT '0',
   `time_offset` int(10) NOT NULL DEFAULT '0',
@@ -1143,40 +1820,76 @@ CREATE TABLE IF NOT EXISTS `smf_scheduled_tasks` (
   UNIQUE KEY `task` (`task`),
   KEY `next_time` (`next_time`),
   KEY `disabled` (`disabled`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_scheduled_tasks`
+--
+
+LOCK TABLES `smf_scheduled_tasks` WRITE;
+/*!40000 ALTER TABLE `smf_scheduled_tasks` DISABLE KEYS */;
+INSERT INTO `smf_scheduled_tasks` VALUES (1,1585735200,0,2,'h',0,'approval_notification'),(2,1586304000,0,7,'d',0,'auto_optimize'),(3,1585785660,60,1,'d',0,'daily_maintenance'),(5,1585785600,0,1,'d',0,'daily_digest'),(6,1586304000,0,1,'w',0,'weekly_digest'),(7,1585821420,122258,1,'d',0,'fetchSMfiles'),(8,0,0,1,'d',1,'birthdayemails'),(9,1586304000,0,1,'w',0,'weekly_maintenance'),(10,0,120,1,'d',1,'paid_subscriptions');
+/*!40000 ALTER TABLE `smf_scheduled_tasks` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_sessions`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_sessions` (
+DROP TABLE IF EXISTS `smf_sessions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_sessions` (
   `session_id` char(32) NOT NULL,
   `last_update` int(10) unsigned NOT NULL,
   `data` text NOT NULL,
   PRIMARY KEY (`session_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_sessions`
+--
+
+LOCK TABLES `smf_sessions` WRITE;
+/*!40000 ALTER TABLE `smf_sessions` DISABLE KEYS */;
+INSERT INTO `smf_sessions` VALUES ('p71nugknseojl9pl8k6tmh9394',1585726287,'USER_AGENT|s:115:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36\";admin_time|i:1585725654;session_value|s:32:\"b8ca0ca83df7e5f86606597ee11a84a0\";session_var|s:11:\"f5153bb3f0b\";id_msg_last_visit|s:1:\"1\";mc|a:7:{s:4:\"time\";i:1585725654;s:2:\"id\";s:1:\"1\";s:2:\"gq\";s:3:\"1=1\";s:2:\"bq\";s:3:\"1=1\";s:2:\"ap\";a:1:{i:0;i:0;}s:2:\"mb\";a:0:{}s:2:\"mq\";s:3:\"0=1\";}rc|a:3:{s:2:\"id\";s:1:\"1\";s:4:\"time\";i:1585725393;s:7:\"reports\";s:1:\"0\";}log_time|i:1585726287;timeOnlineUpdated|i:1585726287;unread_messages|i:0;old_url|s:31:\"http://127.0.0.1/wfotest/forum/\";last_read_topic|i:1;forms|a:0:{}ban|a:5:{s:12:\"last_checked\";i:1585725654;s:9:\"id_member\";i:0;s:2:\"ip\";s:0:\"\";s:3:\"ip2\";s:9:\"127.0.0.1\";s:5:\"email\";s:0:\"\";}login_SMFCookie11|s:95:\"a:4:{i:0;s:1:\"1\";i:1;s:40:\"1aefe99da9dbde8a56c44b8e7029dc67676e6d39\";i:2;i:1774941654;i:3;i:0;}\";id_theme|i:0;coinsEarned|i:0;coinsEarnedMsg|s:0:\"\";temp_attachments|a:0:{}'),('nin3aef63sst156frjeri1njj0',1585726289,'session_value|s:32:\"63b9dd77d3efe0da87ae480b3d3603f0\";session_var|s:12:\"b80fed031ec4\";mc|a:7:{s:4:\"time\";i:1585726289;s:2:\"id\";i:0;s:2:\"gq\";s:3:\"0=1\";s:2:\"bq\";s:3:\"0=1\";s:2:\"ap\";a:0:{}s:2:\"mb\";a:0:{}s:2:\"mq\";s:3:\"0=1\";}ban|a:5:{s:12:\"last_checked\";i:1585726289;s:9:\"id_member\";i:0;s:2:\"ip\";s:0:\"\";s:3:\"ip2\";s:9:\"127.0.0.1\";s:5:\"email\";s:0:\"\";}log_time|i:1585726289;timeOnlineUpdated|i:1585726289;guest_inventory|a:0:{}old_url|s:40:\"http://127.0.0.1/wfotest/forum/index.php\";USER_AGENT|s:115:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36\";'),('94v2qdv3fq3is9u7nnfu58l8c7',1585726101,'session_value|s:32:\"736ee1d7298fa17f7f7d47ad68aaa373\";session_var|s:9:\"ef3fe3ac4\";mc|a:7:{s:4:\"time\";i:1585726096;s:2:\"id\";i:0;s:2:\"gq\";s:3:\"0=1\";s:2:\"bq\";s:3:\"0=1\";s:2:\"ap\";a:0:{}s:2:\"mb\";a:0:{}s:2:\"mq\";s:3:\"0=1\";}ban|a:5:{s:12:\"last_checked\";i:1585726101;s:9:\"id_member\";i:0;s:2:\"ip\";s:0:\"\";s:3:\"ip2\";s:9:\"127.0.0.1\";s:5:\"email\";s:0:\"\";}log_time|i:1585726096;timeOnlineUpdated|i:1585726096;guest_inventory|a:0:{}old_url|s:56:\"http://127.0.0.1/wfotest/forum/index.php?action=register\";USER_AGENT|s:115:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36\";register_vv|a:5:{s:5:\"count\";i:3;s:6:\"errors\";i:0;s:8:\"did_pass\";b:0;s:1:\"q\";a:0:{}s:4:\"code\";s:6:\"BNYYXK\";}registration_agreed|b:1;');
+/*!40000 ALTER TABLE `smf_sessions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_settings`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_settings` (
+DROP TABLE IF EXISTS `smf_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_settings` (
   `variable` varchar(255) NOT NULL DEFAULT '',
   `value` text NOT NULL,
   PRIMARY KEY (`variable`(30))
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_settings`
+--
+
+LOCK TABLES `smf_settings` WRITE;
+/*!40000 ALTER TABLE `smf_settings` DISABLE KEYS */;
+INSERT INTO `smf_settings` VALUES ('smfVersion','2.0.17'),('news','SMF - Just Installed!'),('compactTopicPagesContiguous','5'),('compactTopicPagesEnable','1'),('enableStickyTopics','1'),('todayMod','1'),('karmaMode','0'),('karmaTimeRestrictAdmins','1'),('enablePreviousNext','1'),('pollMode','1'),('enableVBStyleLogin','1'),('enableCompressedOutput','1'),('karmaWaitTime','1'),('karmaMinPosts','0'),('karmaLabel','Karma:'),('karmaSmiteLabel','[smite]'),('karmaApplaudLabel','[applaud]'),('attachmentSizeLimit','128'),('attachmentPostLimit','192'),('attachmentNumPerPostLimit','4'),('attachmentDirSizeLimit','10240'),('attachmentUploadDir','/var/www/html/wfotest/forum/attachments'),('attachmentExtensions','doc,gif,jpg,mpg,pdf,png,txt,zip'),('attachmentCheckExtensions','0'),('attachmentShowImages','1'),('attachmentEnable','1'),('attachmentEncryptFilenames','1'),('attachmentThumbnails','1'),('attachmentThumbWidth','150'),('attachmentThumbHeight','150'),('censorIgnoreCase','1'),('mostOnline','2'),('mostOnlineToday','2'),('mostDate','1585726289'),('allow_disableAnnounce','1'),('trackStats','1'),('userLanguage','1'),('titlesEnable','1'),('topicSummaryPosts','15'),('enableErrorLogging','1'),('max_image_width','0'),('max_image_height','0'),('onlineEnable','0'),('cal_enabled','0'),('cal_maxyear','2030'),('cal_minyear','2008'),('cal_daysaslink','0'),('cal_defaultboard',''),('cal_showholidays','1'),('cal_showbdays','1'),('cal_showevents','1'),('cal_showweeknum','0'),('cal_maxspan','7'),('smtp_host',''),('smtp_port','25'),('smtp_username',''),('smtp_password',''),('mail_type','0'),('timeLoadPageEnable','0'),('totalMembers','1'),('totalTopics','0'),('totalMessages','0'),('simpleSearch','0'),('censor_vulgar',''),('censor_proper',''),('enablePostHTML','0'),('theme_allow','1'),('theme_default','1'),('theme_guests','3'),('enableEmbeddedFlash','0'),('xmlnews_enable','1'),('xmlnews_maxlen','255'),('hotTopicPosts','15'),('hotTopicVeryPosts','25'),('registration_method','0'),('send_validation_onChange','0'),('send_welcomeEmail','1'),('allow_editDisplayName','1'),('allow_hideOnline','1'),('guest_hideContacts','1'),('spamWaitTime','5'),('pm_spam_settings','10,5,20'),('reserveWord','0'),('reserveCase','1'),('reserveUser','1'),('reserveName','1'),('reserveNames','Admin\nWebmaster\nGuest\nroot'),('autoLinkUrls','1'),('banLastUpdated','0'),('smileys_dir','/var/www/html/wfotest/forum/Smileys'),('smileys_url','http://127.0.0.1/wfotest/forum/Smileys'),('avatar_directory','/var/www/html/wfotest/forum/avatars'),('avatar_url','http://127.0.0.1/wfotest/forum/avatars'),('avatar_max_height_external','65'),('avatar_max_width_external','65'),('avatar_action_too_large','option_html_resize'),('avatar_max_height_upload','65'),('avatar_max_width_upload','65'),('avatar_resize_upload','1'),('avatar_download_png','1'),('failed_login_threshold','3'),('oldTopicDays','120'),('edit_wait_time','90'),('edit_disable_time','0'),('autoFixDatabase','1'),('allow_guestAccess','1'),('time_format','%B %d, %Y, %I:%M:%S %p'),('number_format','1234.00'),('enableBBC','1'),('max_messageLength','20000'),('signature_settings','1,300,0,0,0,0,0,0:'),('autoOptMaxOnline','0'),('defaultMaxMessages','15'),('defaultMaxTopics','20'),('defaultMaxMembers','30'),('enableParticipation','1'),('recycle_enable','0'),('recycle_board','0'),('maxMsgID','1'),('enableAllMessages','0'),('fixLongWords','0'),('knownThemes','1,2,3'),('who_enabled','1'),('time_offset','0'),('cookieTime','60'),('lastActive','15'),('smiley_sets_known','default,aaron,akyhne'),('smiley_sets_names','Alienine\'s Set\nAaron\'s Set\nAkyhne\'s Set'),('smiley_sets_default','default'),('cal_days_for_index','7'),('requireAgreement','1'),('unapprovedMembers','0'),('default_personal_text',''),('package_make_backups','1'),('databaseSession_enable','1'),('databaseSession_loose','1'),('databaseSession_lifetime','2880'),('search_cache_size','50'),('search_results_per_page','30'),('search_weight_frequency','30'),('search_weight_age','25'),('search_weight_length','20'),('search_weight_subject','15'),('search_weight_first_message','10'),('search_max_results','1200'),('search_floodcontrol_time','5'),('permission_enable_deny','0'),('permission_enable_postgroups','0'),('mail_next_send','0'),('mail_recent','0000000000|0'),('settings_updated','0'),('next_task_time','1585735200'),('warning_settings','1,20,0'),('warning_watch','10'),('warning_moderate','35'),('warning_mute','60'),('admin_features',''),('last_mod_report_action','0'),('pruningOptions','30,180,180,180,30,0'),('cache_enable','1'),('reg_verification','1'),('visual_verification_type','3'),('enable_buddylist','1'),('birthday_email','happy_birthday'),('dont_repeat_theme_core','1'),('dont_repeat_smileys_20','1'),('dont_repeat_buddylists','1'),('attachment_image_reencode','1'),('attachment_image_paranoid','0'),('attachment_thumb_png','1'),('avatar_reencode','1'),('avatar_paranoid','0'),('global_character_set','UTF-8'),('default_timezone','Etc/GMT-1'),('memberlist_updated','1585725371'),('latestMember','1'),('latestRealName','Wetfish Online'),('rand_seed','1766526504'),('mostOnlineUpdated','2020-04-01'),('calendar_updated','1585725414'),('custom_avatar_url',''),('custom_avatar_dir',''),('currentAttachmentUploadDir','0'),('queryless_urls','0');
+/*!40000 ALTER TABLE `smf_settings` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_smileys`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_smileys` (
+DROP TABLE IF EXISTS `smf_smileys`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_smileys` (
   `id_smiley` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(30) NOT NULL DEFAULT '',
   `filename` varchar(48) NOT NULL DEFAULT '',
@@ -1185,29 +1898,53 @@ CREATE TABLE IF NOT EXISTS `smf_smileys` (
   `smiley_order` smallint(5) unsigned NOT NULL DEFAULT '0',
   `hidden` tinyint(4) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_smiley`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_smileys`
+--
+
+LOCK TABLES `smf_smileys` WRITE;
+/*!40000 ALTER TABLE `smf_smileys` DISABLE KEYS */;
+INSERT INTO `smf_smileys` VALUES (1,':)','smiley.gif','Smiley',0,0,0),(2,';)','wink.gif','Wink',0,1,0),(3,':D','cheesy.gif','Cheesy',0,2,0),(4,';D','grin.gif','Grin',0,3,0),(5,'>:(','angry.gif','Angry',0,4,0),(6,':(','sad.gif','Sad',0,5,0),(7,':o','shocked.gif','Shocked',0,6,0),(8,'8)','cool.gif','Cool',0,7,0),(9,'???','huh.gif','Huh?',0,8,0),(10,'::)','rolleyes.gif','Roll Eyes',0,9,0),(11,':P','tongue.gif','Tongue',0,10,0),(12,':-[','embarrassed.gif','Embarrassed',0,11,0),(13,':-X','lipsrsealed.gif','Lips Sealed',0,12,0),(14,':-\\','undecided.gif','Undecided',0,13,0),(15,':-*','kiss.gif','Kiss',0,14,0),(16,':\'(','cry.gif','Cry',0,15,0),(17,'>:D','evil.gif','Evil',0,16,1),(18,'^-^','azn.gif','Azn',0,17,1),(19,'O0','afro.gif','Afro',0,18,1),(20,':))','laugh.gif','Laugh',0,19,1),(21,'C:-)','police.gif','Police',0,20,1),(22,'O:-)','angel.gif','Angel',0,21,1);
+/*!40000 ALTER TABLE `smf_smileys` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_spiders`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_spiders` (
+DROP TABLE IF EXISTS `smf_spiders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_spiders` (
   `id_spider` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `spider_name` varchar(255) NOT NULL DEFAULT '',
   `user_agent` varchar(255) NOT NULL DEFAULT '',
   `ip_info` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_spider`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_spiders`
+--
+
+LOCK TABLES `smf_spiders` WRITE;
+/*!40000 ALTER TABLE `smf_spiders` DISABLE KEYS */;
+INSERT INTO `smf_spiders` VALUES (1,'Google','googlebot',''),(2,'Yahoo!','slurp',''),(3,'MSN','msnbot',''),(4,'Google (Mobile)','Googlebot-Mobile',''),(5,'Google (Image)','Googlebot-Image',''),(6,'Google (AdSense)','Mediapartners-Google',''),(7,'Google (Adwords)','AdsBot-Google',''),(8,'Yahoo! (Mobile)','YahooSeeker/M1A1-R2D2',''),(9,'Yahoo! (Image)','Yahoo-MMCrawler',''),(10,'MSN (Mobile)','MSNBOT_Mobile',''),(11,'MSN (Media)','msnbot-media',''),(12,'Cuil','twiceler',''),(13,'Ask','Teoma',''),(14,'Baidu','Baiduspider',''),(15,'Gigablast','Gigabot',''),(16,'InternetArchive','ia_archiver-web.archive.org',''),(17,'Alexa','ia_archiver',''),(18,'Omgili','omgilibot',''),(19,'EntireWeb','Speedy Spider','');
+/*!40000 ALTER TABLE `smf_spiders` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_subscriptions`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_subscriptions` (
+DROP TABLE IF EXISTS `smf_subscriptions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_subscriptions` (
   `id_subscribe` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL DEFAULT '',
   `description` varchar(255) NOT NULL DEFAULT '',
@@ -1222,30 +1959,80 @@ CREATE TABLE IF NOT EXISTS `smf_subscriptions` (
   `email_complete` text NOT NULL,
   PRIMARY KEY (`id_subscribe`),
   KEY `active` (`active`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_subscriptions`
+--
+
+LOCK TABLES `smf_subscriptions` WRITE;
+/*!40000 ALTER TABLE `smf_subscriptions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_subscriptions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_themes`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_themes` (
+DROP TABLE IF EXISTS `smf_themes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_themes` (
   `id_member` mediumint(8) NOT NULL DEFAULT '0',
   `id_theme` tinyint(4) unsigned NOT NULL DEFAULT '1',
   `variable` varchar(255) NOT NULL DEFAULT '',
   `value` text NOT NULL,
   PRIMARY KEY (`id_theme`,`id_member`,`variable`(30)),
   KEY `id_member` (`id_member`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `smf_themes`
+--
+
+LOCK TABLES `smf_themes` WRITE;
+/*!40000 ALTER TABLE `smf_themes` DISABLE KEYS */;
+INSERT INTO `smf_themes` VALUES (0,1,'name','SMF Default Theme - Curve'),(0,1,'theme_url','http://127.0.0.1/wfotest/forum/Themes/default'),(0,1,'images_url','http://127.0.0.1/wfotest/forum/Themes/default/images'),(0,1,'theme_dir','/var/www/html/wfotest/forum/Themes/default'),(0,1,'show_bbc','1'),(0,1,'show_latest_member','1'),(0,1,'show_modify','1'),(0,1,'show_user_images','1'),(0,1,'show_blurb','1'),(0,1,'show_gender','0'),(0,1,'show_newsfader','0'),(0,1,'number_recent_posts','0'),(0,1,'show_member_bar','1'),(0,1,'linktree_link','1'),(0,1,'show_profile_buttons','1'),(0,1,'show_mark_read','1'),(0,1,'show_stats_index','1'),(0,1,'linktree_inline','0'),(0,1,'show_board_desc','1'),(0,1,'newsfader_time','5000'),(0,1,'allow_no_censored','0'),(0,1,'additional_options_collapsable','1'),(0,1,'use_image_buttons','1'),(0,1,'enable_news','1'),(0,1,'forum_width','90%'),(0,2,'name','Core Theme'),(0,2,'theme_url','http://127.0.0.1/wfotest/forum/Themes/core'),(0,2,'images_url','http://127.0.0.1/wfotest/forum/Themes/core/images'),(0,2,'theme_dir','/var/www/html/wfotest/forum/Themes/core'),(-1,1,'display_quick_reply','1'),(-1,1,'posts_apply_ignore_list','1'),(0,3,'theme_url','http://127.0.0.1/wfotest/forum/Themes/Redsy'),(0,3,'images_url','http://127.0.0.1/wfotest/forum/Themes/Redsy/images'),(0,3,'theme_dir','/var/www/html/wfotest/forum/Themes/Redsy'),(0,3,'name','Redsy'),(0,3,'theme_layers','html,body'),(0,3,'theme_templates','index'),(1,3,'collapse_header','0');
+/*!40000 ALTER TABLE `smf_themes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `smf_topic_bans`
+--
+
+DROP TABLE IF EXISTS `smf_topic_bans`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_topic_bans` (
+  `id_topic_ban` int(11) NOT NULL AUTO_INCREMENT,
+  `id_topic` int(11) NOT NULL,
+  `id_member` int(11) NOT NULL,
+  `reason` varchar(80) NOT NULL,
+  PRIMARY KEY (`id_topic_ban`),
+  KEY `id_topic_ban` (`id_topic_ban`),
+  KEY `id_topic_ban_2` (`id_topic_ban`)
+) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `smf_topic_bans`
+--
+
+LOCK TABLES `smf_topic_bans` WRITE;
+/*!40000 ALTER TABLE `smf_topic_bans` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_topic_bans` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `smf_topics`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_topics` (
+DROP TABLE IF EXISTS `smf_topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smf_topics` (
   `id_topic` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `is_sticky` tinyint(4) NOT NULL DEFAULT '0',
   `id_board` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -1271,24 +2058,25 @@ CREATE TABLE IF NOT EXISTS `smf_topics` (
   KEY `member_started` (`id_member_started`,`id_board`),
   KEY `last_message_sticky` (`id_board`,`is_sticky`,`id_last_msg`),
   KEY `board_news` (`id_board`,`id_first_msg`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=185 ;
-
--- --------------------------------------------------------
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `smf_topic_bans`
+-- Dumping data for table `smf_topics`
 --
 
-CREATE TABLE IF NOT EXISTS `smf_topic_bans` (
-  `id_topic_ban` int(11) NOT NULL AUTO_INCREMENT,
-  `id_topic` int(11) NOT NULL,
-  `id_member` int(11) NOT NULL,
-  `reason` varchar(80) NOT NULL,
-  PRIMARY KEY (`id_topic_ban`),
-  KEY `id_topic_ban` (`id_topic_ban`),
-  KEY `id_topic_ban_2` (`id_topic_ban`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+LOCK TABLES `smf_topics` WRITE;
+/*!40000 ALTER TABLE `smf_topics` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smf_topics` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-04-01  8:32:08
