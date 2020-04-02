@@ -13,7 +13,8 @@ Import the database schema:
 ``mysql -u root -p {db_name} < setup/schema.sql``  
 
 ## Repair database settings:
-First, in the ``forum`` directory of this repo, copy Settings.example.php to Settings.php ``cp forum/Settings.example.php forum/Settings.php``
+First, in the ``forum`` directory of this repo, copy Settings.example.php to Settings.php  
+``cp forum/Settings.example.php forum/Settings.php``
 
 Next, Download the repair_settings tool from SMF: https://wiki.simplemachines.org/smf/Repair_settings.php
 
