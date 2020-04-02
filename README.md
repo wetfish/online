@@ -9,15 +9,18 @@ Create a mysql database for the forums & create a user with full privileges to t
 
 Go to the base directory of this repo:  
 ``cd /var/www/html/online`` 
-Import wfo schemas:  
+Import the database schema:  
 ``mysql -u root -p {db_name} < setup/schema.sql``  
 
 ## Repair database settings:
-First, download the repair_settings tool from SMF: https://wiki.simplemachines.org/smf/Repair_settings.php  
+First, in the ``forum`` directory of this repo, copy Settings.example.php to Settings.php  
+``cp forum/Settings.example.php forum/Settings.php``
 
-Place repair_settings.php in the the ``forum`` directory of this repo and visit the url, eg: ``127.0.0.1/online/forum/repair_settings.php``  
+Next, Download the repair_settings tool from SMF: https://wiki.simplemachines.org/smf/Repair_settings.php
+
+Place repair_settings.php in the ``forum`` directory and visit the url, eg: ``127.0.0.1/online/forum/repair_settings.php``  
 Fill in the MySQL Database Info section and save.
-Reload the page and click [Restore all settings] at the bottom, save.
+Reload the page and click **[Restore all settings]** at the bottom, save.
 
 ### Important:
 Default admin account is ``Wetfish Online`` and the password is ``changeme``. **change it.**
