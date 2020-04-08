@@ -41,7 +41,8 @@ function template_main()
 		<div id="mlist" class="tborder topic_table">
 			<table class="table_grid" cellspacing="0" width="100%">
 			<thead>
-				<tr class="catbg">';
+				<tr class="catbg">
+				<th scope="col">Avatar</th>';
 
 	// Display each of the column headers of the table.
 	foreach ($context['columns'] as $column)
@@ -74,9 +75,22 @@ function template_main()
 		{
 			echo '
 				<tr ', empty($member['sort_letter']) ? '' : ' id="letter' . $member['sort_letter'] . '"', '>
+
+				    <td class="windowbg2 align="center">
+				    <!--load avatar-->
+				    <script type="text/javascript">
+					$(document).ready(function() { 
+					$displayedInventory = \'', json_encode($context['member']['inventory']) ,'\';
+					refreshAvatar();
+					});
+     				</script>
+				    <canvas id="fishcanvas" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'" style="display:none"></canvas>
+					<img id="fish_avatar_img" alt="', sprintf($txt['fish_avatar_img_alt'], $member['name']),'">
+							</td>
 					<td class="windowbg2">
 						', $context['can_send_pm'] ? '<a href="' . $member['online']['href'] . '" title="' . $member['online']['text'] . '">' : '', $settings['use_image_buttons'] ? '<img src="' . $member['online']['image_href'] . '" alt="' . $member['online']['text'] . '" align="middle" />' : $member['online']['label'], $context['can_send_pm'] ? '</a>' : '', '
 					</td>
+					
 					<td class="windowbg lefttext">', $member['link'], '</td>
 					<td class="windowbg2">', $member['show_email'] == 'no' ? '' : '<a href="' . $scripturl . '?action=emailuser;sa=email;uid=' . $member['id'] . '" rel="nofollow"><img src="' . $settings['images_url'] . '/email_sm.gif" alt="' . $txt['email'] . '" title="' . $txt['email'] . ' ' . $member['name'] . '" /></a>', '</td>';
 
