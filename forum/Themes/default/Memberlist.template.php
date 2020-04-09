@@ -72,7 +72,10 @@ function template_main()
 	if (!empty($context['members']))
 	{
 		foreach ($context['members'] as $member)
-		{
+		{	
+			//set member inventory value so picture can load the user's avatar
+			$member['inventory'] = loadInventory($member['id'],true);
+
 			echo '
 				<tr ', empty($member['sort_letter']) ? '' : ' id="letter' . $member['sort_letter'] . '"', '>
 
@@ -80,7 +83,7 @@ function template_main()
 				    <!--load avatar-->
 				    <script type="text/javascript">
 					$(document).ready(function() { 
-					$displayedInventory = \'', json_encode($context['member']['inventory']) ,'\';
+					$displayedInventory = \'', json_encode($member['inventory']) ,'\';
 					refreshAvatar();
 					});
      				</script>
