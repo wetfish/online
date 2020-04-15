@@ -172,12 +172,23 @@ function Register($reg_errors = array())
 	// Generate a visual verification code to make sure the user is no bot.
 	if (!empty($modSettings['reg_verification']))
 	{
-		require_once($sourcedir . '/Subs-Editor.php');
-		$verificationOptions = array(
+		//check for wetfish captcha
+		if ($modSettings['visual_verification_type']==6) {
+			
+			$verificationOptions = array(
 			'id' => 'register',
-		);
-		$context['visual_verification'] = create_control_verification($verificationOptions);
-		$context['visual_verification_id'] = $verificationOptions['id'];
+			);
+			$context['visual_verification_id'] = $verificationOptions['id'];
+		}
+		else {
+			require_once($sourcedir . '/Subs-Editor.php');
+			$verificationOptions = array(
+			'id' => 'register',
+			);
+			$context['visual_verification'] = create_control_verification($verificationOptions);
+			$context['visual_verification_id'] = $verificationOptions['id'];
+		}
+		
 	}
 	// Otherwise we have nothing to show.
 	else
@@ -203,9 +214,15 @@ function Register($reg_errors = array())
 	// !!! Why isn't this a simple set operation?
 	// Were there any errors?
 	$context['registration_errors'] = array();
-	if (!empty($reg_errors))
-		foreach ($reg_errors as $error)
+
+	if (!empty($reg_errors)){
+
+		foreach ($reg_errors as $error){
 			$context['registration_errors'][] = $error;
+
+		} 
+			
+	}
 }
 
 // Actually register the member.
@@ -216,6 +233,10 @@ function Register2($verifiedOpenID = false)
 
 	// Start collecting together any errors.
 	$reg_errors = array();
+	if ($_SESSION['captchaSuccess']!==true) 
+	{
+		$reg_errors[] = 'error_please complete captcha';
+	}
 
 	// Did we save some open ID fields?
 	if ($verifiedOpenID && !empty($context['openid_save_fields']))
@@ -250,18 +271,30 @@ function Register2($verifiedOpenID = false)
 		// Check whether the visual verification code was entered correctly.
 		if (!empty($modSettings['reg_verification']))
 		{
-			require_once($sourcedir . '/Subs-Editor.php');
-			$verificationOptions = array(
-				'id' => 'register',
-			);
-			$context['visual_verification'] = create_control_verification($verificationOptions, true);
-
+			if($modSettings['visual_verification_type']==6) {
+				
+				$verificationOptions = array(
+					'id' => 'register',);
+				
+				$context['visual_verification_id'] = $verificationOptions['id'];
+			}
+			else {
+				require_once($sourcedir . '/Subs-Editor.php');
+				$verificationOptions = array(
+					'id' => 'register',
+				);
+				$context['visual_verification'] = create_control_verification($verificationOptions, true);
+				$context['visual_verification_id'] = $verificationOptions['id'];
+				
+			}
 			if (is_array($context['visual_verification']))
 			{
 				loadLanguage('Errors');
-				foreach ($context['visual_verification'] as $error)
+				foreach ($context['visual_verification'] as $error) {
 					$reg_errors[] = $txt['error_' . $error];
-			}
+					
+				}	
+			}		
 		}
 	}
 
@@ -494,6 +527,7 @@ function Register2($verifiedOpenID = false)
 		$regOptions['openid'] = !empty($_POST['openid_identifier']) ? $_POST['openid_identifier'] : $_SESSION['openid']['openid_uri'];
 	}
 
+	//registration happens here----------------------------------------------------------------
 	$memberID = registerMember($regOptions, true);
 
 	// What there actually an error of some kind dear boy?
