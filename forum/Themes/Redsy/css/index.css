@@ -2187,14 +2187,14 @@ ul.quickbuttons li.inline_mod_check
 }
 .post-ban-refer a, .post-ban-refer a:visited, .post-ban-refer a:hover
 {
-	height: 1.5em;
-	width: 1.5em;
+	height: 1.6em;
+	width: 1.6em;
 	color: red;
 	font-size: 1em;
 	font-weight: bolder;
 	text-align: center;
 	text-decoration: none;
-	line-height: 1.1em;
+	line-height: 1.3em;
 	border: 2px solid red;
 	border-radius: 100%;
 	display: block;
