@@ -50,17 +50,17 @@ function Up()
 		// Get post id for latest post by banned user in topic
 		$posts = query("
 		SELECT id_msg from {$db_prefix}messages
-		WHERE id_member = {$topic['id_member']}
-		AND id_topic = {$topic['id_topic']}
+		WHERE id_member = '{$topic['id_member']}'
+		AND id_topic = '{$topic['id_topic']}'
 		ORDER BY id_msg DESC LIMIT 1");
 
 		// Populate relevant topic_bans row with post_id
 		$post = $posts->fetch_assoc();
 		query("
 		UPDATE {$db_prefix}topic_bans
-		SET id_msg = {$post['id_msg']}
-		WHERE id_member = {$topic['id_member']}
-		AND id_topic = {$topic['id_topic']}");
+		SET id_msg = '{$post['id_msg']}'
+		WHERE id_member = '{$topic['id_member']}'
+		AND id_topic = '{$topic['id_topic']}'");
 	}
 }
 
