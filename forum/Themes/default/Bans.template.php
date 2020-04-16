@@ -55,6 +55,12 @@ function template_main()
 	foreach ($context['recent_bans'] as $ban)
 	{
 		$count++;
+
+		if (!$ban['post'])
+		{
+			continue;
+		}
+		
 		echo '
 			<div class="body_message">
 				<div class="row">
