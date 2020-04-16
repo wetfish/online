@@ -4182,6 +4182,14 @@ function setupMenuContext()
 				),
 				'is_last' => !$context['right_to_left'],
 			),
+			'Recent Bans' => array(
+				'title' => $txt['ban_list_title'],
+				'href' => $scripturl . '?action=bans',
+				'show' => !$user_info['is_guest'],
+				'sub_buttons' => array(
+				),
+				'is_last' => !$context['right_to_left'],
+			),
 			'chat' => array(
 				'title' => $txt['chat'],
 				'target' => '_blank',
