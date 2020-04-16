@@ -1129,16 +1129,16 @@ function prepareDisplayContext($reset = false)
 
 	// check if this user is banned from the topic, and get the reason
 	$bancheckRequest = $smcFunc['db_query']('', '
-                SELECT reason, id_msg
+				SELECT reason, id_msg
 				FROM {db_prefix}topic_bans
-                WHERE id_topic = {int:id_topic}
-                AND id_member = {int:id_member}
-                LIMIT 1',
-                array(
-                    'id_topic' => $topic,
-                    'id_member' => $message['id_member'],
-                )
-            ); 
+				WHERE id_topic = {int:id_topic}
+				AND id_member = {int:id_member}
+				LIMIT 1',
+				array(
+					'id_topic' => $topic,
+					'id_member' => $message['id_member'],
+				)
+			); 
 
 	$banCheckResult = $smcFunc['db_fetch_assoc']($bancheckRequest);
 

@@ -19,7 +19,7 @@ function loadBans()
 	$bans = array();
 
 	// Find bans
-    $query = "SELECT id_topic_ban, id_topic, id_member, reason, id_msg FROM {db_prefix}topic_bans";
+	$query = "SELECT id_topic_ban, id_topic, id_member, reason, id_msg FROM {db_prefix}topic_bans";
 	
 	// Searching for user?
 	if (!empty($_GET['user']) && !$context['user']['is_guest'])
@@ -34,7 +34,7 @@ function loadBans()
 	
 	while($ban = $smcFunc['db_fetch_assoc']($bansQuery))
 	{
-        // Load banned user data
+		// Load banned user data
 		loadMemberData(array($ban['id_member']), false, 'minimal');
 		loadMemberContext($ban['id_member']);
 		
@@ -47,12 +47,12 @@ function loadBans()
 		$postQuery = $smcFunc['db_query']('', $query, array('id_msg' => $ban['id_msg']));
 		$post = $smcFunc['db_fetch_assoc']($postQuery);
 
-        $bans[$ban['id_topic_ban']] = 
-        array(
+		$bans[$ban['id_topic_ban']] = 
+		array(
 			'member'    => $memberContext[$ban['id_member']],
 			'post'		=> $post,
-            'reason'    => $ban['reason'],
-        );
+			'reason'    => $ban['reason'],
+		);
 	}
 	$context['recent_bans'] = $bans;
 }
