@@ -1626,7 +1626,13 @@ function parse_bbc($message, $smileys = true, $cache_id = '', $parse_tags = arra
 					}
 					else
 					{
-						$tag['content'] = "<a href='{$data}'>{$data}</a>";
+						$tag['content'] = "
+						<video width='768' height='auto' style='max-width: 100%' controls>
+						<source src='{$data}' type='video/mp4'>
+						<source src='{$data}' type='video/webm'>
+						<source src='{$data}' type='video/ogg'>
+						Your browser does not support the video tag.
+						</video>";
 					}
 
 					$data = $query['v'];
@@ -4171,6 +4177,14 @@ function setupMenuContext()
 			'Recent Tips' => array(
 				'title' => $txt['tip_list_title'],
 				'href' => $scripturl . '?action=tips',
+				'show' => !$user_info['is_guest'],
+				'sub_buttons' => array(
+				),
+				'is_last' => !$context['right_to_left'],
+			),
+			'Recent Bans' => array(
+				'title' => $txt['ban_list_title'],
+				'href' => $scripturl . '?action=bans',
 				'show' => !$user_info['is_guest'],
 				'sub_buttons' => array(
 				),

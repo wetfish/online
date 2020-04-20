@@ -1129,23 +1129,27 @@ function prepareDisplayContext($reset = false)
 
 	// check if this user is banned from the topic, and get the reason
 	$bancheckRequest = $smcFunc['db_query']('', '
-                SELECT reason
+				SELECT reason, id_msg
 				FROM {db_prefix}topic_bans
-                WHERE id_topic = {int:id_topic}
-                AND id_member = {int:id_member}
-                LIMIT 1',
-                array(
-                    'id_topic' => $topic,
-                    'id_member' => $message['id_member'],
-                )
-            ); 
+				WHERE id_topic = {int:id_topic}
+				AND id_member = {int:id_member}
+				LIMIT 1',
+				array(
+					'id_topic' => $topic,
+					'id_member' => $message['id_member'],
+				)
+			); 
 
 	$banCheckResult = $smcFunc['db_fetch_assoc']($bancheckRequest);
 
 	// if there are results, user is already banned
 	if($banCheckResult)
 	{
-		$message['topic_ban_reason'] = $banCheckResult['reason'];
+		if ($message['id_msg'] == $banCheckResult['id_msg'])
+		{
+			$message['topic_ban_reason'] = $banCheckResult['reason'];
+		}
+		$message['id_banned_msg'] = $banCheckResult['id_msg'];
 	}
 
 	// Tips
@@ -1253,6 +1257,7 @@ function prepareDisplayContext($reset = false)
 		'can_ban_from_topic' => $user_info['is_admin'] || ( !isset($message['topic_ban_reason']) && $context['user']['started'] && $message['id_member'] != $user_info['id'] ),
 		'can_tip_for_message' => ( !empty($user_info['id']) && $message['id_member'] != $user_info['id'] ),
 		'topic_ban_reason' => $message['topic_ban_reason'],
+		'id_banned_msg' => $message['id_banned_msg'],
 		'tips' => $message['tips'],
 		'inventory' => loadInventory($message['id_member'], true),
 		'npc_shop_items' => dbGetNpcTopicShopItems($message['id_msg']),

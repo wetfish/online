@@ -31,6 +31,9 @@ $txt['tip_for_message_post_footer'] = "%s TIPPED %d CORAL FOR THIS POST";
 // Tip list page stuff
 $txt['tip_list_title'] = "Recent Tips";
 
+// Ban list
+$txt['ban_list_title'] = "Recent Bans";
+
 // Wetfish Captcha stuff
 $txt['wetfish_captcha'] = 'Wetfish Captcha';
 $txt['wetfish_captcha_error'] = "Please complete the captcha!";

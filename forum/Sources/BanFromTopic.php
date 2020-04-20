@@ -123,9 +123,9 @@ function BanFromTopicConfirm()
 		// banning is OK so far. update the database.
 		$smcFunc['db_insert']('',
 			'{db_prefix}topic_bans',
-			array('id_topic' => 'int', 'id_member' => 'int', 'reason' => 'string'),
-			array($context['topic'], $context['ban_from_topic_target_userid'], $context['reason']),
-			array('id_topic', 'id_member', 'reason')
+			array('id_topic' => 'int', 'id_member' => 'int', 'reason' => 'string', 'id_msg' => 'int'),
+			array($context['topic'], $context['ban_from_topic_target_userid'], $context['reason'], $context['msg']),
+			array('id_topic', 'id_member', 'reason', 'id_msg')
 		);
 	}
 

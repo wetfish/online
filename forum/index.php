@@ -343,6 +343,7 @@ function smf_main()
 		'buydailyitem' => array('GetItem.php', 'BuyDailyItem'),
 		'buynpcposteditem' => array('GetItem.php', 'BuyNpcPostShopItem'),
 		'tips' => array('Tips.php', 'Tips'),
+		'bans' => array('Bans.php', 'Bans'),
 		'captcha' => array('Captcha.php', 'Captcha'),
 	);
 

@@ -624,6 +624,13 @@ function template_main()
 							'</p>';
 					
 				}
+				else if(isset($message['id_banned_msg']))
+				{
+					echo '<p class="post-ban-refer">', 
+							'<a href="', $scripturl, '?topic=', $context['current_topic'], '.msg', $message['id_banned_msg'], '#msg', $message['id_banned_msg'], '"title="User was banned from this topic. Click to view post.">!</a>',
+						'</p>';
+				}
+
                 foreach ($message['tips'] as $x)
                 {
 						echo '<p class="post-tip-notice">', 
