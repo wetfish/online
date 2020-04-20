@@ -343,7 +343,9 @@ function smf_main()
 		'buydailyitem' => array('GetItem.php', 'BuyDailyItem'),
 		'buynpcposteditem' => array('GetItem.php', 'BuyNpcPostShopItem'),
 		'tips' => array('Tips.php', 'Tips'),
+		'captcha' => array('Captcha.php', 'Captcha'),
 	);
+
 
 	// Allow modifying $actionArray easily.
 	call_integration_hook('integrate_actions', array(&$actionArray));

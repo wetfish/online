@@ -196,7 +196,7 @@ function captcha() //the actual captcha 'class'
 
     function retrieveAsset(assetName) //retrieve static assets
     {
-        var request = new Request('/captcha/captcha-assets/'+assetName); //initialize request
+        var request = new Request('captcha/captcha-assets/'+assetName); //initialize request
         
         return fetch(request) //fetches, then later returns blob url for asset
         .then(function(response)
@@ -213,7 +213,7 @@ function captcha() //the actual captcha 'class'
     {
         var challengeXHR = new XMLHttpRequest(); //initial request to server to generate and begin challenge
         challengeXHR.withCredentials = true;
-        challengeXHR.open('GET', "/captcha/captcha.php?new='true'", true); //will call captcha.php with no parameters
+        challengeXHR.open('GET', "index.php?action=captcha&new=true", true); //will call captcha.php with no parameters
         challengeXHR.send(); //sends request
         challengeXHR.onreadystatechange = function() //listening for response
         {
@@ -232,7 +232,7 @@ function captcha() //the actual captcha 'class'
         if(user.usingNet || first){ //only calls if user is actively attempting solution
             var successXHR = new XMLHttpRequest(); //request to server to check for a success
             successXHR.withCredentials = true;
-            successXHR.open('GET', "/captcha/captcha.php?x="+user.x+"&y="+user.y, true); //will call captcha.php with user data
+            successXHR.open('GET', "index.php?action=captcha&x="+user.x+"&y="+user.y, true); //will call captcha.php with user data
             successXHR.send(); //sends request
             successXHR.onreadystatechange = function() //listening for response
             {

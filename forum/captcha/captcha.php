@@ -1,12 +1,14 @@
 <?php
-session_start();
+
+// We don't need to start a session since SMF has already.
+//session_start();
 $captcha = new captcha();
 
 class captcha
 {
     function __construct()
     {   
-        if($_GET['new']){
+        if(isset($_GET['new'])){
             unset($_SESSION['captchaSuccess']);
             unset($_SESSION['randomID']);
             unset($_SESSION['checkSuccess']);
@@ -29,7 +31,7 @@ class captcha
             }
             $this->generateCaptcha();
         }
-        
+        exit();
     }
 
     //generates a new and 'unique' random fish
@@ -95,20 +97,20 @@ class captcha
     {
         $fishImages = 
         [
-            0 => imagecreatefrompng('./captcha-assets/normal.png'),
-            1 => imagecreatefrompng('./captcha-assets/stripe.png'),
-            2 => imagecreatefrompng('./captcha-assets/dark.png'),
-            3 => imagecreatefrompng('./captcha-assets/cool.png')
+            0 => imagecreatefrompng('captcha/captcha-assets/normal.png'),
+            1 => imagecreatefrompng('captcha/captcha-assets/stripe.png'),
+            2 => imagecreatefrompng('captcha/captcha-assets/dark.png'),
+            3 => imagecreatefrompng('captcha/captcha-assets/cool.png')
         ];
         $layers = 
         [
-            0 => imagecreatefrompng('./captcha-assets/bglayer.png'),
+            0 => imagecreatefrompng('captcha/captcha-assets/bglayer.png'),
             1 => imagecreatetruecolor(420, 240),
             2 => imagecreatetruecolor(420, 240)
         ];
 
         $textColor = imagecolorallocate($layers[0], 160, 15, 150);
-        $font = imagettftext($layers[0], 30, 0, 15, 220, $textColor, './captcha-assets/dpcomic.ttf', "Catch the " . $_SESSION['randomID']['challenge'] . " fish!");
+        $font = imagettftext($layers[0], 30, 0, 15, 220, $textColor, 'captcha/captcha-assets/dpcomic.ttf', "Catch the " . $_SESSION['randomID']['challenge'] . " fish!");
 
         for($i=1; $i <= 2; $i++) 
         {   

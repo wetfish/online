@@ -352,10 +352,13 @@ function template_registration_form()
 				<h4 class="titlebg">', $txt['verification'], '</h4>
 			</div>
 			<div class="windowbg2">
-				<body onload="captcha()">
-    				<div id="captcha"></div>
-				</body>
-				<script src="/captcha/captcha.js"></script>
+				<span class="topslice"><span></span></span>
+					<center>
+						<div id="captcha"></div>
+						</center>
+					<script src="captcha/captcha.js"></script>
+					<script type="text/javascript">captcha();</script>
+				<span class="botslice"><span></span></span>
 			</div>';
 	}
 

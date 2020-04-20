@@ -712,8 +712,6 @@ function ModifySpamSettings($return_config = false)
 {
 	global $txt, $scripturl, $context, $settings, $sc, $modSettings, $smcFunc;
 
-	//define wetfish_captcha settings here 
-	$txt['wetfish_captcha'] = 'wetfish_captcha';
 	// Generate a sample registration image.
 	$context['use_graphic_library'] = in_array('gd', get_loaded_extensions());
 	$context['verification_image_href'] = $scripturl . '?action=verificationcode;rand=' . md5(mt_rand());
@@ -872,7 +870,7 @@ function ModifySpamSettings($return_config = false)
 			var imageType = document.getElementById(\'visual_verification_type\').value;
 			console.log(imageType);
 			if (imageType == 6) {
-				document.getElementById(\'verification_image\').src = "/captcha/docs/captcha-example.png";
+				document.getElementById(\'verification_image\').src = "captcha/captcha-assets/welcome.png";
 				return;
 			}
 			document.getElementById(\'verification_image\').src = \'' . $context['verification_image_href'] . ';type=\' + imageType;
@@ -884,7 +882,7 @@ function ModifySpamSettings($return_config = false)
 		$config_vars['vv']['postinput'] = '<br /><img src="' . $context['verification_image_href'] . ';type=' . (empty($modSettings['visual_verification_type']) ? 0 : $modSettings['visual_verification_type']) . '" alt="' . $txt['setting_image_verification_sample'] . '" id="verification_image" /><br />';
 		//if wetfish captcha then get the example image
 		if ($modSettings['visual_verification_type']==6 ) {
-			$config_vars['vv']['postinput'] = '<br /><img id="verification_image" src="/captcha/docs/captcha-example.png" alt="wetfish_captcha"/><br />';
+			$config_vars['vv']['postinput'] = '<br /><br /><img id="verification_image" src="captcha/captcha-assets/welcome.png" alt="wetfish_captcha"/><br />';
 		}
 	}
 		

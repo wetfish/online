@@ -172,15 +172,9 @@ function Register($reg_errors = array())
 	// Generate a visual verification code to make sure the user is no bot.
 	if (!empty($modSettings['reg_verification']))
 	{
-		//check for wetfish captcha
-		if ($modSettings['visual_verification_type']==6) {
-			
-			$verificationOptions = array(
-			'id' => 'register',
-			);
-			$context['visual_verification_id'] = $verificationOptions['id'];
-		}
-		else {
+		// Use SMF functionality if not using wetfish captcha.
+		if ($modSettings['visual_verification_type']!=6)
+		{
 			require_once($sourcedir . '/Subs-Editor.php');
 			$verificationOptions = array(
 			'id' => 'register',
@@ -215,13 +209,12 @@ function Register($reg_errors = array())
 	// Were there any errors?
 	$context['registration_errors'] = array();
 
-	if (!empty($reg_errors)){
-
-		foreach ($reg_errors as $error){
+	if (!empty($reg_errors))
+	{
+		foreach ($reg_errors as $error)
+		{
 			$context['registration_errors'][] = $error;
-
-		} 
-			
+		} 	
 	}
 }
 
@@ -233,9 +226,9 @@ function Register2($verifiedOpenID = false)
 
 	// Start collecting together any errors.
 	$reg_errors = array();
-	if ($_SESSION['captchaSuccess']!==true) 
+	if ($_SESSION['captchaSuccess'] != true && $modSettings['visual_verification_type'] == 6) 
 	{
-		$reg_errors[] = 'error_please complete captcha';
+		$reg_errors[] = $txt['wetfish_captcha_error'];
 	}
 
 	// Did we save some open ID fields?
@@ -272,10 +265,8 @@ function Register2($verifiedOpenID = false)
 		if (!empty($modSettings['reg_verification']))
 		{
 			if($modSettings['visual_verification_type']==6) {
-				
 				$verificationOptions = array(
 					'id' => 'register',);
-				
 				$context['visual_verification_id'] = $verificationOptions['id'];
 			}
 			else {
