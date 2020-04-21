@@ -330,7 +330,7 @@ function template_registration_form()
 			</div>';
 	}
 
-	if ($context['visual_verification'] && $modSettings['visual_verification_type']!==6)
+	if ($context['visual_verification'] && $modSettings['visual_verification_type'] != 6)
 	{
 		echo '
 			<div class="title_bar">
@@ -346,7 +346,8 @@ function template_registration_form()
 	}
 
 	//custom Wetfish_captcha
-	if($modSettings['visual_verification_type']==6) {
+    if($context['visual_verification'] && $modSettings['visual_verification_type'] == 6) 
+    {
 			echo '
 			<div class="title_bar">
 				<h4 class="titlebg">', $txt['verification'], '</h4>

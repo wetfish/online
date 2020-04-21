@@ -226,9 +226,9 @@ function Register2($verifiedOpenID = false)
 
 	// Start collecting together any errors.
 	$reg_errors = array();
-	if ($_SESSION['captchaSuccess'] != true && $modSettings['visual_verification_type'] == 6) 
+	if ($_SESSION['captchaSuccess'] != true && $modSettings['visual_verification_type'] == 6 && $modSettings['reg_verification']) 
 	{
-		$reg_errors[] = $txt['wetfish_captcha_error'];
+		$reg_errors[] = $txt['error_wetfish_captcha'];
 	}
 
 	// Did we save some open ID fields?

@@ -528,7 +528,7 @@ function template_main()
 	}
 
 	// Is visual verification enabled?
-	if ($context['require_verification'])
+	if ($context['require_verification'] && $modSettings['visual_verification_type'] != 6)
 	{
 		echo '
 					<div class="post_verification">
@@ -538,6 +538,20 @@ function template_main()
 						', template_control_verification($context['visual_verification_id'], 'all'), '
 					</div>';
 	}
+	
+	if($context['require_verification'] && $modSettings['visual_verification_type'] == 6)
+	{
+		echo '
+					<div class="post_verification">
+						<span', !empty($context['post_error']['need_qr_verification']) ? ' class="error"' : '', '>
+							<strong>', $txt['verification'], ':</strong>
+						</span>
+						<center><div id="captcha"></div></center>
+						<script src="captcha/captcha.js"></script>
+						<script type="text/javascript">captcha();</script>
+					</div>';
+	}
+
 
 	// Finally, the submit buttons.
 	echo '
