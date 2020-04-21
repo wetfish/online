@@ -1189,7 +1189,7 @@ function Post()
 	if ($context['require_verification'])
 	{
 		// Use SMF functionality if not using wetfish captcha.
-		if ($modSettings['visual_verification_type']!=6)
+		if ($modSettings['visual_verification_type'] != 6)
 		{
 			require_once($sourcedir . '/Subs-Editor.php');
 			$verificationOptions = array(
@@ -1277,7 +1277,6 @@ function Post2()
 	}
 
 	// Wrong verification code?
-	// Only care about this if not using wetfish captcha
 	if (!$user_info['is_admin'] && !$user_info['is_mod'] && !empty($modSettings['posts_require_captcha']) && ($user_info['posts'] < $modSettings['posts_require_captcha'] || ($user_info['is_guest'] && $modSettings['posts_require_captcha'] == -1)))
 	{
 		// Use SMF functionality if not using wetfish captcha.

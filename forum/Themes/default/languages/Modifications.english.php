@@ -36,7 +36,6 @@ $txt['ban_list_title'] = "Recent Bans";
 
 // Wetfish Captcha stuff
 $txt['wetfish_captcha'] = 'Wetfish Captcha';
-$txt['wetfish_captcha_error'] = "Please complete the captcha!";
 $txt['error_wetfish_captcha'] = "Please complete the captcha!";
 
 // inventory / fish equipper stuff
