@@ -182,6 +182,10 @@ function Register($reg_errors = array())
 			$context['visual_verification'] = create_control_verification($verificationOptions);
 			$context['visual_verification_id'] = $verificationOptions['id'];
 		}
+		else
+		{
+			$context['visual_verification'] = true;
+		}
 		
 	}
 	// Otherwise we have nothing to show.
