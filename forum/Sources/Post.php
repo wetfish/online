@@ -1188,12 +1188,16 @@ function Post()
 	$context['require_verification'] = !$user_info['is_mod'] && !$user_info['is_admin'] && !empty($modSettings['posts_require_captcha']) && ($user_info['posts'] < $modSettings['posts_require_captcha'] || ($user_info['is_guest'] && $modSettings['posts_require_captcha'] == -1));
 	if ($context['require_verification'])
 	{
-		require_once($sourcedir . '/Subs-Editor.php');
-		$verificationOptions = array(
-			'id' => 'post',
-		);
-		$context['require_verification'] = create_control_verification($verificationOptions);
-		$context['visual_verification_id'] = $verificationOptions['id'];
+		// Use SMF functionality if not using wetfish captcha.
+		if ($modSettings['visual_verification_type'] != 6)
+		{
+			require_once($sourcedir . '/Subs-Editor.php');
+			$verificationOptions = array(
+				'id' => 'post',
+			);
+			$context['require_verification'] = create_control_verification($verificationOptions);
+			$context['visual_verification_id'] = $verificationOptions['id'];
+		}
 	}
 
 	// If they came from quick reply, and have to enter verification details, give them some notice.
@@ -1275,14 +1279,23 @@ function Post2()
 	// Wrong verification code?
 	if (!$user_info['is_admin'] && !$user_info['is_mod'] && !empty($modSettings['posts_require_captcha']) && ($user_info['posts'] < $modSettings['posts_require_captcha'] || ($user_info['is_guest'] && $modSettings['posts_require_captcha'] == -1)))
 	{
-		require_once($sourcedir . '/Subs-Editor.php');
-		$verificationOptions = array(
-			'id' => 'post',
-		);
-		$context['require_verification'] = create_control_verification($verificationOptions, true);
-		if (is_array($context['require_verification']))
-			$post_errors = array_merge($post_errors, $context['require_verification']);
+		// Use SMF functionality if not using wetfish captcha.
+		if ($modSettings['visual_verification_type'] != 6)
+		{
+			require_once($sourcedir . '/Subs-Editor.php');
+			$verificationOptions = array(
+				'id' => 'post',
+			);
+			$context['require_verification'] = create_control_verification($verificationOptions, true);
+			if (is_array($context['require_verification']))
+				$post_errors = array_merge($post_errors, $context['require_verification']);
+		}
+		else if ($_SESSION['captchaSuccess'] != true)
+		{
+			$post_errors[] = 'wetfish_captcha';
+		}
 	}
+	
 
 	require_once($sourcedir . '/Subs-Post.php');
 	loadLanguage('Post');

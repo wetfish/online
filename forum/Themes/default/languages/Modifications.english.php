@@ -34,6 +34,10 @@ $txt['tip_list_title'] = "Recent Tips";
 // Ban list
 $txt['ban_list_title'] = "Recent Bans";
 
+// Wetfish Captcha stuff
+$txt['wetfish_captcha'] = 'Wetfish Captcha';
+$txt['error_wetfish_captcha'] = "Please complete the captcha!";
+
 // inventory / fish equipper stuff
 $txt['inv_fish_avatar'] = "Avatar";
 $txt['inv_items'] = "Items";

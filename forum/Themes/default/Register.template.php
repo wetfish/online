@@ -330,7 +330,7 @@ function template_registration_form()
 			</div>';
 	}
 
-	if ($context['visual_verification'])
+	if ($context['visual_verification'] && $modSettings['visual_verification_type'] != 6)
 	{
 		echo '
 			<div class="title_bar">
@@ -341,6 +341,24 @@ function template_registration_form()
 				<fieldset class="content centertext">
 					', template_control_verification($context['visual_verification_id'], 'all'), '
 				</fieldset>
+				<span class="botslice"><span></span></span>
+			</div>';
+	}
+
+	//custom Wetfish_captcha
+	if($context['visual_verification'] && $modSettings['visual_verification_type'] == 6) 
+	{
+			echo '
+			<div class="title_bar">
+				<h4 class="titlebg">', $txt['verification'], '</h4>
+			</div>
+			<div class="windowbg2">
+				<span class="topslice"><span></span></span>
+					<center>
+						<div id="captcha"></div>
+						</center>
+					<script src="captcha/captcha.js"></script>
+					<script type="text/javascript">captcha();</script>
 				<span class="botslice"><span></span></span>
 			</div>';
 	}

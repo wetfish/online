@@ -731,7 +731,7 @@ function ModifySpamSettings($return_config = false)
 			// Visual verification.
 			array('title', 'configure_verification_means'),
 			array('desc', 'configure_verification_means_desc'),
-				'vv' => array('select', 'visual_verification_type', array($txt['setting_image_verification_off'], $txt['setting_image_verification_vsimple'], $txt['setting_image_verification_simple'], $txt['setting_image_verification_medium'], $txt['setting_image_verification_high'], $txt['setting_image_verification_extreme']), 'subtext'=> $txt['setting_visual_verification_type_desc'], 'onchange' => $context['use_graphic_library'] ? 'refreshImages();' : ''),
+				'vv' => array('select', 'visual_verification_type', array($txt['setting_image_verification_off'], $txt['setting_image_verification_vsimple'], $txt['setting_image_verification_simple'], $txt['setting_image_verification_medium'], $txt['setting_image_verification_high'], $txt['setting_image_verification_extreme'],$txt['wetfish_captcha']), 'subtext'=> $txt['setting_visual_verification_type_desc'], 'onchange' => $context['use_graphic_library'] ? 'refreshImages();' : ''),
 				array('int', 'qa_verification_number', 'subtext' => $txt['setting_qa_verification_number_desc']),
 			// Clever Thomas, who is looking sheepy now? Not I, the mighty sword swinger did say.
 			array('title', 'setup_verification_questions'),
@@ -868,14 +868,27 @@ function ModifySpamSettings($return_config = false)
 		function refreshImages()
 		{
 			var imageType = document.getElementById(\'visual_verification_type\').value;
+			console.log(imageType);
+			if (imageType == 6) {
+				document.getElementById(\'verification_image\').src = "captcha/captcha-assets/welcome.png";
+				return;
+			}
 			document.getElementById(\'verification_image\').src = \'' . $context['verification_image_href'] . ';type=\' + imageType;
 		}';
 
 	// Show the image itself, or text saying we can't.
-	if ($context['use_graphic_library'])
+	if ($context['use_graphic_library']) {
+		
 		$config_vars['vv']['postinput'] = '<br /><img src="' . $context['verification_image_href'] . ';type=' . (empty($modSettings['visual_verification_type']) ? 0 : $modSettings['visual_verification_type']) . '" alt="' . $txt['setting_image_verification_sample'] . '" id="verification_image" /><br />';
-	else
+		//if wetfish captcha then get the example image
+		if ($modSettings['visual_verification_type']==6 ) {
+			$config_vars['vv']['postinput'] = '<br /><br /><img id="verification_image" src="captcha/captcha-assets/welcome.png" alt="wetfish_captcha"/><br />';
+		}
+	}
+		
+	else {
 		$config_vars['vv']['postinput'] = '<br /><span class="smalltext">' . $txt['setting_image_verification_nogd'] . '</span>';
+	}
 
 	// Hack for PM spam settings.
 	list ($modSettings['max_pm_recipients'], $modSettings['pm_posts_verification'], $modSettings['pm_posts_per_hour']) = explode(',', $modSettings['pm_spam_settings']);
