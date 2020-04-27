@@ -73,8 +73,7 @@ function template_main()
 	{
 		foreach ($context['members'] as $member)
 		{	
-			//set member inventory value so picture can load the user's avatar
-			$member['inventory'] = loadInventory($member['id'],true);
+			
 
 			echo '
 				<tr ', empty($member['sort_letter']) ? '' : ' id="letter' . $member['sort_letter'] . '"', '>
@@ -83,12 +82,13 @@ function template_main()
 				    <!--load avatar-->
 				    <script type="text/javascript">
 					$(document).ready(function() { 
-					$displayedInventory = \'', json_encode($member['inventory']) ,'\';
-					refreshAvatar();
+					
+					loadAvatar(\'',json_encode(loadInventory($member['id'], true)),'\', "fishcanvas_',  $member['id'], '", "fish_avatar_img_',  $member['id'],'");
+					
 					});
      				</script>
-				    <canvas id="fishcanvas" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'" style="display:none"></canvas>
-					<img id="fish_avatar_img" alt="', sprintf($txt['fish_avatar_img_alt'], $member['name']),'">
+				    <canvas id="fishcanvas_',  $member['id'], '" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'" style="display:none"></canvas>
+					<img id="fish_avatar_img_',  $member['id'],'" alt="', sprintf($txt['fish_avatar_img_alt'], $member['name']),'">
 							</td>
 					<td class="windowbg2">
 						', $context['can_send_pm'] ? '<a href="' . $member['online']['href'] . '" title="' . $member['online']['text'] . '">' : '', $settings['use_image_buttons'] ? '<img src="' . $member['online']['image_href'] . '" alt="' . $member['online']['text'] . '" align="middle" />' : $member['online']['label'], $context['can_send_pm'] ? '</a>' : '', '
