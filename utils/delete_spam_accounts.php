@@ -23,13 +23,12 @@ function query($string)
 }
 // End Boilerplate
 
-
 // Find all emails belonging to users with no posts or are banned already.
 $emails = query("
 	SELECT id_member, member_name, email_address, is_activated, posts
 	FROM {$db_prefix}members
 	WHERE posts = 0 OR is_activated = 11
-	ORDER BY id_member ASC;");
+    ORDER BY id_member ASC;");
 
 function LoadBlacklist($string)
 {
@@ -125,11 +124,14 @@ function GenerateDeletionSchema($ids)
 	global $db_prefix, $ResultDir;
 	$sqlFile = fopen("{$ResultDir}/delete_accounts.sql", "w");
 
-	$idString = implode(',', $ids);
+    $idString = implode(',', $ids);
 
 	$query = "DELETE FROM {$db_prefix}members WHERE id_member in ({$idString});\n";
-	$query .= "DELETE FROM {$db_prefix}inventory WHERE id_member in ({$idString});";
-	fputs($sqlFile, $query . "\n");
+    $query .= "DELETE FROM {$db_prefix}inventory WHERE id_member in ({$idString});\n";
+    $query .= "SET @newTotalMembers = (SELECT COUNT(*) from {$db_prefix}members WHERE is_activated = 1);\n";
+    $query .= "UPDATE {$db_prefix}settings SET value = @newTotalMembers WHERE variable = 'totalMembers';\n";
+
+    fputs($sqlFile, $query . "\n");
 	fclose($sqlFile);
 }
 
@@ -197,6 +199,6 @@ function sanitize_email($string)
 		$name = substr($name, 0, $plusPos);
 	}
 
-	return $name . substr($string, $atPos);;
+	return $name . substr($string, $atPos);
 }
 ?>
