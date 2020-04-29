@@ -4262,3 +4262,9 @@ ol.breadcrumb li:first-child, .breadcrumb li:last-child
 .coins-header-earned {
 	color: green;
 }
+
+/*aligns content vertically in the middle within a td */
+.align-td-middle
+{
+	vertical-align: middle!important;
+}
