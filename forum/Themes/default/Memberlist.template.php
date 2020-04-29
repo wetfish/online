@@ -129,7 +129,7 @@ function template_main()
 		{
 			echo '
 					<td class="windowbg2 align-td-middle" style="white-space: nowrap" width="15">', $member['posts'], '</td>
-					<td class="windowbg statsbar" width="120">';
+					<td class="windowbg statsbar align-td-middle" width="120">';
 
 			if (!empty($member['post_percent']))
 				echo '
