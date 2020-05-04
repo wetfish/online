@@ -4177,7 +4177,7 @@ function setupMenuContext()
 			'Recent Tips' => array(
 				'title' => $txt['tip_list_title'],
 				'href' => $scripturl . '?action=tips',
-				'show' => !$user_info['is_guest'],
+				'show' => true,
 				'sub_buttons' => array(
 				),
 				'is_last' => !$context['right_to_left'],
@@ -4185,7 +4185,7 @@ function setupMenuContext()
 			'Recent Bans' => array(
 				'title' => $txt['ban_list_title'],
 				'href' => $scripturl . '?action=bans',
-				'show' => !$user_info['is_guest'],
+				'show' => true,
 				'sub_buttons' => array(
 				),
 				'is_last' => !$context['right_to_left'],
