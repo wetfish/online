@@ -1156,7 +1156,7 @@ function prepareDisplayContext($reset = false)
 	{
 		$message['tips'] = array();
 		$tipsRequest = $smcFunc['db_query']('', '
-				SELECT real_name, a.coins
+				SELECT real_name, a.coins, item
 				FROM {db_prefix}message_tips AS a
 				INNER JOIN {db_prefix}members AS b
 				ON b.id_member = a.id_member
@@ -1168,7 +1168,14 @@ function prepareDisplayContext($reset = false)
 		); 
 
 		while ($row = $smcFunc['db_fetch_assoc']($tipsRequest)) {
-			array_push($message['tips'], $row);
+			if ($row['item'] != 0)
+			{
+				array_push($message['tips'], array('tip' => $row, 'item' => dbGetIteminfo($row['item'])));
+			}
+			else
+			{
+				array_push($message['tips'], array('tip' => $row));
+			}
 		}
 	}
 

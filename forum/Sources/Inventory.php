@@ -419,6 +419,67 @@ function dbInsertNewInventoryItems($inventory, $userid)
 	}
 }
 
+function dbRemoveInventoryItem($itemID, $userid)
+{
+    global $smcFunc;
+
+    $itemRequest = $smcFunc['db_query']('', '
+                        SELECT count
+                        FROM {db_prefix}inventory
+                        WHERE id_item = {int:id_item}
+                        AND id_member = {int:id_member}
+                        LIMIT 1',
+                        array(
+                            'id_item' => $itemID,
+                            'id_member' => $userid,
+                        )
+                    );
+    if($result = $smcFunc['db_fetch_assoc']($itemRequest))
+    {
+        if ($result['count'] > 1)
+        {
+            $smcFunc['db_query']('', '
+                UPDATE {db_prefix}inventory
+                SET count = {int:count}
+                WHERE id_item = {int:id_item}
+                AND id_member = {int:id_member}',
+                array(
+                    'count' => $result['count'] - 1,
+                    'id_item' => $itemID,
+                    'id_member' => $userid,
+                )
+            ); 
+        }
+        else if ($result['count'] == 1)
+        {
+            $smcFunc['db_query']('', '
+            DELETE FROM {db_prefix}inventory
+            WHERE id_item = {int:id_item}
+            AND id_member = {int:id_member}',
+            array(
+                'id_item' => $itemID,
+                'id_member' => $userid
+            ));
+        }
+    }
+}
+
+function dbGetItemInfo($itemID)
+{
+	global $smcFunc;
+
+	$itemRequest = $smcFunc['db_query']('', '
+					SELECT * FROM {db_prefix}items
+					WHERE id_item = {int:itemID}
+					LIMIT 1',
+					Array(
+						'itemID' => $itemID
+					));
+
+	$result = $smcFunc['db_fetch_assoc']($itemRequest);
+	return $result;
+}
+
 // get a random item from the DB using today's date as the seed. 
 // this isn't the best method as it could return different results throughout the day if the items table changes
 function dbGetDailyFeatureItem()

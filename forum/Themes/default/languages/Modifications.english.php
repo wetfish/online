@@ -26,6 +26,9 @@ $txt['tip_for_message_success'] = "Your transaction has been processed.";
 $txt['tip_for_message_fail'] = "Unable to tip <b>%s</b>.";
 $txt['tip_for_message_fail_invalidamount'] = "Invalid amount.";
 $txt['tip_for_message_fail_cantafford'] = "Insufficient funds.";
+$txt['tip_for_message_fail_item_noitem'] = "Please select an item to tip.";
+$txt['tip_for_message_fail_item_notenough'] = "You do not have this item.";
+$txt['tip_for_message_fail_item_bodyfacelimit'] = "You can't give away your last body or face base item.";
 $txt['tip_for_message_post_footer'] = "%s TIPPED %d CORAL FOR THIS POST";
 
 // Tip list page stuff

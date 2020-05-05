@@ -631,12 +631,19 @@ function template_main()
 						'</p>';
 				}
 
-                foreach ($message['tips'] as $x)
-                {
-						echo '<p class="post-tip-notice">', 
-								sprintf($txt['tip_for_message_post_footer'], strtoupper($x['real_name']), $x['coins']), 
-							'</p>';
-                }
+				foreach ($message['tips'] as $x)
+				{
+						echo '<p class="post-tip-notice">';
+						if (!$x['tip']['coins'] && $x['tip']['item'])
+						{
+							echo strtoupper($x['tip']['real_name']), ' TIPPED <img class="item-icon" src="', $boardurl . $x['item']['icon_url'] ,'" title="', $x['item']['name_eng'], '"/> FOR THIS POST';
+						}
+						else
+						{
+							echo sprintf($txt['tip_for_message_post_footer'], strtoupper($x['tip']['real_name']), $x['tip']['coins']);
+						} 
+						'</p>';
+				}
 
 				echo '
 								
