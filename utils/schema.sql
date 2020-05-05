@@ -1441,6 +1441,7 @@ CREATE TABLE `smf_message_tips` (
   `id_message` int(11) NOT NULL,
   `id_member` int(11) NOT NULL,
   `coins` int(11) NOT NULL,
+  `item` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_message_tip`),
   KEY `id_message` (`id_message`) COMMENT 'Frequent lookup of tips for each message'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
