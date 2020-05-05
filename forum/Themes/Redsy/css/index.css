@@ -4196,6 +4196,7 @@ ol.breadcrumb li:first-child, .breadcrumb li:last-child
     border-width: 2px;
     border-style: solid;
     margin: 2px;
+    display: inline-block;
 }
 
 .item-icon-button-locked
@@ -4233,6 +4234,7 @@ ol.breadcrumb li:first-child, .breadcrumb li:last-child
     border-width: 2px;
     border-style: solid;
     margin: 2px;
+    display: inline-block;
 }
 
 .item-icon-button-equipped:hover { 
@@ -4245,6 +4247,21 @@ ol.breadcrumb li:first-child, .breadcrumb li:last-child
    	border-color: #e25d5d;
    	cursor: pointer;
 }
+
+.item-icon-button-text
+{
+    position: absolute;
+    font-size: 0.7em;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+    bottom: 0;
+    right: 2px;
+}
+
+.item-icon-button-img
+{
+    position: absolute;
+}
+
 .register-cta, .register-cta a {
 	text-align:center; 
 	color:white; 

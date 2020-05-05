@@ -2560,8 +2560,14 @@ function displayEquipmentIconButton($item)
 {
 	global $txt, $context, $boardurl;
 
-	echo '<input type="hidden" id="item_',$item['id'],'" name="item_',$item['id'],'" value="',$item['is_equipped'],'"/>';
-	echo 	'<img src="', $boardurl, $item['icon_url'], '" class="', $item['is_equipped'] ? 'item-icon-button-equipped' : 'item-icon-button', '" title="',$item['name_eng'],'"  onclick="setItemEquipped(',$item['id'],');" id="item_',$item['id'],'_img"/>';
+    echo '<input type="hidden" id="item_',$item['id'],'" name="item_',$item['id'],'" value="',$item['is_equipped'],'"/>';
+    echo '<div style="position: relative"class=', $item['is_equipped'] ? 'item-icon-button-equipped' : 'item-icon-button', ' onclick="setItemEquipped(',$item['id'],');" id="item_', $item['id'],'_img"', '>';
+    echo 	'<img class=item-icon-button-img src="', $boardurl, $item['icon_url'], '" title="',$item['name_eng'],'"/>';
+    if ($item['count'] > 1)
+    {
+        echo "<div class='item-icon-button-text'>{$item['count']}</div>";
+    }
+    echo '</div>';
 }
 
 // Callback function for entering a birthdate!
