@@ -134,20 +134,15 @@ function do_tip()
 			return;
 		}
 
-		// Make sure the user is allowed to give away this item
-
-		// Load user's inventory
 		$inventory = loadInventory($user_info['id']);
 		$tipItem = $inventory[$context['itemID']];
 
-		// Do they have 1 or more of this item?
-		if ($tipItem['count'] < 1)
+		if ($tipItem['count'] < 1 || !isset($inventory[$context['itemID']]))
 		{
 			$context['tiperror'] = 'notenough';
 			return;
 		}
 
-		// Giving away a body/face base type item?
 		if ($tipItem['equip_slot'] == EquipSlot::BodyBase || $tipItem['equip_slot'] == EquipSlot::FaceBase)
 		{
 			// Check if this is their last one
