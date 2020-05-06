@@ -120,13 +120,17 @@ function template_form()
 		// Stuff to display when tipping items
 		echo '
 		<div id="itemTip" style="display:none; width:50%;">';
-		foreach ($context['user']['inventory'] as $key => $value) {
-			echo '<label style="position: relative" onclick="setActive(this);" class="item-icon-button">
-			<img class="item-icon-button-img" src="', $boardurl, $value['icon_url'], '" title="', $value['name_eng'],'"/>
-			<input style="display: none" type="radio" name="itemID" value="', $value['id'], '"/>';
-			if ($value['count'] > 1)
+		foreach ($context['user']['inventory'] as $key => $item) {
+			if ($item['count'] <= 1 && $item['is_equipped'])
 			{
-				echo "<div class='item-icon-button-text'>{$value['count']}</div>";
+				continue;
+			}
+			echo '<label style="position: relative" onclick="setActive(this);" class="item-icon-button">
+			<img class="item-icon-button-img" src="', $boardurl, $item['icon_url'], '" title="', $item['name_eng'],'"/>
+			<input style="display: none" type="radio" name="itemID" value="', $item['id'], '"/>';
+			if ($item['count'] > 1)
+			{
+				echo "<div class='item-icon-button-text'>{$item['count']}</div>";
 			}
 			echo '</label>';
 		}
@@ -165,6 +169,9 @@ function template_confirm()
 				break;
 			case 'bodyfacelimit':
 				echo $txt['tip_for_message_fail_item_bodyfacelimit'];
+				break;
+			case 'bodyfaceequipped':
+				echo $txt['tip_for_message_fail_item_bodyfaceequipped'];
 				break;
 			}
 

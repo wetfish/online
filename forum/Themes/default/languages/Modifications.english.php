@@ -29,6 +29,7 @@ $txt['tip_for_message_fail_cantafford'] = "Insufficient funds.";
 $txt['tip_for_message_fail_item_noitem'] = "Please select an item to tip.";
 $txt['tip_for_message_fail_item_notenough'] = "You do not have this item.";
 $txt['tip_for_message_fail_item_bodyfacelimit'] = "You can't give away your last body or face base item.";
+$txt['tip_for_message_fail_item_bodyfaceequipped'] = "You can't give away your currently equipped body or face base item.";
 $txt['tip_for_message_post_footer'] = "%s TIPPED %d CORAL FOR THIS POST";
 
 // Tip list page stuff
