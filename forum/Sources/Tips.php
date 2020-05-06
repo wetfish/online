@@ -19,7 +19,7 @@ function loadPosts()
 	$tippedPosts = array();
 	
 	// Find tips in descending order
-	$query = "SELECT id_message_tip, id_message, id_member, coins FROM {db_prefix}message_tips";
+	$query = "SELECT id_message_tip, id_message, id_member, coins, item FROM {db_prefix}message_tips";
 
 	// Searching for posts tipped by a specific user?
 	if (!empty($_GET['tipper']) && !$context['user']['is_guest'])
@@ -62,6 +62,11 @@ function loadPosts()
 
 		// Store the name of the tipper with the tip.
 		$tip['tipper'] = $memberContext[$tip['id_member']]['name'];
+
+		if ($tip['item'] != 0)
+		{
+			$tip['item'] = dbGetIteminfo($tip['item']);
+		}
 
 		$tippedPosts[$tip['id_message']] =
 		array(

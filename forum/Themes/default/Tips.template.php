@@ -12,7 +12,7 @@
 
 function template_main()
 {
-	global $context, $txt, $scripturl, $settings;
+	global $context, $txt, $scripturl, $boardurl, $settings;
 
 	// header
 	echo '<div class="cat_bar">
@@ -97,8 +97,18 @@ function template_main()
 								</div>';
 
 								foreach ($tippedPost['tips'] as $tip)
-								{
-									echo sprintf('<br /><p class="post-tip-notice">%s TIPPED %d CORAL FOR THIS POST', $tip['tipper'], $tip['coins']);
+								{                                
+									//echo print_r($tip);
+									echo '<p class="post-tip-notice">';
+									if (!$tip['coins'] && $tip['item'])
+									{
+										echo strtoupper($tip['tipper']), ' TIPPED <img class="item-icon" src="', $boardurl . $tip['item']['icon_url'] ,'" title="', $tip['item']['name_eng'], '"/> FOR THIS POST';
+									}
+									else
+									{
+										echo sprintf($txt['tip_for_message_post_footer'], strtoupper($tip['tipper']), $tip['coins']);
+									} 
+									'</p>';
 								}
 
 							echo '
