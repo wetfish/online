@@ -6,6 +6,17 @@ forum/fish/img/items/*
 forum/fish/bodies/*
 forum/fish/equipment/*
 
+# Don't ignore default items
+!forum/fish/img/items/GoldfishGold_5eb501c16fdf0*.png
+!forum/fish/img/items/ProlapsePink_5eb501cb56418*.png
+!forum/fish/img/items/CoolRanchBlue_5eb501d455cdb*.png
+!forum/fish/img/items/SadPuppy_5eb50266d9cd2*.png
+!forum/fish/img/items/Annoyed_5eb502bf8c72f*.png
+!forum/fish/img/items/Surprised_5eb50421eb007*.png
+!forum/fish/img/items/Sweatshorts_5eb502d6184aa*.png
+!forum/fish/img/items/BaggyTShirt_5eb502f453c0d*.png
+!forum/fish/img/items/FancyPipe_5eb503039bab2*.png
+
 forum/cache/*
 
 !*index.html
