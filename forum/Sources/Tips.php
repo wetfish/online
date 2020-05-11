@@ -17,51 +17,52 @@ function loadPosts()
 	global $memberContext, $context, $smcFunc, $user_info;
 	
 	$tippedPosts = array();
-	
-	// Find tips in descending order
-	$query = "SELECT id_message_tip, id_message, id_member, coins, item FROM {db_prefix}message_tips";
+
+	$query = "
+		SELECT id_msg, id_message, msg.id_member as tippee_id, tip.id_member as tipper_id, body, id_topic, poster_name, poster_time, icon, subject, smileys_enabled, coins, item
+		FROM {db_prefix}messages as msg
+		INNER JOIN {db_prefix}message_tips as tip
+		ON msg.id_msg = tip.id_message";
 
 	// Searching for posts tipped by a specific user?
 	if (!empty($_GET['tipper']) && !$context['user']['is_guest'])
 	{
 		// Find user id for searched user
-		$userSearch = $smcFunc['db_query']('', "SELECT id_member from smf_members where real_name = '" . mysql_escape_string(urldecode($_GET['tipper'])) . "'");
+		$userSearch = $smcFunc['db_query']('', "SELECT id_member from {db_prefix}members where real_name = '" . mysql_escape_string(urldecode($_GET['tipper'])) . "'");
 		$result = $smcFunc['db_fetch_assoc']($userSearch)['id_member'];
-		$query .= " WHERE id_member = '" . $result . "'";
+		$query .= " WHERE tip.id_member = '" . $result . "'";
+	}
+	
+	// Searching for posts made by a specific user?
+	if (!empty($_GET['poster']) && !$context['user']['is_guest'])
+	{
+		if (!empty($_GET['tipper']))
+		{
+			$query .= " AND poster_name = '" . mysql_escape_string(urldecode($_GET['poster'])) . "'";
+		}
+		else
+		{
+			$query .= " WHERE poster_name = '" . mysql_escape_string(urldecode($_GET['poster'])) . "'";
+		}
 	}
 
 	$query .= " ORDER BY id_message_tip DESC LIMIT 15";
+
 	$tipsQuery = $smcFunc['db_query']('', $query);
 	
 	// Get post associated with each tip
 	while($tip = $smcFunc['db_fetch_assoc']($tipsQuery))
 	{
-		$query = "
-				SELECT id_msg, id_member, body, id_topic, poster_name, poster_time, icon, subject, smileys_enabled
-				FROM {db_prefix}messages
-				WHERE id_msg = {int:id_msg}";
-
-		if (!empty($_GET['poster']) && !$context['user']['is_guest'])
-		{
-			$query .= " AND poster_name = '" . mysql_escape_string(urldecode($_GET['poster'])) . "'";
-		}
-
-		$postQuery = $smcFunc['db_query']('', $query, array('id_msg' => $tip['id_message']));
-		$result = $smcFunc['db_fetch_assoc']($postQuery);
-
-		if (!$result)
-			continue;
-
 		// Load OP data into memberContext
-		loadMemberData(array($result['id_member']), false, 'minimal');
-		loadMemberContext($result['id_member']);
+		loadMemberData(array($tip['tippee_id']), false, 'minimal');
+		loadMemberContext($tip['tippee_id']);
 
 		// Load Tipper data into memberContext
-		loadMemberData(array($tip['id_member']), false, 'minimal');
-		loadMemberContext($tip['id_member']);
-
+		loadMemberData(array($tip['tipper_id']), false, 'minimal');
+		loadMemberContext($tip['tipper_id']);
+		
 		// Store the name of the tipper with the tip.
-		$tip['tipper'] = $memberContext[$tip['id_member']]['name'];
+		$tip['tipper'] = $memberContext[$tip['tipper_id']]['name'];
 
 		if ($tip['item'] != 0)
 		{
@@ -70,9 +71,9 @@ function loadPosts()
 
 		$tippedPosts[$tip['id_message']] =
 		array(
-			'poster' => $memberContext[$result['id_member']],
-			'post' => $result,
-			'tips' => array_merge_recursive( (array)$tippedPosts[$tip['id_message']]['tips'], array($tip)),
+			'poster' => $memberContext[$tip['tippee_id']],
+			'post' => $tip,
+			'tips' => array_merge_recursive( (array)$tippedPosts[$tip['id_msg']]['tips'], array($tip)),
 		);
 	}
 	$context['recent_tipped_posts'] = $tippedPosts;
