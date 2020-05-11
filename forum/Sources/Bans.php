@@ -38,7 +38,7 @@ function loadBans()
 
 	// On a specific page?
 	$page = isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1 ? (int)mysql_escape_string(urldecode($_GET['page'])) : 1;
-	$clauses .= " LIMIT " . (($page - 1) * 15) . "," . ((($page - 1) * 15) + 15);
+	$clauses .= " LIMIT " . ($page - 1) * 15 . ",15";
 
 
 	$pagination = Paginate($_SERVER['QUERY_STRING'], $page, (int)ceil($count / 15), 15);
