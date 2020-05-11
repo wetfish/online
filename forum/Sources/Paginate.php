@@ -26,18 +26,18 @@ function Paginate($url, $page, $pages, $numPerPage)
 		// 3 pages away from current? show a ... expansion button
 		else if (abs($page - $i) == 3)
 		{
-			parse_str($_GET, $_GET);
-			unset($_GET['page']);
-			$_GET = http_build_query($_GET);
+			parse_str($url, $tmp);
+			unset($tmp['page']);
+			$tmp = http_build_query($tmp);
 			// Left side ...
 			if ($page - $i > 0)
 			{
-				$result .= "<span style='font-weight: bold;' onclick='" . htmlspecialchars("expandPagination(this, \"$scripturl?$_GET&page=%1\$d\", 2, $i)") . "'><a>...</a></span>";
+				$result .= "<span style='font-weight: bold;' onclick='" . htmlspecialchars("expandPagination(this, \"$scripturl?$tmp&page=%1\$d\", 2, $i)") . "'><a>...</a></span>";
 			}
 			// Right side ...
 			else if ($page - $i < 0)
 			{
-				$result .= "<span style='font-weight: bold;' onclick='" . htmlspecialchars("expandPagination(this, \"$scripturl?$_GET&page=%1\$d\", $i, " . strval($pages-1) . ")") . "'><a>...</a></span>";
+				$result .= "<span style='font-weight: bold;' onclick='" . htmlspecialchars("expandPagination(this, \"$scripturl?$tmp&page=%1\$d\", $i, " . strval($pages-1) . ")") . "'><a>...</a></span>";
 			}
 		}
 		// Don't show things further than 3 away
