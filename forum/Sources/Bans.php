@@ -2,6 +2,8 @@
 
 if (!defined('SMF'))
 	die('Hacking attempt...');
+	
+include_once("Paginate.php");
 
 function Bans()
 {
@@ -14,23 +16,34 @@ function Bans()
 
 function loadBans()
 {
-	global $memberContext, $context, $smcFunc, $user_info;
+	global $memberContext, $context, $smcFunc, $user_info, $scripturl;
 
 	$bans = array();
 
 	// Find bans
-	$query = "SELECT id_topic_ban, id_topic, id_member, reason, id_msg FROM {db_prefix}topic_bans";
+	$mainQuery = "SELECT id_topic_ban, id_topic, id_member, reason, id_msg FROM {db_prefix}topic_bans";
+	$clauses = "";
 	
 	// Searching for user?
 	if (!empty($_GET['user']) && !$context['user']['is_guest'])
 	{
 		$userSearch = $smcFunc['db_query']('', "SELECT id_member from smf_members where real_name = '" . mysql_escape_string(urldecode($_GET['user'])) . "'");
 		$result = $smcFunc['db_fetch_assoc']($userSearch)['id_member'];
-		$query .= " WHERE id_member = '" . $result . "'";
+		$clauses .= " WHERE id_member = '" . $result . "'";
 	}
 	
-	$query .= " ORDER BY id_topic_ban DESC LIMIT 15";
-	$bansQuery = $smcFunc['db_query']('', $query);
+	$clauses .= " ORDER BY id_topic_ban DESC";
+
+	$count = $smcFunc['db_fetch_assoc']($smcFunc['db_query']('', "SELECT COUNT(*) FROM {db_prefix}topic_bans" . $clauses))['COUNT(*)'];
+
+	// On a specific page?
+	$page = isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1 ? (int)mysql_escape_string(urldecode($_GET['page'])) : 1;
+	$clauses .= " LIMIT " . (($page - 1) * 15) . "," . ((($page - 1) * 15) + 15);
+
+
+	$pagination = Paginate($_SERVER['QUERY_STRING'], $page, (int)ceil($count / 15), 15);
+
+	$bansQuery = $smcFunc['db_query']('', $mainQuery . $clauses);
 	
 	while($ban = $smcFunc['db_fetch_assoc']($bansQuery))
 	{
@@ -55,5 +68,6 @@ function loadBans()
 		);
 	}
 	$context['recent_bans'] = $bans;
+	$context['pages'] = $pagination;
 }
 ?>

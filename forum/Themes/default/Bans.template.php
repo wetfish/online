@@ -10,6 +10,8 @@
  * @version 2.0.10
  */
 
+include_once("Paginate.php");
+
 function template_main()
 {
 	global $context, $txt, $scripturl, $settings;
@@ -17,7 +19,8 @@ function template_main()
 	// header
 	echo '<div class="cat_bar">
 			<h3 class="catbg">Recent Bans</h3>
-		</div>';
+		</div>
+		<script src=',$settings['default_theme_url'],'/scripts/expandPagination.js></script>';
 
 		if (!$context['user']['is_guest'])
 		{
@@ -37,6 +40,12 @@ function template_main()
 			</div>
 		</div>';
 	}
+
+	echo '<div class="pagesection">
+			<div class="pagelinks floatleft">',
+				$context['pages'],
+			'</div>
+		</div><br />';
 
 	// begin content
 	echo '<div class="forumposts">';
@@ -115,4 +124,9 @@ function template_main()
 	}
 	// end content
 	echo '</div>';
+	echo '<div class="pagesection">
+			<div class="pagelinks floatleft">',
+				$context['pages'],
+			'</div>
+	</div>';
 }
