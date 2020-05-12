@@ -72,6 +72,6 @@ function loadBans()
 		);
 	}
 	$context['recent_bans'] = $bans;
-	$context['pages'] = Paginate($_SERVER['QUERY_STRING'], $page, $pageCount, 15);
+	$context['pages'] = Paginate($_SERVER['QUERY_STRING'], $page, $pageCount, $postsPerPage);
 }
 ?>
