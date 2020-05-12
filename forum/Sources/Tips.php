@@ -24,14 +24,6 @@ function loadPosts()
 	$postsPerPage = 15;
 	$maxPages = 10;
 
-	// On a specific page?
-	$page = 1;
-	if (isset($_GET['page']) && is_numeric($_GET['page']))
-	{
-		$page = (int)mysql_escape_string(urldecode($_GET['page']));
-		$page = min(max($page, 1), $maxPages);
-	}
-	
 	// Get posts that have been tipped
 	$query = "
 		SELECT id_msg, id_message, msg.id_member, id_topic, poster_name, poster_time, icon, subject, body, smileys_enabled 
@@ -72,14 +64,18 @@ function loadPosts()
 	}
 
 	$query .= " ORDER BY id_message_tip DESC";
-
 	$pageCount = (int)ceil(mysql_num_rows($smcFunc['db_query']('', "$query LIMIT " . $postsPerPage * $maxPages)) / $postsPerPage);
+
+	// On a specific page?
+	$page = 1;
+	if (isset($_GET['page']) && is_numeric($_GET['page']))
+	{
+		$page = (int)mysql_escape_string(urldecode($_GET['page']));
+		$page = min(max($page, 1), $pageCount);
+	}
 	$query .= " LIMIT " . ($page - 1) * $postsPerPage . ",$postsPerPage";
 
-	echo $query;
-
 	$tippedPostsQuery = $smcFunc['db_query']('', $query);
-	
 	while($post = $smcFunc['db_fetch_assoc']($tippedPostsQuery))
 	{
 		// Load tips for this post

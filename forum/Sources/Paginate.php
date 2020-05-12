@@ -18,11 +18,6 @@ function Paginate($url, $page, $pages, $numPerPage)
 		{
 			$result .= "<strong>$i</strong>";
 		}
-		// Always show first or last page links
-		else if ($i == 1 || $i == $pages)
-		{
-			$result .= "<a class='navPages' href='?$test'>$i</a>";
-		}
 		else
 		{
 			$result .= "<a class='navPages' href='?$test'>$i</a>";

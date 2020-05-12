@@ -23,21 +23,22 @@ function loadBans()
 	$maxPages = 10;
 
 	// Find bans
-	$mainQuery = "SELECT id_topic_ban, id_topic, id_member, reason, id_msg FROM {db_prefix}topic_bans";
-	$clauses = " WHERE id_msg > 0";
+    $query = "
+        SELECT id_topic_ban, id_topic, id_member, reason, id_msg FROM {db_prefix}topic_bans
+        WHERE id_msg > 0";
 	
 	// Searching for user?
 	if (!empty($_GET['user']) && !$context['user']['is_guest'])
 	{
 		$userSearch = $smcFunc['db_query']('', "SELECT id_member from smf_members where real_name = '" . mysql_escape_string(urldecode($_GET['user'])) . "'");
 		$result = $smcFunc['db_fetch_assoc']($userSearch)['id_member'];
-		$clauses .= " AND id_member = '" . $result . "'";
+		$query .= " AND id_member = '" . $result . "'";
 	}
 	
-	$clauses .= " ORDER BY id_topic_ban DESC";
+	$query .= " ORDER BY id_topic_ban DESC";
     
-    $pageCount = (int)ceil(mysql_num_rows($smcFunc['db_query']('', "$mainQuery $clauses LIMIT " . $postsPerPage * $maxPages)) / $postsPerPage);
-    
+    $pageCount = (int)ceil(mysql_num_rows($smcFunc['db_query']('', "$query LIMIT " . $postsPerPage * $maxPages)) / $postsPerPage);
+
     // On a specific page?
 	$page = 1;
 	if (isset($_GET['page']) && is_numeric($_GET['page']))
@@ -45,10 +46,9 @@ function loadBans()
 		$page = (int)mysql_escape_string(urldecode($_GET['page']));
 		$page = min(max($page, 1), $pageCount);
 	}
-    $clauses .= " LIMIT " . ($page - 1) * $postsPerPage . ",$postsPerPage";
+    $query .= " LIMIT " . ($page - 1) * $postsPerPage . ",$postsPerPage";
 
-	$bansQuery = $smcFunc['db_query']('', $mainQuery . $clauses);
-	
+	$bansQuery = $smcFunc['db_query']('', $query);
 	while($ban = $smcFunc['db_fetch_assoc']($bansQuery))
 	{
 		// Load banned user data
