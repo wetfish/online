@@ -40,7 +40,12 @@ function template_main()
 				</form>
 			</div>
 		</div>';
-	}
+    }
+    echo '<div class="pagesection">
+            <div class="pagelinks floatleft">',
+                $context['pages'],
+            '</div>
+        </div><br />';
 
 	// begin content
 	echo '<div class="forumposts">';
@@ -119,5 +124,10 @@ function template_main()
 			</div>';
 	}
 	// end content
-	echo '</div>';
+    echo '</div>';
+    echo '<div class="pagesection">
+            <div class="pagelinks floatleft">',
+            $context['pages'],
+        '</div>
+    </div><br />';
 }
