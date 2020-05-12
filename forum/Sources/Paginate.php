@@ -5,7 +5,6 @@ if (!defined('SMF'))
 
 function Paginate($url, $page, $pages, $numPerPage)
 {
-	global $scripturl;
 	$result = '';
 
 	for ($i = 1; $i <= $pages; $i++)

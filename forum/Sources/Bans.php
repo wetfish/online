@@ -16,7 +16,7 @@ function Bans()
 
 function loadBans()
 {
-	global $memberContext, $context, $smcFunc, $user_info, $scripturl;
+	global $memberContext, $context, $smcFunc, $user_info;
 
 	$bans = array();
 	$postsPerPage = 15;
