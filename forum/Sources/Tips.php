@@ -26,18 +26,14 @@ function loadPosts()
 
 	// Get posts that have been tipped
 	$query = "
-		SELECT id_msg, id_message, msg.id_member, id_topic, poster_name, poster_time, icon, subject, body, smileys_enabled 
-		FROM {db_prefix}messages AS msg 
-		INNER JOIN ( 
-			SELECT t.id_message, t.id_message_tip, t.id_member 
-				FROM smf_message_tips t 
-				INNER JOIN ( 
-						SELECT id_message, max(id_message_tip) AS max 
-						FROM smf_message_tips 
-						GROUP BY id_message ) q 
-				ON t.id_message = q.id_message 
-				AND t.id_message_tip = q.max ) AS tip 
-		ON msg.id_msg = tip.id_message";
+		SELECT id_msg, id_message, msg.id_member, tip.id_member id_topic, poster_name, poster_time, icon, subject, body, smileys_enabled
+		FROM {db_prefix}messages AS msg
+		INNER JOIN (
+		SELECT t.id_message, t.id_message_tip, t.id_member
+		FROM smf_message_tips t
+		INNER JOIN (
+		SELECT id_message, max(id_message_tip) AS max
+		FROM smf_message_tips";
 
 	// Searching for posts tipped by a specific user?
 	if (!empty($_GET['tipper']) && !$context['user']['is_guest'])
@@ -45,8 +41,14 @@ function loadPosts()
 		// Find user id for searched user
 		$userSearch = $smcFunc['db_query']('', "SELECT id_member from {db_prefix}members where real_name = '" . mysql_escape_string(urldecode($_GET['tipper'])) . "'");
 		$result = $smcFunc['db_fetch_assoc']($userSearch)['id_member'];
-		$query .= " WHERE tip.id_member = '$result'";
+		$query .= " WHERE id_member = '$result'";
 	}
+
+	$query .= "
+		GROUP BY id_message ) q
+		ON t.id_message = q.id_message
+		AND t.id_message_tip = q.max ) AS tip
+		ON msg.id_msg = tip.id_message";
 
 	// Searching for posts made by a specific user?
 	if (!empty($_GET['poster']) && !$context['user']['is_guest'])
