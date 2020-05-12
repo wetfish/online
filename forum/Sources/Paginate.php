@@ -23,28 +23,6 @@ function Paginate($url, $page, $pages, $numPerPage)
 		{
 			$result .= "<a class='navPages' href='?$test'>$i</a>";
 		}
-		// 3 pages away from current? show a ... expansion button
-		else if (abs($page - $i) == 3)
-		{
-			parse_str($url, $tmp);
-			unset($tmp['page']);
-			$tmp = http_build_query($tmp);
-			// Left side ...
-			if ($page - $i > 0)
-			{
-				$result .= "<span style='font-weight: bold;' onclick='" . htmlspecialchars("expandPagination(this, \"$scripturl?$tmp&page=%1\$d\", 2, $i)") . "'><a>...</a></span>";
-			}
-			// Right side ...
-			else if ($page - $i < 0)
-			{
-				$result .= "<span style='font-weight: bold;' onclick='" . htmlspecialchars("expandPagination(this, \"$scripturl?$tmp&page=%1\$d\", $i, " . strval($pages-1) . ")") . "'><a>...</a></span>";
-			}
-		}
-		// Don't show things further than 3 away
-		else if(abs($page - $i) > 3)
-		{
-			continue;
-		}
 		else
 		{
 			$result .= "<a class='navPages' href='?$test'>$i</a>";

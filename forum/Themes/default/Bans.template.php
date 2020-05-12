@@ -19,8 +19,7 @@ function template_main()
 	// header
 	echo '<div class="cat_bar">
 			<h3 class="catbg">Recent Bans</h3>
-		</div>
-		<script src=',$settings['default_theme_url'],'/scripts/expandPagination.js></script>';
+		</div>';
 
 		if (!$context['user']['is_guest'])
 		{
