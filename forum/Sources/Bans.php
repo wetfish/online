@@ -19,29 +19,33 @@ function loadBans()
 	global $memberContext, $context, $smcFunc, $user_info, $scripturl;
 
 	$bans = array();
+	$postsPerPage = 15;
+	$maxPages = 10;
 
 	// Find bans
 	$mainQuery = "SELECT id_topic_ban, id_topic, id_member, reason, id_msg FROM {db_prefix}topic_bans";
-	$clauses = "";
+	$clauses = " WHERE id_msg > 0";
 	
 	// Searching for user?
 	if (!empty($_GET['user']) && !$context['user']['is_guest'])
 	{
 		$userSearch = $smcFunc['db_query']('', "SELECT id_member from smf_members where real_name = '" . mysql_escape_string(urldecode($_GET['user'])) . "'");
 		$result = $smcFunc['db_fetch_assoc']($userSearch)['id_member'];
-		$clauses .= " WHERE id_member = '" . $result . "'";
+		$clauses .= " AND id_member = '" . $result . "'";
 	}
 	
 	$clauses .= " ORDER BY id_topic_ban DESC";
-
-	$count = $smcFunc['db_fetch_assoc']($smcFunc['db_query']('', "SELECT COUNT(*) FROM {db_prefix}topic_bans" . $clauses))['COUNT(*)'];
-
-	// On a specific page?
-	$page = isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1 ? (int)mysql_escape_string(urldecode($_GET['page'])) : 1;
-	$clauses .= " LIMIT " . ($page - 1) * 15 . ",15";
-
-
-	$pagination = Paginate($_SERVER['QUERY_STRING'], $page, (int)ceil($count / 15), 15);
+    
+    $pageCount = (int)ceil(mysql_num_rows($smcFunc['db_query']('', "$mainQuery $clauses LIMIT " . $postsPerPage * $maxPages)) / $postsPerPage);
+    
+    // On a specific page?
+	$page = 1;
+	if (isset($_GET['page']) && is_numeric($_GET['page']))
+	{
+		$page = (int)mysql_escape_string(urldecode($_GET['page']));
+		$page = min(max($page, 1), $pageCount);
+	}
+    $clauses .= " LIMIT " . ($page - 1) * $postsPerPage . ",$postsPerPage";
 
 	$bansQuery = $smcFunc['db_query']('', $mainQuery . $clauses);
 	
@@ -68,6 +72,6 @@ function loadBans()
 		);
 	}
 	$context['recent_bans'] = $bans;
-	$context['pages'] = $pagination;
+	$context['pages'] = Paginate($_SERVER['QUERY_STRING'], $page, $pageCount, 15);
 }
 ?>
