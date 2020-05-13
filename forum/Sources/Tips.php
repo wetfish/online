@@ -3,12 +3,16 @@
 if (!defined('SMF'))
 	die('Hacking attempt...');
 
+include_once("Paginate.php");
+
 function Tips()
 {
-	global $context, $smcFunc, $user_info, $txt;
+	global $context, $smcFunc, $user_info, $txt, $modSettings;
 
 	$context['page_title'] = $txt['tip_list_title'];
+	$modSettings['disableQueryCheck'] = true;
 	loadPosts();
+	unset($modSettings['disableQueryCheck']);
 	loadTemplate('Tips');
 }
 
@@ -17,64 +21,101 @@ function loadPosts()
 	global $memberContext, $context, $smcFunc, $user_info;
 	
 	$tippedPosts = array();
-	
-	// Find tips in descending order
-	$query = "SELECT id_message_tip, id_message, id_member, coins, item FROM {db_prefix}message_tips";
+	$postsPerPage = 15;
+	$maxPages = 10;
+
+	// Get posts that have been tipped
+	$query = "
+		SELECT id_msg, id_message, msg.id_member, tip.id_member id_topic, poster_name, poster_time, icon, subject, body, smileys_enabled
+		FROM {db_prefix}messages AS msg
+		INNER JOIN (
+		SELECT t.id_message, t.id_message_tip, t.id_member
+		FROM smf_message_tips t
+		INNER JOIN (
+		SELECT id_message, max(id_message_tip) AS max
+		FROM smf_message_tips";
 
 	// Searching for posts tipped by a specific user?
 	if (!empty($_GET['tipper']) && !$context['user']['is_guest'])
 	{
 		// Find user id for searched user
-		$userSearch = $smcFunc['db_query']('', "SELECT id_member from smf_members where real_name = '" . mysql_escape_string(urldecode($_GET['tipper'])) . "'");
+		$userSearch = $smcFunc['db_query']('', "SELECT id_member from {db_prefix}members where real_name = '" . mysql_escape_string(urldecode($_GET['tipper'])) . "'");
 		$result = $smcFunc['db_fetch_assoc']($userSearch)['id_member'];
-		$query .= " WHERE id_member = '" . $result . "'";
+		$query .= " WHERE id_member = '$result'";
 	}
 
-	$query .= " ORDER BY id_message_tip DESC LIMIT 15";
-	$tipsQuery = $smcFunc['db_query']('', $query);
-	
-	// Get post associated with each tip
-	while($tip = $smcFunc['db_fetch_assoc']($tipsQuery))
+	$query .= "
+		GROUP BY id_message ) q
+		ON t.id_message = q.id_message
+		AND t.id_message_tip = q.max ) AS tip
+		ON msg.id_msg = tip.id_message";
+
+	// Searching for posts made by a specific user?
+	if (!empty($_GET['poster']) && !$context['user']['is_guest'])
 	{
-		$query = "
-				SELECT id_msg, id_member, body, id_topic, poster_name, poster_time, icon, subject, smileys_enabled
-				FROM {db_prefix}messages
-				WHERE id_msg = {int:id_msg}";
-
-		if (!empty($_GET['poster']) && !$context['user']['is_guest'])
+		$userSearch = $smcFunc['db_query']('', "SELECT id_member from {db_prefix}members where real_name = '" . mysql_escape_string(urldecode($_GET['poster'])) . "'");
+		$result = $smcFunc['db_fetch_assoc']($userSearch)['id_member'];
+		if (!empty($_GET['tipper']))
 		{
-			$query .= " AND poster_name = '" . mysql_escape_string(urldecode($_GET['poster'])) . "'";
+			$query .= " AND msg.id_member = '$result'";
 		}
+		else
+		{
+			$query .= " WHERE msg.id_member = '$result'";
+		}
+	}
 
-		$postQuery = $smcFunc['db_query']('', $query, array('id_msg' => $tip['id_message']));
-		$result = $smcFunc['db_fetch_assoc']($postQuery);
+	$query .= " ORDER BY id_message_tip DESC";
+	$pageCount = (int)ceil(mysql_num_rows($smcFunc['db_query']('', "$query LIMIT " . $postsPerPage * $maxPages)) / $postsPerPage);
 
-		if (!$result)
-			continue;
+	// On a specific page?
+	$page = 1;
+	if (isset($_GET['page']) && is_numeric($_GET['page']))
+	{
+		$page = (int)mysql_escape_string(urldecode($_GET['page']));
+		$page = min(max($page, 1), $pageCount);
+	}
+	$query .= " LIMIT " . ($page - 1) * $postsPerPage . ",$postsPerPage";
+
+	$tippedPostsQuery = $smcFunc['db_query']('', $query);
+	while($post = $smcFunc['db_fetch_assoc']($tippedPostsQuery))
+	{
+		// Load tips for this post
+		$query = "
+			SELECT id_message_tip, id_message, id_member, coins, item
+			FROM {db_prefix}message_tips
+			WHERE id_message = " . $post['id_msg'];
+
+		$tipsQuery = $smcFunc['db_query']('', $query);
+
+		// Load this post's tips into an array
+		$tips = array();
+		while ($tip = $smcFunc['db_fetch_assoc']($tipsQuery))
+		{
+			loadMemberData(array($tip['id_member']), false, 'minimal');
+			loadMemberContext($tip['id_member']);
+			
+			// Store the name of the tipper and any potential tipped item data with the tip.
+			$tip['tipper'] = $memberContext[$tip['id_member']]['name'];
+			if ($tip['item'] != 0)
+			{
+				$tip['item'] = dbGetIteminfo($tip['item']);
+			}
+			$tips[] = $tip;
+		}
 
 		// Load OP data into memberContext
-		loadMemberData(array($result['id_member']), false, 'minimal');
-		loadMemberContext($result['id_member']);
+		loadMemberData(array($post['id_member']), false, 'minimal');
+		loadMemberContext($post['id_member']);
 
-		// Load Tipper data into memberContext
-		loadMemberData(array($tip['id_member']), false, 'minimal');
-		loadMemberContext($tip['id_member']);
-
-		// Store the name of the tipper with the tip.
-		$tip['tipper'] = $memberContext[$tip['id_member']]['name'];
-
-		if ($tip['item'] != 0)
-		{
-			$tip['item'] = dbGetIteminfo($tip['item']);
-		}
-
-		$tippedPosts[$tip['id_message']] =
+		$tippedPosts[$post['id_message']] =
 		array(
-			'poster' => $memberContext[$result['id_member']],
-			'post' => $result,
-			'tips' => array_merge_recursive( (array)$tippedPosts[$tip['id_message']]['tips'], array($tip)),
+			'poster' => $memberContext[$post['id_member']],
+			'post' => $post,
+			'tips' => $tips,
 		);
 	}
 	$context['recent_tipped_posts'] = $tippedPosts;
+	$context['pages'] = Paginate($_SERVER['QUERY_STRING'], $page, $pageCount, $postsPerPage);
 }
 ?>

@@ -10,6 +10,8 @@
  * @version 2.0.10
  */
 
+include_once("Paginate.php");
+
 function template_main()
 {
 	global $context, $txt, $scripturl, $settings;
@@ -21,7 +23,7 @@ function template_main()
 
 		if (!$context['user']['is_guest'])
 		{
-		// Search form
+	// Search form
 	echo '<div class="windowbg2">
 			<div class="content" style="text-align: center">
 			<form action="", method="get" name="ban_search" id="ban_search" class="flow_hidden" enctype="multipart/form-data">',
@@ -37,6 +39,12 @@ function template_main()
 			</div>
 		</div>';
 	}
+
+	echo '<div class="pagesection">
+			<div class="pagelinks floatleft">',
+				$context['pages'],
+			'</div>
+		</div><br />';
 
 	// begin content
 	echo '<div class="forumposts">';
@@ -115,4 +123,9 @@ function template_main()
 	}
 	// end content
 	echo '</div>';
+	echo '<div class="pagesection">
+			<div class="pagelinks floatleft">',
+				$context['pages'],
+			'</div>
+	</div>';
 }
