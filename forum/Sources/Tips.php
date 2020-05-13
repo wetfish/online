@@ -53,15 +53,14 @@ function loadPosts()
 	// Searching for posts made by a specific user?
 	if (!empty($_GET['poster']) && !$context['user']['is_guest'])
 	{
-		$userSearch = $smcFunc['db_query']('', "SELECT id_member from {db_prefix}members where real_name = '" . mysql_escape_string(urldecode($_GET['poster'])) . "'");
-		$result = $smcFunc['db_fetch_assoc']($userSearch)['id_member'];
+		$poster =  mysql_escape_string(urldecode($_GET['poster']));
 		if (!empty($_GET['tipper']))
 		{
-			$query .= " AND msg.id_member = '$result'";
+			$query .= " AND msg.poster_name = '$poster'";
 		}
 		else
 		{
-			$query .= " WHERE msg.id_member = '$result'";
+			$query .= " WHERE msg.poster_name = '$poster'";
 		}
 	}
 
@@ -104,13 +103,36 @@ function loadPosts()
 			$tips[] = $tip;
 		}
 
-		// Load OP data into memberContext
-		loadMemberData(array($post['id_member']), false, 'minimal');
-		loadMemberContext($post['id_member']);
+		// Check if account has been deleted, if so, get the ID for an existing user with that name
+		if ($post['id_member'] == 0)
+		{
+			$query = $smcFunc['db_query']('', "SELECT id_member from {db_prefix}members WHERE member_name = '" . $post['poster_name'] . "'");
+			$post['id_member'] = $smcFunc['db_fetch_assoc']($query)['id_member'];
+		}
+		
+		// If no existing user with the name is found, fill in the blanks.
+		// To-do: some way to show the account is deleted?
+		//        Placeholder avatar?
+		if (!$post['id_member'])
+		{
+			$poster =
+			array(
+				'name' => $post['poster_name'],
+				'id' => null,
+				'href' => null
+			);
+		}
+		else
+		{
+			// Load OP data into memberContext
+			loadMemberData(array($post['id_member']), false, 'minimal');
+			loadMemberContext($post['id_member']);
+			$poster = $memberContext[$post['id_member']];
+		}
 
 		$tippedPosts[$post['id_message']] =
 		array(
-			'poster' => $memberContext[$post['id_member']],
+			'poster' => $poster,
 			'post' => $post,
 			'tips' => $tips,
 		);

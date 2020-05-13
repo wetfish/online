@@ -40,12 +40,12 @@ function template_main()
 				</form>
 			</div>
 		</div>';
-    }
-    echo '<div class="pagesection">
-            <div class="pagelinks floatleft">',
-                $context['pages'],
-            '</div>
-        </div><br />';
+	}
+	echo '<div class="pagesection">
+			<div class="pagelinks floatleft">',
+				$context['pages'],
+			'</div>
+		</div><br />';
 
 	// begin content
 	echo '<div class="forumposts">';
@@ -62,21 +62,31 @@ function template_main()
 				<div class="row">
 					<div class="poster col-md-2">';
 					// Load avatar
-					echo '
+					if ($tippedPost['poster']['id'])
+					{
+						echo '
 							<script type="text/javascript">
 								$(document).ready(function() { 
 									loadAvatar(\'',json_encode(loadInventory($tippedPost['poster']['id'], true)),'\', "fishcanvas_',  $tippedPost['post']['id_msg'], '", "fish_avatar_img_',  $tippedPost['post']['id_msg'],'");
 								});
 							</script>';
 					// Display avatar
-					echo '
+						echo '
 							<canvas id="fishcanvas_',$tippedPost['post']['id_msg'],'" width="',FISH_WIDTH,'" height="',FISH_HEIGHT,'" style="display:none"></canvas>
-							<img id="fish_avatar_img_',$tippedPost['post']['id_msg'],'" alt="', sprintf($txt['fish_avatar_img_alt'], $tippedPost['poster']['name']),'">
-							<h4>
-								<a href="', $tippedPost['poster']['href'], '">', $tippedPost['poster']['name'], '</a>
-							</h4>
+							<img id="fish_avatar_img_',$tippedPost['post']['id_msg'],'" alt="', sprintf($txt['fish_avatar_img_alt'], $tippedPost['poster']['name']),'">';
+					}
+					echo    '<h4>';
+					if ($tippedPost['poster']['href'])
+					{
+						echo '<a href="', $tippedPost['poster']['href'] ? $tippedPost['poster']['href'] : '', '">', $tippedPost['poster']['name'], '</a>';
+					}
+					else
+					{
+						echo $tippedPost['poster']['name'];
+					}
+						echo '</h4>
 					</div>';
-		
+
 					echo '
 					<div class="col-md-10">
 						<div class="body_content">
@@ -124,10 +134,10 @@ function template_main()
 			</div>';
 	}
 	// end content
-    echo '</div>';
-    echo '<div class="pagesection">
-            <div class="pagelinks floatleft">',
-            $context['pages'],
-        '</div>
-    </div><br />';
+	echo '</div>';
+	echo '<div class="pagesection">
+			<div class="pagelinks floatleft">',
+			$context['pages'],
+		'</div>
+	</div><br />';
 }
