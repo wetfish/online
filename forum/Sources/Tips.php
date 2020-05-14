@@ -26,7 +26,7 @@ function loadPosts()
 
 	// Get posts that have been tipped
 	$query = "
-		SELECT id_msg, id_message, msg.id_member, tip.id_member id_topic, poster_name, poster_time, icon, subject, body, smileys_enabled
+		SELECT id_msg, id_message, msg.id_member, id_topic, poster_name, poster_time, icon, subject, body, smileys_enabled
 		FROM {db_prefix}messages AS msg
 		INNER JOIN (
 		SELECT t.id_message, t.id_message_tip, t.id_member
