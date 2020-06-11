@@ -4285,3 +4285,9 @@ ol.breadcrumb li:first-child, .breadcrumb li:last-child
 {
 	vertical-align: middle!important;
 }
+
+/* Alternating colours for posts */
+.table-striped > tbody > tr:nth-of-type(even) td:not(.stickybg)
+{
+    background-color: #f3f3f3;
+}
