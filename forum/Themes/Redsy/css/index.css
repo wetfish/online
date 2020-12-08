@@ -303,6 +303,14 @@ blockquote img {
 	max-width: 200px;
 }
 
+blockquote > video {
+	max-height: 100px;
+	max-width: 200px!important;
+}
+blockquote > iframe {
+	max-height: 100px;
+	max-width: 200px!important;
+}
 /* Alterate blockquote stylings */
 blockquote.bbc_standard_quote
 {
