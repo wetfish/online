@@ -13,23 +13,23 @@
 
 ########## Maintenance ##########
 # Note: If $maintenance is set to 2, the forum will be unusable!  Change it to 0 to fix it.
-$maintenance = 0;		# Set to 1 to enable Maintenance Mode, 2 to make the forum untouchable. (you'll have to make it 0 again manually!)
-$mtitle = 'Maintenance Mode';		# Title for the Maintenance Mode message.
-$mmessage = 'Okay faithful users...we\'re attempting to restore an older backup of the database...news will be posted once we\'re back!';		# Description of why the forum is in maintenance mode.
+$maintenance = getenv('MAINTENANCE_MODE');		# Set to 1 to enable Maintenance Mode, 2 to make the forum untouchable. (you'll have to make it 0 again manually!)
+$mtitle = getenv('MAINTENANCE_TITLE');		# Title for the Maintenance Mode message.
+$mmessage = getenv('MAINTENANCE_MESSAGE');		# Description of why the forum is in maintenance mode.
 
 ########## Forum Info ##########
-$mbname = 'Online';		# The name of your forum.
-$language = 'english';		# The default language file set for the forum.
-$boardurl = '';			# URL to your forum's folder. (without the trailing /!)
-$webmaster_email = 'noreply@myserver.com';	# Email address to send emails from. (like noreply@yourdomain.com.)
+$mbname = getenv('SITE_NAME');		# The name of your forum.
+$language = getenv('SITE_LANGUAGE');		# The default language file set for the forum.
+$boardurl = getenv('SITE_URL');			# URL to your forum's folder. (without the trailing /!)
+$webmaster_email = getenv('OUTGOING_EMAIL');	# Email address to send emails from. (like noreply@yourdomain.com.)
 $cookiename = 'SMFCookie11';	# Name of the cookie to set for authentication.
 
 ########## Database Info ##########
 $db_type = 'mysql';
-$db_server = 'localhost';
-$db_name = 'wfo';
-$db_user = 'wfouser';
-$db_passwd = 'changeme';
+$db_server = 'db';
+$db_name = getenv('DB_DATABASE');
+$db_user = getenv('DB_USERNAME');
+$db_passwd = getenv('DB_PASSWORD');
 $ssi_db_user = '';
 $ssi_db_passwd = '';
 $db_prefix = 'smf_';
@@ -38,9 +38,9 @@ $db_error_send = 1;
 
 ########## Directories/Files ##########
 # Note: These directories do not have to be changed unless you move things.
-$boarddir = '';		# The absolute path to the forum's folder. (not just '.'!)
-$sourcedir = '';		# Path to the Sources directory.
-$cachedir = '';		# Path to the cache directory.
+$boarddir = '/home/halfwit/online/forum';		# The absolute path to the forum's folder. (not just '.'!)
+$sourcedir = '/home/halfwit/online/forum/Sources';		# Path to the Sources directory.
+$cachedir = '/home/halfwit/online/forum/cache';		# Path to the cache directory.
 
 ########## Error-Catching ##########
 # Note: You shouldn't touch these settings.
