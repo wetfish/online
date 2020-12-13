@@ -3,9 +3,7 @@ services:
 
   #PHP Service
   app:
-    build:
-      context: ./forum
-      dockerfile: Dockerfile
+    image: fishnet/online:initial
     container_name: forum-php
     restart: unless-stopped
     tty: true
