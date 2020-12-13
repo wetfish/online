@@ -2,8 +2,8 @@ version: '3'
 services:
 
   #PHP Service
-  app:
-    image: fishnet/online:initial
+  forum:
+    image: fishnet/online
     container_name: forum-php
     restart: unless-stopped
     tty: true
@@ -33,7 +33,7 @@ services:
       - forum-network
     depends_on:
       - db
-      - app
+      - forum
 
   ##SSL-enabled Nginx Service; uncomment to use
   ##Make sure to comment out the above webserver block
@@ -62,7 +62,7 @@ services:
   #    - forum-network
   #  depends_on:
   #    - db
-  #    - app
+  #    - forum 
 
   # MySQL Service
   db:

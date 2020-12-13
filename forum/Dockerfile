@@ -9,5 +9,8 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-configure calendar \
 	&& docker-php-ext-install calendar exif gd gettext mysql mysqli pdo_mysql
 
+RUN useradd fishy
+USER fishy
+
 EXPOSE 9000
 CMD ["php-fpm"]
