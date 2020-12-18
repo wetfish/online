@@ -1,4 +1,0 @@
-[25-Nov-2016 16:38:40 America/New_York] PHP Parse error:  syntax error, unexpected 'global' (T_GLOBAL) in /home/shitelpc/public_html/forum/Themes/Redsy/languages/Settings.english.php on line 2
-[25-Nov-2016 16:39:25 America/New_York] PHP Parse error:  syntax error, unexpected 'global' (T_GLOBAL) in /home/shitelpc/public_html/forum/Themes/Redsy/languages/Settings.english.php on line 2
-[25-Nov-2016 16:41:46 America/New_York] PHP Parse error:  syntax error, unexpected '$txt' (T_VARIABLE) in /home/shitelpc/public_html/forum/Themes/Redsy/languages/Settings.english.php on line 3
-[25-Nov-2016 16:41:55 America/New_York] PHP Parse error:  syntax error, unexpected '$txt' (T_VARIABLE) in /home/shitelpc/public_html/forum/Themes/Redsy/languages/Settings.english.php on line 3
