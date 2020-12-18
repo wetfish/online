@@ -22,3 +22,5 @@ forum/cache/*
 !*index.html
 !*index.php
 !*.htaccess
+
+error_log
