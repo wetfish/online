@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-install calendar exif gd gettext mysql mysqli pdo_mysql
 
 RUN useradd fishy
+COPY --chown=fishy:fishy . /var/www/
+
 USER fishy
 
 EXPOSE 9000
