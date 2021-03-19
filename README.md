@@ -12,6 +12,11 @@ Go to the base directory of this repo:
 Import the database schema:  
 ``mysql -u root -p {db_name} < setup/schema.sql``  
 
+## Running with docker
+
+1. Create a **.env** based on the `.env.example` provided
+2. Run `docker-compose up -d`
+
 ## Repair database settings:
 First, in the ``forum`` directory of this repo, copy Settings.example.php to Settings.php  
 ``cp forum/Settings.example.php forum/Settings.php``
