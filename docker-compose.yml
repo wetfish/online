@@ -4,70 +4,24 @@ services:
   #PHP Service
   forum:
     image: fishnet/online
-    container_name: forum-php
     restart: unless-stopped
     tty: true
     working_dir: /var/www/forum
+    ports:
+      - "80:$HTTP_PORT"
     env_file:
       - ./.env
     volumes:
       - ./forum:/var/www/forum
       - ./utils:/var/www/utils
-      - ./config/php.ini:/usr/local/etc/php/conf.d/settings.ini
-      - ./config/php.conf:/usr/local/etc/php-fpm.d/zz-php.conf
     networks:
       - forum-network
     depends_on:
       - db
-
-  webserver:
-    image: nginx:alpine
-    container_name: forum-nginx
-    restart: unless-stopped
-    ports: 
-      - "80:80"
-    volumes:
-      - ./forum:/var/www/forum
-      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
-    networks:
-      - forum-network
-    depends_on:
-      - db
-      - forum
-
-  ##SSL-enabled Nginx Service; uncomment to use
-  ##Make sure to comment out the above webserver block
-  #webserver:
-  #  image: ghcr.io/linuxserver/swag
-  #  container_name: swag
-  #  restart: unless-stopped
-  #  environment:
-  #    PUID: 1000
-  #    PGID: 1000
-  #    TZ: $TIMEZONE
-  #    URL: $SITE_URL
-  #    SUBDOMAINS: $SUBDOMAINS
-  #    ONLY_SUBDOMAINS: $ONLY_SUBDOMAINS
-  #    VALIDATION: http
-  #    EMAIL: $EMAIL # optional
-  #  ports:
-  #    - "80:80"
-  #    - "443:443"
-  #  volumes:
-  #    - ./swag/site-confs:/config/nginx/site-confs
-  #    - ./swag/fastcgi_params:/config/nginx/fastcgi_params
-  #    - ./laravel/:/config/www
-  #    - config:/config
-  #  networks:
-  #    - forum-network
-  #  depends_on:
-  #    - db
-  #    - forum 
 
   # MySQL Service
   db:
     image: mariadb
-    container_name: forum-mysql
     restart: unless-stopped
     command: --sql_mode=""
     environment:
@@ -76,7 +30,7 @@ services:
       MYSQL_USER: $DB_USERNAME 
       MYSQL_PASSWORD: $DB_PASSWORD
     volumes:
-      - ./config/docker.sql:/docker-entrypoint-initdb.d/setup.sql
+      - ./forum/docker/schema.sql:/docker-entrypoint-initdb.d/setup.sql
       - dbdata:/var/lib/mysql
     networks:
       - forum-network
@@ -89,6 +43,4 @@ networks:
 #Volumes
 volumes:
     dbdata:
-      driver: local
-    node_modules:
       driver: local
