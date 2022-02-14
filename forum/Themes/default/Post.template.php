@@ -310,7 +310,7 @@ function template_main()
 	if ($context['make_poll'])
 	{
 		echo '
-					<div id="edit_poll">
+					<div id="edit_poll" class="clear_left">
 						<fieldset id="poll_main">
 							<legend><span ', (isset($context['poll_error']['no_question']) ? ' class="error"' : ''), '>', $txt['poll_question'], '</span></legend>
 							<input type="text" name="question" value="', isset($context['question']) ? $context['question'] : '', '" tabindex="', $context['tabindex']++, '" size="80" class="input_text" />
