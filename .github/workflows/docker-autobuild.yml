@@ -39,5 +39,5 @@ jobs:
           context: ./forum/
           push: true
           # tag with "latest", commit sha, commit tag, and anything else the previous step provides
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest , ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.GIT_TAG }} , ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest , ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} , ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.GIT_TAG }} , ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
