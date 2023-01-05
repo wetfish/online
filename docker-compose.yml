@@ -3,7 +3,7 @@ services:
 
   #PHP Service
   forum:
-    image: fishnet/online
+    image: ghcr.io/wetfish/online:latest
     container_name: forum-php
     restart: unless-stopped
     tty: true
@@ -21,7 +21,7 @@ services:
       - db
 
   webserver:
-    image: nginx:alpine
+    image: docker.io/nginx:alpine
     container_name: forum-nginx
     restart: unless-stopped
     ports: 
@@ -66,7 +66,7 @@ services:
 
   # MySQL Service
   db:
-    image: mariadb
+    image: docker.io/mariadb
     container_name: forum-mysql
     restart: unless-stopped
     command: --sql_mode=""
