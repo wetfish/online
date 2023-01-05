@@ -3,10 +3,6 @@ name: Docker Image Build
 on:
   push:
     branches: [ "main" ]
-    # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 
 env:
@@ -38,6 +34,6 @@ jobs:
         with:
           context: ./forum/
           push: true
-          # tag with "latest", commit sha, commit tag, and anything else the previous step provides
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest , ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} , ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.GIT_TAG }} , ${{ steps.meta.outputs.tags }}
+          # tag with "latest", commit sha, commit tag, and anything else the previous step provides (typically just the branch name)
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest , ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} , ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
