@@ -32,7 +32,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./forum/
+          context: .
           push: true
           # tag with "latest", commit sha, commit tag, and anything else the previous step provides (typically just the branch name)
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest , ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} , ${{ steps.meta.outputs.tags }}
