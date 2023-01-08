@@ -26,7 +26,7 @@ $cookiename = 'SMFCookie11';	# Name of the cookie to set for authentication.
 
 ########## Database Info ##########
 $db_type = 'mysql';
-$db_server = 'db';
+$db_server = getenv('DB_HOST');
 $db_name = getenv('DB_DATABASE');
 $db_user = getenv('DB_USERNAME');
 $db_passwd = getenv('DB_PASSWORD');
@@ -38,9 +38,9 @@ $db_error_send = 1;
 
 ########## Directories/Files ##########
 # Note: These directories do not have to be changed unless you move things.
-$boarddir = '/home/halfwit/online/forum';		# The absolute path to the forum's folder. (not just '.'!)
-$sourcedir = '/home/halfwit/online/forum/Sources';		# Path to the Sources directory.
-$cachedir = '/home/halfwit/online/forum/cache';		# Path to the cache directory.
+$boarddir = '';		# The absolute path to the forum's folder. (not just '.'!)
+$sourcedir = '';		# Path to the Sources directory.
+$cachedir = '';		# Path to the cache directory.
 
 ########## Error-Catching ##########
 # Note: You shouldn't touch these settings.
