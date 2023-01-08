@@ -28,4 +28,4 @@ error_log
 config/Settings.php
 db/data
 php.env
-maraidb.env
+mariadb.env
