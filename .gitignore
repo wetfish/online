@@ -19,6 +19,8 @@ wwwroot/fish/equipment/*
 
 wwwroot/cache/*
 
+wwwroot/errors.log
+
 !*index.html
 !*index.php
 !*.htaccess

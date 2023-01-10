@@ -17,7 +17,8 @@ RUN set -exu \
 	&& DEBIAN_FRONTEND=noninteractive apt install -yq \
 	  libpng-dev \
 		libfreetype6-dev \
-		mailutils
+		mailutils \
+		sendmail
 
 RUN set -exu \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/freetype2/ \
