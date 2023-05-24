@@ -50,10 +50,10 @@ docker compose \
   --build \
   --force-recreate
 
-docker compose logs -f
+docker compose -f docker-compose.dev.yml logs -f
 ```
 
-The service will be available at [http://127.0.0.1:80](http://127.0.0.1:80)
+The service will be available at [http://127.0.0.1:2404](http://127.0.0.1:2404)
 
 ## When do I need to rebuild the container?
 

@@ -12,7 +12,7 @@ services:
       - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
     # normally behind centeral traefik defined in production-manifests/services/traefik
     ports:
-      - "127.0.0.1:80:80"
+      - "127.0.0.1:2404:80"
     # join online-internal network
     networks:
       online-internal: {}
