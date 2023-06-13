@@ -33,7 +33,7 @@ $db_passwd = getenv('DB_PASSWORD');
 $ssi_db_user = '';
 $ssi_db_passwd = '';
 $db_prefix = 'smf_';
-$db_persist = 0;
+$db_persist = 1;
 $db_error_send = 1;
 
 ########## Directories/Files ##########

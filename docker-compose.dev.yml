@@ -4,7 +4,10 @@
 version: '2.4'
 services:
   online-web:
-    image: docker.io/nginx:1.23-alpine
+    image: ghcr.io/wetfish/online:dev-nginx
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
     container_name: online-web
     restart: unless-stopped
     volumes:
@@ -19,17 +22,20 @@ services:
   
   online-php:
     # for development, build the image
-    image: ghcr.io/wetfish/online:dev
-    build: .
+    image: ghcr.io/wetfish/online:dev-php
+    build:
+      context: .
+      dockerfile: Dockerfile.php
     container_name: online-php
     restart: unless-stopped
     env_file:
       - ./php.env
     volumes:
       - ./wwwroot:/var/www/forum
-      - ./utils:/var/www/utils
-      - ./config/php.ini:/usr/local/etc/php/conf.d/settings.ini:ro
-      - ./config/php.conf:/usr/local/etc/php-fpm.d/zz-php.conf:ro
+      # php-fpm configs
+      - ./config/php-fpm.conf:/etc/php/5.6/fpm/php-fpm.conf:ro
+      - ./config/php-fpm-pool.conf:/etc/php/5.6/fpm/pool.d/www.conf:ro
+      - ./config/php.ini:/etc/php/5.6/fpm/php.ini:ro
     networks:
       online-internal: {}
 
@@ -39,18 +45,11 @@ services:
     restart: unless-stopped
     env_file:
       - ./mariadb.env
-    # built-in healthcheck script
-    healthcheck:
-      test: ["healthcheck.sh", "--su=mysql", "--connect", "--innodb_initialized"]
-      interval: 60s
-      timeout: 5s
-      retries: 5
     volumes:
       - ./config/docker.sql:/docker-entrypoint-initdb.d/setup.sql
       - ./db/data:/var/lib/mysql
     networks:
       online-internal: {}
-
 
 networks:
   # ephemeral, created for us by compose
