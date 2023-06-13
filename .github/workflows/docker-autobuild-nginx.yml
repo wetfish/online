@@ -1,0 +1,59 @@
+name: Docker Image Build - Nginx
+on:
+  # build when push to main or release happens
+  push:
+    branches:
+      - main
+
+  # allow manual execution
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  COMPONENT: nginx
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
+          # tag with latest-${{ env.COMPONENT }} (only on default branch)
+          #          <branch>-${{ env.COMPONENT }}
+          #          <pr #>-${{ env.COMPONENT }}
+          #          <hash>-${{ env.COMPONENT }}
+          #          <git tag>-${{ env.COMPONENT }}
+          #          prod-${{ env.COMPONENT }}    IF branch == main
+          tags: |
+            type=ref,event=branch,suffix=-${{ env.COMPONENT }}
+            type=ref,event=tag,suffix=-${{ env.COMPONENT }}
+            type=ref,event=pr,suffix=-${{ env.COMPONENT }}
+            type=sha,format=long,suffix=-${{ env.COMPONENT }}
+            type=raw,value=latest,suffix=-${{ env.COMPONENT }},priority=900,enable={{is_default_branch}}
+            type=raw,value=prod,suffix=-${{ env.COMPONENT }},priority=1000,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: "Dockerfile.nginx"
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

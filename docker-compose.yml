@@ -6,6 +6,8 @@ services:
   online-web:
     image: ghcr.io/wetfish/online:prod-nginx
     container_name: online-web
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
     restart: unless-stopped
     volumes:
       - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
@@ -20,6 +22,8 @@ services:
     # production: track "prod" tag on ghcr.io
     image: ghcr.io/wetfish/online:prod-php
     container_name: online-php
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
     restart: unless-stopped
     env_file:
       - ./php.env
@@ -41,6 +45,21 @@ services:
       - ./db/data:/var/lib/mysql
     networks:
       online-internal: {}
+
+
+  # watchtower - automatically pull new container images
+  # note: this does not update the repo
+  # if deployment files have changed you will need to git pull && docker compose up -d manually
+  click-watchtower:
+    image: ghcr.io/containrrr/watchtower:1.5.3
+    container_name: click-watchtower
+    environment:
+      - "WATCHTOWER_CLEANUP=true"
+      - "WATCHTOWER_POLL_INTERVAL=30"
+      - "WATCHTOWER_LABEL_ENABLE=true"
+      - "NO_COLOR=true"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
 
 networks:
   # ephemeral, created for us by compose
