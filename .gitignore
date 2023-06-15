@@ -1,21 +1,19 @@
 !.gitignore
-wwwroot/Settings.php
-wwwroot/Settings_bak.php
 
-wwwroot/fish/img/items/*
-wwwroot/fish/bodies/*
-wwwroot/fish/equipment/*
+storage/fish/img/items/*
+storage/fish/bodies/*
+storage/fish/equipment/*
 
 # Don't ignore default items
-!wwwroot/fish/img/items/GoldfishGold_5eb501c16fdf0*.png
-!wwwroot/fish/img/items/ProlapsePink_5eb501cb56418*.png
-!wwwroot/fish/img/items/CoolRanchBlue_5eb501d455cdb*.png
-!wwwroot/fish/img/items/SadPuppy_5eb50266d9cd2*.png
-!wwwroot/fish/img/items/Annoyed_5eb502bf8c72f*.png
-!wwwroot/fish/img/items/Surprised_5eb50421eb007*.png
-!wwwroot/fish/img/items/Sweatshorts_5eb502d6184aa*.png
-!wwwroot/fish/img/items/BaggyTShirt_5eb502f453c0d*.png
-!wwwroot/fish/img/items/FancyPipe_5eb503039bab2*.png
+!storage/fish/img/items/GoldfishGold_5eb501c16fdf0*.png
+!storage/fish/img/items/ProlapsePink_5eb501cb56418*.png
+!storage/fish/img/items/CoolRanchBlue_5eb501d455cdb*.png
+!storage/fish/img/items/SadPuppy_5eb50266d9cd2*.png
+!storage/fish/img/items/Annoyed_5eb502bf8c72f*.png
+!storage/fish/img/items/Surprised_5eb50421eb007*.png
+!storage/fish/img/items/Sweatshorts_5eb502d6184aa*.png
+!storage/fish/img/items/BaggyTShirt_5eb502f453c0d*.png
+!storage/fish/img/items/FancyPipe_5eb503039bab2*.png
 
 wwwroot/cache/*
 
@@ -27,7 +25,6 @@ wwwroot/errors.log
 
 error_log
 
-config/Settings.php
 db/data
 php.env
 mariadb.env
