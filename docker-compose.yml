@@ -53,9 +53,9 @@ services:
   # watchtower - automatically pull new container images
   # note: this does not update the repo
   # if deployment files have changed you will need to git pull && docker compose up -d manually
-  click-watchtower:
+  online-watchtower:
     image: ghcr.io/containrrr/watchtower:1.5.3
-    container_name: click-watchtower
+    container_name: online-watchtower
     environment:
       - "WATCHTOWER_CLEANUP=true"
       - "WATCHTOWER_POLL_INTERVAL=30"

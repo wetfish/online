@@ -32,7 +32,7 @@ docker compose \
 docker compose -f docker-compose.dev.yml logs -f
 ```
 
-The service will be available at [http://wetfishonline.com.local:2404/forum](http://wetfishonline.com.local:2404/forum)
+The service will be available at [http://wetfishonline.com.local:2404/forum/](http://wetfishonline.com.local:2404/forum/)
 
 ## When do I need to rebuild the container?
 
