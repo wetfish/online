@@ -1,31 +1,40 @@
-## Prerequisites
-PHP5.6 and MYSQL
-## Setup instructions
-Create a mysql database for the forums & create a user with full privileges to that database:  
-``mysql``  
-``> CREATE DATABASE {db_name}``  
-``> CREATE USER '{db_user}'@'localhost' IDENTIFIED BY '{db_password}';``  
-``> GRANT ALL PRIVILEGES ON {db_name}.* TO '{db_user}'@'localhost';``  
-
-Go to the base directory of this repo:  
-``cd /var/www/html/online`` 
-Import the database schema:  
-``mysql -u root -p {db_name} < setup/schema.sql``  
-
-## Running with docker
-
-1. Create a **.env** based on the `.env.example` provided
-2. Run `docker-compose up -d`
-
-## Repair database settings:
-First, in the ``forum`` directory of this repo, copy Settings.example.php to Settings.php  
-``cp forum/Settings.example.php forum/Settings.php``
-
-Next, Download the repair_settings tool from SMF: https://wiki.simplemachines.org/smf/Repair_settings.php
-
-Place repair_settings.php in the ``forum`` directory and visit the url, eg: ``127.0.0.1/online/forum/repair_settings.php``  
-Fill in the MySQL Database Info section and save.
-Reload the page and click **[Restore all settings]** at the bottom, save.
-
 ### Important:
 Default admin account is ``Wetfish Online`` and the password is ``changeme``. **change it.**
+
+## How do I deploy this container stack?
+
+See [https://github.com/wetfish/production-manifests](https://github.com/wetfish/production-manifests)
+for production deployment and full stack dev env info.
+
+For development, to run just this stack, do 
+```bash
+$EDITOR /etc/hosts
+# set an entry like
+# 127.0.0.1 wetfishonline.com.local
+
+# setup env files
+cp mariadb.env.example mariadb.env
+# -> edit, change passwords and other info as needed
+cp php.env.example php.env
+# -> edit, change passwords to match
+
+# ensure www-data user inside container can write to persistent storage
+sudo chown -R 33:33 storage/fish
+
+# bring up the stack
+docker compose \
+  -f docker-compose.dev.yml \
+  up -d \
+  --build \
+  --force-recreate
+
+# and tail logs
+docker compose -f docker-compose.dev.yml logs -f
+```
+
+The service will be available at [http://wetfishonline.com.local:2404/forum/](http://wetfishonline.com.local:2404/forum/)
+
+## When do I need to rebuild the container?
+
+As a dev, only if you edit the Dockerfiles. \
+In dev envs the application code is mounted in.

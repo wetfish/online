@@ -1,0 +1,6 @@
+php.env
+mariadb.env
+
+*.env
+
+db/data
