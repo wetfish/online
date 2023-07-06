@@ -3,4 +3,6 @@ mariadb.env
 
 *.env
 
-db/data
+db/data/*
+
+storage/*
