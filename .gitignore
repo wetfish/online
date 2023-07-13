@@ -4,6 +4,10 @@ storage/fish/img/items/*
 storage/fish/bodies/*
 storage/fish/equipment/*
 
+storage/cache/*
+!storage/cache/.htaccess
+!storage/cache/index.php
+
 # Don't ignore default items
 !storage/fish/img/items/GoldfishGold_5eb501c16fdf0*.png
 !storage/fish/img/items/ProlapsePink_5eb501cb56418*.png

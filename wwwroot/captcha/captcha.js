@@ -156,7 +156,7 @@ function captcha() //the actual captcha 'class'
         start : function() //runs when canvas is clicked for the first time
         {
             document.getElementById("canvas").removeEventListener("click", canvasElement.start);
-            document.getElementById("canvas").removeEventListener("touchstart", canvasElement.start);
+            document.getElementById("canvas").removeEventListener("touchend", canvasElement.start);
             canvasElement.lastUpdate = Date.now(); //initialize data for animation loop
             intervals.tick = setInterval(canvasElement.update, 34); //start animation loop
             checkSuccess(true); //tells php to start
