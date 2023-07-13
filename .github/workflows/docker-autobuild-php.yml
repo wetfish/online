@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - release
 
   # allow manual execution
   workflow_dispatch:
@@ -40,14 +41,16 @@ jobs:
           #          <pr #>-${{ env.COMPONENT }}
           #          <hash>-${{ env.COMPONENT }}
           #          <git tag>-${{ env.COMPONENT }}
-          #          prod-${{ env.COMPONENT }}    IF branch == main
+          #          prod-${{ env.COMPONENT }}    IF branch == release
+          #          staging-${{ env.COMPONET }}  IF branch == main
           tags: |
             type=ref,event=branch,suffix=-${{ env.COMPONENT }}
             type=ref,event=tag,suffix=-${{ env.COMPONENT }}
             type=ref,event=pr,suffix=-${{ env.COMPONENT }}
             type=sha,format=long,suffix=-${{ env.COMPONENT }}
             type=raw,value=latest,suffix=-${{ env.COMPONENT }},priority=900,enable={{is_default_branch}}
-            type=raw,value=prod,suffix=-${{ env.COMPONENT }},priority=1000,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+            type=raw,value=staging,suffix=-${{ env.COMPONENT }},priority=1000,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+            type=raw,value=prod,suffix=-${{ env.COMPONENT }},priority=1000,enable=${{ github.ref == format('refs/heads/{0}', 'release') }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
