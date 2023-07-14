@@ -204,7 +204,7 @@ function template_main()
 
 
 	// Justin Nov 24 2016 - Message icons have been removed. Left in some empty containers so the style doesn't get messed up.
-	echo '<dt class="clear_left"></dt><dd></dd>';			
+	echo '<dt class="clear_left"></dt><dd></dd>';
 
 
 	// Are you posting a calendar event?
@@ -538,7 +538,7 @@ function template_main()
 						', template_control_verification($context['visual_verification_id'], 'all'), '
 					</div>';
 	}
-	
+
 	if($context['require_verification'] && $modSettings['visual_verification_type'] == 6)
 	{
 		echo '
@@ -631,9 +631,9 @@ function template_main()
 						{
 							// Handle the WYSIWYG editor.
 							if (textFields[i] == ', JavaScriptEscape($context['post_box_name']), ' && ', JavaScriptEscape('oEditorHandle_' . $context['post_box_name']), ' in window && oEditorHandle_', $context['post_box_name'], '.bRichTextEnabled)
-								x[x.length] = \'message_mode=1&\' + textFields[i] + \'=\' + oEditorHandle_', $context['post_box_name'], '.getText(false).replace(/&#/g, \'&#38;#\').php_to8bit().php_urlencode();
+								x[x.length] = textFields[i] + \'=\' + $("#', $context['post_box_name'], '").data("sceditor").getText().replace(/&#/g, \'&#38;#\');
 							else
-								x[x.length] = textFields[i] + \'=\' + document.forms.postmodify[textFields[i]].value.replace(/&#/g, \'&#38;#\').php_to8bit().php_urlencode();
+								x[x.length] = textFields[i] + \'=\' + document.forms.postmodify[textFields[i]].value.replace(/&#/g, \'&#38;#\');
 						}
 					for (var i = 0, n = numericFields.length; i < n; i++)
 						if (numericFields[i] in document.forms.postmodify && \'value\' in document.forms.postmodify[numericFields[i]])
