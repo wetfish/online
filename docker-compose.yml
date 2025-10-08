@@ -43,6 +43,8 @@ services:
       - ./db/data:/var/lib/mysql:rw
     networks:
       online-internal: {}
+    ports:
+      - "127.0.0.1:3308:3306"
 
   online-watchtower:
     image: ghcr.io/containrrr/watchtower:1.5.3
