@@ -10,7 +10,6 @@
       --panel: #132f4a;
       --text: #d8e6f2;
       --accent: #46b8e6;
-      --fish: #7fd4ff;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -33,16 +32,17 @@
       padding: 3rem 2rem;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
     }
-    .fish {
-      font-size: 4rem;
-      line-height: 1;
-      margin-bottom: 1rem;
-      animation: swim 3s ease-in-out infinite;
-      display: inline-block;
+    .logo {
+      display: block;
+      max-width: 240px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 1.5rem;
+      animation: swim 4s ease-in-out infinite;
     }
     @keyframes swim {
-      0%, 100% { transform: translateX(-6px) rotate(-3deg); }
-      50% { transform: translateX(6px) rotate(3deg); }
+      0%, 100% { transform: translateX(-6px); }
+      50% { transform: translateX(6px); }
     }
     h1 {
       font-size: 2rem;
@@ -73,7 +73,7 @@
 </head>
 <body>
   <div class="card">
-    <div class="fish" aria-hidden="true">&#128031;</div>
+    <img class="logo" src="wetfish-logo.svg" alt="Wetfish logo" />
     <h1>Wetfish <span>Online</span></h1>
     <p>
       The forum is currently <strong>under construction</strong> while we perform a
