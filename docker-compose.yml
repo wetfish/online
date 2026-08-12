@@ -10,6 +10,7 @@ services:
       - ./storage/fish:/var/www/forum/fish:ro
       - ./storage/cache:/var/www/forum/cache:ro
       - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./config/maintenance:/var/www/maintenance:ro
     networks:
       online-internal: {}
       traefik-backend: {}
